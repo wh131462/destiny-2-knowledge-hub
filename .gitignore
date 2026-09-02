@@ -1,0 +1,32 @@
+# OS and editors
+.DS_Store
+.idea/
+.vscode/
+*.legacy-backup
+.tron/
+
+# Dependencies
+node_modules/
+
+# Build output and caches
+dist/
+.vite/
+coverage/
+.cache/
+*.tsbuildinfo
+
+# Downloaded Bungie Manifest snapshots (regenerate with npm run manifest:sync)
+data/manifest/*Definition.json
+data/manifest/aggregate-*.json
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
