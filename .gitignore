@@ -18,6 +18,7 @@ coverage/
 # Downloaded Bungie Manifest snapshots (regenerate with npm run manifest:sync)
 data/manifest/*Definition.json
 data/manifest/aggregate-*.json
+!data/manifest/DestinyClassDefinition.json
 
 # Local environment files
 .env
