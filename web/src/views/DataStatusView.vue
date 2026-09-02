@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import { DATA_VERSION, MANIFEST_VERSION, RULES_VERSION, dataPolicy, sources, classesV2, subclasses, abilities, aspects, facets, fragments, mechanics, gearItems, armorSets, exoticClassItemTraits, armorMods, activitiesV2, curatedBuilds } from '@/data/v2'
 import ConfidenceBadge from '@/components/ConfidenceBadge.vue'
 import { useI18n } from '@/i18n'
+import { dataUrl } from '@/utils/dataUrl'
 
 const { t } = useI18n()
 
@@ -11,8 +12,8 @@ const normalized = ref({ equipment: null, abilities: null, mods: null, modLinks:
 onMounted(async () => {
   try {
     const [statusResponse, equipmentResponse, modsResponse, abilityResponse, modLinksResponse, activitiesResponse, vendorsResponse, activityRewardsResponse, itemSetsResponse, dropsResponse, linksResponse] = await Promise.all([
-      fetch('/data/manifest-status.json'), fetch('/data/manifest-equipment-catalog.json'), fetch('/data/manifest-mods.json'),
-      fetch('/data/manifest-abilities.json'), fetch('/data/curated-mod-links.json'), fetch('/data/manifest-activities.json'), fetch('/data/manifest-vendor-inventory.json'), fetch('/data/manifest-activity-rewards.json'), fetch('/data/manifest-item-sets.json'), fetch('/data/manifest-drop-coverage.json'), fetch('/data/curated-manifest-links.json')
+      fetch(dataUrl('manifest-status.json')), fetch(dataUrl('manifest-equipment-catalog.json')), fetch(dataUrl('manifest-mods.json')),
+      fetch(dataUrl('manifest-abilities.json')), fetch(dataUrl('curated-mod-links.json')), fetch(dataUrl('manifest-activities.json')), fetch(dataUrl('manifest-vendor-inventory.json')), fetch(dataUrl('manifest-activity-rewards.json')), fetch(dataUrl('manifest-item-sets.json')), fetch(dataUrl('manifest-drop-coverage.json')), fetch(dataUrl('curated-manifest-links.json'))
     ])
     if (statusResponse.ok) manifestStatus.value = await statusResponse.json()
     normalized.value = {

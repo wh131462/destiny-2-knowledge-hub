@@ -6,6 +6,7 @@ import StatGrid from '@/components/StatGrid.vue'
 import { useOwnedItems } from '@/composables/useOwnedItems'
 import { useManifestAssets } from '@/composables/useManifestAssets'
 import { useI18n, localized } from '@/i18n'
+import { dataUrl } from '@/utils/dataUrl'
 
 const { t, locale } = useI18n()
 
@@ -20,7 +21,7 @@ const officialAcquisition = ref(null)
 const selectedWeaponId = ref('')
 onMounted(async () => {
   try {
-    const response = await fetch('/data/acquisition-sources.json')
+    const response = await fetch(dataUrl('acquisition-sources.json'))
     if (response.ok) officialAcquisition.value = await response.json()
   } catch {
     officialAcquisition.value = null

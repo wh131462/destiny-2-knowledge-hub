@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from '@/i18n'
+import { dataUrl } from '@/utils/dataUrl'
 
 const { t, locale } = useI18n()
 
@@ -51,7 +52,7 @@ const pageSize = 60
 
 onMounted(async () => {
   try {
-    const [response, modResponse, activityResponse, abilityResponse] = await Promise.all([fetch('/data/manifest-equipment-catalog.json'), fetch('/data/manifest-mods.json'), fetch('/data/manifest-activities.json'), fetch('/data/manifest-abilities.json')])
+    const [response, modResponse, activityResponse, abilityResponse] = await Promise.all([fetch(dataUrl('manifest-equipment-catalog.json')), fetch(dataUrl('manifest-mods.json')), fetch(dataUrl('manifest-activities.json')), fetch(dataUrl('manifest-abilities.json'))])
     if (!response.ok) throw new Error(`HTTP ${response.status}`)
     const payload = await response.json()
     items.value = payload.items || []

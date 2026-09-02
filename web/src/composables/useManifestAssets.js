@@ -1,4 +1,5 @@
 import { computed, onMounted, ref } from 'vue'
+import { dataUrl } from '@/utils/dataUrl'
 
 const assetCache = new Map()
 const loadState = ref('idle')
@@ -43,17 +44,17 @@ export function useManifestAssets() {
     if (!loadPromise) {
       loadState.value = 'loading'
       loadPromise = Promise.all([
-        loadManifest('/data/manifest-equipment-rich.json'),
-        loadManifest('/data/manifest-abilities.json'),
-        loadManifest('/data/manifest-mods.json'),
-        loadManifest('/data/manifest-artifact.json'),
-        loadManifest('/data/curated-mod-links.json'),
-        loadCollection('/data/manifest-perks.json', 'perks'),
-        loadCollection('/data/manifest-plugsets.json', 'sets'),
-        loadCollection('/data/manifest-item-sets.json', 'sets'),
-        loadCollection('/data/manifest-vendor-inventory.json', 'entries'),
-        loadCollection('/data/manifest-activity-rewards.json', 'entries'),
-        loadCollection('/data/manifest-items.json', 'items')
+        loadManifest(dataUrl('manifest-equipment-rich.json')),
+        loadManifest(dataUrl('manifest-abilities.json')),
+        loadManifest(dataUrl('manifest-mods.json')),
+        loadManifest(dataUrl('manifest-artifact.json')),
+        loadManifest(dataUrl('curated-mod-links.json')),
+        loadCollection(dataUrl('manifest-perks.json'), 'perks'),
+        loadCollection(dataUrl('manifest-plugsets.json'), 'sets'),
+        loadCollection(dataUrl('manifest-item-sets.json'), 'sets'),
+        loadCollection(dataUrl('manifest-vendor-inventory.json'), 'entries'),
+        loadCollection(dataUrl('manifest-activity-rewards.json'), 'entries'),
+        loadCollection(dataUrl('manifest-items.json'), 'items')
       ]).then(([equipment, abilities, mods, artifact, modLinks, perks, plugSets, itemSets, vendorEntries, activityRewards, catalogItems]) => {
         sharedAssets.value = new Map([...equipment, ...abilities, ...mods])
         sharedEquipmentItems.value = [...new Set(equipment.values())]

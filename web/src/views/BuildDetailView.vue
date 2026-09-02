@@ -6,6 +6,7 @@ import ConfidenceBadge from '@/components/ConfidenceBadge.vue'
 import StatGrid from '@/components/StatGrid.vue'
 import { useOwnedItems } from '@/composables/useOwnedItems'
 import { useManifestAssets } from '@/composables/useManifestAssets'
+import { dataUrl } from '@/utils/dataUrl'
 
 const route = useRoute()
 const build = computed(() => buildById[route.params.buildId])
@@ -25,7 +26,7 @@ const officialAcquisition = ref(null)
 const officialModLinks = ref(null)
 onMounted(async () => {
   try {
-    const [response, modsResponse] = await Promise.all([fetch('/data/acquisition-sources.json'), fetch('/data/curated-mod-links.json')])
+    const [response, modsResponse] = await Promise.all([fetch(dataUrl('acquisition-sources.json')), fetch(dataUrl('curated-mod-links.json'))])
     if (response.ok) officialAcquisition.value = await response.json()
     if (modsResponse.ok) officialModLinks.value = await modsResponse.json()
   } catch {
