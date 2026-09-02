@@ -1,0 +1,2043 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "syncedAt": "2026-08-31T07:43:51.530Z",
+  "sourceComponent": "DestinyInventoryItemDefinition",
+  "count": 36,
+  "items": [
+    {
+      "id": "synthoceps",
+      "name": "合成感受器",
+      "englishName": "Synthoceps",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        241462142,
+        1035680666,
+        2002759681
+      ],
+      "primaryHash": 241462142,
+      "weaponFamily": null,
+      "armorSlot": "arms",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 1976548992,
+          "vendorName": "Ikora Rey",
+          "vendorNameZh": "艾可拉·蕾伊",
+          "vendorIdentifier": "WARLOCK_VANGUARD",
+          "itemHash": 2002759681,
+          "category": null,
+          "categoryIndex": 26,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 2002759681,
+          "category": null,
+          "categoryIndex": 2,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-engram",
+        "name": "异域记忆水晶与拉乎尔专注",
+        "access": "free-or-expansion-dependent",
+        "deterministic": false,
+        "steps": [
+          "获取异域记忆水晶",
+          "在高塔拉乎尔处解码或专注目标装备"
+        ],
+        "alternatives": [
+          "维持基础高属性传说护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "hazardous-propulsion",
+      "name": "危险推进",
+      "englishName": "Hazardous Propulsion",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        1909305643,
+        3050442980
+      ],
+      "primaryHash": 1909305643,
+      "weaponFamily": null,
+      "armorSlot": "chest",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 1660659508,
+          "vendorName": "Ghost",
+          "vendorNameZh": "机灵",
+          "vendorIdentifier": "SCHISM_FACTION",
+          "itemHash": 3050442980,
+          "category": null,
+          "categoryIndex": 7,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 3050442980,
+          "category": null,
+          "categoryIndex": 3,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "rahool-focusing-tfs",
+        "name": "拉乎尔新奇解密：《终焉之形》",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "提升拉乎尔声望并重置",
+          "打开新奇解密",
+          "消耗异域记忆水晶与材料专注目标装备"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "abeyant-leap",
+      "name": "悬停跃步",
+      "englishName": "Abeyant Leap",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3637722482,
+        3849355625
+      ],
+      "primaryHash": 3637722482,
+      "weaponFamily": null,
+      "armorSlot": "legs",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 1021220385,
+          "vendorName": "Nimbus",
+          "vendorNameZh": "宁博思",
+          "vendorIdentifier": "NEOMUNA_FACTION",
+          "itemHash": 3849355625,
+          "category": null,
+          "categoryIndex": 23,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 3849355625,
+          "category": null,
+          "categoryIndex": 3,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "rahool-focusing-lightfall",
+        "name": "拉乎尔专注：《光陨之秋》",
+        "access": "lightfall",
+        "deterministic": true,
+        "steps": [
+          "拥有对应资料片",
+          "在拉乎尔处使用高级专注获取目标异域"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "liars-handshake",
+      "name": "骗子握手",
+      "englishName": "Liar's Handshake",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2749457084,
+        3295711091,
+        4165919945
+      ],
+      "primaryHash": 2749457084,
+      "weaponFamily": null,
+      "armorSlot": "arms",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 2749457084,
+          "category": null,
+          "categoryIndex": 0,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-engram",
+        "name": "异域记忆水晶与拉乎尔专注",
+        "access": "free-or-expansion-dependent",
+        "deterministic": false,
+        "steps": [
+          "获取异域记忆水晶",
+          "在高塔拉乎尔处解码或专注目标装备"
+        ],
+        "alternatives": [
+          "维持基础高属性传说护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "celestial-nighthawk",
+      "name": "天界夜鹰",
+      "englishName": "Celestial Nighthawk",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        1321354573,
+        1667080810,
+        3960926756
+      ],
+      "primaryHash": 1321354573,
+      "weaponFamily": null,
+      "armorSlot": "helmet",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 3960926756,
+          "category": null,
+          "categoryIndex": 0,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-engram",
+        "name": "异域记忆水晶与拉乎尔专注",
+        "access": "free-or-expansion-dependent",
+        "deterministic": false,
+        "steps": [
+          "获取异域记忆水晶",
+          "在高塔拉乎尔处解码或专注目标装备"
+        ],
+        "alternatives": [
+          "维持基础高属性传说护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "gyrfalcons-hauberk",
+      "name": "矛隼胸甲",
+      "englishName": "Gyrfalcon's Hauberk",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        461841403,
+        2447096246
+      ],
+      "primaryHash": 461841403,
+      "weaponFamily": null,
+      "armorSlot": "chest",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 2447096246,
+          "category": null,
+          "categoryIndex": 1,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "rahool-focusing-witch-queen",
+        "name": "拉乎尔专注：《邪姬魅影》",
+        "access": "witch-queen",
+        "deterministic": true,
+        "steps": [
+          "拥有对应资料片",
+          "在拉乎尔处使用高级专注获取目标异域"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "getaway-artist",
+      "name": "逃逸艺术家",
+      "englishName": "Getaway Artist",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3070357340,
+        3084282676,
+        4177778015
+      ],
+      "primaryHash": 3070357340,
+      "weaponFamily": null,
+      "armorSlot": "arms",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 4177778015,
+          "category": null,
+          "categoryIndex": 4,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-engram",
+        "name": "异域记忆水晶与拉乎尔专注",
+        "access": "free-or-expansion-dependent",
+        "deterministic": false,
+        "steps": [
+          "获取异域记忆水晶",
+          "在高塔拉乎尔处解码或专注目标装备"
+        ],
+        "alternatives": [
+          "维持基础高属性传说护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "mataiodoxia",
+      "name": "马泰奥多西亚",
+      "englishName": "Mataiodoxia",
+      "matched": true,
+      "matchReason": "normalized-name",
+      "manifestHashes": [
+        1003391927,
+        1955548646
+      ],
+      "primaryHash": 1003391927,
+      "weaponFamily": null,
+      "armorSlot": "chest",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 1660659508,
+          "vendorName": "Ghost",
+          "vendorNameZh": "机灵",
+          "vendorIdentifier": "SCHISM_FACTION",
+          "itemHash": 1003391927,
+          "category": null,
+          "categoryIndex": 7,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 1003391927,
+          "category": null,
+          "categoryIndex": 5,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "rahool-focusing-tfs",
+        "name": "拉乎尔新奇解密：《终焉之形》",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "提升拉乎尔声望并重置",
+          "打开新奇解密",
+          "消耗异域记忆水晶与材料专注目标装备"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "speakers-sight",
+      "name": "代言人之视",
+      "englishName": "Speaker's Sight",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        50291571,
+        3617849232
+      ],
+      "primaryHash": 50291571,
+      "weaponFamily": null,
+      "armorSlot": "helmet",
+      "perkOptions": [],
+      "vendorSources": [
+        {
+          "vendorHash": 1660659508,
+          "vendorName": "Ghost",
+          "vendorNameZh": "机灵",
+          "vendorIdentifier": "SCHISM_FACTION",
+          "itemHash": 3617849232,
+          "category": null,
+          "categoryIndex": 7,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 2190858386,
+          "vendorName": "Xûr",
+          "vendorNameZh": "仄",
+          "vendorIdentifier": "TOWER_NINE",
+          "itemHash": 3617849232,
+          "category": null,
+          "categoryIndex": 5,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 41
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "rahool-focusing-tfs",
+        "name": "拉乎尔新奇解密：《终焉之形》",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "提升拉乎尔声望并重置",
+          "打开新奇解密",
+          "消耗异域记忆水晶与材料专注目标装备"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "stoicism",
+      "name": "坚忍",
+      "englishName": "Stoicism",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        266021826
+      ],
+      "primaryHash": 266021826,
+      "weaponFamily": null,
+      "armorSlot": "classItem",
+      "perkOptions": [],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "dual-destiny",
+        "name": "双重命运异域任务",
+        "access": "the-final-shape",
+        "deterministic": false,
+        "steps": [
+          "完成《终焉之形》战役并解锁苍白之心推翻活动",
+          "在三个推翻区域完成隐藏机制，解锁双重命运任务",
+          "两人完成双重命运获得职业对应异域职业物品",
+          "重复任务或使用当前版本开放的替代来源刷取双特性组合"
+        ],
+        "note": "具体掉落来源和每周规则可能随补丁调整。",
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "relativism",
+      "name": "相对主义",
+      "englishName": "Relativism",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2809120022
+      ],
+      "primaryHash": 2809120022,
+      "weaponFamily": null,
+      "armorSlot": "classItem",
+      "perkOptions": [],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "dual-destiny",
+        "name": "双重命运异域任务",
+        "access": "the-final-shape",
+        "deterministic": false,
+        "steps": [
+          "完成《终焉之形》战役并解锁苍白之心推翻活动",
+          "在三个推翻区域完成隐藏机制，解锁双重命运任务",
+          "两人完成双重命运获得职业对应异域职业物品",
+          "重复任务或使用当前版本开放的替代来源刷取双特性组合"
+        ],
+        "note": "具体掉落来源和每周规则可能随补丁调整。",
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "solipsism",
+      "name": "唯我论",
+      "englishName": "Solipsism",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2273643087
+      ],
+      "primaryHash": 2273643087,
+      "weaponFamily": null,
+      "armorSlot": "classItem",
+      "perkOptions": [],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "dual-destiny",
+        "name": "双重命运异域任务",
+        "access": "the-final-shape",
+        "deterministic": false,
+        "steps": [
+          "完成《终焉之形》战役并解锁苍白之心推翻活动",
+          "在三个推翻区域完成隐藏机制，解锁双重命运任务",
+          "两人完成双重命运获得职业对应异域职业物品",
+          "重复任务或使用当前版本开放的替代来源刷取双特性组合"
+        ],
+        "note": "具体掉落来源和每周规则可能随补丁调整。",
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "the-call",
+      "name": "呼唤",
+      "englishName": "The Call",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3947966653
+      ],
+      "primaryHash": 3947966653,
+      "weaponFamily": "Sidearm",
+      "armorSlot": null,
+      "perkOptions": [
+        "Linear Compensator",
+        "High-Velocity Rounds",
+        "Subsistence",
+        "One for All",
+        "Dealer's Choice",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker",
+        "Micro-Missile Frame",
+        "Confined Launch",
+        "Countermass",
+        "Smart Drift Control",
+        "Volatile Launch",
+        "Quick Launch",
+        "Hard Launch",
+        "Appended Mag",
+        "Flared Magwell",
+        "Alloy Magazine",
+        "High-Explosive Ordnance",
+        "Implosion Rounds",
+        "Extended Mag",
+        "Tactical Mag",
+        "Strategist",
+        "Lead from Gold",
+        "Slice",
+        "Beacon Rounds",
+        "Demolitionist",
+        "Stats for All",
+        "Reconstruction",
+        "Impulse Amplifier",
+        "Desperate Measures",
+        "Adrenaline Junkie",
+        "Vorpal Weapon",
+        "Golden Tricorn Enhanced",
+        "Multikill Clip",
+        "Hatchling",
+        "Aggregate Charge",
+        "Chaos Reshaped",
+        "Golden Tricorn",
+        "Default Shader"
+      ],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "pale-heart-engram",
+        "name": "苍白之心目的地武器",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "推进《终焉之形》战役与目的地任务",
+          "解锁对应武器",
+          "获取深视版本并完成图样",
+          "在飞地锻造目标词条"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "lost-signal",
+      "name": "失落信号",
+      "englishName": "Lost Signal",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        1197771438
+      ],
+      "primaryHash": 1197771438,
+      "weaponFamily": "Grenade Launchers",
+      "armorSlot": null,
+      "perkOptions": [
+        "Hard Launch",
+        "Implosion Rounds",
+        "Quickdraw",
+        "Unrelenting",
+        "Radiolaria Transposer",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker",
+        "Area Denial Frame",
+        "Confined Launch",
+        "Countermass",
+        "Smart Drift Control",
+        "Linear Compensator",
+        "Volatile Launch",
+        "Quick Launch",
+        "High-Velocity Rounds",
+        "Strategist",
+        "Stats for All",
+        "Threat Detector",
+        "Lead from Gold",
+        "Feeding Frenzy",
+        "Auto-Loading Holster",
+        "Wellspring",
+        "High Ground",
+        "One for All",
+        "Vorpal Weapon",
+        "Reverberation",
+        "Demolitionist",
+        "Default Shader"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 3751514131,
+          "vendorName": "Strange Gear Offers",
+          "vendorNameZh": "奇异装备优惠",
+          "vendorIdentifier": "TOWER_NINE_GEAR",
+          "itemHash": 1197771438,
+          "category": null,
+          "categoryIndex": 8,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 17
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "episode-echoes",
+        "name": "回声章节武器",
+        "access": "episode-echoes",
+        "deterministic": true,
+        "steps": [
+          "解锁回声章节活动或当前替代来源",
+          "获取深视版本",
+          "完成图样后锻造"
+        ],
+        "note": "内容轮换后的实际入口需要按当前版本复核。",
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "khvostov-7g-0x",
+      "name": "赫沃斯托夫 7G-0X",
+      "englishName": "Khvostov 7G-0X",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        4129629253
+      ],
+      "primaryHash": 4129629253,
+      "weaponFamily": "Auto Rifle",
+      "armorSlot": null,
+      "perkOptions": [
+        "Hammer-Forged Rifling",
+        "Alloy Magazine",
+        "Eyes Up, Guardian",
+        "Shoot to Loot",
+        "Composite Stock",
+        "Kill Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "khvostov-quest",
+        "name": "苍白之心赫沃斯托任务链",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "完成《终焉之形》战役",
+          "收集区域宝箱与加密碎片",
+          "击败所有苍白之心推翻首领并收集光之微粒",
+          "在旧高塔区域取得异域赫沃斯托"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "outbreak-perfected",
+      "name": "全面爆发",
+      "englishName": "Outbreak Perfected",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        400096939,
+        3824673936
+      ],
+      "primaryHash": 400096939,
+      "weaponFamily": "Pulse Rifle",
+      "armorSlot": null,
+      "perkOptions": [
+        "Extended Barrel",
+        "Accurized Rounds",
+        "Outlaw",
+        "Parasitism",
+        "Kill Tracker",
+        "Crucible Tracker",
+        "The Corruption Spreads",
+        "The Corruption Spreads II",
+        "The Corruption Spreads III",
+        "The Corruption Spreads IV",
+        "Arrowhead Brake",
+        "Corkscrew Rifling",
+        "Chambered Compensator",
+        "Smallbore",
+        "Full Bore",
+        "Polygonal Rifling",
+        "Fluted Barrel",
+        "Hammer-Forged Rifling",
+        "Alloy Magazine",
+        "Flared Magwell",
+        "Steady Rounds",
+        "Appended Mag",
+        "Tactical Mag",
+        "Extended Mag",
+        "Rapid Hit",
+        "Rewind Rounds",
+        "Headseeker",
+        "Short-Action Stock",
+        "Composite Stock",
+        "Hand-Laid Stock",
+        "Fitted Stock",
+        "Disease Vector"
+      ],
+      "vendorSources": [],
+      "activitySources": [
+        {
+          "activityHash": 1848771417,
+          "activityName": "Zero Hour (Expert)",
+          "activityNameZh": "行动时刻（专家）",
+          "rewardIndex": 0,
+          "itemIndex": 0,
+          "itemHash": 3824673936,
+          "quantity": 1,
+          "conditional": false,
+          "rewardText": ""
+        },
+        {
+          "activityHash": 3361746271,
+          "activityName": "Zero Hour: Standard",
+          "activityNameZh": "行动时刻: 标准",
+          "rewardIndex": 0,
+          "itemIndex": 0,
+          "itemHash": 3824673936,
+          "quantity": 1,
+          "conditional": false,
+          "rewardText": ""
+        }
+      ],
+      "kind": "gear",
+      "path": {
+        "id": "zero-hour",
+        "name": "零时任务",
+        "access": "free",
+        "deterministic": true,
+        "steps": [
+          "完成零时异域任务获得全面爆发",
+          "完成任务目标解锁内在升级与可选词条",
+          "在飞地重塑"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "sunshot",
+      "name": "烈日弹丸",
+      "englishName": "Sunshot",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2907129557
+      ],
+      "primaryHash": 2907129557,
+      "weaponFamily": "Hand Cannon",
+      "armorSlot": null,
+      "perkOptions": [
+        "Chambered Compensator",
+        "Accurized Rounds",
+        "Sun Blast",
+        "Textured Grip",
+        "Kill Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 296729347,
+          "vendorName": "Special Deliveries",
+          "vendorNameZh": "特殊货物",
+          "vendorIdentifier": "TOWER_OFFERS",
+          "itemHash": 2907129557,
+          "category": null,
+          "categoryIndex": 18,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 3751514131,
+          "vendorName": "Strange Gear Offers",
+          "vendorNameZh": "奇异装备优惠",
+          "vendorIdentifier": "TOWER_NINE_GEAR",
+          "itemHash": 2907129557,
+          "category": null,
+          "categoryIndex": 3,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 23
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-engram",
+        "name": "异域记忆水晶与拉乎尔专注",
+        "access": "free-or-expansion-dependent",
+        "deterministic": false,
+        "steps": [
+          "获取异域记忆水晶",
+          "在高塔拉乎尔处解码或专注目标装备"
+        ],
+        "alternatives": [
+          "维持基础高属性传说护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "graviton-lance",
+      "name": "引力子长枪",
+      "englishName": "Graviton Lance",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3628991658
+      ],
+      "primaryHash": 3628991658,
+      "weaponFamily": "Pulse Rifle",
+      "armorSlot": null,
+      "perkOptions": [
+        "Hammer-Forged Rifling",
+        "Accurized Rounds",
+        "Cosmology",
+        "Fitted Stock",
+        "Kill Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 296729347,
+          "vendorName": "Special Deliveries",
+          "vendorNameZh": "特殊货物",
+          "vendorIdentifier": "TOWER_OFFERS",
+          "itemHash": 3628991658,
+          "category": null,
+          "categoryIndex": 19,
+          "quantity": 1,
+          "currencies": []
+        },
+        {
+          "vendorHash": 3751514131,
+          "vendorName": "Strange Gear Offers",
+          "vendorNameZh": "奇异装备优惠",
+          "vendorIdentifier": "TOWER_NINE_GEAR",
+          "itemHash": 3628991658,
+          "category": null,
+          "categoryIndex": 3,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 23
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-engram",
+        "name": "异域记忆水晶与拉乎尔专注",
+        "access": "free-or-expansion-dependent",
+        "deterministic": false,
+        "steps": [
+          "获取异域记忆水晶",
+          "在高塔拉乎尔处解码或专注目标装备"
+        ],
+        "alternatives": [
+          "维持基础高属性传说护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "aberrant-action",
+      "name": "异常行动",
+      "englishName": "Aberrant Action",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2198166292
+      ],
+      "primaryHash": 2198166292,
+      "weaponFamily": "Sidearm",
+      "armorSlot": null,
+      "perkOptions": [
+        "Countermass",
+        "Appended Mag",
+        "Ambitious Assassin",
+        "Reverberation",
+        "Radiolaria Transposer",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker",
+        "Micro-Missile Frame",
+        "Confined Launch",
+        "Smart Drift Control",
+        "Linear Compensator",
+        "Volatile Launch",
+        "Quick Launch",
+        "Hard Launch",
+        "Flared Magwell",
+        "Alloy Magazine",
+        "High-Explosive Ordnance",
+        "Implosion Rounds",
+        "Extended Mag",
+        "Tactical Mag",
+        "High-Velocity Rounds",
+        "Strategist",
+        "Pugilist",
+        "Field Prep",
+        "Beacon Rounds",
+        "Threat Detector",
+        "Heal Clip",
+        "Snapshot Sights",
+        "Harmony",
+        "Golden Tricorn Enhanced",
+        "Demolitionist",
+        "Swashbuckler",
+        "Incandescent",
+        "Golden Tricorn",
+        "Default Shader"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 3751514131,
+          "vendorName": "Strange Gear Offers",
+          "vendorNameZh": "奇异装备优惠",
+          "vendorIdentifier": "TOWER_NINE_GEAR",
+          "itemHash": 2198166292,
+          "category": null,
+          "categoryIndex": 9,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 800069450,
+              "quantity": 17
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "episode-echoes",
+        "name": "回声章节武器",
+        "access": "episode-echoes",
+        "deterministic": true,
+        "steps": [
+          "解锁回声章节活动或当前替代来源",
+          "获取深视版本",
+          "完成图样后锻造"
+        ],
+        "note": "内容轮换后的实际入口需要按当前版本复核。",
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "no-hesitation",
+      "name": "无需犹豫",
+      "englishName": "No Hesitation",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        1801007332
+      ],
+      "primaryHash": 1801007332,
+      "weaponFamily": "Auto Rifle",
+      "armorSlot": null,
+      "perkOptions": [
+        "Polygonal Rifling",
+        "Alloy Magazine",
+        "Overflow",
+        "Circle of Life",
+        "Dealer's Choice",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker",
+        "Support Frame",
+        "Extended Barrel",
+        "Chambered Compensator",
+        "Smallbore",
+        "Corkscrew Rifling",
+        "Full Bore",
+        "Hammer-Forged Rifling",
+        "Arrowhead Brake",
+        "Fluted Barrel",
+        "Steady Rounds",
+        "Appended Mag",
+        "Flared Magwell",
+        "Extended Mag",
+        "Tactical Mag",
+        "Accurized Rounds",
+        "Physic",
+        "Subsistence",
+        "Ensemble",
+        "Grave Robber",
+        "Demolitionist",
+        "Strategist",
+        "Target Lock",
+        "Burning Ambition",
+        "Incandescent",
+        "Attrition Orbs",
+        "Frenzy",
+        "Disruption Break",
+        "Desperate Measures",
+        "Surrounded",
+        "Chaos Reshaped",
+        "Elemental Honing",
+        "Default Shader"
+      ],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "pale-heart-engram",
+        "name": "苍白之心目的地武器",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "推进《终焉之形》战役与目的地任务",
+          "解锁对应武器",
+          "获取深视版本并完成图样",
+          "在飞地锻造目标词条"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "indebted-kindness",
+      "name": "负债善意",
+      "englishName": "Indebted Kindness",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2554513694,
+        3381450498
+      ],
+      "primaryHash": 2554513694,
+      "weaponFamily": "Sidearm",
+      "armorSlot": null,
+      "perkOptions": [
+        "Sundering",
+        "Kill Tracker",
+        "Crucible Tracker",
+        "Volatile Launch",
+        "High-Velocity Rounds",
+        "Beacon Rounds",
+        "Attrition Orbs"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 672118013,
+          "vendorName": "Banshee-44",
+          "vendorNameZh": "班西-44",
+          "vendorIdentifier": "GUNSMITH",
+          "itemHash": 3381450498,
+          "category": "Weapons",
+          "categoryIndex": 33,
+          "quantity": 1,
+          "currencies": []
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "warlords-ruin",
+        "name": "战争领主的废墟地牢",
+        "access": "lightfall-dungeon-key",
+        "deterministic": false,
+        "steps": [
+          "组队或单人进入地牢",
+          "刷取可掉落负债善意的遭遇战",
+          "保留符合目标词条的掉落"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "still-hunt",
+      "name": "仍然狩猎",
+      "englishName": "Still Hunt",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        2905188646
+      ],
+      "primaryHash": 2905188646,
+      "weaponFamily": "Sniper Rifle",
+      "armorSlot": null,
+      "perkOptions": [
+        "Polygonal Rifling",
+        "Golden Munitions",
+        "Sharpshooter",
+        "Short-Action Stock",
+        "Kill Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 1857431946,
+          "vendorName": "Cayde-6",
+          "vendorNameZh": "凯德6号",
+          "vendorIdentifier": "SCHISM_EXOTIC",
+          "itemHash": 2905188646,
+          "category": null,
+          "categoryIndex": 1,
+          "quantity": 1,
+          "currencies": []
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "wild-card-quest",
+        "name": "Wild Card 异域任务",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "完成《终焉之形》主线",
+          "完成 Wild Card 任务",
+          "领取仍然狩猎"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "polaris-lance",
+      "name": "极星长枪",
+      "englishName": "Polaris Lance",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3413074534
+      ],
+      "primaryHash": 3413074534,
+      "weaponFamily": "Scout Rifle",
+      "armorSlot": null,
+      "perkOptions": [
+        "Smallbore",
+        "Tactical Mag",
+        "Zen Moment",
+        "Fitted Stock",
+        "Kill Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 272081343,
+          "vendorName": "Red War Exotics",
+          "vendorNameZh": "《猩红战争》异域装备",
+          "vendorIdentifier": "TOWER_EXOTIC_ARCHIVE_RED_WAR",
+          "itemHash": 3413074534,
+          "category": null,
+          "categoryIndex": 0,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 3467984096,
+              "quantity": 1
+            },
+            {
+              "itemHash": 3159615086,
+              "quantity": 125000
+            }
+          ]
+        },
+        {
+          "vendorHash": 296729347,
+          "vendorName": "Special Deliveries",
+          "vendorNameZh": "特殊货物",
+          "vendorIdentifier": "TOWER_OFFERS",
+          "itemHash": 3413074534,
+          "category": null,
+          "categoryIndex": 18,
+          "quantity": 1,
+          "currencies": []
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-archive-red-war",
+        "name": "高塔异域档案：红色战争",
+        "access": "free",
+        "deterministic": true,
+        "steps": [
+          "前往高塔异域档案",
+          "使用异域密码与上维碎片兑换极星长枪"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "lodestar",
+      "name": "北极星",
+      "englishName": "Lodestar",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3725585710
+      ],
+      "primaryHash": 3725585710,
+      "weaponFamily": "Trace Rifles",
+      "armorSlot": null,
+      "perkOptions": [
+        "Fluted Barrel",
+        "Phase Converter",
+        "Arc Alignment",
+        "Composite Stock",
+        "Kill Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 2996039207,
+          "vendorName": "The Final Shape Exotics",
+          "vendorNameZh": "终焉之形异域装备",
+          "vendorIdentifier": "TOWER_EXOTIC_ARCHIVE_THE_FINAL_SHAPE",
+          "itemHash": 3725585710,
+          "category": null,
+          "categoryIndex": 0,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 3467984096,
+              "quantity": 1
+            },
+            {
+              "itemHash": 3159615086,
+              "quantity": 100000
+            }
+          ]
+        },
+        {
+          "vendorHash": 3394295934,
+          "vendorName": "Episode: Heresy",
+          "vendorNameZh": "篇章：异端",
+          "vendorIdentifier": "TOWER_SEASONAL_ARCHIVE_SEASON26",
+          "itemHash": 3725585710,
+          "category": null,
+          "categoryIndex": 0,
+          "quantity": 1,
+          "currencies": [
+            {
+              "itemHash": 4041218086,
+              "quantity": null
+            }
+          ]
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "exotic-archive-final-shape",
+        "name": "高塔异域档案：《终焉之形》",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "前往高塔异域档案",
+          "使用异域密码与上维碎片兑换北极星（Lodestar）"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "apex-predator",
+      "name": "顶级掠食者",
+      "englishName": "Apex Predator",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        1851777734,
+        2545083870
+      ],
+      "primaryHash": 1851777734,
+      "weaponFamily": "Rocket Launcher",
+      "armorSlot": null,
+      "perkOptions": [
+        "Quick Launch",
+        "High-Velocity Rounds",
+        "Reconstruction",
+        "Bipod",
+        "Explosive Pact",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker",
+        "Adaptive Frame",
+        "Confined Launch",
+        "Countermass",
+        "Smart Drift Control",
+        "Linear Compensator",
+        "Volatile Launch",
+        "Hard Launch",
+        "Implosion Rounds",
+        "Black Powder",
+        "Alloy Casing",
+        "Impact Casing",
+        "Threat Detector",
+        "Tracking Module",
+        "Danger Zone",
+        "Demolitionist",
+        "Incandescent",
+        "Slideways",
+        "Cluster Bomb",
+        "Chain Reaction",
+        "Frenzy",
+        "Collective Action",
+        "Surrounded",
+        "Explosive Light",
+        "Vorpal Weapon",
+        "Bait and Switch",
+        "Collective Demolition",
+        "Reaper's Tithe",
+        "Default Shader",
+        "Kill Clip"
+      ],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "last-wish",
+        "name": "最后遗愿突袭",
+        "access": "forsaken-pack",
+        "deterministic": true,
+        "steps": [
+          "完成每周突袭遭遇战与鹰头宝箱",
+          "收集深视顶级掠食者",
+          "完成五次图样进度后锻造"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "edge-transit",
+      "name": "边缘交通",
+      "englishName": "Edge Transit",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        218335759,
+        568611923,
+        2228325504,
+        3736001863
+      ],
+      "primaryHash": 218335759,
+      "weaponFamily": "Grenade Launchers",
+      "armorSlot": null,
+      "perkOptions": [
+        "Confined Launch",
+        "Hard Launch",
+        "Sticky Grenades",
+        "High-Velocity Rounds",
+        "Auto-Loading Holster",
+        "Field Prep",
+        "Genesis",
+        "Kill Tracker",
+        "Crucible Tracker",
+        "Augmented Drum",
+        "Envious Assassin",
+        "Destabilizing Rounds",
+        "Indomitability",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker"
+      ],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "onslaught",
+        "name": "猛攻活动",
+        "access": "free",
+        "deterministic": false,
+        "steps": [
+          "进入先锋中的猛攻活动",
+          "专注或刷取边缘交通",
+          "保留目标双词条组合"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "pro-memoria",
+      "name": "为纪念",
+      "englishName": "Pro Memoria",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        3605603507
+      ],
+      "primaryHash": 3605603507,
+      "weaponFamily": "Machine Gun",
+      "armorSlot": null,
+      "perkOptions": [
+        "Full Bore",
+        "High-Caliber Rounds",
+        "To the Pain",
+        "Tap the Trigger",
+        "Dealer's Choice",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker",
+        "Aggressive Frame",
+        "Polygonal Rifling",
+        "Extended Barrel",
+        "Chambered Compensator",
+        "Smallbore",
+        "Corkscrew Rifling",
+        "Hammer-Forged Rifling",
+        "Arrowhead Brake",
+        "Fluted Barrel",
+        "Alloy Magazine",
+        "Appended Mag",
+        "Flared Magwell",
+        "Light Mag",
+        "Armor-Piercing Rounds",
+        "Extended Mag",
+        "Ricochet Rounds",
+        "Envious Assassin",
+        "Hatchling",
+        "Demolitionist",
+        "Strategist",
+        "Attrition Orbs",
+        "Reconstruction",
+        "Tear",
+        "Lucky Shot",
+        "Collective Action",
+        "Desperate Measures",
+        "Target Lock",
+        "Frenzy",
+        "Dragonfly",
+        "Bait and Switch",
+        "Elemental Honing",
+        "Mega Kill Clip",
+        "Default Shader"
+      ],
+      "vendorSources": [
+        {
+          "vendorHash": 3352059696,
+          "vendorName": "Micah's Conduit",
+          "vendorNameZh": "米迦的联系频道",
+          "vendorIdentifier": "SCHISM_TROPHY_HALL",
+          "itemHash": 3605603507,
+          "category": null,
+          "categoryIndex": 16,
+          "quantity": 1,
+          "currencies": []
+        }
+      ],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "pale-heart-engram",
+        "name": "苍白之心目的地武器",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "推进《终焉之形》战役与目的地任务",
+          "解锁对应武器",
+          "获取深视版本并完成图样",
+          "在飞地锻造目标词条"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      }
+    },
+    {
+      "id": "crux-termination-iv",
+      "name": "终止危机 IV",
+      "englishName": "Crux Termination IV",
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifestHashes": [
+        1719687748
+      ],
+      "primaryHash": 1719687748,
+      "weaponFamily": "Rocket Launcher",
+      "armorSlot": null,
+      "perkOptions": [
+        "Smart Drift Control",
+        "Impact Casing",
+        "Eddy Current",
+        "Tracking Module",
+        "Wild Card",
+        "Kill Tracker",
+        "Trials Memento Tracker",
+        "Nightfall Memento Tracker",
+        "Gambit Memento Tracker",
+        "Games Memento Tracker",
+        "Lost Memento Tracker",
+        "Monolithic Memento Tracker",
+        "Dawning Memento Tracker",
+        "Champion Memento Tracker",
+        "Solstice Memento Tracker",
+        "Garden of Salvation Memento Tracker",
+        "Iron Banner Memento Tracker",
+        "Vault of Glass Memento Tracker",
+        "Crucible Tracker"
+      ],
+      "vendorSources": [],
+      "activitySources": [],
+      "kind": "gear",
+      "path": {
+        "id": "world-drop",
+        "name": "世界掉落",
+        "access": "free",
+        "deterministic": false,
+        "steps": [
+          "参与任意活动获取世界战利品",
+          "在可用时使用枪匠记忆水晶或专注",
+          "保留目标词条组合"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      }
+    },
+    {
+      "id": "truth-of-rights",
+      "name": "权利真相",
+      "englishName": "Truth of Rights",
+      "kind": "armorSet",
+      "acquisitionId": "set-truth-of-rights",
+      "path": {
+        "id": "set-truth-of-rights",
+        "name": "权利真相套装来源",
+        "access": "renegades",
+        "deterministic": false,
+        "steps": [
+          "进入叛逃者相关活动",
+          "从对应掉落池收集头盔、臂铠、胸甲、腿甲和职业装备",
+          "保留高属性部位并凑齐目标套装件数"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "aion-adapter",
+      "name": "AION 适配者",
+      "englishName": "AION Adapter Suit",
+      "kind": "armorSet",
+      "acquisitionId": "set-aion-adapter",
+      "path": {
+        "id": "set-aion-adapter",
+        "name": "AION 适配者套装来源",
+        "access": "edge-of-fate",
+        "deterministic": false,
+        "steps": [
+          "完成宿命边缘相关活动",
+          "从活动奖励池获取套装部位",
+          "优先保留韧性与恢复高于目标线的部位"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "bungie-manifest",
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "aion-renewal",
+      "name": "AION 复兴",
+      "englishName": "AION Renewal Suit",
+      "kind": "armorSet",
+      "acquisitionId": "set-aion-renewal",
+      "path": {
+        "id": "set-aion-renewal",
+        "name": "AION 复兴套装来源",
+        "access": "edge-of-fate",
+        "deterministic": false,
+        "steps": [
+          "完成宿命边缘相关活动",
+          "从活动奖励池获取套装部位",
+          "优先保留纪律与智慧高于目标线的部位"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "bungie-manifest",
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "first-ascent",
+      "name": "初次远征",
+      "englishName": "First Ascent Suit",
+      "kind": "armorSet",
+      "acquisitionId": "set-first-ascent",
+      "path": {
+        "id": "set-first-ascent",
+        "name": "初次远征套装来源",
+        "access": "the-final-shape",
+        "deterministic": true,
+        "steps": [
+          "推进终焉之形战役和苍白之心活动",
+          "收集五个护甲部位",
+          "大师化后用属性模组补齐构筑目标"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "C"
+      },
+      "matched": false,
+      "sourceIds": [
+        "bungie-manifest",
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "bushido",
+      "name": "武士道",
+      "englishName": "Bushido Suit",
+      "kind": "armorSet",
+      "acquisitionId": "set-bushido",
+      "path": {
+        "id": "set-bushido",
+        "name": "武士道套装来源",
+        "access": "reclamation",
+        "deterministic": false,
+        "steps": [
+          "参与收复季活动",
+          "从活动掉落池收集套装部位",
+          "以机动性和力量为筛选优先级"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "bungie-manifest",
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "praxic",
+      "name": "普拉希克",
+      "englishName": "Praxic Vestment",
+      "kind": "armorSet",
+      "acquisitionId": "set-praxic",
+      "path": {
+        "id": "set-praxic",
+        "name": "普拉希克套装来源",
+        "access": "renegades",
+        "deterministic": false,
+        "steps": [
+          "完成叛逃者相关活动",
+          "从活动掉落池收集套装部位",
+          "以恢复和智慧为筛选优先级"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "dungeon-equilibrium",
+      "name": "均衡套装",
+      "englishName": "Equilibrium Set",
+      "kind": "armorSet",
+      "acquisitionId": "set-dungeon-equilibrium",
+      "path": {
+        "id": "set-dungeon-equilibrium",
+        "name": "均衡地牢套装来源",
+        "access": "equilibrium",
+        "deterministic": false,
+        "steps": [
+          "进入均衡地牢",
+          "按遭遇战掉落部位刷取",
+          "保留高总值部位并组合异域护甲"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "editorial-catalog"
+      ]
+    },
+    {
+      "id": "raid-desert-perpetual",
+      "name": "永恒荒漠套装",
+      "englishName": "Desert Perpetual Set",
+      "kind": "armorSet",
+      "acquisitionId": "set-raid-desert-perpetual",
+      "path": {
+        "id": "set-raid-desert-perpetual",
+        "name": "永恒荒漠突袭套装来源",
+        "access": "desert-perpetual",
+        "deterministic": false,
+        "steps": [
+          "完成永恒荒漠突袭遭遇战",
+          "按掉落部位补齐五件套",
+          "在首领输出或机制位前确认套装加成与属性目标"
+        ],
+        "sourceIds": [
+          "editorial-baseline"
+        ],
+        "verifiedAt": "2026-08-31",
+        "confidence": "D"
+      },
+      "matched": false,
+      "sourceIds": [
+        "editorial-catalog"
+      ]
+    }
+  ],
+  "note": "官方 Manifest 候选与本站编辑获取路径的统一视图；活动奖励候选不等同于精确遭遇战掉落。"
+}

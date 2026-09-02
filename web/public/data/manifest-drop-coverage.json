@@ -1,0 +1,13 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "syncedAt": "2026-08-31T07:43:51.530Z",
+  "sourceComponent": "DestinyInventoryItemDefinition",
+  "count": 8237,
+  "withSourceHash": 0,
+  "withVendorSource": 637,
+  "withActivityReward": 297,
+  "activityRewardEdges": 17345,
+  "withRewardMapping": 0,
+  "status": "activity-rewards-available-reward-mapping-empty",
+  "note": "已从 DestinyActivityDefinition.rewards 建立活动奖励候选；RewardMappingDefinition 仍只有空壳映射哈希，无法推导更细的遭遇战、轮换或条件概率。"
+}

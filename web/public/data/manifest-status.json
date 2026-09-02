@@ -1,0 +1,215 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "syncedAt": "2026-08-31T07:43:51.530Z",
+  "locale": "en, zh-chs",
+  "locales": [
+    "en",
+    "zh-chs"
+  ],
+  "components": [
+    {
+      "component": "DestinyInventoryItemDefinition",
+      "count": 38894
+    },
+    {
+      "component": "DestinySandboxPerkDefinition",
+      "count": 5203
+    },
+    {
+      "component": "DestinyDamageTypeDefinition",
+      "count": 7
+    },
+    {
+      "component": "DestinyStatDefinition",
+      "count": 79
+    },
+    {
+      "component": "DestinyActivityTypeDefinition",
+      "count": 83
+    },
+    {
+      "component": "DestinyActivityDefinition",
+      "count": 4069
+    },
+    {
+      "component": "DestinyActivityModeDefinition",
+      "count": 75
+    },
+    {
+      "component": "DestinyItemCategoryDefinition",
+      "count": 130
+    },
+    {
+      "component": "DestinyEquipmentSlotDefinition",
+      "count": 18
+    },
+    {
+      "component": "DestinyPlugSetDefinition",
+      "count": 5422
+    },
+    {
+      "component": "DestinySocketCategoryDefinition",
+      "count": 65
+    },
+    {
+      "component": "DestinyArtifactDefinition",
+      "count": 1
+    },
+    {
+      "component": "DestinyClassDefinition",
+      "count": 3
+    },
+    {
+      "component": "DestinyTraitDefinition",
+      "count": 554
+    },
+    {
+      "component": "DestinyCollectibleDefinition",
+      "count": 12255
+    },
+    {
+      "component": "DestinyRewardMappingDefinition",
+      "count": 8581
+    },
+    {
+      "component": "DestinyVendorDefinition",
+      "count": 2170
+    },
+    {
+      "component": "DestinyDestinationDefinition",
+      "count": 142
+    },
+    {
+      "component": "DestinyActivityModifierDefinition",
+      "count": 351
+    },
+    {
+      "component": "DestinyBreakerTypeDefinition",
+      "count": 3
+    },
+    {
+      "component": "DestinyEnergyTypeDefinition",
+      "count": 7
+    },
+    {
+      "component": "DestinyItemTierTypeDefinition",
+      "count": 7
+    },
+    {
+      "component": "DestinySocketTypeDefinition",
+      "count": 1874
+    },
+    {
+      "component": "DestinyRewardItemListDefinition",
+      "count": 8325
+    },
+    {
+      "component": "DestinySackRewardItemListDefinition",
+      "count": 6639
+    },
+    {
+      "component": "DestinyRewardSourceDefinition",
+      "count": 0
+    },
+    {
+      "component": "DestinyEquipableItemSetDefinition",
+      "count": 56
+    },
+    {
+      "component": "DestinyUnlockDefinition",
+      "count": 58193
+    },
+    {
+      "component": "DestinyUnlockValueDefinition",
+      "count": 15785
+    },
+    {
+      "component": "DestinyInventoryItemDefinition:zh-chs",
+      "count": 38894
+    },
+    {
+      "component": "DestinyActivityDefinition:zh-chs",
+      "count": 4069
+    },
+    {
+      "component": "DestinySandboxPerkDefinition:zh-chs",
+      "count": 5203
+    },
+    {
+      "component": "DestinyVendorDefinition:zh-chs",
+      "count": 2170
+    },
+    {
+      "component": "manifest-items",
+      "count": 36680
+    },
+    {
+      "component": "manifest-equipment",
+      "count": 8237
+    },
+    {
+      "component": "manifest-activities",
+      "count": 3736
+    },
+    {
+      "component": "manifest-perks",
+      "count": 3868
+    },
+    {
+      "component": "manifest-equipment-rich",
+      "count": 8237
+    },
+    {
+      "component": "manifest-equipment-catalog",
+      "count": 8237
+    },
+    {
+      "component": "manifest-abilities",
+      "count": 505
+    },
+    {
+      "component": "manifest-mods",
+      "count": 513
+    },
+    {
+      "component": "manifest-artifact",
+      "count": 1
+    },
+    {
+      "component": "curated-mod-links",
+      "count": 20
+    },
+    {
+      "component": "manifest-plugsets",
+      "count": 5422
+    },
+    {
+      "component": "manifest-vendor-inventory",
+      "count": 14256
+    },
+    {
+      "component": "manifest-activity-rewards",
+      "count": 17345
+    },
+    {
+      "component": "manifest-item-sets",
+      "count": 56
+    },
+    {
+      "component": "curated-acquisition-index",
+      "count": 28
+    },
+    {
+      "component": "acquisition-sources",
+      "count": 36
+    },
+    {
+      "component": "manifest-drop-coverage",
+      "count": 0
+    },
+    {
+      "component": "curated-links",
+      "count": 156
+    }
+  ]
+}

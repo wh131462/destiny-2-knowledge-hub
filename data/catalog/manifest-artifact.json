@@ -1,0 +1,796 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "syncedAt": "2026-08-31T08:13:08.614Z",
+  "sourceComponent": "DestinyArtifactDefinition",
+  "count": 1,
+  "items": [
+    {
+      "hash": 2894222926,
+      "name": "Implement of Curiosity",
+      "nameZh": "好奇之器",
+      "description": "Things didn't get interesting until the first apology.",
+      "descriptionZh": "直到第一声道歉后，事情才变得有趣起来。",
+      "icon": "/common/destiny2_content/icons/51d5606acfeda827603f33b4c562270f.jpg",
+      "iconHash": 2694905144,
+      "tiers": [
+        {
+          "tierHash": 3144670121,
+          "tierIndex": 1,
+          "displayTitle": "Tier 1",
+          "minimumUnlockPointsUsedRequirement": 0,
+          "items": [
+            {
+              "hash": 4217417017,
+              "name": "Anti-Barrier Hand Cannon",
+              "nameZh": "反屏障手炮",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/9a2c53359db42bf87f48304efe7cae7b.png",
+              "perkDetails": [
+                {
+                  "hash": 2269748027,
+                  "name": "Anti-Barrier Hand Cannon",
+                  "nameZh": "反屏障手炮",
+                  "description": "Your equipped Hand Cannons fire shield-piercing rounds and stun [Shield-Piercing] Barrier Champions.",
+                  "descriptionZh": "你装备的手炮会发射护盾穿透子弹并眩晕屏障勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 4217417018,
+              "name": "Anti-Barrier Sniper Rifle",
+              "nameZh": "反屏障狙击步枪",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/b74605a00dc8f942f64a7879359ab828.png",
+              "perkDetails": [
+                {
+                  "hash": 3144088660,
+                  "name": "Anti-Barrier Sniper Rifle",
+                  "nameZh": "反屏障狙击步枪",
+                  "description": "Your equipped Sniper Rifles fire shield-piercing rounds and stun [Shield-Piercing] Barrier Champions.",
+                  "descriptionZh": "你装备的狙击步枪会发射护盾穿透子弹并眩晕屏障勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 4217417019,
+              "name": "Overload Pulse Rifle",
+              "nameZh": "过载脉冲步枪",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/781184e10d840a1463298cffd822aa02.png",
+              "perkDetails": [
+                {
+                  "hash": 3845907181,
+                  "name": "Overload Pulse Rifle",
+                  "nameZh": "过载脉冲步枪",
+                  "description": "Your equipped Pulse Rifles fire disrupting rounds which stun the target, delaying ability energy regeneration and lowering combatant damage output.\n\nStrong against [Disruption] Overload Champions.",
+                  "descriptionZh": "你装备的脉冲步枪会发射扰乱子弹，使目标眩晕，延缓其技能能量回复并降低伤害输出。\n\n克制过载勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 4217417020,
+              "name": "Overload Submachine Gun",
+              "nameZh": "过载微型冲锋枪",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/8bb684eec1afb53877e2e57134c28572.png",
+              "perkDetails": [
+                {
+                  "hash": 805688323,
+                  "name": "Overload Submachine Gun",
+                  "nameZh": "过载微型冲锋枪",
+                  "description": "Your equipped Submachine Guns fire disrupting rounds which stun the target, delaying ability energy regeneration and lowering combatant damage output.\n\nStrong against [Disruption] Overload Champions.",
+                  "descriptionZh": "你装备的微型冲锋枪会发射扰乱子弹，使目标眩晕，延缓其技能能量回复并降低伤害输出。\n\n克制过载勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 4217417021,
+              "name": "Unstoppable Bow",
+              "nameZh": "势不可挡弓箭",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/286b844dd82bdc5f4fffa7671e283c60.png",
+              "perkDetails": [
+                {
+                  "hash": 1753587492,
+                  "name": "Unstoppable Bow",
+                  "nameZh": "势不可挡弓箭",
+                  "description": "Crossbows, and Bows that have been fully drawn for a short time, fire a powerful explosive payload that stuns unshielded combatants. Strong against [Stagger] Unstoppable Champions.",
+                  "descriptionZh": "十字弓和弓箭完全开弓一小段时间后会发射一枚高爆载荷，可眩晕没有护盾的战斗人员。克制势不可挡勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 4217417022,
+              "name": "Stunning Fusion",
+              "nameZh": "眩晕融合",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/d303a19d807e6cfb2d6928f36c66dac9.png",
+              "perkDetails": [
+                {
+                  "hash": 3546213477,
+                  "name": "Stunning Fusion",
+                  "nameZh": "眩晕融合",
+                  "description": "Aiming down the sights of a Fusion Rifle or Linear Fusion Rifle for a short time loads a powerful payload that stuns unshielded combatants. \n\nStrong against [Stagger] Unstoppable Champions.",
+                  "descriptionZh": "用融合步枪或线性融合步枪举枪瞄准一小段时间会填装强力载荷，眩晕没有护盾的战斗人员。\n\n克制势不可挡勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 4217417023,
+              "name": "Shield-Shattering Rounds",
+              "nameZh": "碎盾弹药",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/d303a19d807e6cfb2d6928f36c66dac9.png",
+              "perkDetails": [
+                {
+                  "hash": 3546213476,
+                  "name": "Shield-Shattering Rounds",
+                  "nameZh": "碎盾弹药",
+                  "description": "Your Machine Guns fire shield-piercing rounds and stun [Shield-Piercing] Barrier Champions.",
+                  "descriptionZh": "你的机枪会发射护盾穿透子弹并眩晕屏障勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            }
+          ]
+        },
+        {
+          "tierHash": 3144670122,
+          "tierIndex": 2,
+          "displayTitle": "Tier 2",
+          "minimumUnlockPointsUsedRequirement": 3,
+          "items": [
+            {
+              "hash": 3619040072,
+              "name": "Impact, Shock, Gravity",
+              "nameZh": "冲击、震荡、重力",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/a8270c4670a71162f1d45477888b82ae.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340159,
+                  "name": "Impact, Shock, Gravity",
+                  "nameZh": "冲击、震荡、重力",
+                  "description": "Grants access to the Helmet mods: Kinetic/Void Siphon and Kinetic/Arc Siphon.\n\nThese mods combine two elemental siphons at a discounted cost.",
+                  "descriptionZh": "可使用头盔模组：动能/虚空虹吸和动能/电弧虹吸。\n\n这些模组以折扣花费组合两种元素虹吸。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3619040075,
+              "name": "Gravitic-Voltaic Charge",
+              "nameZh": "引力伏打充能",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/24585408cad390bf80fff7f33c7e20ca.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340156,
+                  "name": "Gravitic-Voltaic Charge",
+                  "nameZh": "引力伏打充能",
+                  "description": "While you have an Arc or Void Super equipped, increase the maximum number of stacks of Armor Charge you can carry by 1.",
+                  "descriptionZh": "装备电弧或虚空超能时，增加1层你可携带的最大护甲充能层数。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3619040074,
+              "name": "Expert Handling",
+              "nameZh": "专家掌控",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/e0dd4e954cebb62915528decaf28360b.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340157,
+                  "name": "Expert Handling",
+                  "nameZh": "专家掌控",
+                  "description": "Weapon final blows grant a stacking bonus to stability which resets on weapon reload or stow. Swords gain Guard Resistance.",
+                  "descriptionZh": "武器最后一击会赋予可叠加的稳定性加成，填装或收起武器时重置。刀剑获得防御抗性。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3619040077,
+              "name": "Fastest Draw",
+              "nameZh": "最速拔枪",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/01c73e5250259ab4a59dd3153ce08e51.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340154,
+                  "name": "Fastest Draw",
+                  "nameZh": "最速拔枪",
+                  "description": "If the first shot shortly after reloading or readying your weapon is a precision hit, gain flinch resistance.",
+                  "descriptionZh": "如果填装或举起武器后不久的第一次命中为精准命中，则获得抖动抗性。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3619040076,
+              "name": "Elemental Siphon",
+              "nameZh": "元素虹吸",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/729357078b7e324467add99816bfda4b.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340155,
+                  "name": "Elemental Siphon",
+                  "nameZh": "元素虹吸",
+                  "description": "Rapid final blows with a Kinetic weapon or a weapon matching your equipped Super create an Elemental pickup that matches your equipped Super.",
+                  "descriptionZh": "使用动能武器或与已装备超能匹配的武器造成快速最后一击，可生成一个与已装备超能匹配的元素拾取物。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3619040079,
+              "name": "Concentrated Forward Firepower",
+              "nameZh": "集中前射火力",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/d303a19d807e6cfb2d6928f36c66dac9.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340152,
+                  "name": "Concentrated Forward Firepower",
+                  "nameZh": "集中前射火力",
+                  "description": "Sustained damage from Fusion Rifles, Linear Fusion Rifles, and Machine Guns grants those weapons bonus stability, range, and aim assist for a short time.",
+                  "descriptionZh": "来自融合步枪、线性融合步枪和机枪的持续伤害，会在短时间内为这些武器提供额外的稳定性、射程和瞄准辅助。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3619040078,
+              "name": "Vanguard Surplus Discounts",
+              "nameZh": "先锋充盈折扣",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/d303a19d807e6cfb2d6928f36c66dac9.png",
+              "perkDetails": [
+                {
+                  "hash": 3297340153,
+                  "name": "Vanguard Surplus Discounts",
+                  "nameZh": "先锋充盈折扣",
+                  "description": "All Ammo Finder mods are discounted.",
+                  "descriptionZh": "所有弹药搜寻者模组均享有折扣。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            }
+          ]
+        },
+        {
+          "tierHash": 3144670123,
+          "tierIndex": 3,
+          "displayTitle": "Tier 3",
+          "minimumUnlockPointsUsedRequirement": 5,
+          "items": [
+            {
+              "hash": 3834273543,
+              "name": "Press The Advantage",
+              "nameZh": "乘胜追击",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/e79751de6d62c4820278fd3f0b833b0b.png",
+              "perkDetails": [
+                {
+                  "hash": 193266676,
+                  "name": "Press The Advantage",
+                  "nameZh": "乘胜追击",
+                  "description": "Breaking a combatant's shield grants increased weapon stability, handling, and reload speed. Swords gain increased guard resistance.",
+                  "descriptionZh": "打破战斗人员的护盾可以提高武器的稳定性、操控性和填装速度。刀剑可获得更高的防御抗性。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3834273540,
+              "name": "Kinetic Synthesis",
+              "nameZh": "动能合成",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/cf96e4e6ccba04d4948a7bb0ca90761b.png",
+              "perkDetails": [
+                {
+                  "hash": 193266679,
+                  "name": "Kinetic Synthesis",
+                  "nameZh": "动能合成",
+                  "description": "Sustained Kinetic weapon damage and rapid final blows have a chance to generate a unique ammo brick. Collecting this brick will grant ammo to equipped Kinetic damage weapons and grant Special and Heavy ammo progress.",
+                  "descriptionZh": "持续的动能武器伤害和快速最后一击有几率生成独特弹药盒。拾取该弹药盒会为已装备的动能伤害武器提供弹药，同时提供特殊和重型弹药进度。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3834273541,
+              "name": "Reload at Range",
+              "nameZh": "远距填装",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/2dacdd67e219bb9ec62226c82bfcfaaf.png",
+              "perkDetails": [
+                {
+                  "hash": 193266678,
+                  "name": "Reload at Range",
+                  "nameZh": "远距填装",
+                  "description": "Precision hits with Bows and Sniper Rifles grant a stacking bonus to their reload speed.",
+                  "descriptionZh": "使用弓箭和狙击步枪的精准命中会为其填装速度提供可叠加的加成。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3834273538,
+              "name": "Riposte",
+              "nameZh": "还击",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/379e370534eed91f6ac666196ce56d3d.png",
+              "perkDetails": [
+                {
+                  "hash": 193266673,
+                  "name": "Riposte",
+                  "nameZh": "还击",
+                  "description": "Shortly after guarding with a Sword, your light and heavy attacks stun unshielded combatants. Strong against [Stagger] Unstoppable Champions.",
+                  "descriptionZh": "使用刀剑格挡后不久，你的轻攻击与重攻击会眩晕没有护盾的战斗人员。克制势不可挡勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3834273539,
+              "name": "Power from Pain",
+              "nameZh": "苦痛之力",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/b59af0e3a3880873b9055c3e0697b216.png",
+              "perkDetails": [
+                {
+                  "hash": 193266672,
+                  "name": "Power from Pain",
+                  "nameZh": "苦痛之力",
+                  "description": "Rapid final blows against weakened combatants grant you Devour.",
+                  "descriptionZh": "对被削弱的战斗人员造成快速最后一击为你提供吞食效果。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3834273536,
+              "name": "Fierce Proxemics",
+              "nameZh": "凶险距离",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/a8990e7598af609e1ffca8ff7e3a2f54.png",
+              "perkDetails": [
+                {
+                  "hash": 193266675,
+                  "name": "Fierce Proxemics",
+                  "nameZh": "凶险距离",
+                  "description": "Finisher final blows grant grenade and melee energy.",
+                  "descriptionZh": "终结技最后一击提供手雷和近战能量。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 3834273537,
+              "name": "Rapid Remedy",
+              "nameZh": "快速治疗",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/d4c2808826b8eceea0a1acca31079f87.png",
+              "perkDetails": [
+                {
+                  "hash": 193266674,
+                  "name": "Rapid Remedy",
+                  "nameZh": "快速治疗",
+                  "description": "Machine Gun rapid final blows heal you.",
+                  "descriptionZh": "机枪快速最后一击会治疗你。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            }
+          ]
+        },
+        {
+          "tierHash": 3144670124,
+          "tierIndex": 4,
+          "displayTitle": "Tier 4",
+          "minimumUnlockPointsUsedRequirement": 7,
+          "items": [
+            {
+              "hash": 2903198438,
+              "name": "Dielectric",
+              "nameZh": "电介质",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/2ba8a6fb47d9a36d8e5651bad5a86752.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784249,
+                  "name": "Dielectric",
+                  "nameZh": "电介质",
+                  "description": "Defeating [Arc]Arc debuffed targets grants Bolt Charge.\n\nRapidly defeating Arc debuffed targets spawns an Orb of Power and heals a small portion of health.",
+                  "descriptionZh": "击败受到电弧减益的目标可获得电光充能。\n\n快速击败受到电弧减益的目标会生成一个能量球并治疗一小部分生命值。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2903198437,
+              "name": "Armorsmith",
+              "nameZh": "护甲匠",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/f48754b849cbc1b813ea2d078e36ed0c.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784250,
+                  "name": "Armorsmith",
+                  "nameZh": "护甲匠",
+                  "description": "Breaking a combatant's shield temporarily grants you damage resistance and increased melee damage.",
+                  "descriptionZh": "打破战斗人员的护盾会暂时获得伤害抗性和近战伤害提升。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2903198436,
+              "name": "Counter Energy",
+              "nameZh": "反制能量",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/f9cff3113b9be57572ed6697be195a1a.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784251,
+                  "name": "Counter Energy",
+                  "nameZh": "反制能量",
+                  "description": "When you or a member of your fireteam stuns a champion, you gain energy for your least-charged ability.",
+                  "descriptionZh": "当你或你的火力战队成员眩晕勇士时，你充能最少的技能将获得能量。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2903198435,
+              "name": "Combination Argent Blade",
+              "nameZh": "组合银白利刃",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/b1f285e95953d68a6e72312234bfd363.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784252,
+                  "name": "Combination Argent Blade",
+                  "nameZh": "组合银白利刃",
+                  "description": "Briefly pause after executing a light attack, then follow it up with a light or heavy attack to empower your Sword for a short time, granting it bonus damage and charge rate.",
+                  "descriptionZh": "在一次轻攻击后稍作停顿，然后接续一次轻攻击或重攻击，可在短时间内强化你的刀剑，赋予其伤害加成和充能速度。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2903198434,
+              "name": "Singularity Blade",
+              "nameZh": "奇点利刃",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/f510c3b6aaee8ff2da5da4368bd4c63a.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784253,
+                  "name": "Singularity Blade",
+                  "nameZh": "奇点利刃",
+                  "description": "While you have a Void elemental buff, melee and Sword hits weaken targets, while melee and Sword final blows create a weakening burst.",
+                  "descriptionZh": "当你拥有虚空元素增益时，近战和刀剑命中会削弱目标；近战和刀剑最后一击会产生削弱爆发。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2903198433,
+              "name": "Blinding Jolts",
+              "nameZh": "致盲震颤",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/2944f8b47be4ff1f4a0ceaa8439d0367.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784254,
+                  "name": "Blinding Jolts",
+                  "nameZh": "致盲震颤",
+                  "description": "Final blows on jolted combatants blind nearby combatants.",
+                  "descriptionZh": "对被震颤的战斗人员造成最后一击会致盲附近的战斗人员。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2903198432,
+              "name": "Precision Equity",
+              "nameZh": "精准平等",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/09c1f017f974b0a8bee28bb519993957.png",
+              "perkDetails": [
+                {
+                  "hash": 3369784255,
+                  "name": "Precision Equity",
+                  "nameZh": "精准平等",
+                  "description": "Precision final blows build progress towards a large Orb of Power that also grants bonus weapon damage on pickup. Higher ranked targets grant more progress.",
+                  "descriptionZh": "精准最后一击会累积进度生成一个大型能量球，拾取后为武器提供额外伤害加成。高等级目标提供更多进度。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            }
+          ]
+        },
+        {
+          "tierHash": 3144670125,
+          "tierIndex": 5,
+          "displayTitle": "Tier 5",
+          "minimumUnlockPointsUsedRequirement": 10,
+          "items": [
+            {
+              "hash": 2742146821,
+              "name": "Elemental Orbs: Arc",
+              "nameZh": "元素能量球：电弧",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/57df71b415811ddee77e55f4b95519aa.png",
+              "perkDetails": [
+                {
+                  "hash": 679036014,
+                  "name": "Elemental Orbs: Arc",
+                  "nameZh": "元素能量球：电弧",
+                  "description": "[Arc]Arc weapon final blows have a chance to spawn an Arc Elemental Orb. Arc Orbs can be thrown or shot to create an Arc explosion that jolts targets it damages.",
+                  "descriptionZh": "电弧武器最后一击有几率生成一个电弧元素能量球。电弧能量球可被投掷出去或射击造成一次电弧爆炸，对造成伤害的目标施加震颤效果。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2742146822,
+              "name": "Kinetic Rupture",
+              "nameZh": "动能裂口",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/01fddf1eba3b2cca594be0fec0af049e.png",
+              "perkDetails": [
+                {
+                  "hash": 679036013,
+                  "name": "Kinetic Rupture",
+                  "nameZh": "动能裂口",
+                  "description": "Kinetic weapon damage against a powerful combatant has a chance to create a Kinetic Rupture. Targeting this Rupture causes a damaging explosion that staggers combatants. Strong against [Stagger] Unstoppable Champions.",
+                  "descriptionZh": "对强力战斗人员造成动能武器伤害有几率生成一个动能裂口。以此裂口为目标会造成眩晕战斗人员的伤害性爆炸，克制势不可挡勇士。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2742146823,
+              "name": "Sniper's Meditation",
+              "nameZh": "狙击手冥想",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/e7a8b3b1eb71f1d70e31d5642c92c5fb.png",
+              "perkDetails": [
+                {
+                  "hash": 679036012,
+                  "name": "Sniper's Meditation",
+                  "nameZh": "狙击手冥想",
+                  "description": "Sniper Rifle hits grant stacking Sniper Rifle damage, stability, and reload bonuses for a short time. Heavy ammo Sniper Rifle hits count as more than one hit.",
+                  "descriptionZh": "狙击步枪命中会在短时间内提供可叠加的狙击步枪伤害、稳定性和填装加成。重型弹药狙击步枪命中被视为多次命中。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2742146816,
+              "name": "Sword Storm Combo",
+              "nameZh": "刀剑风暴连击",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/daaa2ac873cf0d92f0386667b84450bd.png",
+              "perkDetails": [
+                {
+                  "hash": 679036011,
+                  "name": "Sword Storm Combo",
+                  "nameZh": "刀剑风暴连击",
+                  "description": "Performing three Sword light attacks followed by a heavy attack summons penumbral blades that surround you to damage and disorient combatants. Sword final blows extend the duration of these penumbral blades.",
+                  "descriptionZh": "施展三次刀剑轻攻击后跟进一次重攻击，会召唤出环绕自己的半影利刃，伤害战斗人员并使其迷失。刀剑最后一击可延长半影利刃的持续时间。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2742146817,
+              "name": "Void Infestation",
+              "nameZh": "虚空感染",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/5eacb6ab8ca7b9ed147dc842accdb41a.png",
+              "perkDetails": [
+                {
+                  "hash": 679036010,
+                  "name": "Void Infestation",
+                  "nameZh": "虚空感染",
+                  "description": "Defeating a weakened target spawns a tracking projectile that weakens other targets.",
+                  "descriptionZh": "击败被削弱目标会生成削弱其他目标的追踪射弹。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2742146818,
+              "name": "Tazer Tag",
+              "nameZh": "泰瑟电触",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/c30820ca53f6ec778ddf10c6a0d6956b.png",
+              "perkDetails": [
+                {
+                  "hash": 679036009,
+                  "name": "Tazer Tag",
+                  "nameZh": "泰瑟电触",
+                  "description": "Arc-powered melee hits jolt combatants and deal further damage for a short duration.",
+                  "descriptionZh": "电弧充能近战命中会震颤战斗人员，并在短时间内造成额外伤害。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            },
+            {
+              "hash": 2742146819,
+              "name": "Sticker Shock",
+              "nameZh": "黏附冲击",
+              "description": "",
+              "descriptionZh": null,
+              "icon": "/common/destiny2_content/icons/132c4594b9738a242df26521caa6421f.png",
+              "perkDetails": [
+                {
+                  "hash": 679036008,
+                  "name": "Sticker Shock",
+                  "nameZh": "黏附冲击",
+                  "description": "Arc Flux, Magnetic, and Fusion Grenades deal more damage when attached to combatants; on final blows, they release several micro-missiles that seek nearby combatants.",
+                  "descriptionZh": "电弧粘性电浆手雷、磁性手雷和融合手雷在黏附到战斗人员时会造成更多伤害；造成最后一击时，释放几枚自动追踪附近战斗人员的微型导弹。",
+                  "visibility": 0
+                }
+              ],
+              "classType": 3,
+              "redacted": false,
+              "blacklisted": false
+            }
+          ]
+        }
+      ],
+      "redacted": false,
+      "blacklisted": false
+    }
+  ]
+}

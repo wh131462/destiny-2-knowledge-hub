@@ -1,0 +1,748 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "syncedAt": "2026-08-31T07:43:51.530Z",
+  "sourceComponent": "DestinyInventoryItemDefinition",
+  "count": 23,
+  "matched": 20,
+  "consistent": 19,
+  "items": [
+    {
+      "id": "stat-resilience",
+      "name": "韧性模组",
+      "englishName": "Resilience Mod",
+      "matched": false,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [],
+      "primaryHash": null,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "resilience",
+        "value": 10
+      },
+      "official": null,
+      "consistent": false
+    },
+    {
+      "id": "stat-discipline",
+      "name": "纪律模组",
+      "englishName": "Discipline Mod",
+      "matched": false,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [],
+      "primaryHash": null,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "discipline",
+        "value": 10
+      },
+      "official": null,
+      "consistent": false
+    },
+    {
+      "id": "stat-mobility",
+      "name": "机动模组",
+      "englishName": "Mobility Mod",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        1633794450
+      ],
+      "primaryHash": 1633794450,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "mobility",
+        "value": 10
+      },
+      "official": {
+        "slot": "any",
+        "energyCost": null,
+        "description": "Increased mobility.",
+        "perkDetails": []
+      },
+      "consistent": true
+    },
+    {
+      "id": "stat-recovery",
+      "name": "恢复模组",
+      "englishName": "Recovery Mod",
+      "matched": false,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [],
+      "primaryHash": null,
+      "declared": {
+        "slot": "any",
+        "energyCost": 4,
+        "effect": null,
+        "stat": "recovery",
+        "value": 10
+      },
+      "official": null,
+      "consistent": false
+    },
+    {
+      "id": "hands-on",
+      "name": "拳到力来",
+      "englishName": "Hands-On",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        1036557198,
+        3938489430
+      ],
+      "primaryHash": 3938489430,
+      "declared": {
+        "slot": "helmet",
+        "energyCost": 3,
+        "effect": "近战最后一击提供额外超能力能量",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "helmet",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 3006775211,
+            "name": "Hands-On",
+            "nameZh": "拳到力来",
+            "description": "Gain bonus Super energy on melee kills.",
+            "descriptionZh": "近战击杀可提供额外超能能量。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "ashes-to-assets",
+      "name": "点尸成金",
+      "englishName": "Ashes to Assets",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        856936828,
+        2136310244
+      ],
+      "primaryHash": 856936828,
+      "declared": {
+        "slot": "helmet",
+        "energyCost": 3,
+        "effect": "手雷最后一击提供额外超能力能量",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "helmet",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 963883069,
+            "name": "Ashes to Assets",
+            "nameZh": "点尸成金",
+            "description": "Gain bonus Super energy on grenade kills.",
+            "descriptionZh": "手雷击杀可提供额外超能能量。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "heavy-ammo-finder",
+      "name": "重型弹药搜寻",
+      "englishName": "Heavy Ammo Finder",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        644105,
+        554409585
+      ],
+      "primaryHash": 554409585,
+      "declared": {
+        "slot": "helmet",
+        "energyCost": 3,
+        "effect": "使用主武器击杀累积重弹搜寻进度",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "helmet",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 653045601,
+            "name": "Heavy Ammo Finder",
+            "nameZh": "重型弹药搜寻者",
+            "description": "Increases the effect of all contributions towards the Heavy ammo meter.",
+            "descriptionZh": "提升对重型弹药量表的所有计入效果。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "heavy-ammo-scout",
+      "name": "重型弹药侦察",
+      "englishName": "Heavy Ammo Scout",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        1274140735
+      ],
+      "primaryHash": 1274140735,
+      "declared": {
+        "slot": "helmet",
+        "energyCost": 1,
+        "effect": "搜寻砖也为队友生成重弹",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "helmet",
+        "energyCost": 1,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 2424571707,
+            "name": "Heavy Ammo Scout",
+            "nameZh": "重型弹药斥候",
+            "description": "When you fill your Heavy ammo meter, it also creates smaller bricks of Heavy ammo for your allies.",
+            "descriptionZh": "当你填满重型弹药量表时，也会为盟友生成较小的重型弹药盒。",
+            "visibility": 1
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "heavy-handed",
+      "name": "重拳出击",
+      "englishName": "Heavy Handed",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        1709236482,
+        2447449706
+      ],
+      "primaryHash": 2447449706,
+      "declared": {
+        "slot": "arms",
+        "energyCost": 3,
+        "effect": "充能近战最后一击生成能量球",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "arms",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1418341804,
+            "name": "Heavy Handed",
+            "nameZh": "回天掌法",
+            "description": "Your powered melee final blows create Orbs of Power.",
+            "descriptionZh": "你的充能近战最后一击可生成能量球。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "firepower",
+      "name": "火力",
+      "englishName": "Firepower",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        965934024,
+        2485657760
+      ],
+      "primaryHash": 2485657760,
+      "declared": {
+        "slot": "arms",
+        "energyCost": 3,
+        "effect": "手雷最后一击生成能量球",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "arms",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 858652730,
+            "name": "Firepower",
+            "nameZh": "火力无限",
+            "description": "Your grenade final blows create Orbs of Power.",
+            "descriptionZh": "你的手雷最后一击可生成能量球。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "impact-induction",
+      "name": "冲击感应",
+      "englishName": "Impact Induction",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        377010989,
+        1153260021
+      ],
+      "primaryHash": 377010989,
+      "declared": {
+        "slot": "arms",
+        "energyCost": 2,
+        "effect": "近战造成伤害时返还手雷能量",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "arms",
+        "energyCost": 2,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1230566498,
+            "name": "Impact Induction",
+            "nameZh": "伤害感应",
+            "description": "Causing damage with a powered melee attack reduces your grenade cooldown.",
+            "descriptionZh": "使用充能近战攻击造成伤害可缩短手雷的冷却时间。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "focusing-strike",
+      "name": "聚焦打击",
+      "englishName": "Focusing Strike",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        3657186535,
+        3685945823
+      ],
+      "primaryHash": 3685945823,
+      "declared": {
+        "slot": "arms",
+        "energyCost": 2,
+        "effect": "近战造成伤害时返还职业技能能量",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "arms",
+        "energyCost": 2,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1597254822,
+            "name": "Focusing Strike",
+            "nameZh": "专注打击",
+            "description": "Grants class ability energy when you cause damage with a powered melee attack.",
+            "descriptionZh": "使用充能近战攻击造成伤害时获得职业技能能量。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "concussive-dampener",
+      "name": "震荡阻尼器",
+      "englishName": "Concussive Dampener",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        930759851,
+        3719981603
+      ],
+      "primaryHash": 3719981603,
+      "declared": {
+        "slot": "chest",
+        "energyCost": 3,
+        "effect": "降低范围伤害",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "chest",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 662870814,
+            "name": "Concussive Dampener",
+            "nameZh": "震荡阻尼器",
+            "description": "Reduces incoming area-of-effect damage from combatants.",
+            "descriptionZh": "减少来自敌方战斗人员的范围伤害。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "melee-damage-resistance",
+      "name": "近战伤害抗性",
+      "englishName": "Melee Damage Resistance",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        1763668984,
+        2562645296
+      ],
+      "primaryHash": 1763668984,
+      "declared": {
+        "slot": "chest",
+        "energyCost": 3,
+        "effect": "降低近距离战员伤害",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "chest",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 2667352209,
+            "name": "Melee Damage Resistance",
+            "nameZh": "近战伤害抗性",
+            "description": "Reduces incoming damage from combatants that are at point-blank range.",
+            "descriptionZh": "减少来自近距离敌人的伤害。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "sniper-damage-resistance",
+      "name": "狙击伤害抗性",
+      "englishName": "Sniper Damage Resistance",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        657773637,
+        707237917
+      ],
+      "primaryHash": 707237917,
+      "declared": {
+        "slot": "chest",
+        "energyCost": 3,
+        "effect": "降低远距离战员伤害",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "chest",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1627523014,
+            "name": "Sniper Damage Resistance",
+            "nameZh": "狙击伤害抗性",
+            "description": "Reduces incoming damage from combatants that are at long range.",
+            "descriptionZh": "减少来自远距离敌人的伤害。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "recuperation",
+      "name": "休养生息",
+      "englishName": "Recuperation",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        4087056174
+      ],
+      "primaryHash": 4087056174,
+      "declared": {
+        "slot": "legs",
+        "energyCost": 1,
+        "effect": "拾取能量球回复生命",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "legs",
+        "energyCost": 1,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1247473855,
+            "name": "Recuperation",
+            "nameZh": "复原",
+            "description": "Replenishes health each time you pick up an Orb of Power.",
+            "descriptionZh": "每次拾取能量球都将恢复生命值。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "better-already",
+      "name": "活力充沛",
+      "englishName": "Better Already",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        2194294579
+      ],
+      "primaryHash": 2194294579,
+      "declared": {
+        "slot": "legs",
+        "energyCost": 1,
+        "effect": "拾取能量球开始生命恢复",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "legs",
+        "energyCost": 1,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1063425490,
+            "name": "Better Already",
+            "nameZh": "药到病除",
+            "description": "Your health begins to regenerate immediately after picking up an Orb of Power.",
+            "descriptionZh": "拾取能量球后立即开始恢复生命值。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "solar-weapon-surge",
+      "name": "炽阳武器激涌",
+      "englishName": "Solar Weapon Surge",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        2283894334,
+        2319885414
+      ],
+      "primaryHash": 2319885414,
+      "declared": {
+        "slot": "legs",
+        "energyCost": 3,
+        "effect": "拥有护甲充能时提高炽阳武器伤害",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "legs",
+        "energyCost": 3,
+        "description": "Collecting an Orb of Power causes you to gain 1 temporary Armor Charge.",
+        "perkDetails": [
+          {
+            "hash": 6630582,
+            "name": "Solar Weapon Surge",
+            "nameZh": "烈日武器激涌",
+            "description": "Your Solar weapons gain a small bonus to damage while you have any Armor Charge. Your Armor Charge now decays over time.",
+            "descriptionZh": "在拥有任何护甲充能时，你的烈日武器会获得小幅额外伤害加成。你的护甲充能现在会逐渐衰减。",
+            "visibility": 1
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "void-weapon-surge",
+      "name": "虚空武器激涌",
+      "englishName": "Void Weapon Surge",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        3467460423,
+        3914973263
+      ],
+      "primaryHash": 3467460423,
+      "declared": {
+        "slot": "legs",
+        "energyCost": 3,
+        "effect": "拥有护甲充能时提高虚空武器伤害",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "legs",
+        "energyCost": 3,
+        "description": "Collecting an Orb of Power causes you to gain 1 temporary Armor Charge.",
+        "perkDetails": [
+          {
+            "hash": 3985484695,
+            "name": "Void Weapon Surge",
+            "nameZh": "虚空武器激涌",
+            "description": "Your Void weapons gain a small bonus to damage while you have any Armor Charge. Your Armor Charge now decays over time.",
+            "descriptionZh": "在拥有任何护甲充能时，你的虚空武器会获得小幅额外伤害加成。你的护甲充能现在会逐渐衰减。",
+            "visibility": 1
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "special-finisher",
+      "name": "特殊终结技",
+      "englishName": "Special Finisher",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        4004774872
+      ],
+      "primaryHash": 4004774872,
+      "declared": {
+        "slot": "classItem",
+        "energyCost": 3,
+        "effect": "消耗护甲充能生成特殊弹药",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "classItem",
+        "energyCost": 1,
+        "description": "Collecting an Orb of Power causes you to gain 1 temporary Armor Charge.",
+        "perkDetails": [
+          {
+            "hash": 3584004654,
+            "name": "Special Finisher",
+            "nameZh": "特殊终结技",
+            "description": "Finishers generate Special ammo for the whole fireteam. \n\nConsumes 3 stacks of Armor Charge.",
+            "descriptionZh": "终结技可为整个火力战队生成特殊弹药。\n\n消耗3层护甲充能。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": false
+    },
+    {
+      "id": "powerful-attraction",
+      "name": "强力吸引",
+      "englishName": "Powerful Attraction",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        11126525
+      ],
+      "primaryHash": 11126525,
+      "declared": {
+        "slot": "classItem",
+        "energyCost": 2,
+        "effect": "使用职业技能时拾取附近能量球",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "classItem",
+        "energyCost": 2,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 2602830610,
+            "name": "Powerful Attraction",
+            "nameZh": "强力吸引",
+            "description": "Automatically collects nearby Orbs of Power when you activate your class ability.",
+            "descriptionZh": "激活职业技能时自动收集附近的能量球。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "reaper",
+      "name": "收割者",
+      "englishName": "Reaper",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        40751621,
+        4149682173
+      ],
+      "primaryHash": 40751621,
+      "declared": {
+        "slot": "classItem",
+        "energyCost": 3,
+        "effect": "使用职业技能后下一次武器最后一击生成能量球",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "classItem",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 4135459061,
+            "name": "Reaper",
+            "nameZh": "收割者",
+            "description": "Shortly after using your class ability, your next weapon final blow spawns an Orb of Power.",
+            "descriptionZh": "在使用你的职业技能后的短时间内，你的下一次武器最后一击会生成一个能量球。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "bomber",
+      "name": "轰炸机",
+      "englishName": "Bomber",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestHashes": [
+        4188291233
+      ],
+      "primaryHash": 4188291233,
+      "declared": {
+        "slot": "classItem",
+        "energyCost": 1,
+        "effect": "使用职业技能返还手雷能量",
+        "stat": null,
+        "value": null
+      },
+      "official": {
+        "slot": "classItem",
+        "energyCost": 1,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1052631070,
+            "name": "Bomber",
+            "nameZh": "投弹手",
+            "description": "Reduces grenade cooldown when using your class ability.",
+            "descriptionZh": "使用职业技能时缩短手雷的冷却时间。",
+            "visibility": 0
+          }
+        ]
+      },
+      "consistent": true
+    }
+  ]
+}

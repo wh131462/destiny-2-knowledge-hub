@@ -1,0 +1,3815 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "generatedAt": "2026-09-02T03:46:03.189Z",
+  "count": 156,
+  "matched": 156,
+  "links": {
+    "super-hammer-of-sol": {
+      "kind": "ability",
+      "englishName": "Hammer of Sol",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2529942647,
+        2747500761
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2529942647,
+        "name": "Hammer of Sol",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-thundercrash": {
+      "kind": "ability",
+      "englishName": "Thundercrash",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        119041298,
+        2529942644
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 119041298,
+        "name": "Thundercrash",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-twilight-arsenal": {
+      "kind": "ability",
+      "englishName": "Twilight Arsenal",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2529942646,
+        4260353955
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2529942646,
+        "name": "Twilight Arsenal",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-glacial-quake": {
+      "kind": "ability",
+      "englishName": "Glacial Quake",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2021620139,
+        2529942645
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2021620139,
+        "name": "Glacial Quake",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-bladefury": {
+      "kind": "ability",
+      "englishName": "Bladefury",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2529942642,
+        3574662354
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2529942642,
+        "name": "Bladefury",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-hammer-strike": {
+      "kind": "ability",
+      "englishName": "Hammer Strike",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        852252788,
+        1980796562
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 852252788,
+        "name": "Hammer Strike",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-thunderclap": {
+      "kind": "ability",
+      "englishName": "Thunderclap",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1980796563,
+        2708585279,
+        3141315153
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3141315153,
+        "name": "Thunderclap",
+        "itemType": 29,
+        "categoryHashes": [
+          1112488720
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-shield-throw": {
+      "kind": "ability",
+      "englishName": "Shield Throw",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1980796560,
+        4220332374
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1980796560,
+        "name": "Shield Throw",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-shiver-strike": {
+      "kind": "ability",
+      "englishName": "Shiver Strike",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1980796561,
+        2028772231
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1980796561,
+        "name": "Shiver Strike",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-frenzied-blade": {
+      "kind": "ability",
+      "englishName": "Frenzied Blade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1980796564,
+        4094417246
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1980796564,
+        "name": "Frenzied Blade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-golden-gun-marksman": {
+      "kind": "ability",
+      "englishName": "Golden Gun: Marksman",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        375052468,
+        2370269390
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 375052468,
+        "name": "Golden Gun: Marksman",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-storms-edge": {
+      "kind": "ability",
+      "englishName": "Storm's Edge",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2370269388,
+        3769507635
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2370269388,
+        "name": "Storm's Edge",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-shadowshot-deadfall": {
+      "kind": "ability",
+      "englishName": "Shadowshot: Deadfall",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2370269389,
+        2722573683
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2370269389,
+        "name": "Shadowshot: Deadfall",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-silence-squall": {
+      "kind": "ability",
+      "englishName": "Silence and Squall",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2370269391,
+        2625980631
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2370269391,
+        "name": "Silence and Squall",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-silkstrike": {
+      "kind": "ability",
+      "englishName": "Silkstrike",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2370269384,
+        2463983862
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2370269384,
+        "name": "Silkstrike",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-knife-trick": {
+      "kind": "ability",
+      "englishName": "Knife Trick",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2657901004,
+        3921851413,
+        4016776972
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2657901004,
+        "name": "Knife Trick",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-combination-blow": {
+      "kind": "ability",
+      "englishName": "Combination Blow",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2657901005,
+        2716335211
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2657901005,
+        "name": "Combination Blow",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-snare-bomb": {
+      "kind": "ability",
+      "englishName": "Snare Bomb",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1139822081,
+        2657901007
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1139822081,
+        "name": "Snare Bomb",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-withering-blade": {
+      "kind": "ability",
+      "englishName": "Withering Blade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1341767667,
+        2657901006
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1341767667,
+        "name": "Withering Blade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-threaded-spike": {
+      "kind": "ability",
+      "englishName": "Threaded Spike",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1680616210,
+        2657901002
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1680616210,
+        "name": "Threaded Spike",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-song-of-flame": {
+      "kind": "ability",
+      "englishName": "Song of Flame",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1869939005,
+        2274196884
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1869939005,
+        "name": "Song of Flame",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-stormtrance": {
+      "kind": "ability",
+      "englishName": "Stormtrance",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1081893460,
+        1869939007
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1081893460,
+        "name": "Stormtrance",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-nova-bomb-cataclysm": {
+      "kind": "ability",
+      "englishName": "Nova Bomb: Cataclysm",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1656118682,
+        1869939004
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1656118682,
+        "name": "Nova Bomb: Cataclysm",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-winters-wrath": {
+      "kind": "ability",
+      "englishName": "Winter's Wrath",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1869939006,
+        3683904166
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1869939006,
+        "name": "Winter's Wrath",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "super-needlestorm": {
+      "kind": "ability",
+      "englishName": "Needlestorm",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1869939001,
+        1885339915
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1869939001,
+        "name": "Needlestorm",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-incinerator-snap": {
+      "kind": "ability",
+      "englishName": "Incinerator Snap",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1470370538,
+        3644045869
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1470370538,
+        "name": "Incinerator Snap",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-chain-lightning": {
+      "kind": "ability",
+      "englishName": "Chain Lightning",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1232050831,
+        3644045868
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1232050831,
+        "name": "Chain Lightning",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-pocket-singularity": {
+      "kind": "ability",
+      "englishName": "Pocket Singularity",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2299867342,
+        3644045870
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2299867342,
+        "name": "Pocket Singularity",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-penumbral-blast": {
+      "kind": "ability",
+      "englishName": "Penumbral Blast",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2543177538,
+        3644045867
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2543177538,
+        "name": "Penumbral Blast",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "melee-arcane-needle": {
+      "kind": "ability",
+      "englishName": "Arcane Needle",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2307689415,
+        3644045871
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2307689415,
+        "name": "Arcane Needle",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-duskfield": {
+      "kind": "ability",
+      "englishName": "Duskfield Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1399216,
+        4051767608
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1399216,
+        "name": "Duskfield Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-glacier": {
+      "kind": "ability",
+      "englishName": "Glacier Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1399217,
+        934199459
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1399217,
+        "name": "Glacier Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-shatter": {
+      "kind": "ability",
+      "englishName": "Shatter Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1399218
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1399218,
+        "name": "Shatter Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-coldsnap": {
+      "kind": "ability",
+      "englishName": "Coldsnap Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1399219,
+        4265391440
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1399219,
+        "name": "Coldsnap Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-skip": {
+      "kind": "ability",
+      "englishName": "Skip Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        146194908
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 146194908,
+        "name": "Skip Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-fusion": {
+      "kind": "ability",
+      "englishName": "Fusion Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1013086087
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1013086087,
+        "name": "Fusion Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-vortex": {
+      "kind": "ability",
+      "englishName": "Vortex Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1016030582,
+        1048847436
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1016030582,
+        "name": "Vortex Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-void-spike": {
+      "kind": "ability",
+      "englishName": "Void Spike",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1255073825
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1255073825,
+        "name": "Void Spike",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-slicewire": {
+      "kind": "ability",
+      "englishName": "Slicewire Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1377143502
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1377143502,
+        "name": "Slicewire Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-scatter": {
+      "kind": "ability",
+      "englishName": "Scatter Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1514173218
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1514173218,
+        "name": "Scatter Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-magnetic": {
+      "kind": "ability",
+      "englishName": "Magnetic Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        886607940,
+        1547656727
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 886607940,
+        "name": "Magnetic Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-arcbolt": {
+      "kind": "ability",
+      "englishName": "Arcbolt Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1582574009,
+        3897682694
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1582574009,
+        "name": "Arcbolt Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-pulse": {
+      "kind": "ability",
+      "englishName": "Pulse Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1323461861,
+        1713935764
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1323461861,
+        "name": "Pulse Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-healing": {
+      "kind": "ability",
+      "englishName": "Healing Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1841016428,
+        3040080535
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1841016428,
+        "name": "Healing Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-firebolt": {
+      "kind": "ability",
+      "englishName": "Firebolt Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2202441959
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2202441959,
+        "name": "Firebolt Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-solar": {
+      "kind": "ability",
+      "englishName": "Solar Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2216698406
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2216698406,
+        "name": "Solar Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-suppressor": {
+      "kind": "ability",
+      "englishName": "Suppressor Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2265076177,
+        3923577992
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2265076177,
+        "name": "Suppressor Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-grapple": {
+      "kind": "ability",
+      "englishName": "Grapple",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1225978592,
+        2470512752
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1225978592,
+        "name": "Grapple",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-storm": {
+      "kind": "ability",
+      "englishName": "Storm Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2481624867,
+        4241856103
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2481624867,
+        "name": "Storm Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-incendiary": {
+      "kind": "ability",
+      "englishName": "Incendiary Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2581086849
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2581086849,
+        "name": "Incendiary Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-voidwall": {
+      "kind": "ability",
+      "englishName": "Void Wall",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2809141585
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2809141585,
+        "name": "Void Wall",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-shackle": {
+      "kind": "ability",
+      "englishName": "Shackle Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1517917190,
+        2809342386
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1517917190,
+        "name": "Shackle Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-flashbang": {
+      "kind": "ability",
+      "englishName": "Flashbang Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2909720723
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2909720723,
+        "name": "Flashbang Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-tripmine": {
+      "kind": "ability",
+      "englishName": "Tripmine Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2946990961
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2946990961,
+        "name": "Tripmine Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-lightning": {
+      "kind": "ability",
+      "englishName": "Lightning Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2994412667
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2994412667,
+        "name": "Lightning Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-swarm": {
+      "kind": "ability",
+      "englishName": "Swarm Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2842514288,
+        3199702642
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2842514288,
+        "name": "Swarm Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-axion-bolt": {
+      "kind": "ability",
+      "englishName": "Axion Bolt",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3232422679
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3232422679,
+        "name": "Axion Bolt",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-thermite": {
+      "kind": "ability",
+      "englishName": "Thermite Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2400634603,
+        3969294337
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2400634603,
+        "name": "Thermite Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-flux": {
+      "kind": "ability",
+      "englishName": "Flux Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4198689901
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4198689901,
+        "name": "Flux Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "grenade-threadling": {
+      "kind": "ability",
+      "englishName": "Threadling Grenade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3994381207,
+        4228170798
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3994381207,
+        "name": "Threadling Grenade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "class-thruster": {
+      "kind": "ability",
+      "englishName": "Thruster",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        489583098,
+        2868073563
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 489583098,
+        "name": "Thruster",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "class-rally-barricade": {
+      "kind": "ability",
+      "englishName": "Rally Barricade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        489583097,
+        2087010644,
+        2495523341,
+        2722641741,
+        2868073560,
+        3260056809
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 489583097,
+        "name": "Rally Barricade",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "class-gamblers-dodge": {
+      "kind": "ability",
+      "englishName": "Gambler's Dodge",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        426473317,
+        1282157890,
+        2711519340,
+        2816982785,
+        3636300855,
+        3933525367
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 426473317,
+        "name": "Gambler's Dodge",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "class-marksman-dodge": {
+      "kind": "ability",
+      "englishName": "Marksman's Dodge",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        426473316,
+        1282157891,
+        2711519341,
+        2816982784,
+        3636300854,
+        3933525366
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 426473316,
+        "name": "Marksman's Dodge",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "class-phoenix-dive": {
+      "kind": "ability",
+      "englishName": "Phoenix Dive",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1444664836,
+        2979486801
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1444664836,
+        "name": "Phoenix Dive",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "class-healing-rift": {
+      "kind": "ability",
+      "englishName": "Healing Rift",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        25156515,
+        383852320,
+        1444664838,
+        2209081649,
+        2979486803,
+        3492047641
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 25156515,
+        "name": "Healing Rift",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-consecration": {
+      "kind": "aspect",
+      "englishName": "Consecration",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1262901520,
+        2984351206
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1262901520,
+        "name": "Consecration",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-knockout": {
+      "kind": "aspect",
+      "englishName": "Knockout",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1262901523,
+        1656549674
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1262901523,
+        "name": "Knockout",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-unbreakable": {
+      "kind": "aspect",
+      "englishName": "Unbreakable",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1262901521,
+        1602994571
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1262901521,
+        "name": "Unbreakable",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-diamond-lance": {
+      "kind": "aspect",
+      "englishName": "Diamond Lance",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1262901522,
+        3866705246
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1262901522,
+        "name": "Diamond Lance",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-drengrs-lash": {
+      "kind": "aspect",
+      "englishName": "Drengr's Lash",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        988980152,
+        1262901525
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 988980152,
+        "name": "Drengr's Lash",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-gunpowder-gamble": {
+      "kind": "aspect",
+      "englishName": "Gunpowder Gamble",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2835214903,
+        3066103996
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2835214903,
+        "name": "Gunpowder Gamble",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-ascension": {
+      "kind": "aspect",
+      "englishName": "Ascension",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2835214901,
+        4194622039
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2835214901,
+        "name": "Ascension",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-stylish-executioner": {
+      "kind": "aspect",
+      "englishName": "Stylish Executioner",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        187655374,
+        2835214900
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 187655374,
+        "name": "Stylish Executioner",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-winters-shroud": {
+      "kind": "aspect",
+      "englishName": "Winter's Shroud",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2835214902,
+        2934767477
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2835214902,
+        "name": "Winter's Shroud",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-threaded-specter": {
+      "kind": "aspect",
+      "englishName": "Threaded Specter",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2835214897,
+        4249729125
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2835214897,
+        "name": "Threaded Specter",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-hellion": {
+      "kind": "aspect",
+      "englishName": "Hellion",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        83039192,
+        790664814
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 83039192,
+        "name": "Hellion",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-lightning-surge": {
+      "kind": "aspect",
+      "englishName": "Lightning Surge",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        790664812,
+        1293395730
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 790664812,
+        "name": "Lightning Surge",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-feed-the-void": {
+      "kind": "aspect",
+      "englishName": "Feed the Void",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        790664815,
+        2321824284
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 790664815,
+        "name": "Feed the Void",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-bleak-watcher": {
+      "kind": "aspect",
+      "englishName": "Bleak Watcher",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        790664813,
+        2642597904
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 790664813,
+        "name": "Bleak Watcher",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-weavers-call": {
+      "kind": "aspect",
+      "englishName": "Weaver's Call",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        262821317,
+        790664810
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 262821317,
+        "name": "Weaver's Call",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-vanishing-step": {
+      "kind": "aspect",
+      "englishName": "Vanishing Step",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        187655373
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 187655373,
+        "name": "Vanishing Step",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-into-the-fray": {
+      "kind": "aspect",
+      "englishName": "Into the Fray",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        988980153
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 988980153,
+        "name": "Into the Fray",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-touch-of-flame": {
+      "kind": "aspect",
+      "englishName": "Touch of Flame",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        83039193
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 83039193,
+        "name": "Touch of Flame",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-roaring-flames": {
+      "kind": "aspect",
+      "englishName": "Roaring Flames",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2984351204
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2984351204,
+        "name": "Roaring Flames",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-sol-invictus": {
+      "kind": "aspect",
+      "englishName": "Sol Invictus",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2984351205
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2984351205,
+        "name": "Sol Invictus",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-touch-of-thunder": {
+      "kind": "aspect",
+      "englishName": "Touch of Thunder",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1656549672
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1656549672,
+        "name": "Touch of Thunder",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-juggernaut": {
+      "kind": "aspect",
+      "englishName": "Juggernaut",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1656549673
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1656549673,
+        "name": "Juggernaut",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-bastion": {
+      "kind": "aspect",
+      "englishName": "Bastion",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1602994569,
+        2415517654
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2415517654,
+        "name": "Bastion",
+        "itemType": 3,
+        "categoryHashes": [
+          2,
+          1,
+          9,
+          2906646562
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 1498876634,
+        "defaultDamageType": 1,
+        "perkSocketCount": 8
+      }
+    },
+    "aspect-offensive-bulwark": {
+      "kind": "aspect",
+      "englishName": "Offensive Bulwark",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1602994570
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1602994570,
+        "name": "Offensive Bulwark",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-tectonic-harvest": {
+      "kind": "aspect",
+      "englishName": "Tectonic Harvest",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2031919264
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2031919264,
+        "name": "Tectonic Harvest",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-banner-of-war": {
+      "kind": "aspect",
+      "englishName": "Banner of War",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        988980154
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 988980154,
+        "name": "Banner of War",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-knock-em-down": {
+      "kind": "aspect",
+      "englishName": "Knock 'Em Down",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3066103998
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3066103998,
+        "name": "Knock 'Em Down",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-on-your-mark": {
+      "kind": "aspect",
+      "englishName": "On Your Mark",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3066103999
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3066103999,
+        "name": "On Your Mark",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-flow-state": {
+      "kind": "aspect",
+      "englishName": "Flow State",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4194622036
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4194622036,
+        "name": "Flow State",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-lethal-current": {
+      "kind": "aspect",
+      "englishName": "Lethal Current",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4194622038
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4194622038,
+        "name": "Lethal Current",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-trappers-ambush": {
+      "kind": "aspect",
+      "englishName": "Trapper's Ambush",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        187655372
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 187655372,
+        "name": "Trapper's Ambush",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-shatterdive": {
+      "kind": "aspect",
+      "englishName": "Shatterdive",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2934767476
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2934767476,
+        "name": "Shatterdive",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-grim-harvest": {
+      "kind": "aspect",
+      "englishName": "Grim Harvest",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1920417385
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1920417385,
+        "name": "Grim Harvest",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-widows-silk": {
+      "kind": "aspect",
+      "englishName": "Widow's Silk",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4249729127
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4249729127,
+        "name": "Widow's Silk",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-whirling-maelstrom": {
+      "kind": "aspect",
+      "englishName": "Whirling Maelstrom",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4249729124
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4249729124,
+        "name": "Whirling Maelstrom",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-icarus-dash": {
+      "kind": "aspect",
+      "englishName": "Icarus Dash",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        83039195
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 83039195,
+        "name": "Icarus Dash",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-arc-soul": {
+      "kind": "aspect",
+      "englishName": "Arc Soul",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1293395731
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1293395731,
+        "name": "Arc Soul",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-electrostatic-mind": {
+      "kind": "aspect",
+      "englishName": "Electrostatic Mind",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1293395729
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1293395729,
+        "name": "Electrostatic Mind",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-chaos-accelerant": {
+      "kind": "aspect",
+      "englishName": "Chaos Accelerant",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2321824285
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2321824285,
+        "name": "Chaos Accelerant",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-child-of-old-gods": {
+      "kind": "aspect",
+      "englishName": "Child of the Old Gods",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2321824287
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2321824287,
+        "name": "Child of the Old Gods",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-frostpulse": {
+      "kind": "aspect",
+      "englishName": "Frostpulse",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        668903197
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 668903197,
+        "name": "Frostpulse",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-glacial-harvest": {
+      "kind": "aspect",
+      "englishName": "Glacial Harvest",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2651551055
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2651551055,
+        "name": "Glacial Harvest",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-mindspun-invocation": {
+      "kind": "aspect",
+      "englishName": "Mindspun Invocation",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        262821318
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 262821318,
+        "name": "Mindspun Invocation",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "aspect-wanderer": {
+      "kind": "aspect",
+      "englishName": "The Wanderer",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        262821319
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 262821319,
+        "name": "The Wanderer",
+        "itemType": 19,
+        "categoryHashes": [
+          59,
+          1043342778
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "titan-solar": {
+      "kind": "subclass",
+      "englishName": "Sunbreaker",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2273211710,
+        2550323932,
+        2590810641,
+        3105935002
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2273211710,
+        "name": "Sunbreaker",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "titan-arc": {
+      "kind": "subclass",
+      "englishName": "Striker",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2076274495,
+        2932390016,
+        2958378809,
+        2972379642
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2076274495,
+        "name": "Striker",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "titan-void": {
+      "kind": "subclass",
+      "englishName": "Sentinel",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2842471112,
+        3064220075,
+        3382391785,
+        4082180156
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2842471112,
+        "name": "Sentinel",
+        "itemType": 16,
+        "categoryHashes": [
+          22,
+          50,
+          52
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 13
+      }
+    },
+    "titan-stasis": {
+      "kind": "subclass",
+      "englishName": "Behemoth",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        613647804,
+        2134853490,
+        2976615227
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 613647804,
+        "name": "Behemoth",
+        "itemType": 16,
+        "categoryHashes": [
+          22,
+          50,
+          52
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 12
+      }
+    },
+    "titan-strand": {
+      "kind": "subclass",
+      "englishName": "Berserker",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        242419885
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 242419885,
+        "name": "Berserker",
+        "itemType": 16,
+        "categoryHashes": [
+          22,
+          50,
+          52
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 13
+      }
+    },
+    "hunter-solar": {
+      "kind": "subclass",
+      "englishName": "Gunslinger",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2240888816,
+        2283141005,
+        3635991036,
+        3644428698
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2240888816,
+        "name": "Gunslinger",
+        "itemType": 16,
+        "categoryHashes": [
+          23,
+          50,
+          52
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 13
+      }
+    },
+    "hunter-arc": {
+      "kind": "subclass",
+      "englishName": "Arcstrider",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1334959255,
+        1918109014,
+        2319157835,
+        2328211300
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1334959255,
+        "name": "Arcstrider",
+        "itemType": 16,
+        "categoryHashes": [
+          50,
+          52
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "hunter-void": {
+      "kind": "subclass",
+      "englishName": "Nightstalker",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        37263815,
+        204749352,
+        2453351420,
+        3225959819
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 37263815,
+        "name": "Nightstalker",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "hunter-stasis": {
+      "kind": "subclass",
+      "englishName": "Revenant",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        873720784,
+        1714959198
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 873720784,
+        "name": "Revenant",
+        "itemType": 16,
+        "categoryHashes": [
+          23,
+          50,
+          52
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 12
+      }
+    },
+    "hunter-strand": {
+      "kind": "subclass",
+      "englishName": "Threadrunner",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3785442599
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3785442599,
+        "name": "Threadrunner",
+        "itemType": 16,
+        "categoryHashes": [
+          23,
+          50,
+          52
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 13
+      }
+    },
+    "warlock-solar": {
+      "kind": "subclass",
+      "englishName": "Dawnblade",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1536294536,
+        3244591335,
+        3481861797,
+        3941205951
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1536294536,
+        "name": "Dawnblade",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "warlock-arc": {
+      "kind": "subclass",
+      "englishName": "Stormcaller",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1204459690,
+        1751782730,
+        3168997075,
+        3275543811
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1204459690,
+        "name": "Stormcaller",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "warlock-void": {
+      "kind": "subclass",
+      "englishName": "Voidwalker",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        412048979,
+        1547232064,
+        2849050827,
+        3887892656
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 412048979,
+        "name": "Voidwalker",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "warlock-stasis": {
+      "kind": "subclass",
+      "englishName": "Shadebinder",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        37525613,
+        3291545503
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 37525613,
+        "name": "Shadebinder",
+        "itemType": 0,
+        "categoryHashes": [],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "warlock-strand": {
+      "kind": "subclass",
+      "englishName": "Broodweaver",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4204413574
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4204413574,
+        "name": "Broodweaver",
+        "itemType": 16,
+        "categoryHashes": [
+          21,
+          50,
+          52
+        ],
+        "classType": 2,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 13
+      }
+    },
+    "titan-prismatic": {
+      "kind": "subclass",
+      "englishName": "Prismatic Titan",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1616346845,
+        1712970173
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1616346845,
+        "name": "Prismatic Titan",
+        "itemType": 16,
+        "categoryHashes": [
+          22,
+          50,
+          52
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 3284755031,
+        "defaultDamageType": 0,
+        "perkSocketCount": 13
+      }
+    },
+    "hunter-prismatic": {
+      "kind": "subclass",
+      "englishName": "Prismatic Hunter",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4227925815,
+        4282591831
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4227925815,
+        "name": "Prismatic Hunter",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "warlock-prismatic": {
+      "kind": "subclass",
+      "englishName": "Prismatic Warlock",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3357128662,
+        3893112950
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3357128662,
+        "name": "Prismatic Warlock",
+        "itemType": 20,
+        "categoryHashes": [
+          3109687656
+        ],
+        "classType": 3,
+        "equipmentSlotHash": null,
+        "defaultDamageType": 0,
+        "perkSocketCount": 0
+      }
+    },
+    "synthoceps": {
+      "kind": "gear",
+      "englishName": "Synthoceps",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        241462142,
+        1035680666,
+        2002759681,
+        3966240957
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 241462142,
+        "name": "Synthoceps",
+        "itemType": 2,
+        "categoryHashes": [
+          22,
+          46,
+          20
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 3551918588,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "hazardous-propulsion": {
+      "kind": "gear",
+      "englishName": "Hazardous Propulsion",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        77153391,
+        1909305643,
+        3050442980,
+        4274637770
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1909305643,
+        "name": "Hazardous Propulsion",
+        "itemType": 2,
+        "categoryHashes": [
+          22,
+          47,
+          20
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 14239492,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "abeyant-leap": {
+      "kind": "gear",
+      "englishName": "Abeyant Leap",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        17306485,
+        3637722482,
+        3849355625
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3637722482,
+        "name": "Abeyant Leap",
+        "itemType": 2,
+        "categoryHashes": [
+          22,
+          48,
+          20
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 20886954,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "liars-handshake": {
+      "kind": "gear",
+      "englishName": "Liar's Handshake",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        733560210,
+        2749457084,
+        3295711091,
+        4165919945
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2749457084,
+        "name": "Liar's Handshake",
+        "itemType": 2,
+        "categoryHashes": [
+          23,
+          46,
+          20
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 3551918588,
+        "defaultDamageType": 0,
+        "perkSocketCount": 9
+      }
+    },
+    "celestial-nighthawk": {
+      "kind": "gear",
+      "englishName": "Celestial Nighthawk",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1321354573,
+        1667080810,
+        1844990602,
+        3960926756
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1321354573,
+        "name": "Celestial Nighthawk",
+        "itemType": 2,
+        "categoryHashes": [
+          23,
+          45,
+          20
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 3448274439,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "gyrfalcons-hauberk": {
+      "kind": "gear",
+      "englishName": "Gyrfalcon's Hauberk",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        461841403,
+        2015733300,
+        2447096246
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 461841403,
+        "name": "Gyrfalcon's Hauberk",
+        "itemType": 2,
+        "categoryHashes": [
+          23,
+          47,
+          20
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 14239492,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "getaway-artist": {
+      "kind": "gear",
+      "englishName": "Getaway Artist",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3070357340,
+        3084282676,
+        3957453475,
+        4177778015
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3084282676,
+        "name": "Getaway Artist",
+        "itemType": 2,
+        "categoryHashes": [
+          21,
+          46,
+          20
+        ],
+        "classType": 2,
+        "equipmentSlotHash": 3551918588,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "mataiodoxia": {
+      "kind": "gear",
+      "englishName": "Mataiodoxia",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        503025963,
+        1003391927,
+        1955548646,
+        3598649636
+      ],
+      "matched": true,
+      "matchReason": "normalized-name",
+      "manifest": {
+        "hash": 1003391927,
+        "name": "Mataiodoxía",
+        "itemType": 2,
+        "categoryHashes": [
+          21,
+          47,
+          20
+        ],
+        "classType": 2,
+        "equipmentSlotHash": 14239492,
+        "defaultDamageType": 0,
+        "perkSocketCount": 9
+      }
+    },
+    "speakers-sight": {
+      "kind": "gear",
+      "englishName": "Speaker's Sight",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        50291571,
+        3086027926,
+        3405211239,
+        3617849232
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 50291571,
+        "name": "Speaker's Sight",
+        "itemType": 2,
+        "categoryHashes": [
+          21,
+          45,
+          20
+        ],
+        "classType": 2,
+        "equipmentSlotHash": 3448274439,
+        "defaultDamageType": 0,
+        "perkSocketCount": 10
+      }
+    },
+    "stoicism": {
+      "kind": "gear",
+      "englishName": "Stoicism",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        266021826,
+        2362430352,
+        3076343411,
+        4149997829
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 266021826,
+        "name": "Stoicism",
+        "itemType": 2,
+        "categoryHashes": [
+          22,
+          49,
+          20
+        ],
+        "classType": 0,
+        "equipmentSlotHash": 1585787867,
+        "defaultDamageType": 0,
+        "perkSocketCount": 9
+      }
+    },
+    "relativism": {
+      "kind": "gear",
+      "englishName": "Relativism",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        102374420,
+        1540068657,
+        2798788243,
+        2809120022
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2809120022,
+        "name": "Relativism",
+        "itemType": 2,
+        "categoryHashes": [
+          23,
+          49,
+          20
+        ],
+        "classType": 1,
+        "equipmentSlotHash": 1585787867,
+        "defaultDamageType": 0,
+        "perkSocketCount": 9
+      }
+    },
+    "solipsism": {
+      "kind": "gear",
+      "englishName": "Solipsism",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        246396400,
+        2273643087,
+        2705455302,
+        3546314515
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2273643087,
+        "name": "Solipsism",
+        "itemType": 2,
+        "categoryHashes": [
+          21,
+          49,
+          20
+        ],
+        "classType": 2,
+        "equipmentSlotHash": 1585787867,
+        "defaultDamageType": 0,
+        "perkSocketCount": 9
+      }
+    },
+    "the-call": {
+      "kind": "gear",
+      "englishName": "The Call",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        736474114,
+        1356804119,
+        3254804681,
+        3563429202,
+        3947966653
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3947966653,
+        "name": "The Call",
+        "itemType": 3,
+        "categoryHashes": [
+          2,
+          1,
+          14
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 1498876634,
+        "defaultDamageType": 7,
+        "perkSocketCount": 15
+      }
+    },
+    "lost-signal": {
+      "kind": "gear",
+      "englishName": "Lost Signal",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1197771438,
+        1671955671,
+        3013473326
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1197771438,
+        "name": "Lost Signal",
+        "itemType": 3,
+        "categoryHashes": [
+          2,
+          1,
+          153950757
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 1498876634,
+        "defaultDamageType": 6,
+        "perkSocketCount": 15
+      }
+    },
+    "khvostov-7g-0x": {
+      "kind": "gear",
+      "englishName": "Khvostov 7G-0X",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        4129629253
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 4129629253,
+        "name": "Khvostov 7G-0X",
+        "itemType": 3,
+        "categoryHashes": [
+          2,
+          1,
+          5
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 1498876634,
+        "defaultDamageType": 1,
+        "perkSocketCount": 9
+      }
+    },
+    "outbreak-perfected": {
+      "kind": "gear",
+      "englishName": "Outbreak Perfected",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        400096939,
+        3342878104,
+        3824673936
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3824673936,
+        "name": "Outbreak Perfected",
+        "itemType": 3,
+        "categoryHashes": [
+          2,
+          1,
+          7
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 1498876634,
+        "defaultDamageType": 1,
+        "perkSocketCount": 10
+      }
+    },
+    "sunshot": {
+      "kind": "gear",
+      "englishName": "Sunshot",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2907129557
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2907129557,
+        "name": "Sunshot",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          6
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 3,
+        "perkSocketCount": 8
+      }
+    },
+    "graviton-lance": {
+      "kind": "gear",
+      "englishName": "Graviton Lance",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3628991658
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3628991658,
+        "name": "Graviton Lance",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          7
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 4,
+        "perkSocketCount": 8
+      }
+    },
+    "aberrant-action": {
+      "kind": "gear",
+      "englishName": "Aberrant Action",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1445084364,
+        2198166292,
+        3570970887
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2198166292,
+        "name": "Aberrant Action",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          14
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 3,
+        "perkSocketCount": 15
+      }
+    },
+    "no-hesitation": {
+      "kind": "gear",
+      "englishName": "No Hesitation",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1432022705,
+        1757424586,
+        1801007332,
+        3181377148,
+        3470589037
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1801007332,
+        "name": "No Hesitation",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          5
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 3,
+        "perkSocketCount": 15
+      }
+    },
+    "indebted-kindness": {
+      "kind": "gear",
+      "englishName": "Indebted Kindness",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        784730508,
+        1932686151,
+        2554513694,
+        3381450498
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2554513694,
+        "name": "Indebted Kindness",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          14
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 2,
+        "perkSocketCount": 9
+      }
+    },
+    "still-hunt": {
+      "kind": "gear",
+      "englishName": "Still Hunt",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2905188646
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2905188646,
+        "name": "Still Hunt",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          10
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 3,
+        "perkSocketCount": 8
+      }
+    },
+    "polaris-lance": {
+      "kind": "gear",
+      "englishName": "Polaris Lance",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        877851123,
+        926248327,
+        995033813,
+        1052436550,
+        2572435700,
+        3143479462,
+        3375196983,
+        3413074534
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3413074534,
+        "name": "Polaris Lance",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          8
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 3,
+        "perkSocketCount": 8
+      }
+    },
+    "lodestar": {
+      "kind": "gear",
+      "englishName": "Lodestar",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        3725585710
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3725585710,
+        "name": "Lodestar",
+        "itemType": 3,
+        "categoryHashes": [
+          3,
+          1,
+          2489664120
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 2465295065,
+        "defaultDamageType": 2,
+        "perkSocketCount": 8
+      }
+    },
+    "apex-predator": {
+      "kind": "gear",
+      "englishName": "Apex Predator",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        1233603613,
+        1308286454,
+        1517505803,
+        1851777734,
+        2545083870,
+        4217170772
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1851777734,
+        "name": "Apex Predator",
+        "itemType": 3,
+        "categoryHashes": [
+          4,
+          1,
+          13
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 953998645,
+        "defaultDamageType": 3,
+        "perkSocketCount": 15
+      }
+    },
+    "edge-transit": {
+      "kind": "gear",
+      "englishName": "Edge Transit",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        218335759,
+        568611923,
+        1514927450,
+        2228325504,
+        3055219835,
+        3160299779,
+        3736001863
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 2228325504,
+        "name": "Edge Transit",
+        "itemType": 3,
+        "categoryHashes": [
+          4,
+          1,
+          153950757
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 953998645,
+        "defaultDamageType": 4,
+        "perkSocketCount": 14
+      }
+    },
+    "pro-memoria": {
+      "kind": "gear",
+      "englishName": "Pro Memoria",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        2179756330,
+        2436975386,
+        3158567669,
+        3605603507,
+        4061367591
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 3605603507,
+        "name": "Pro Memoria",
+        "itemType": 3,
+        "categoryHashes": [
+          4,
+          1,
+          12
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 953998645,
+        "defaultDamageType": 7,
+        "perkSocketCount": 15
+      }
+    },
+    "crux-termination-iv": {
+      "kind": "gear",
+      "englishName": "Crux Termination IV",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "hashes": [
+        201798442,
+        1719687748
+      ],
+      "matched": true,
+      "matchReason": "exact-name",
+      "manifest": {
+        "hash": 1719687748,
+        "name": "Crux Termination IV",
+        "itemType": 3,
+        "categoryHashes": [
+          4,
+          1,
+          13
+        ],
+        "classType": 3,
+        "equipmentSlotHash": 953998645,
+        "defaultDamageType": 2,
+        "perkSocketCount": 13
+      }
+    }
+  }
+}

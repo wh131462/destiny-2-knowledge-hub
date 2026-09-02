@@ -1,0 +1,315 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+  "syncedAt": "2026-09-01T04:05:28.779Z",
+  "endpoint": "https://www.bungie.net/Platform/Destiny2/Manifest/",
+  "locale": "en, zh-chs",
+  "locales": [
+    "en",
+    "zh-chs"
+  ],
+  "files": [
+    {
+      "component": "DestinyInventoryItemDefinition",
+      "fileName": "DestinyInventoryItemDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyInventoryItemDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 38894
+    },
+    {
+      "component": "DestinySandboxPerkDefinition",
+      "fileName": "DestinySandboxPerkDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinySandboxPerkDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 5203
+    },
+    {
+      "component": "DestinyDamageTypeDefinition",
+      "fileName": "DestinyDamageTypeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyDamageTypeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 7
+    },
+    {
+      "component": "DestinyStatDefinition",
+      "fileName": "DestinyStatDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyStatDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 79
+    },
+    {
+      "component": "DestinyActivityTypeDefinition",
+      "fileName": "DestinyActivityTypeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyActivityTypeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 83
+    },
+    {
+      "component": "DestinyActivityDefinition",
+      "fileName": "DestinyActivityDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyActivityDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 4069
+    },
+    {
+      "component": "DestinyActivityModeDefinition",
+      "fileName": "DestinyActivityModeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyActivityModeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 75
+    },
+    {
+      "component": "DestinyItemCategoryDefinition",
+      "fileName": "DestinyItemCategoryDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyItemCategoryDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 130
+    },
+    {
+      "component": "DestinyEquipmentSlotDefinition",
+      "fileName": "DestinyEquipmentSlotDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyEquipmentSlotDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 18
+    },
+    {
+      "component": "DestinyPlugSetDefinition",
+      "fileName": "DestinyPlugSetDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyPlugSetDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 5422
+    },
+    {
+      "component": "DestinySocketCategoryDefinition",
+      "fileName": "DestinySocketCategoryDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinySocketCategoryDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 65
+    },
+    {
+      "component": "DestinyArtifactDefinition",
+      "fileName": "DestinyArtifactDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyArtifactDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 1
+    },
+    {
+      "component": "DestinyClassDefinition",
+      "fileName": "DestinyClassDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyClassDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 3
+    },
+    {
+      "component": "DestinyTraitDefinition",
+      "fileName": "DestinyTraitDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyTraitDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 554
+    },
+    {
+      "component": "DestinyCollectibleDefinition",
+      "fileName": "DestinyCollectibleDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyCollectibleDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 12255
+    },
+    {
+      "component": "DestinyRewardMappingDefinition",
+      "fileName": "DestinyRewardMappingDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyRewardMappingDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 8581
+    },
+    {
+      "component": "DestinyVendorDefinition",
+      "fileName": "DestinyVendorDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyVendorDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 2170
+    },
+    {
+      "component": "DestinyDestinationDefinition",
+      "fileName": "DestinyDestinationDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyDestinationDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 142
+    },
+    {
+      "component": "DestinyActivityModifierDefinition",
+      "fileName": "DestinyActivityModifierDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyActivityModifierDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 351
+    },
+    {
+      "component": "DestinyBreakerTypeDefinition",
+      "fileName": "DestinyBreakerTypeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyBreakerTypeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 3
+    },
+    {
+      "component": "DestinyEnergyTypeDefinition",
+      "fileName": "DestinyEnergyTypeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyEnergyTypeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 7
+    },
+    {
+      "component": "DestinyItemTierTypeDefinition",
+      "fileName": "DestinyItemTierTypeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyItemTierTypeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 7
+    },
+    {
+      "component": "DestinySocketTypeDefinition",
+      "fileName": "DestinySocketTypeDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinySocketTypeDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 1874
+    },
+    {
+      "component": "DestinyRewardItemListDefinition",
+      "fileName": "DestinyRewardItemListDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyRewardItemListDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 8325
+    },
+    {
+      "component": "DestinySackRewardItemListDefinition",
+      "fileName": "DestinySackRewardItemListDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinySackRewardItemListDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 6639
+    },
+    {
+      "component": "DestinyRewardSourceDefinition",
+      "fileName": "DestinyRewardSourceDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyRewardSourceDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 0
+    },
+    {
+      "component": "DestinyEquipableItemSetDefinition",
+      "fileName": "DestinyEquipableItemSetDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyEquipableItemSetDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 56
+    },
+    {
+      "component": "DestinyUnlockDefinition",
+      "fileName": "DestinyUnlockDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyUnlockDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 58193
+    },
+    {
+      "component": "DestinyUnlockValueDefinition",
+      "fileName": "DestinyUnlockValueDefinition.json",
+      "sourcePath": "/common/destiny2_content/json/en/DestinyUnlockValueDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 15785
+    },
+    {
+      "component": "DestinyInventoryItemDefinition",
+      "locale": "zh-chs",
+      "fileName": "DestinyInventoryItemDefinition.zh-chs.json",
+      "sourcePath": "/common/destiny2_content/json/zh-chs/DestinyInventoryItemDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 38894
+    },
+    {
+      "component": "DestinyActivityDefinition",
+      "locale": "zh-chs",
+      "fileName": "DestinyActivityDefinition.zh-chs.json",
+      "sourcePath": "/common/destiny2_content/json/zh-chs/DestinyActivityDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 4069
+    },
+    {
+      "component": "DestinySandboxPerkDefinition",
+      "locale": "zh-chs",
+      "fileName": "DestinySandboxPerkDefinition.zh-chs.json",
+      "sourcePath": "/common/destiny2_content/json/zh-chs/DestinySandboxPerkDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 5203
+    },
+    {
+      "component": "DestinyVendorDefinition",
+      "locale": "zh-chs",
+      "fileName": "DestinyVendorDefinition.zh-chs.json",
+      "sourcePath": "/common/destiny2_content/json/zh-chs/DestinyVendorDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+      "count": 2170
+    }
+  ],
+  "availableComponents": [
+    "DestinyAchievementDefinition",
+    "DestinyActivityDefinition",
+    "DestinyActivityDifficultyTierCollectionDefinition",
+    "DestinyActivityFamilyDefinition",
+    "DestinyActivityGraphDefinition",
+    "DestinyActivityInteractableDefinition",
+    "DestinyActivityLoadoutRestrictionDefinition",
+    "DestinyActivityModeDefinition",
+    "DestinyActivityModifierDefinition",
+    "DestinyActivitySelectableSkullCollectionDefinition",
+    "DestinyActivitySelectableSkullExclusionGroupDefinition",
+    "DestinyActivitySkullCategoryDefinition",
+    "DestinyActivitySkullCollectionDefinition",
+    "DestinyActivitySkullSubcategoryDefinition",
+    "DestinyActivityTypeDefinition",
+    "DestinyArtDyeChannelDefinition",
+    "DestinyArtDyeReferenceDefinition",
+    "DestinyArtifactDefinition",
+    "DestinyBondDefinition",
+    "DestinyBreakerTypeDefinition",
+    "DestinyCharacterCustomizationCategoryDefinition",
+    "DestinyCharacterCustomizationOptionDefinition",
+    "DestinyChecklistDefinition",
+    "DestinyClassDefinition",
+    "DestinyCollectibleDefinition",
+    "DestinyDamageTypeDefinition",
+    "DestinyDestinationDefinition",
+    "DestinyEnergyTypeDefinition",
+    "DestinyEntitlementOfferDefinition",
+    "DestinyEquipableItemSetDefinition",
+    "DestinyEquipmentSlotDefinition",
+    "DestinyEventCardDefinition",
+    "DestinyFactionDefinition",
+    "DestinyFireteamFinderActivityGraphDefinition",
+    "DestinyFireteamFinderActivitySetDefinition",
+    "DestinyFireteamFinderConstantsDefinition",
+    "DestinyFireteamFinderLabelDefinition",
+    "DestinyFireteamFinderLabelGroupDefinition",
+    "DestinyFireteamFinderOptionDefinition",
+    "DestinyFireteamFinderOptionGroupDefinition",
+    "DestinyGenderDefinition",
+    "DestinyGlobalConstantsDefinition",
+    "DestinyGuardianRankConstantsDefinition",
+    "DestinyGuardianRankDefinition",
+    "DestinyIconDefinition",
+    "DestinyInventoryBucketDefinition",
+    "DestinyInventoryItemConstantsDefinition",
+    "DestinyInventoryItemDefinition",
+    "DestinyInventoryItemLiteDefinition",
+    "DestinyItemCategoryDefinition",
+    "DestinyItemFilterDefinition",
+    "DestinyItemTierTypeDefinition",
+    "DestinyLoadoutColorDefinition",
+    "DestinyLoadoutConstantsDefinition",
+    "DestinyLoadoutIconDefinition",
+    "DestinyLoadoutNameDefinition",
+    "DestinyLocationDefinition",
+    "DestinyLoreDefinition",
+    "DestinyMaterialRequirementSetDefinition",
+    "DestinyMedalTierDefinition",
+    "DestinyMetricDefinition",
+    "DestinyMilestoneDefinition",
+    "DestinyObjectiveDefinition",
+    "DestinyPlaceDefinition",
+    "DestinyPlatformBucketMappingDefinition",
+    "DestinyPlugSetDefinition",
+    "DestinyPowerCapDefinition",
+    "DestinyPresentationNodeDefinition",
+    "DestinyProgressionDefinition",
+    "DestinyProgressionLevelRequirementDefinition",
+    "DestinyProgressionMappingDefinition",
+    "DestinyRaceDefinition",
+    "DestinyRecordDefinition",
+    "DestinyReportReasonCategoryDefinition",
+    "DestinyRewardAdjusterPointerDefinition",
+    "DestinyRewardAdjusterProgressionMapDefinition",
+    "DestinyRewardItemListDefinition",
+    "DestinyRewardMappingDefinition",
+    "DestinyRewardSourceDefinition",
+    "DestinySackRewardItemListDefinition",
+    "DestinySandboxPatternDefinition",
+    "DestinySandboxPerkDefinition",
+    "DestinySeasonDefinition",
+    "DestinySeasonPassDefinition",
+    "DestinySocialCommendationDefinition",
+    "DestinySocialCommendationNodeDefinition",
+    "DestinySocketCategoryDefinition",
+    "DestinySocketTypeDefinition",
+    "DestinyStatDefinition",
+    "DestinyStatGroupDefinition",
+    "DestinyTraitDefinition",
+    "DestinyUnlockCountMappingDefinition",
+    "DestinyUnlockDefinition",
+    "DestinyUnlockEventDefinition",
+    "DestinyUnlockExpressionMappingDefinition",
+    "DestinyUnlockValueDefinition",
+    "DestinyVendorDefinition",
+    "DestinyVendorGroupDefinition"
+  ],
+  "usage": "使用 --components=... 选择组件，或使用 --all-components 下载当前 Manifest 的全部 JSON 组件。"
+}
