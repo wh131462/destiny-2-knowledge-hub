@@ -49,10 +49,12 @@ export const gearItems = [
 export const gearById = Object.fromEntries(gearItems.map(item => [item.id, item]))
 
 const armorModDefinitions = [
-  { id: 'stat-resilience', name: '韧性模组', slot: 'any', cost: 3, stat: 'resilience', value: 10 },
-  { id: 'stat-discipline', name: '纪律模组', slot: 'any', cost: 3, stat: 'discipline', value: 10 },
-  { id: 'stat-mobility', name: '机动模组', slot: 'any', cost: 3, stat: 'mobility', value: 10 },
-  { id: 'stat-recovery', name: '恢复模组', slot: 'any', cost: 4, stat: 'recovery', value: 10 },
+  { id: 'stat-health', name: '生命值模组', en: 'Health Mod', slot: 'any', cost: 3, stat: 'health', value: 10, manifestHash: 1180408010 },
+  { id: 'stat-melee', name: '近战模组', en: 'Melee Mod', slot: 'any', cost: 3, stat: 'melee', value: 10, manifestHash: 4287799666 },
+  { id: 'stat-grenade', name: '手雷模组', en: 'Grenade Mod', slot: 'any', cost: 3, stat: 'grenade', value: 10, manifestHash: 1435557120 },
+  { id: 'stat-class', name: '职业模组', en: 'Class Mod', slot: 'any', cost: 3, stat: 'class', value: 10, manifestHash: 4204488676 },
+  { id: 'stat-super', name: '超能模组', en: 'Super Mod', slot: 'any', cost: 3, stat: 'super', value: 10, manifestHash: 2724608735 },
+  { id: 'stat-weapons', name: '武器模组', en: 'Weapons Mod', slot: 'any', cost: 3, stat: 'weapons', value: 10, manifestHash: 4183296050 },
   { id: 'hands-on', name: '拳到力来', slot: 'helmet', cost: 3, effect: '近战最后一击提供额外超能力能量' },
   { id: 'ashes-to-assets', name: '点尸成金', slot: 'helmet', cost: 3, effect: '手雷最后一击提供额外超能力能量' },
   { id: 'heavy-ammo-finder', name: '重型弹药搜寻', slot: 'helmet', cost: 3, effect: '使用主武器击杀累积重弹搜寻进度' },

@@ -11,10 +11,17 @@ const inventory = await load('DestinyInventoryItemDefinition.zh-chs.json')
 const activities = await load('DestinyActivityDefinition.zh-chs.json')
 const perks = await load('DestinySandboxPerkDefinition.zh-chs.json')
 const vendors = await load('DestinyVendorDefinition.zh-chs.json')
+const extraComponents = { artifacts: 'DestinyArtifactDefinition', itemSets: 'DestinyEquipableItemSetDefinition', classes: 'DestinyClassDefinition', damageTypes: 'DestinyDamageTypeDefinition', stats: 'DestinyStatDefinition', activityTypes: 'DestinyActivityTypeDefinition', itemCategories: 'DestinyItemCategoryDefinition', equipmentSlots: 'DestinyEquipmentSlotDefinition', socketCategories: 'DestinySocketCategoryDefinition', socketTypes: 'DestinySocketTypeDefinition' }
+const extras = Object.fromEntries(await Promise.all(Object.entries(extraComponents).map(async ([key, component]) => [key, await load(`${component}.zh-chs.json`)])))
+for (const snapshot of [activities, perks, vendors, ...Object.values(extras)]) {
+  if (snapshot.manifestVersion !== inventory.manifestVersion) throw new Error('中文组件版本不一致，拒绝合并')
+}
 const payload = {
   manifestVersion: inventory.manifestVersion,
   locale: 'zh-chs',
   generatedAt: new Date().toISOString(),
+  syncedAt: inventory.syncedAt,
+  ...Object.fromEntries(Object.entries(extras).map(([key, snapshot]) => [key, project(snapshot.data, ['name', 'description'])])),
   items: project(inventory.data, ['name', 'description']),
   activities: project(activities.data, ['name', 'description']),
   perks: project(perks.data, ['name', 'description']),

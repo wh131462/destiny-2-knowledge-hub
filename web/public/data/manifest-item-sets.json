@@ -1,6 +1,6 @@
 {
-  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-  "syncedAt": "2026-08-31T09:14:03.132Z",
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+  "syncedAt": "2026-09-08T04:56:13.952Z",
   "sourceComponent": "DestinyEquipableItemSetDefinition",
   "count": 56,
   "sets": [
@@ -8,6 +8,7 @@
       "hash": 50540439,
       "name": "Triumphal Anthem",
       "nameZh": "凯旋圣歌",
+      "icon": "/common/destiny2_content/icons/feb1e5c18a0777fc89c8b3cc9031a169.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -69,6 +70,7 @@
       "hash": 222121557,
       "name": "Seventh Seraph",
       "nameZh": "第七炽天使",
+      "icon": "/common/destiny2_content/icons/0130d9bb4ec3bc0a83e73948270df3f2.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -130,6 +132,7 @@
       "hash": 239346083,
       "name": "Techsec",
       "nameZh": "科技安全",
+      "icon": "/common/destiny2_content/icons/e400486efea1054dba5c1ed41c1e57d2.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -190,7 +193,8 @@
     {
       "hash": 305091568,
       "name": "Oryx's Memory",
-      "nameZh": null,
+      "nameZh": "欧里克斯记忆",
+      "icon": "/common/destiny2_content/icons/b74049aa88629eb1f03a761ec9b96849.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -251,7 +255,8 @@
     {
       "hash": 305966751,
       "name": "Iron Panoply Set",
-      "nameZh": "铁甲",
+      "nameZh": "铁甲套装",
+      "icon": "/common/destiny2_content/icons/2e0ba83031eefb92247896e94c0d46cf.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -313,6 +318,7 @@
       "hash": 338646742,
       "name": "Resonant Fury",
       "nameZh": "共振狂怒",
+      "icon": "/common/destiny2_content/icons/da8669bdb50ef263019c5015c7827cc9.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -374,6 +380,7 @@
       "hash": 428813981,
       "name": "Reverie Dawn",
       "nameZh": "幻梦黎明",
+      "icon": "/common/destiny2_content/icons/9ed2208f882fd6397e2ec4b1d799972f.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -435,6 +442,7 @@
       "hash": 499993704,
       "name": "Luminopotent",
       "nameZh": "光耀万钧",
+      "icon": "/common/destiny2_content/icons/d7abf9f674a844455c76ba6257764ba0.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -495,7 +503,8 @@
     {
       "hash": 640349758,
       "name": "Kentarch 3",
-      "nameZh": null,
+      "nameZh": "第三百夫长",
+      "icon": "/common/destiny2_content/icons/483072f839cb74f16abed279e5bc9c44.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -556,7 +565,8 @@
     {
       "hash": 673904900,
       "name": "Great Hunt",
-      "nameZh": null,
+      "nameZh": "伟大狩猎",
+      "icon": "/common/destiny2_content/icons/41a07585959355eab585d13df5583402.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -617,7 +627,8 @@
     {
       "hash": 741162535,
       "name": "Atheon's Memory",
-      "nameZh": null,
+      "nameZh": "埃希恩记忆",
+      "icon": "/common/destiny2_content/icons/c0ef7b4f342a19611f0c34e74db91dbf.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -679,6 +690,7 @@
       "hash": 742845781,
       "name": "Cruel Electrum",
       "nameZh": "残酷琥珀",
+      "icon": "/common/destiny2_content/icons/bb6311ab1d9214c0dc253d0cc2ff7ecb.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -740,6 +752,7 @@
       "hash": 774717709,
       "name": "Legacy's Oath",
       "nameZh": "传承之誓",
+      "icon": "/common/destiny2_content/icons/2fb3a18d334cc836c63e916120b84381.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -801,6 +814,7 @@
       "hash": 894715166,
       "name": "AION Adapter",
       "nameZh": "艾昂适配",
+      "icon": "/common/destiny2_content/icons/9afb304fc5255e32212e0b792897abf2.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -861,7 +875,8 @@
     {
       "hash": 1007956300,
       "name": "Collective Psyche",
-      "nameZh": "集体心灵袖甲",
+      "nameZh": "集体心灵",
+      "icon": "/common/destiny2_content/icons/4998ffdcf965e9f9207c9d425c66ec29.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -923,6 +938,7 @@
       "hash": 1083114430,
       "name": "Bushido",
       "nameZh": "武士道",
+      "icon": "/common/destiny2_content/icons/761d69220af8862204ca10c56d8cb083.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -984,6 +1000,7 @@
       "hash": 1223381128,
       "name": "AION Renewal",
       "nameZh": "艾昂复兴",
+      "icon": "/common/destiny2_content/icons/e9593ee50c0adc61bfc1491cf65c6b9b.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1045,6 +1062,7 @@
       "hash": 1339137760,
       "name": "Techeun's Regalia",
       "nameZh": "灵巫华服",
+      "icon": "/common/destiny2_content/icons/cb590f9e0b39b871c899c27cf7d642ea.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1106,6 +1124,7 @@
       "hash": 1439803506,
       "name": "Apostate's Blade",
       "nameZh": "变节者利刃",
+      "icon": "/common/destiny2_content/icons/fa6a3329981ad379b3c10b3c277d0795.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1166,7 +1185,8 @@
     {
       "hash": 1490136267,
       "name": "CODA",
-      "nameZh": null,
+      "nameZh": "终曲",
+      "icon": "/common/destiny2_content/icons/dfb39e8b090183ecb63c0c5e9827f302.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1227,7 +1247,8 @@
     {
       "hash": 1507061013,
       "name": "Yearning Echo",
-      "nameZh": null,
+      "nameZh": "渴望回响",
+      "icon": "/common/destiny2_content/icons/ac0ef0bfb6dabb1a1768725308b6f70c.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1288,7 +1309,8 @@
     {
       "hash": 1523985791,
       "name": "TM Custom",
-      "nameZh": null,
+      "nameZh": "定制特机",
+      "icon": "/common/destiny2_content/icons/1260de30c13c48cf0b1f31d9da692147.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1350,6 +1372,7 @@
       "hash": 1557540933,
       "name": "Deep Explorer",
       "nameZh": "深渊探索者",
+      "icon": "/common/destiny2_content/icons/2cca2691f2c00eef1ef55bb5463e2aed.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1410,7 +1433,8 @@
     {
       "hash": 1624798568,
       "name": "Taken King",
-      "nameZh": null,
+      "nameZh": "傀儡邪神",
+      "icon": "/common/destiny2_content/icons/f3e9c08fad250b37f4bc80e1cf27330d.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1472,6 +1496,7 @@
       "hash": 1625535837,
       "name": "First Ascent",
       "nameZh": "初次飞升",
+      "icon": "/common/destiny2_content/icons/79077c4fd2522656b180761d6273bb93.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1533,6 +1558,7 @@
       "hash": 1658353742,
       "name": "Dark Age",
       "nameZh": "黑暗纪元",
+      "icon": "/common/destiny2_content/icons/86a7a6d8164fd2f7e74e883ce4d89dcb.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1593,7 +1619,8 @@
     {
       "hash": 1777208707,
       "name": "Iron Battalion Set",
-      "nameZh": "机械营",
+      "nameZh": "机械营套装",
+      "icon": "/common/destiny2_content/icons/3efe1f8914f11d2224d6edd87ee5f1be.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1655,6 +1682,7 @@
       "hash": 1790308978,
       "name": "Cyberserpent Null",
       "nameZh": "虚无赛博毒蛇",
+      "icon": "/common/destiny2_content/icons/ff3f08b289cf56d63b379bac36570782.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1716,6 +1744,7 @@
       "hash": 2032049849,
       "name": "Circuit",
       "nameZh": "回路",
+      "icon": "/common/destiny2_content/icons/e10b1b74196ad1efb89f0c4f3d8bf490.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1777,6 +1806,7 @@
       "hash": 2132906400,
       "name": "New Demotic",
       "nameZh": "新通俗",
+      "icon": "/common/destiny2_content/icons/9c3746d8b3b8d00f94da33007886a08a.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1838,6 +1868,7 @@
       "hash": 2151917545,
       "name": "Thriving Survivor",
       "nameZh": "兴旺幸存者",
+      "icon": "/common/destiny2_content/icons/0f21a432eb2434119f175f1a2392b6a8.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1899,6 +1930,7 @@
       "hash": 2250480800,
       "name": "Dreambane",
       "nameZh": "梦境祸根",
+      "icon": "/common/destiny2_content/icons/74d044ab82964e40be33555424a08d87.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -1960,6 +1992,7 @@
       "hash": 2258577662,
       "name": "Wild Anthem",
       "nameZh": "狂野圣歌",
+      "icon": "/common/destiny2_content/icons/9070287b124230033332aa1d3580a698.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2021,6 +2054,7 @@
       "hash": 2386215115,
       "name": "Pantheos Resplendent",
       "nameZh": "众神辉煌",
+      "icon": "/common/destiny2_content/icons/79ccd6b376a6414c8930fd761b6b0c7f.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2082,6 +2116,7 @@
       "hash": 2391762223,
       "name": "Swordmaster",
       "nameZh": "剑圣",
+      "icon": "/common/destiny2_content/icons/ae09c4846cbe3ac18ad296888cf1e1f0.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2142,7 +2177,8 @@
     {
       "hash": 2450108908,
       "name": "Wayward Psyche Set",
-      "nameZh": "任性心灵袖甲",
+      "nameZh": "任性心灵套装",
+      "icon": "/common/destiny2_content/icons/44b7442da431a6dbbc279e4e7923d85c.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2203,7 +2239,8 @@
     {
       "hash": 2461275960,
       "name": "Eutechnology",
-      "nameZh": "巫灵科技袖甲",
+      "nameZh": "巫灵科技",
+      "icon": "/common/destiny2_content/icons/9181ddcad78d88bdd30a02dac2cb3e09.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2265,6 +2302,7 @@
       "hash": 2481896422,
       "name": "Veritas",
       "nameZh": "真相",
+      "icon": "/common/destiny2_content/icons/1d8de7084bff5859fd4fd0d2857fce8e.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2326,6 +2364,7 @@
       "hash": 2554324129,
       "name": "Wildwood",
       "nameZh": "野木",
+      "icon": "/common/destiny2_content/icons/38418853dbb7665853a06be79c26ffc9.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2386,7 +2425,8 @@
     {
       "hash": 2586994783,
       "name": "Nezarec's Nightmare",
-      "nameZh": null,
+      "nameZh": "奈扎雷克的梦魇",
+      "icon": "/common/destiny2_content/icons/bf8d8155370ff20b69bb2e4d86c0ecd3.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2448,6 +2488,7 @@
       "hash": 2618364783,
       "name": "Per Audacia",
       "nameZh": "无畏征途",
+      "icon": "/common/destiny2_content/icons/e722ec2d6204e5a6f632ee5f595c0a01.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2508,7 +2549,8 @@
     {
       "hash": 2620550053,
       "name": "Crota's Memory",
-      "nameZh": null,
+      "nameZh": "克洛塔记忆",
+      "icon": "/common/destiny2_content/icons/f9d72b7f79a1f4c023e333e6424aa8bb.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2569,7 +2611,8 @@
     {
       "hash": 2687807560,
       "name": "Promised",
-      "nameZh": "允诺统治",
+      "nameZh": "应许之物",
+      "icon": "/common/destiny2_content/icons/ec76b5b8f71acd4c5091cd3e1b05b098.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2631,8 +2674,9 @@
       "hash": 2751989785,
       "name": "Smoke Jumper Set",
       "nameZh": "空降灭火套装",
+      "icon": "/common/destiny2_content/icons/c6ceeb9a5751180bdd7c99439a4c52ab.jpg",
       "description": "",
-      "descriptionZh": "从相应的季票中获取你当前启用职业的一套护甲奖励。\n\n若已获得其中部分物品，则套装价格相应下降。",
+      "descriptionZh": null,
       "itemHashes": [
         2280816555,
         1003997240,
@@ -2692,6 +2736,7 @@
       "hash": 2839368623,
       "name": "Shrewd Survivor",
       "nameZh": "精明幸存者",
+      "icon": "/common/destiny2_content/icons/97b3d6a9f8c1e84beecd377fd02c3ec1.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2753,8 +2798,9 @@
       "hash": 2947197258,
       "name": "Disaster Corps Set",
       "nameZh": "灾难军团套装",
+      "icon": "/common/destiny2_content/icons/add40217328f6b3b8d86e237b3f4b31a.jpg",
       "description": "",
-      "descriptionZh": "从相应的季票中获取你当前启用职业的一套护甲奖励。\n\n若已获得其中部分物品，则套装价格相应下降。",
+      "descriptionZh": null,
       "itemHashes": [
         517814638,
         3957372883,
@@ -2814,6 +2860,7 @@
       "hash": 3090557911,
       "name": "Crystocrene",
       "nameZh": "溢冰",
+      "icon": "/common/destiny2_content/icons/3e0448fec7a680b4f3c944dd66c4b4a4.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2875,6 +2922,7 @@
       "hash": 3120219904,
       "name": "Exodus Down",
       "nameZh": "移民号陨落",
+      "icon": "/common/destiny2_content/icons/d21431b6cfeffa7b6598eb0b74f01b97.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2936,6 +2984,7 @@
       "hash": 3252452908,
       "name": "Last Discipline",
       "nameZh": "最后纪律",
+      "icon": "/common/destiny2_content/icons/e5c926016921220d4b4f634a6a662f87.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -2997,6 +3046,7 @@
       "hash": 3259216565,
       "name": "Twofold Crown",
       "nameZh": "双重王冠",
+      "icon": "/common/destiny2_content/icons/86efa1d0516695f2bf097f1876df4a7a.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -3058,6 +3108,7 @@
       "hash": 3283637820,
       "name": "Thunderhead",
       "nameZh": "积雨云",
+      "icon": "/common/destiny2_content/icons/a63b6460c51ab31b7dcb5c1240cf5dd1.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -3119,6 +3170,7 @@
       "hash": 3639539903,
       "name": "Spacewalk",
       "nameZh": "太空漫步",
+      "icon": "/common/destiny2_content/icons/4254f817ee0d92b294e5efcc4c7c0482.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -3179,7 +3231,8 @@
     {
       "hash": 3656317458,
       "name": "Flain",
-      "nameZh": null,
+      "nameZh": "剥露者",
+      "icon": "/common/destiny2_content/icons/057cc7ed4d044e7e31d9d3c46ae8e107.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -3241,6 +3294,7 @@
       "hash": 3734029045,
       "name": "Ferropotent",
       "nameZh": "铁能",
+      "icon": "/common/destiny2_content/icons/f2e5b2abd4f59f2634055bf3e59654b6.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -3302,6 +3356,7 @@
       "hash": 3737690559,
       "name": "Lustrous",
       "nameZh": "光泽",
+      "icon": "/common/destiny2_content/icons/689a75795ccb6955d5f888e7f818f2a7.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [
@@ -3363,6 +3418,7 @@
       "hash": 4222859846,
       "name": "Sage Protector",
       "nameZh": "圣贤保护者",
+      "icon": "/common/destiny2_content/icons/52638b17019c098c6c1da2f1982d8490.jpg",
       "description": "",
       "descriptionZh": null,
       "itemHashes": [

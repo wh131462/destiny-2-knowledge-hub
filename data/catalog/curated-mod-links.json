@@ -1,96 +1,243 @@
 {
-  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-  "syncedAt": "2026-08-31T07:43:51.530Z",
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+  "syncedAt": "2026-09-08T04:56:13.952Z",
   "sourceComponent": "DestinyInventoryItemDefinition",
-  "count": 23,
-  "matched": 20,
-  "consistent": 19,
+  "count": 25,
+  "matched": 25,
+  "consistent": 24,
   "items": [
     {
-      "id": "stat-resilience",
-      "name": "韧性模组",
-      "englishName": "Resilience Mod",
-      "matched": false,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-      "manifestHashes": [],
-      "primaryHash": null,
-      "declared": {
-        "slot": "any",
-        "energyCost": 3,
-        "effect": null,
-        "stat": "resilience",
-        "value": 10
-      },
-      "official": null,
-      "consistent": false
-    },
-    {
-      "id": "stat-discipline",
-      "name": "纪律模组",
-      "englishName": "Discipline Mod",
-      "matched": false,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-      "manifestHashes": [],
-      "primaryHash": null,
-      "declared": {
-        "slot": "any",
-        "energyCost": 3,
-        "effect": null,
-        "stat": "discipline",
-        "value": 10
-      },
-      "official": null,
-      "consistent": false
-    },
-    {
-      "id": "stat-mobility",
-      "name": "机动模组",
-      "englishName": "Mobility Mod",
+      "id": "stat-health",
+      "name": "生命值模组",
+      "englishName": "Health Mod",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
-        1633794450
+        1180408010,
+        2568808786,
+        3790655795
       ],
-      "primaryHash": 1633794450,
+      "primaryHash": 1180408010,
       "declared": {
         "slot": "any",
         "energyCost": 3,
         "effect": null,
-        "stat": "mobility",
+        "stat": "health",
         "value": 10
       },
       "official": {
         "slot": "any",
-        "energyCost": null,
-        "description": "Increased mobility.",
-        "perkDetails": []
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 86466353,
+            "name": "+10 Health ▲",
+            "nameZh": "+10 生命值 ▲",
+            "description": "+10 Health ▲",
+            "descriptionZh": "+10 生命值 ▲",
+            "icon": "/common/destiny2_content/icons/54de366c56c06fb2c4729196ea1a9297.png",
+            "visibility": 0,
+            "requirement": ""
+          }
+        ]
       },
       "consistent": true
     },
     {
-      "id": "stat-recovery",
-      "name": "恢复模组",
-      "englishName": "Recovery Mod",
-      "matched": false,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-      "manifestHashes": [],
-      "primaryHash": null,
+      "id": "stat-melee",
+      "name": "近战模组",
+      "englishName": "Melee Mod",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+      "manifestHashes": [
+        1763607626,
+        4287799666
+      ],
+      "primaryHash": 4287799666,
       "declared": {
         "slot": "any",
-        "energyCost": 4,
+        "energyCost": 3,
         "effect": null,
-        "stat": "recovery",
+        "stat": "melee",
         "value": 10
       },
-      "official": null,
-      "consistent": false
+      "official": {
+        "slot": "any",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1614906885,
+            "name": "+10 Melee ▲",
+            "nameZh": "+10 近战 ▲",
+            "description": "+10 Melee ▲",
+            "descriptionZh": "+10 近战 ▲",
+            "icon": "/common/destiny2_content/icons/8843a4259e3c98384af660fdb0789231.png",
+            "visibility": 0,
+            "requirement": ""
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "stat-grenade",
+      "name": "手雷模组",
+      "englishName": "Grenade Mod",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+      "manifestHashes": [
+        1435557120,
+        3896141096
+      ],
+      "primaryHash": 1435557120,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "grenade",
+        "value": 10
+      },
+      "official": {
+        "slot": "any",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 4234432032,
+            "name": "+10 Grenade ▲",
+            "nameZh": "+10 手雷 ▲",
+            "description": "+10 Grenade ▲",
+            "descriptionZh": "+10 手雷 ▲",
+            "icon": "/common/destiny2_content/icons/482529ce1e7decde770aa2f252a1a493.png",
+            "visibility": 0,
+            "requirement": ""
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "stat-class",
+      "name": "职业模组",
+      "englishName": "Class Mod",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+      "manifestHashes": [
+        126924337,
+        2493161484,
+        4204488676
+      ],
+      "primaryHash": 4204488676,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "class",
+        "value": 10
+      },
+      "official": {
+        "slot": "any",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 2874419691,
+            "name": "+10 Class ▲",
+            "nameZh": "+10 职业 ▲",
+            "description": "+10 Class ▲",
+            "descriptionZh": "+10 职业 ▲",
+            "icon": "/common/destiny2_content/icons/1f8cf3df6796c55fcc2cc37fe1fcc38b.png",
+            "visibility": 0,
+            "requirement": ""
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "stat-super",
+      "name": "超能模组",
+      "englishName": "Super Mod",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+      "manifestHashes": [
+        444600262,
+        1866564759,
+        2724608735
+      ],
+      "primaryHash": 2724608735,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "super",
+        "value": 10
+      },
+      "official": {
+        "slot": "any",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1266565082,
+            "name": "+10 Super ▲",
+            "nameZh": "+10 超能 ▲",
+            "description": "+10 Super ▲",
+            "descriptionZh": "+10 超能 ▲",
+            "icon": "/common/destiny2_content/icons/17ac31da0194a1b4fffd61149551bbce.png",
+            "visibility": 0,
+            "requirement": ""
+          }
+        ]
+      },
+      "consistent": true
+    },
+    {
+      "id": "stat-weapons",
+      "name": "武器模组",
+      "englishName": "Weapons Mod",
+      "matched": true,
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+      "manifestHashes": [
+        275671171,
+        3808902618,
+        4183296050
+      ],
+      "primaryHash": 4183296050,
+      "declared": {
+        "slot": "any",
+        "energyCost": 3,
+        "effect": null,
+        "stat": "weapons",
+        "value": 10
+      },
+      "official": {
+        "slot": "any",
+        "energyCost": 3,
+        "description": "",
+        "perkDetails": [
+          {
+            "hash": 1976276545,
+            "name": "+10 Weapon ▲",
+            "nameZh": "+10 武器 ▲",
+            "description": "+10 Weapon ▲",
+            "descriptionZh": "+10 武器 ▲",
+            "icon": "/common/destiny2_content/icons/00ef821d012d10a5f08bec938a3b195c.png",
+            "visibility": 0,
+            "requirement": ""
+          }
+        ]
+      },
+      "consistent": true
     },
     {
       "id": "hands-on",
       "name": "拳到力来",
       "englishName": "Hands-On",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         1036557198,
         3938489430
@@ -114,7 +261,9 @@
             "nameZh": "拳到力来",
             "description": "Gain bonus Super energy on melee kills.",
             "descriptionZh": "近战击杀可提供额外超能能量。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/0abfcdf8c4c447ad5a1ec31cd1774ef5.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -125,7 +274,7 @@
       "name": "点尸成金",
       "englishName": "Ashes to Assets",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         856936828,
         2136310244
@@ -149,7 +298,9 @@
             "nameZh": "点尸成金",
             "description": "Gain bonus Super energy on grenade kills.",
             "descriptionZh": "手雷击杀可提供额外超能能量。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/860d45456e5924bc5575b7a2fd14848d.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -160,7 +311,7 @@
       "name": "重型弹药搜寻",
       "englishName": "Heavy Ammo Finder",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         644105,
         554409585
@@ -184,7 +335,9 @@
             "nameZh": "重型弹药搜寻者",
             "description": "Increases the effect of all contributions towards the Heavy ammo meter.",
             "descriptionZh": "提升对重型弹药量表的所有计入效果。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/fdcbb78db8f38cec62ec7ca2dbab12cc.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -195,7 +348,7 @@
       "name": "重型弹药侦察",
       "englishName": "Heavy Ammo Scout",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         1274140735
       ],
@@ -218,7 +371,9 @@
             "nameZh": "重型弹药斥候",
             "description": "When you fill your Heavy ammo meter, it also creates smaller bricks of Heavy ammo for your allies.",
             "descriptionZh": "当你填满重型弹药量表时，也会为盟友生成较小的重型弹药盒。",
-            "visibility": 1
+            "icon": "/common/destiny2_content/icons/660d372a9a47d94d229216582b6e0e49.png",
+            "visibility": 1,
+            "requirement": "This mod does not function in the Crucible."
           }
         ]
       },
@@ -229,7 +384,7 @@
       "name": "重拳出击",
       "englishName": "Heavy Handed",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         1709236482,
         2447449706
@@ -253,7 +408,9 @@
             "nameZh": "回天掌法",
             "description": "Your powered melee final blows create Orbs of Power.",
             "descriptionZh": "你的充能近战最后一击可生成能量球。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/b4f287bb2bea2ae61431cfc3a35f6fa5.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -264,7 +421,7 @@
       "name": "火力",
       "englishName": "Firepower",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         965934024,
         2485657760
@@ -288,7 +445,9 @@
             "nameZh": "火力无限",
             "description": "Your grenade final blows create Orbs of Power.",
             "descriptionZh": "你的手雷最后一击可生成能量球。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/19e250848bd065ff0b36b410697d2bf5.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -299,7 +458,7 @@
       "name": "冲击感应",
       "englishName": "Impact Induction",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         377010989,
         1153260021
@@ -323,7 +482,9 @@
             "nameZh": "伤害感应",
             "description": "Causing damage with a powered melee attack reduces your grenade cooldown.",
             "descriptionZh": "使用充能近战攻击造成伤害可缩短手雷的冷却时间。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/23cbf44bc856199a216f76d92ce3079c.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -334,7 +495,7 @@
       "name": "聚焦打击",
       "englishName": "Focusing Strike",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         3657186535,
         3685945823
@@ -358,7 +519,9 @@
             "nameZh": "专注打击",
             "description": "Grants class ability energy when you cause damage with a powered melee attack.",
             "descriptionZh": "使用充能近战攻击造成伤害时获得职业技能能量。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/ece0654ecd4b16e5011903f03eee8c74.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -369,7 +532,7 @@
       "name": "震荡阻尼器",
       "englishName": "Concussive Dampener",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         930759851,
         3719981603
@@ -393,7 +556,9 @@
             "nameZh": "震荡阻尼器",
             "description": "Reduces incoming area-of-effect damage from combatants.",
             "descriptionZh": "减少来自敌方战斗人员的范围伤害。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/6df50890b5e91f346630ab461cd78388.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -404,7 +569,7 @@
       "name": "近战伤害抗性",
       "englishName": "Melee Damage Resistance",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         1763668984,
         2562645296
@@ -428,7 +593,9 @@
             "nameZh": "近战伤害抗性",
             "description": "Reduces incoming damage from combatants that are at point-blank range.",
             "descriptionZh": "减少来自近距离敌人的伤害。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/46520f0b4fefc0270823d0b968270142.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -439,7 +606,7 @@
       "name": "狙击伤害抗性",
       "englishName": "Sniper Damage Resistance",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         657773637,
         707237917
@@ -463,7 +630,9 @@
             "nameZh": "狙击伤害抗性",
             "description": "Reduces incoming damage from combatants that are at long range.",
             "descriptionZh": "减少来自远距离敌人的伤害。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/940545b1b27bab39eb6fbf059d26b0bc.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -474,7 +643,7 @@
       "name": "休养生息",
       "englishName": "Recuperation",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         4087056174
       ],
@@ -497,7 +666,9 @@
             "nameZh": "复原",
             "description": "Replenishes health each time you pick up an Orb of Power.",
             "descriptionZh": "每次拾取能量球都将恢复生命值。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/db7f4f4f8c9ec48b5303cf5a2f8dc662.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -508,7 +679,7 @@
       "name": "活力充沛",
       "englishName": "Better Already",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         2194294579
       ],
@@ -531,7 +702,9 @@
             "nameZh": "药到病除",
             "description": "Your health begins to regenerate immediately after picking up an Orb of Power.",
             "descriptionZh": "拾取能量球后立即开始恢复生命值。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/d436568b58806b6666fa250ec9a7b593.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -542,7 +715,7 @@
       "name": "炽阳武器激涌",
       "englishName": "Solar Weapon Surge",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         2283894334,
         2319885414
@@ -566,7 +739,9 @@
             "nameZh": "烈日武器激涌",
             "description": "Your Solar weapons gain a small bonus to damage while you have any Armor Charge. Your Armor Charge now decays over time.",
             "descriptionZh": "在拥有任何护甲充能时，你的烈日武器会获得小幅额外伤害加成。你的护甲充能现在会逐渐衰减。",
-            "visibility": 1
+            "icon": "/common/destiny2_content/icons/5a986074a3872e3b3d73ea61d4e7b09b.png",
+            "visibility": 1,
+            "requirement": ""
           }
         ]
       },
@@ -577,7 +752,7 @@
       "name": "虚空武器激涌",
       "englishName": "Void Weapon Surge",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         3467460423,
         3914973263
@@ -601,7 +776,9 @@
             "nameZh": "虚空武器激涌",
             "description": "Your Void weapons gain a small bonus to damage while you have any Armor Charge. Your Armor Charge now decays over time.",
             "descriptionZh": "在拥有任何护甲充能时，你的虚空武器会获得小幅额外伤害加成。你的护甲充能现在会逐渐衰减。",
-            "visibility": 1
+            "icon": "/common/destiny2_content/icons/1ddb23b77d10dbd2e5597017160f71e9.png",
+            "visibility": 1,
+            "requirement": ""
           }
         ]
       },
@@ -612,7 +789,7 @@
       "name": "特殊终结技",
       "englishName": "Special Finisher",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         4004774872
       ],
@@ -635,7 +812,9 @@
             "nameZh": "特殊终结技",
             "description": "Finishers generate Special ammo for the whole fireteam. \n\nConsumes 3 stacks of Armor Charge.",
             "descriptionZh": "终结技可为整个火力战队生成特殊弹药。\n\n消耗3层护甲充能。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/15490411c3d045eb4c060ad39d3950cb.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -646,7 +825,7 @@
       "name": "强力吸引",
       "englishName": "Powerful Attraction",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         11126525
       ],
@@ -669,7 +848,9 @@
             "nameZh": "强力吸引",
             "description": "Automatically collects nearby Orbs of Power when you activate your class ability.",
             "descriptionZh": "激活职业技能时自动收集附近的能量球。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/f66a443a73883ec0c196ac7be4551cfc.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -680,7 +861,7 @@
       "name": "收割者",
       "englishName": "Reaper",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         40751621,
         4149682173
@@ -704,7 +885,9 @@
             "nameZh": "收割者",
             "description": "Shortly after using your class ability, your next weapon final blow spawns an Orb of Power.",
             "descriptionZh": "在使用你的职业技能后的短时间内，你的下一次武器最后一击会生成一个能量球。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/f1fba3ecacb97239cb2f8422dd8c7a03.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },
@@ -715,7 +898,7 @@
       "name": "轰炸机",
       "englishName": "Bomber",
       "matched": true,
-      "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
+      "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
       "manifestHashes": [
         4188291233
       ],
@@ -738,7 +921,9 @@
             "nameZh": "投弹手",
             "description": "Reduces grenade cooldown when using your class ability.",
             "descriptionZh": "使用职业技能时缩短手雷的冷却时间。",
-            "visibility": 0
+            "icon": "/common/destiny2_content/icons/50c475e2cfd57472dc9426cc9f3d4233.png",
+            "visibility": 0,
+            "requirement": ""
           }
         ]
       },

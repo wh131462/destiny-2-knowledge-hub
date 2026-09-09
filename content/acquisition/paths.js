@@ -16,11 +16,11 @@ const acquisitionPathDefinitions = [
   { id: 'world-drop', name: '世界掉落', access: 'free', deterministic: false, steps: ['参与任意活动获取世界战利品', '在可用时使用枪匠记忆水晶或专注', '保留目标词条组合'] }
   ,{ id: 'dual-destiny', name: '双重命运异域任务', access: 'the-final-shape', deterministic: false, steps: ['完成《终焉之形》战役并解锁苍白之心推翻活动', '在三个推翻区域完成隐藏机制，解锁双重命运任务', '两人完成双重命运获得职业对应异域职业物品', '重复任务或使用当前版本开放的替代来源刷取双特性组合'], note: '具体掉落来源和每周规则可能随补丁调整。' }
   ,{ id: 'set-truth-of-rights', name: '权利真相套装来源', access: 'renegades', deterministic: false, steps: ['进入叛逃者相关活动', '从对应掉落池收集头盔、臂铠、胸甲、腿甲和职业装备', '保留高属性部位并凑齐目标套装件数'] }
-  ,{ id: 'set-aion-adapter', name: 'AION 适配者套装来源', access: 'edge-of-fate', deterministic: false, steps: ['完成宿命边缘相关活动', '从活动奖励池获取套装部位', '优先保留韧性与恢复高于目标线的部位'] }
-  ,{ id: 'set-aion-renewal', name: 'AION 复兴套装来源', access: 'edge-of-fate', deterministic: false, steps: ['完成宿命边缘相关活动', '从活动奖励池获取套装部位', '优先保留纪律与智慧高于目标线的部位'] }
+  ,{ id: 'set-aion-adapter', name: 'AION 适配者套装来源', access: 'edge-of-fate', deterministic: false, steps: ['完成宿命边缘相关活动', '从活动奖励池获取套装部位', '优先保留 Health 与 Class 高于目标线的部位'] }
+  ,{ id: 'set-aion-renewal', name: 'AION 复兴套装来源', access: 'edge-of-fate', deterministic: false, steps: ['完成宿命边缘相关活动', '从活动奖励池获取套装部位', '优先保留 Grenade 与 Super 高于目标线的部位'] }
   ,{ id: 'set-first-ascent', name: '初次远征套装来源', access: 'the-final-shape', deterministic: true, steps: ['推进终焉之形战役和苍白之心活动', '收集五个护甲部位', '大师化后用属性模组补齐构筑目标'] }
-  ,{ id: 'set-bushido', name: '武士道套装来源', access: 'reclamation', deterministic: false, steps: ['参与收复季活动', '从活动掉落池收集套装部位', '以机动性和力量为筛选优先级'] }
-  ,{ id: 'set-praxic', name: '普拉希克套装来源', access: 'renegades', deterministic: false, steps: ['完成叛逃者相关活动', '从活动掉落池收集套装部位', '以恢复和智慧为筛选优先级'] }
+  ,{ id: 'set-bushido', name: '武士道套装来源', access: 'reclamation', deterministic: false, steps: ['参与收复季活动', '从活动掉落池收集套装部位', '以 Weapons 和 Melee 为筛选优先级'] }
+  ,{ id: 'set-praxic', name: '普拉希克套装来源', access: 'renegades', deterministic: false, steps: ['完成叛逃者相关活动', '从活动掉落池收集套装部位', '以 Health 和 Super 为筛选优先级'] }
   ,{ id: 'set-dungeon-equilibrium', name: '均衡地牢套装来源', access: 'equilibrium', deterministic: false, steps: ['进入均衡地牢', '按遭遇战掉落部位刷取', '保留高总值部位并组合异域护甲'] }
   ,{ id: 'set-raid-desert-perpetual', name: '永恒荒漠突袭套装来源', access: 'desert-perpetual', deterministic: false, steps: ['完成永恒荒漠突袭遭遇战', '按掉落部位补齐五件套', '在首领输出或机制位前确认套装加成与属性目标'] }
 ]

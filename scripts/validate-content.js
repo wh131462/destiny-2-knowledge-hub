@@ -2,6 +2,7 @@ import { curatedBuilds } from '../content/builds/index.js'
 import { abilities } from '../content/catalog/abilities.js'
 import { aspects } from '../content/catalog/aspects.js'
 import { facets } from '../content/catalog/facets.js'
+import { fragments } from '../content/catalog/fragments.js'
 import { subclasses } from '../content/catalog/subclasses.js'
 import { gearItems } from '../content/catalog/gear.js'
 import { armorSets } from '../content/catalog/sets.js'
@@ -13,7 +14,7 @@ import { validateBuild, calculateStats } from '../packages/rules-engine/index.js
 import { MANIFEST_VERSION } from '../content/meta.js'
 import { readFile } from 'node:fs/promises'
 
-const collections = { abilities, aspects, facets, subclasses, gearItems, armorSets, activitiesV2, mechanics, acquisitionPaths, curatedBuilds }
+const collections = { abilities, aspects, facets, fragments, subclasses, gearItems, armorSets, activitiesV2, mechanics, acquisitionPaths, curatedBuilds }
 const errors = []
 const warnings = []
 
@@ -51,7 +52,7 @@ try {
 }
 
 console.log(`内容实体：${Object.values(collections).reduce((sum, list) => sum + list.length, 0)}`)
-console.log(`已校验构筑：${curatedBuilds.length}`)
+console.log(`已校验公开构筑：${curatedBuilds.length}`)
 for (const warning of warnings) console.warn(`警告：${warning}`)
 if (errors.length) {
   for (const error of errors) console.error(`错误：${error}`)

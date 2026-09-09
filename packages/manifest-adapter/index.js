@@ -10,9 +10,9 @@ const parseJson = async (fileName) => {
 
 export const readManifestIndex = () => parseJson('manifest-index.json')
 
-export const loadManifestComponent = async (component) => {
+export const loadManifestComponent = async (component, locale = 'en') => {
   const index = await readManifestIndex()
-  const entry = index.files.find(file => file.component === component)
+  const entry = index.files.find(file => file.component === component && (file.locale || 'en') === locale)
   if (!entry) return null
   const snapshot = await parseJson(entry.fileName)
   return {
@@ -73,6 +73,9 @@ export const loadManifestEquipmentRich = () => loadManifestCatalogFile('manifest
 export const loadManifestEquipmentCatalog = () => loadManifestCatalogFile('manifest-equipment-catalog.json')
 export const loadManifestAbilities = () => loadManifestCatalogFile('manifest-abilities.json')
 export const loadManifestMods = () => loadManifestCatalogFile('manifest-mods.json')
+export const loadManifestArtifacts = () => loadManifestCatalogFile('manifest-artifact.json')
+export const loadManifestPlugs = () => loadManifestCatalogFile('manifest-plugs.json')
+export const loadManifestReferences = () => loadManifestCatalogFile('manifest-references.json')
 export const loadManifestPlugSets = () => loadManifestCatalogFile('manifest-plugsets.json')
 export const loadManifestVendorInventory = () => loadManifestCatalogFile('manifest-vendor-inventory.json')
 export const loadManifestActivityRewards = () => loadManifestCatalogFile('manifest-activity-rewards.json')

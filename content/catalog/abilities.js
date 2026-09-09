@@ -1,4 +1,5 @@
 import manifestAbilities from '../../data/catalog/manifest-abilities.json' with { type: 'json' }
+import { completeSkills } from './official-subclasses.js'
 
 const ability = (id, name, en, element, kind, classIds, extra = {}) => ({
   id, name, en, element, kind, classIds, sourceIds: ['bungie-manifest'], verifiedAt: '2026-08-31', ...extra
@@ -16,7 +17,7 @@ const officialGrenades = (manifestAbilities.items || [])
     manifestVerified: true
   }))
 
-export const abilities = [
+const curatedAbilities = [
   // Titan supers and abilities
   ability('super-hammer-of-sol', '烈阳之锤', 'Hammer of Sol', 'solar', 'super', ['titan']),
   ability('super-thundercrash', '雷霆冲击', 'Thundercrash', 'arc', 'super', ['titan']),
@@ -64,4 +65,5 @@ export const abilities = [
   ability('class-healing-rift', '治愈裂隙', 'Healing Rift', 'neutral', 'classAbility', ['warlock'])
 ]
 
+export const abilities = completeSkills(curatedAbilities, ['super', 'classAbility', 'movement', 'melee', 'grenade', 'transcendence', 'transcendenceGrenade'])
 export const abilityById = Object.fromEntries(abilities.map(item => [item.id, item]))

@@ -27,9 +27,9 @@ export function auditRecommendationData(build) {
   }
 }
 
-export function recommendBuilds({ classId, subclassId, subclassType, activityId, goals = [], ownedItemIds = [], strict = false }) {
+export function recommendBuilds({ classId, subclassId, subclassType, activityId, goals = [], ownedItemIds = [], strict = false }, catalog = curatedBuilds) {
   const owned = new Set(ownedItemIds)
-  return curatedBuilds
+  return catalog
     .filter(build => !build.isTemplateBaseline && (!strict || auditRecommendationData(build).recommendable))
     .filter(build => !classId || build.classId === classId)
     .filter(build => !subclassId || build.subclassId === subclassId)

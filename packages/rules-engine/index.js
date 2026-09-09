@@ -9,9 +9,11 @@ import { acquisitionById } from '../../content/acquisition/paths.js'
 import { mechanicById, mechanicInteractions, statModel } from '../../content/mechanics/index.js'
 import { MANIFEST_VERSION } from '../../content/meta.js'
 import { armorSetById } from '../../content/catalog/sets.js'
+import manifestAbilities from '../../data/catalog/manifest-abilities.json' with { type: 'json' }
+import { classAbilityAllowed, fragmentCapacity } from '../loadout-planner/index.js'
 
 export const armorSlots = ['helmet', 'arms', 'chest', 'legs', 'classItem']
-export const stats = ['mobility', 'resilience', 'recovery', 'discipline', 'intellect', 'strength']
+export const stats = ['health', 'melee', 'grenade', 'class', 'super', 'weapons']
 
 const addError = (errors, code, message, path) => errors.push({ code, message, path })
 const checkUnique = (errors, values, code, message, path) => {
@@ -35,12 +37,15 @@ export function validateBuild(build) {
   if (subclass && subclass.classId !== build.classId) addError(errors, 'CLASS_SUBCLASS_MISMATCH', '子职业不属于所选职业。', 'subclassId')
 
   const abilityKinds = { superId: 'super', classAbilityId: 'classAbility', meleeId: 'melee', grenadeId: 'grenade' }
+  if (build.abilities?.movementId) abilityKinds.movementId = 'movement'
   for (const [key, expectedKind] of Object.entries(abilityKinds)) {
     const id = build.abilities?.[key]
     const item = abilityById[id]
     if (!item) addError(errors, 'UNKNOWN_ABILITY', `未知技能：${id}`, 'abilities')
     else if (!item.classIds.includes(build.classId)) addError(errors, 'ABILITY_CLASS_MISMATCH', `${item.name} 不属于 ${build.classId}。`, 'abilities')
     else if (item.kind !== expectedKind) addError(errors, 'ABILITY_KIND_MISMATCH', `${item.name} 不是${expectedKind}类型技能。`, `abilities.${key}`)
+    else if (expectedKind === 'classAbility' && subclass && !classAbilityAllowed(item, subclass)) addError(errors, 'CLASS_ABILITY_SUBCLASS_MISMATCH', `${item.name} 不属于该子职业。`, `abilities.${key}`)
+    else if (expectedKind === 'movement' && !subclass?.movementIds?.includes(id)) addError(errors, 'MOVEMENT_POOL_VIOLATION', '该跳跃技能不属于所选子职业。', 'abilities.movementId')
   }
 
   checkUnique(errors, build.abilities?.aspectIds, 'DUPLICATE_ASPECT', '星相不能重复', 'abilities.aspectIds')
@@ -58,7 +63,6 @@ export function validateBuild(build) {
     for (const id of build.abilities?.aspectIds || []) {
       if (!subclass.aspectIds.includes(id)) addError(errors, 'PRISMATIC_ASPECT_VIOLATION', `${id} 不在该职业棱镜星相池中。`, 'abilities.aspectIds')
     }
-    if ((build.abilities?.facetIds || []).length > 5) addError(errors, 'FACET_LIMIT', '当前基准构筑最多配置 5 个棱镜特性。', 'abilities.facetIds')
     if ((build.abilities?.fragmentIds || []).length) addError(errors, 'PRISMATIC_FRAGMENT_MISMATCH', '棱镜构筑应使用棱镜特性，而不是普通元素碎片。', 'abilities.fragmentIds')
   } else if (subclass?.type === 'mono') {
     const selected = [build.abilities?.superId, build.abilities?.meleeId, build.abilities?.grenadeId]
@@ -84,6 +88,9 @@ export function validateBuild(build) {
   }
 
   if ((build.abilities?.aspectIds || []).length !== 2) addError(errors, 'ASPECT_COUNT', '构筑必须选择两个星相。', 'abilities.aspectIds')
+  const capacity = fragmentCapacity((build.abilities?.aspectIds || []).map(id => aspectById[id]), subclass, manifestAbilities.items || [])
+  const traits = subclass?.type === 'prismatic' ? build.abilities?.facetIds : build.abilities?.fragmentIds
+  if (capacity != null && (traits || []).length > capacity) addError(errors, 'FRAGMENT_CAPACITY', `所选星相在当前快照提供 ${capacity} 个碎片插槽。`, 'abilities')
   for (const id of build.abilities?.aspectIds || []) if (!aspectById[id]) addError(errors, 'UNKNOWN_ASPECT', `未知星相：${id}`, 'abilities.aspectIds')
   for (const id of build.abilities?.facetIds || []) if (!facetById[id]) addError(errors, 'UNKNOWN_FACET', `未知棱镜特性：${id}`, 'abilities.facetIds')
 
@@ -99,8 +106,9 @@ export function validateBuild(build) {
   const exoticArmor = gearById[build.exoticArmorId]
   if (!exoticArmor) addError(errors, 'UNKNOWN_EXOTIC_ARMOR', `未知异域护甲：${build.exoticArmorId}`, 'exoticArmorId')
   else {
-    if (exoticArmor.type !== 'armor' || exoticArmor.rarity !== 'exotic') addError(errors, 'NOT_EXOTIC_ARMOR', `${exoticArmor.name} 不是异域护甲。`, 'exoticArmorId')
+    if (!['armor', 'exoticClassItem'].includes(exoticArmor.type) || exoticArmor.rarity !== 'exotic') addError(errors, 'NOT_EXOTIC_ARMOR', `${exoticArmor.name} 不是异域护甲。`, 'exoticArmorId')
     if (exoticArmor.classId !== build.classId) addError(errors, 'EXOTIC_CLASS_MISMATCH', `${exoticArmor.name} 不属于所选职业。`, 'exoticArmorId')
+    if (exoticArmor.type === 'exoticClassItem' && subclass?.type !== 'prismatic') warnings.push({ code: 'INACTIVE_EXOTIC_CLASS_ITEM', message: '异域职业装备的棱镜专属效果在普通子职业下不生效。' })
   }
 
   const armorSet = armorSetById[build.armorSetId]
@@ -126,6 +134,8 @@ export function validateBuild(build) {
 
   for (const slot of armorSlots) {
     const selections = build.armorMods?.[slot] || []
+    if (selections.filter(id => modById[id]?.stat).length > 1) addError(errors, 'MOD_STAT_SOCKET', `${slot} 的通用属性插槽只能配置一个属性模组。`, `armorMods.${slot}`)
+    if (selections.filter(id => modById[id] && !modById[id].stat).length > 3) addError(errors, 'MOD_SOCKET_COUNT', `${slot} 的标准部位模组位最多配置三个；附加插槽需单独核对。`, `armorMods.${slot}`)
     let cost = 0
     for (const id of selections) {
       const mod = modById[id]
@@ -158,10 +168,8 @@ export function calculateStats(build) {
       if (mod?.stat) result[mod.stat] = Math.min(statModel.max, result[mod.stat] + mod.value)
     }
   }
-  const tiers = Object.fromEntries(stats.map(stat => [stat, Math.floor(result[stat] / statModel.tierSize)]))
-  const resilienceDR = statModel.resiliencePveDamageResistanceByTier[tiers.resilience]
   const targetChecks = Object.entries(build.targetStats || {}).map(([stat, target]) => ({ stat, target, actual: result[stat], met: result[stat] >= target }))
-  return { values: result, tiers, resilienceDamageResistancePercent: resilienceDR, targetChecks }
+  return { values: result, targetChecks }
 }
 
 export function calculateCombatProfile(build, options = {}) {
@@ -194,8 +202,9 @@ export function calculateCombatProfile(build, options = {}) {
     mode,
     inferredMechanicIds: [...ids],
     mechanicSources: Object.fromEntries([...mechanicSources.entries()]),
-    resilienceDamageResistancePercent: statResult.resilienceDamageResistancePercent,
-    incomingDamageMultiplier: Number((1 - statResult.resilienceDamageResistancePercent / 100).toFixed(3)),
+    // Armor 3.0 的 Health 属性不提供可通用外推的固定承伤倍率；
+    // 用 null 表示“不适用”，避免把 1 误读为经过计算的减伤结果。
+    incomingDamageMultiplier: null,
     weaponDamageMultiplier: Number((1 + weaponDamagePercent / 100).toFixed(3)),
     targetDamageMultiplier: Number((1 + targetDebuffPercent / 100).toFixed(3)),
     combinedRegisteredMultiplier: Number(((1 + weaponDamagePercent / 100) * (1 + targetDebuffPercent / 100)).toFixed(3)),
@@ -203,8 +212,7 @@ export function calculateCombatProfile(build, options = {}) {
     knownEffects: [
       ids.has('radiant') && radiant ? `光耀：PvE 武器伤害 +${radiant}%` : null,
       ids.has('weaken') && weaken ? `削弱：目标承受伤害基线 +${targetDebuffPercent}%` : null,
-      ...activeInteractions.map(interaction => `${interaction.name}：${interaction.effect}`),
-      statResult.resilienceDamageResistancePercent ? `韧性：PvE 受到伤害降低 ${statResult.resilienceDamageResistancePercent}%` : null
+      ...activeInteractions.map(interaction => `${interaction.name}：${interaction.effect}`)
     ].filter(Boolean),
     note: `${mode === 'pve' ? 'PvE' : 'PvP'} 模式仅计算已登记的基线数值；武器词条、首领抗性和补丁例外不在此处外推。`
   }

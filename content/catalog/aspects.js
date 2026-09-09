@@ -1,8 +1,9 @@
+import { completeSkills } from './official-subclasses.js'
 const aspect = (id, name, en, element, classId, extra = {}) => ({
   id, name, en, element, classId, sourceIds: ['bungie-manifest'], verifiedAt: '2026-08-31', ...extra
 })
 
-export const aspects = [
+const curatedAspects = [
   // Titan Prismatic pool
   aspect('aspect-consecration', '奉献', 'Consecration', 'solar', 'titan', { mechanicIds: ['scorch', 'ignite'] }),
   aspect('aspect-knockout', '击倒', 'Knockout', 'arc', 'titan', { mechanicIds: ['amplified', 'healing'] }),
@@ -55,4 +56,5 @@ export const aspects = [
   ,aspect('aspect-wanderer', '漫游者', 'The Wanderer', 'strand', 'warlock', { mechanicIds: ['suspend'], sourceIds: ['community-baseline'] })
 ]
 
+export const aspects = completeSkills(curatedAspects, ['aspect'])
 export const aspectById = Object.fromEntries(aspects.map(item => [item.id, item]))

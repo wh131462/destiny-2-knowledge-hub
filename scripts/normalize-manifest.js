@@ -17,6 +17,7 @@ const loadOptional = async url => { try { return JSON.parse(await readFile(url, 
 const localeSnapshot = await loadOptional(new URL('../data/catalog/manifest-locales-zh-chs.json', import.meta.url))
 
 const snapshot = JSON.parse(await readFile(input, 'utf8'))
+if (localeSnapshot.manifestVersion !== snapshot.manifestVersion) throw new Error('中文数据与物品快照版本不一致')
 const definitions = snapshot.data || {}
 const localizedDefinitions = localeSnapshot.items || {}
 const items = Object.entries(definitions)
@@ -63,11 +64,13 @@ await mkdir(new URL('../web/public/data/', import.meta.url), { recursive: true }
 await writeFile(publicEquipment, `${JSON.stringify({
   manifestVersion: snapshot.manifestVersion,
   syncedAt: snapshot.syncedAt,
+  sourceComponent: snapshot.component,
   count: equipment.length,
   items: equipment
 }, null, 2)}\n`)
 
 const activitySnapshot = JSON.parse(await readFile(activityInput, 'utf8'))
+if (activitySnapshot.manifestVersion !== snapshot.manifestVersion) throw new Error('活动快照版本不一致')
 const localizedActivities = localeSnapshot.activities || {}
 const activities = Object.entries(activitySnapshot.data || {}).map(([hash, item]) => ({
   hash: Number(hash),
@@ -91,12 +94,13 @@ await writeFile(activityOutput, `${JSON.stringify(activityPayload, null, 2)}\n`)
 await writeFile(publicActivities, `${JSON.stringify(activityPayload, null, 2)}\n`)
 
 const perkSnapshot = JSON.parse(await readFile(perkInput, 'utf8'))
+if (perkSnapshot.manifestVersion !== snapshot.manifestVersion) throw new Error('效果快照版本不一致')
 const localizedPerks = localeSnapshot.perks || {}
 const perks = Object.entries(perkSnapshot.data || {}).map(([hash, item]) => ({
   hash: Number(hash), name: item.displayProperties?.name || '', nameZh: localizedPerks[hash]?.name || null, description: item.displayProperties?.description || '', descriptionZh: localizedPerks[hash]?.description || null,
   icon: item.displayProperties?.icon || null, damageType: item.damageType || 0,
   isDisplayable: Boolean(item.isDisplayable), redacted: Boolean(item.redacted), blacklisted: Boolean(item.blacklisted)
-})).filter(item => item.name && !item.redacted && !item.blacklisted)
+})).filter(item => !item.redacted && !item.blacklisted)
 const perkPayload = { manifestVersion: perkSnapshot.manifestVersion, syncedAt: perkSnapshot.syncedAt, count: perks.length, perks }
 await writeFile(perkOutput, `${JSON.stringify(perkPayload, null, 2)}\n`)
 await writeFile(publicPerks, `${JSON.stringify(perkPayload, null, 2)}\n`)

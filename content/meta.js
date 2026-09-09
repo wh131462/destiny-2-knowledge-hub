@@ -1,6 +1,7 @@
-export const MANIFEST_VERSION = '244213.26.06.29.2000-1-bnet.65583'
-export const DATA_VERSION = `tfs-prismatic-baseline@manifest-${MANIFEST_VERSION}`
-export const RULES_VERSION = '2.1.0'
+import subclassCatalog from '../data/catalog/manifest-subclasses.json' with { type: 'json' }
+export const MANIFEST_VERSION = subclassCatalog.manifestVersion
+export const DATA_VERSION = `armor-3.0@manifest-${MANIFEST_VERSION}`
+export const RULES_VERSION = '3.0.0'
 
 export const verificationLevels = {
   A: { label: '官方数据', description: '来自 Bungie 官方页面、补丁或清单。' },
@@ -10,6 +11,12 @@ export const verificationLevels = {
 }
 
 export const sources = [
+  {
+    id: 'community-activity-guides', level: 'C',
+    title: 'Destinypedia 活动流程资料', publisher: 'Destinypedia 社区',
+    url: 'https://www.destinypedia.com/', checkedAt: '2026-09-08',
+    note: '各活动条目另列具体攻略页与核对修订版；机制为社区流程摘要，装备准备和评分权重为本站编辑建议。'
+  },
   {
     id: 'bungie-final-shape',
     level: 'A',
@@ -25,7 +32,7 @@ export const sources = [
     title: 'Destiny 2 Manifest',
     publisher: 'Bungie API',
     url: 'https://www.bungie.net/Platform/Destiny2/Manifest/',
-    checkedAt: '2026-08-31',
+    checkedAt: subclassCatalog.syncedAt.slice(0, 10),
     note: '实体名称、哈希、装备类别与基础定义的权威机器数据；本地同步需网络。'
   },
   {
@@ -71,5 +78,5 @@ export const dataPolicy = {
   rulesVersion: RULES_VERSION,
   officialFactsRequire: ['sourceIds', 'verifiedAt'],
   recommendationFactsRequire: ['activityIds', 'mechanicIds', 'limitations'],
-  disclaimer: '构筑规则以《终焉之形》棱镜体系为可核验基线；后续补丁可能改变数值和可用性。'
+  disclaimer: '护甲属性与模组规则以本地 Bungie Manifest 快照为可核验基线；后续补丁可能改变数值、名称和可用性。'
 }

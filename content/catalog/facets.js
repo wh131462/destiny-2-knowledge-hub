@@ -1,8 +1,9 @@
+import { completeSkills } from './official-subclasses.js'
 const facet = (id, name, en, description, mechanicIds = []) => ({
   id, name, en, description, mechanicIds, sourceIds: ['bungie-manifest'], verifiedAt: '2026-08-31'
 })
 
-export const facets = [
+const curatedFacets = [
   facet('facet-balance', '平衡之面', 'Facet of Balance', '快速造成光能或暗影伤害时分别返还近战或手雷能量。'),
   facet('facet-blessing', '祝福之面', 'Facet of Blessing', '近战最后一击开始生命恢复；超越状态下效果更强。', ['healing']),
   facet('facet-bravery', '勇气之面', 'Facet of Bravery', '手雷最后一击赋予虚空武器易爆弹；充能近战最后一击赋予缚丝武器拆解弹。', ['volatile', 'unravel']),
@@ -26,5 +27,5 @@ export const facets = [
   facet('facet-awakening', '觉醒之面', 'Facet of Awakening', '快速造成元素最后一击会生成对应元素收集物。')
 ]
 
+export const facets = completeSkills(curatedFacets, ['facet'])
 export const facetById = Object.fromEntries(facets.map(item => [item.id, item]))
-

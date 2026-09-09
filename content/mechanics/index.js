@@ -22,20 +22,19 @@ export const mechanics = [
   { id: 'sever', name: '割裂', en: 'Sever', category: 'debuff', values: { effect: '降低目标对玩家造成的伤害' }, sourceIds: ['bungie-buildcrafting'], confidence: 'B' },
   { id: 'threadling', name: '线虫', en: 'Threadling', category: 'summon', values: { effect: '追踪目标并造成缚丝伤害' }, sourceIds: ['bungie-buildcrafting'], confidence: 'B' },
   { id: 'healing', name: '生命恢复', en: 'Healing', category: 'survival', values: { effect: '治愈、恢复、吞噬或其他生命回复' }, sourceIds: ['editorial-baseline'], confidence: 'D' },
-  { id: 'damage-resistance', name: '伤害抗性', en: 'Damage Resistance', category: 'survival', values: { effect: '来自韧性、元素增益和模组的减伤分别计算' }, sourceIds: ['editorial-baseline'], confidence: 'D' },
+  { id: 'damage-resistance', name: '伤害抗性', en: 'Damage Resistance', category: 'survival', values: { effect: '来自胸甲抗性模组、元素增益、护盾和具体机制；不由 Health 属性直接换算' }, sourceIds: ['bungie-manifest', 'editorial-baseline'], confidence: 'B' },
   { id: 'transcendence', name: '超越', en: 'Transcendence', category: 'prismatic', values: { effect: '分别积累光暗能量后进入强化状态，获得专属手雷与技能回复' }, sourceIds: ['bungie-final-shape'], confidence: 'A' }
 ]
 
 export const mechanicById = Object.fromEntries(mechanics.map(item => [item.id, item]))
 
 export const statModel = {
-  version: 'tfs-prismatic-baseline',
+  version: 'armor-3.0-manifest-baseline',
   min: 0,
-  max: 100,
-  tierSize: 10,
-  resiliencePveDamageResistanceByTier: [0, 1, 2, 3, 4, 8, 14, 20, 24, 27, 30],
-  note: '韧性减伤表用于终焉之形基线的可解释估算；页面必须显示版本，不外推到未核验补丁。',
-  sourceIds: ['bungie-buildcrafting'],
+  max: 200,
+  stats: ['health', 'melee', 'grenade', 'class', 'super', 'weapons'],
+  note: '六项属性的配装建议范围为 0–200；目标并非随机掉落的实际属性，也不代表线性收益。Manifest 不提供可通用外推的统一伤害倍率表。',
+  sourceIds: ['bungie-manifest'],
   confidence: 'B'
 }
 

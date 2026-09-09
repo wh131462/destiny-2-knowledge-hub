@@ -1,6 +1,7 @@
+import { completeSkills } from './official-subclasses.js'
 const fragment = (id, name, en, element, description, mechanicIds = []) => ({ id, name, en, element, description, mechanicIds, sourceIds: ['bungie-manifest'], verifiedAt: '2026-08-31' })
 
-export const fragments = [
+const curatedFragments = [
   fragment('echo-starvation', '饥饿回声', 'Echo of Starvation', 'void', '拾取虚空缺口或能量球获得吞噬。', ['devour']),
   fragment('echo-persistence', '延续回声', 'Echo of Persistence', 'void', '延长虚空增益持续时间。', ['devour', 'invisibility']),
   fragment('echo-obscurity', '隐匿回声', 'Echo of Obscurity', 'void', '终结技最后一击使你隐身。', ['invisibility']),
@@ -23,4 +24,5 @@ export const fragments = [
   ,fragment('whisper-of-rime', '霜晶低语', 'Whisper of Rime', 'stasis', '拾取冰凝碎片获得护盾并逐渐恢复生命。', ['healing'])
 ]
 
+export const fragments = completeSkills(curatedFragments, ['fragment'])
 export const fragmentById = Object.fromEntries(fragments.map(item => [item.id, item]))

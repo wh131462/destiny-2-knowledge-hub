@@ -1,8 +1,9 @@
 {
-  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-  "syncedAt": "2026-08-31T08:30:16.064Z",
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+  "syncedAt": "2026-09-08T04:56:13.952Z",
+  "locale": "en",
   "component": "DestinyClassDefinition",
-  "sourcePath": "/common/destiny2_content/json/en/DestinyClassDefinition-91480f1f-f6a3-4304-945f-591759ee15a7.json",
+  "sourcePath": "/common/destiny2_content/json/en/DestinyClassDefinition-a8ba855a-93c7-4014-8f2e-d92357fdfb42.json",
   "data": {
     "671679327": {
       "classType": 1,

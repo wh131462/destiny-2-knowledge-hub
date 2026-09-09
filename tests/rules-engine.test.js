@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { curatedBuilds } from '../content/builds/index.js'
+import { curatedBuilds } from './fixtures/curated-builds.js'
 import { validateBuild, calculateStats, calculateCombatProfile, planAcquisition, planUnlocks, scoreBuild } from '../packages/rules-engine/index.js'
 import { recommendBuilds } from '../packages/recommendation-engine/index.js'
 import { abilities } from '../content/catalog/abilities.js'
@@ -13,11 +13,11 @@ import { armorSets } from '../content/catalog/sets.js'
 import { activitiesV2 } from '../content/catalog/activities.js'
 import { mechanics } from '../content/mechanics/index.js'
 import { acquisitionPaths } from '../content/acquisition/paths.js'
-import { sources } from '../content/meta.js'
+import { sources, MANIFEST_VERSION } from '../content/meta.js'
 import { loadNormalizedComponent, loadManifestItemIndex, loadManifestActivities, loadManifestPerks, loadManifestEquipmentRich, loadManifestMods, loadManifestAbilities, loadManifestPlugSets, loadManifestVendorInventory, loadManifestActivityRewards, loadManifestItemSets, loadManifestDropCoverage, loadCuratedManifestLinks, loadCuratedAcquisitionIndex, loadAcquisitionSources, loadCuratedModLinks, manifestCatalogSummary } from '../packages/manifest-adapter/index.js'
 import { planVerifiedAcquisition } from '../packages/acquisition-engine/index.js'
 
-test('所有发布构筑均通过合法性校验并达到声明属性', () => {
+test('规则引擎构筑样例均通过合法性校验并达到声明属性', () => {
   for (const build of curatedBuilds) {
     const result = validateBuild(build)
     assert.equal(result.valid, true, `${build.id}: ${JSON.stringify(result.errors)}`)
@@ -46,39 +46,39 @@ test('武器异域限制与槽位冲突会被拒绝', () => {
 
 test('模组超过部位容量时会被拒绝', () => {
   const illegal = structuredClone(curatedBuilds[0])
-  illegal.armorMods.helmet = ['hands-on', 'heavy-ammo-finder', 'heavy-ammo-scout', 'stat-recovery']
+  illegal.armorMods.helmet = ['hands-on', 'heavy-ammo-finder', 'heavy-ammo-scout', 'stat-health', 'stat-melee']
   const result = validateBuild(illegal)
   assert.ok(result.errors.some(error => error.code === 'MOD_CAPACITY'))
 })
 
 test('推荐只返回合法且与活动匹配的方案', () => {
-  const results = recommendBuilds({ classId: 'warlock', subclassType: 'prismatic', activityId: 'grandmaster', goals: ['support'] })
+  const results = recommendBuilds({ classId: 'warlock', subclassType: 'prismatic', activityId: 'grandmaster', goals: ['support'] }, curatedBuilds)
   assert.ok(results.length >= 1)
   assert.ok(results.every(result => result.validation.valid && result.build.classId === 'warlock'))
   assert.ok(results.every(result => result.build.activityIds.includes('grandmaster')))
 })
 
 test('推荐会把已拥有装备纳入排序并给出解释', () => {
-  const results = recommendBuilds({ classId: 'hunter', ownedItemIds: ['first-ascent', 'gyrfalcons-hauberk', 'graviton-lance', 'the-call', 'edge-transit'] })
+  const results = recommendBuilds({ classId: 'hunter', ownedItemIds: ['first-ascent', 'gyrfalcons-hauberk', 'graviton-lance', 'the-call', 'edge-transit'] }, curatedBuilds)
   assert.ok(results.length >= 1)
   assert.equal(results[0].ownership.ownedCount, 5)
   assert.ok(results[0].reasons.some(reason => reason.includes('已拥有 5/5')))
   assert.ok(results[0].scoreBreakdown.ownershipBonus > 0)
   assert.ok(Array.isArray(results[0].implementation.nextSteps))
-  const fromZero = recommendBuilds({ classId: 'hunter', subclassId: results[0].build.subclassId })[0]
+  const fromZero = recommendBuilds({ classId: 'hunter', subclassId: results[0].build.subclassId }, curatedBuilds)[0]
   assert.ok(fromZero.implementation.nextSteps.length >= 1)
   assert.ok(fromZero.implementation.missingItems.every(item => item.pathName && item.steps.length > 0))
 })
 
 test('推荐支持精确到普通或棱镜分支', () => {
-  const results = recommendBuilds({ subclassId: 'hunter-void' })
+  const results = recommendBuilds({ subclassId: 'hunter-void' }, curatedBuilds)
   assert.ok(results.length >= 1)
   assert.ok(results.every(result => result.build.subclassId === 'hunter-void'))
-  assert.equal(recommendBuilds({ subclassId: 'unknown-subclass' }).length, 0)
+  assert.equal(recommendBuilds({ subclassId: 'unknown-subclass' }, curatedBuilds).length, 0)
 })
 
 test('推荐结果解释活动冠军覆盖和实现准备度', () => {
-  const results = recommendBuilds({ activityId: 'grandmaster' })
+  const results = recommendBuilds({ activityId: 'grandmaster' }, curatedBuilds)
   assert.ok(results.length > 0)
   assert.ok(results.every(result => 'championGapPenalty' in result.scoreBreakdown))
   assert.ok(results.every(result => ['ready', 'in-progress'].includes(result.implementation.readiness)))
@@ -115,7 +115,7 @@ test('数值机制计算只输出已登记的基线倍率', () => {
   const profile = calculateCombatProfile(build)
   assert.equal(profile.weaponDamageMultiplier, 1.25)
   assert.equal(profile.targetDamageMultiplier, 1.15)
-  assert.ok(profile.incomingDamageMultiplier > 0 && profile.incomingDamageMultiplier <= 1)
+  assert.equal(profile.incomingDamageMultiplier, null)
 })
 
 test('所有内容来源与获取路径引用都存在', () => {
@@ -184,7 +184,7 @@ test('规则引擎拒绝技能类型、普通子职业池和重复选择错误',
 test('规则引擎拒绝未知或超范围属性目标', () => {
   const build = structuredClone(curatedBuilds[0])
   build.targetStats.unknown = 10
-  build.baseStats.resilience = 101
+  build.baseStats.health = 201
   const result = validateBuild(build)
   assert.ok(result.errors.some(error => error.code === 'UNKNOWN_TARGET_STAT'))
   assert.ok(result.errors.some(error => error.code === 'STAT_OUT_OF_RANGE'))
@@ -212,7 +212,7 @@ test('Manifest 快照可读取并标准化官方实体', async () => {
 
 test('官方装备轻量索引保留可追溯版本与核心字段', async () => {
   const index = await loadManifestItemIndex()
-  assert.equal(index.manifestVersion, '244213.26.06.29.2000-1-bnet.65583')
+  assert.equal(index.manifestVersion, MANIFEST_VERSION)
   assert.ok(index.count > 30000)
   assert.ok(index.items.some(item => item.name === 'Gjallarhorn' || item.name === 'The Call'))
   assert.ok(index.items.every(item => Number.isInteger(item.hash) && item.name))
@@ -362,7 +362,7 @@ test('站内模组能与官方模组索引对齐并报告一致性', async () =>
   const links = await loadCuratedModLinks()
   assert.equal(links.count, armorMods.length)
   assert.ok(links.matched >= 15)
-  assert.ok(links.items.some(item => item.id === 'stat-mobility' && item.primaryHash))
+  assert.ok(links.items.some(item => item.id === 'stat-health' && item.primaryHash))
   assert.ok(links.items.every(item => item.declared && 'energyCost' in item.declared))
 })
 

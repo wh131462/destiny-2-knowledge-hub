@@ -1,6 +1,6 @@
 {
-  "manifestVersion": "244213.26.06.29.2000-1-bnet.65583",
-  "syncedAt": "2026-08-31T07:43:51.530Z",
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+  "syncedAt": "2026-09-08T04:56:13.952Z",
   "locale": "en, zh-chs",
   "locales": [
     "en",
@@ -8,56 +8,8 @@
   ],
   "components": [
     {
-      "component": "DestinyInventoryItemDefinition",
-      "count": 38894
-    },
-    {
-      "component": "DestinySandboxPerkDefinition",
-      "count": 5203
-    },
-    {
-      "component": "DestinyDamageTypeDefinition",
-      "count": 7
-    },
-    {
-      "component": "DestinyStatDefinition",
-      "count": 79
-    },
-    {
-      "component": "DestinyActivityTypeDefinition",
-      "count": 83
-    },
-    {
-      "component": "DestinyActivityDefinition",
-      "count": 4069
-    },
-    {
       "component": "DestinyActivityModeDefinition",
       "count": 75
-    },
-    {
-      "component": "DestinyItemCategoryDefinition",
-      "count": 130
-    },
-    {
-      "component": "DestinyEquipmentSlotDefinition",
-      "count": 18
-    },
-    {
-      "component": "DestinyPlugSetDefinition",
-      "count": 5422
-    },
-    {
-      "component": "DestinySocketCategoryDefinition",
-      "count": 65
-    },
-    {
-      "component": "DestinyArtifactDefinition",
-      "count": 1
-    },
-    {
-      "component": "DestinyClassDefinition",
-      "count": 3
     },
     {
       "component": "DestinyTraitDefinition",
@@ -66,14 +18,6 @@
     {
       "component": "DestinyCollectibleDefinition",
       "count": 12255
-    },
-    {
-      "component": "DestinyRewardMappingDefinition",
-      "count": 8581
-    },
-    {
-      "component": "DestinyVendorDefinition",
-      "count": 2170
     },
     {
       "component": "DestinyDestinationDefinition",
@@ -96,8 +40,68 @@
       "count": 7
     },
     {
+      "component": "DestinyRewardSourceDefinition",
+      "count": 0
+    },
+    {
+      "component": "DestinyArtifactDefinition",
+      "count": 1
+    },
+    {
+      "component": "DestinyClassDefinition",
+      "count": 3
+    },
+    {
+      "component": "DestinyDamageTypeDefinition",
+      "count": 7
+    },
+    {
+      "component": "DestinyStatDefinition",
+      "count": 79
+    },
+    {
+      "component": "DestinyActivityTypeDefinition",
+      "count": 83
+    },
+    {
+      "component": "DestinyInventoryItemDefinition",
+      "count": 38894
+    },
+    {
+      "component": "DestinySandboxPerkDefinition",
+      "count": 5203
+    },
+    {
+      "component": "DestinyItemCategoryDefinition",
+      "count": 130
+    },
+    {
+      "component": "DestinyEquipmentSlotDefinition",
+      "count": 18
+    },
+    {
+      "component": "DestinyPlugSetDefinition",
+      "count": 5422
+    },
+    {
+      "component": "DestinySocketCategoryDefinition",
+      "count": 65
+    },
+    {
       "component": "DestinySocketTypeDefinition",
       "count": 1874
+    },
+    {
+      "component": "DestinyActivityDefinition",
+      "count": 4069
+    },
+    {
+      "component": "DestinyVendorDefinition",
+      "count": 2170
+    },
+    {
+      "component": "DestinyEquipableItemSetDefinition",
+      "count": 56
     },
     {
       "component": "DestinyRewardItemListDefinition",
@@ -108,12 +112,8 @@
       "count": 6639
     },
     {
-      "component": "DestinyRewardSourceDefinition",
-      "count": 0
-    },
-    {
-      "component": "DestinyEquipableItemSetDefinition",
-      "count": 56
+      "component": "DestinyRewardMappingDefinition",
+      "count": 8581
     },
     {
       "component": "DestinyUnlockDefinition",
@@ -122,6 +122,10 @@
     {
       "component": "DestinyUnlockValueDefinition",
       "count": 15785
+    },
+    {
+      "component": "curated-links",
+      "count": 215
     },
     {
       "component": "DestinyInventoryItemDefinition:zh-chs",
@@ -140,6 +144,46 @@
       "count": 2170
     },
     {
+      "component": "DestinyArtifactDefinition:zh-chs",
+      "count": 1
+    },
+    {
+      "component": "DestinyEquipableItemSetDefinition:zh-chs",
+      "count": 56
+    },
+    {
+      "component": "DestinyClassDefinition:zh-chs",
+      "count": 3
+    },
+    {
+      "component": "DestinyDamageTypeDefinition:zh-chs",
+      "count": 7
+    },
+    {
+      "component": "DestinyStatDefinition:zh-chs",
+      "count": 79
+    },
+    {
+      "component": "DestinyActivityTypeDefinition:zh-chs",
+      "count": 83
+    },
+    {
+      "component": "DestinyItemCategoryDefinition:zh-chs",
+      "count": 130
+    },
+    {
+      "component": "DestinyEquipmentSlotDefinition:zh-chs",
+      "count": 18
+    },
+    {
+      "component": "DestinySocketCategoryDefinition:zh-chs",
+      "count": 65
+    },
+    {
+      "component": "DestinySocketTypeDefinition:zh-chs",
+      "count": 1874
+    },
+    {
       "component": "manifest-items",
       "count": 36680
     },
@@ -153,7 +197,7 @@
     },
     {
       "component": "manifest-perks",
-      "count": 3868
+      "count": 5200
     },
     {
       "component": "manifest-equipment-rich",
@@ -165,7 +209,11 @@
     },
     {
       "component": "manifest-abilities",
-      "count": 505
+      "count": 411
+    },
+    {
+      "component": "manifest-subclasses",
+      "count": 18
     },
     {
       "component": "manifest-mods",
@@ -173,11 +221,11 @@
     },
     {
       "component": "manifest-artifact",
-      "count": 1
+      "count": 50
     },
     {
       "component": "curated-mod-links",
-      "count": 20
+      "count": 25
     },
     {
       "component": "manifest-plugsets",
@@ -185,7 +233,7 @@
     },
     {
       "component": "manifest-vendor-inventory",
-      "count": 14256
+      "count": 14279
     },
     {
       "component": "manifest-activity-rewards",
@@ -206,10 +254,6 @@
     {
       "component": "manifest-drop-coverage",
       "count": 0
-    },
-    {
-      "component": "curated-links",
-      "count": 156
     }
   ]
 }
