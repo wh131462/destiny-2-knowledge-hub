@@ -1,10 +1,13 @@
 <script setup>
+import DestinyLoading from '@/components/DestinyLoading.vue'
+import { ui, useI18n, uiMessage } from '@/i18n'
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { catalogDatasets } from '@/data/catalogDatasets'
+import ItemDefinitionInfo from '@/components/ItemDefinitionInfo.vue'
+import { variantName, versionSummary, conditionSummary } from '@/i18n/metadata'
 import EntityLink from '@/components/EntityLink.vue'
 import SourceProvenance from '@/components/SourceProvenance.vue'
-import { useI18n } from '@/i18n'
 import { dataUrl } from '@/utils/dataUrl'
 import { manifestText } from '@/utils/manifestText'
 
@@ -45,7 +48,7 @@ watch([keyword, filter], () => {
   if (route.query.q !== next.q || route.query.type !== next.type || route.query.filter !== next.filter) router.replace({ query: next })
 })
 watch([keyword, filter], () => { page.value = 1 })
-const displayName = i => (locale.value === 'zh' ? i?.nameZh || i?.name : i?.name || i?.nameZh) || `Hash ${i?.hash ?? i?.itemHash}`
+const displayName = i => locale.value === 'zh' && (i?.nameZh || i?.name) ? variantName(i) : (locale.value === 'zh' ? i?.nameZh || i?.name : i?.name || i?.nameZh) || `Hash ${i?.hash ?? i?.itemHash}`
 const description = i => manifestText((locale.value === 'zh' ? i?.descriptionZh || i?.description : i?.description || i?.descriptionZh) || '', locale.value)
 const effects = i => (i.perkDetails || i.perks || []).filter(p => p.visibility !== 2)
 const icon = i => i?.icon ? (/^https?:/.test(i.icon) ? i.icon : 'https://www.bungie.net' + i.icon) : ''
@@ -62,7 +65,7 @@ function matchesFilter(i) {
   return c.includes(filter.value)
 }
 const records = computed(() => (payload.value?.[current.value.key] || []).filter(current.value.filter || (() => true)))
-const searchable = computed(() => records.value.map(i => [i, JSON.stringify(i).toLowerCase()]))
+const searchable = computed(() => records.value.map(i => [i, `${JSON.stringify(i)} ${versionSummary(i)} ${conditionSummary(i)}`.toLowerCase()]))
 const filtered = computed(() => { const q = keyword.value.trim().toLowerCase(); return searchable.value.filter(([i, text]) => matchesFilter(i) && (!q || text.includes(q))).map(([i]) => i) })
 const pages = computed(() => Math.max(1, Math.ceil(filtered.value.length / pageSize)))
 const visible = computed(() => filtered.value.slice((page.value - 1) * pageSize, page.value * pageSize))
@@ -84,32 +87,32 @@ async function loadWeaponDetails(event) {
 
 <template>
   <div>
-    <header class="catalog-head"><p class="eyebrow">BUNGIE MANIFEST / DEFINITION ATLAS</p><h1>官方数据图鉴</h1><p>官方定义、完整候选与历史留档。配装推荐单独维护，不以推荐数量代替目录覆盖。</p><RouterLink to="/data-status">查看逐类型完整性对账 →</RouterLink></header>
-    <nav class="dataset-tabs" aria-label="数据类型"><button v-for="d in datasets" :key="d.id" :aria-pressed="dataset === d.id" @click="selectDataset(d.id)">{{ d.label }}</button></nav>
-    <section class="catalog-tools"><a-input v-model:value="keyword" aria-label="搜索官方数据" placeholder="搜索中文、英文、描述或 Hash" allow-clear size="large" /><div class="kind-tabs"><button v-for="[id, name] in filters" :key="id" :aria-pressed="filter === id" @click="filter = id">{{ name }}</button></div></section>
-    <p class="scope-note">{{ current.note }}</p>
-    <p v-if="loading" role="status">正在加载{{ current.label }}…</p>
-    <p v-else-if="error" role="alert" class="error">{{ error }} <button @click="load">重试加载</button></p>
+    <header class="catalog-head"><p class="eyebrow">BUNGIE MANIFEST / DEFINITION ATLAS</p><h1>{{ ui("官方数据图鉴") }}</h1><p>{{ ui("官方定义、完整候选与历史留档。配装推荐单独维护，不以推荐数量代替目录覆盖。") }}</p><RouterLink to="/data-status">{{ ui("查看逐类型完整性对账 →") }}</RouterLink></header>
+    <nav class="dataset-tabs" :aria-label="ui(&quot;数据类型&quot;)"><button v-for="d in datasets" :key="d.id" :aria-pressed="dataset === d.id" @click="selectDataset(d.id)">{{ ui(d.label) }}</button></nav>
+    <section class="catalog-tools"><a-input v-model:value="keyword" :aria-label="ui(&quot;搜索官方数据&quot;)" :placeholder="ui(&quot;搜索中文、英文、描述或 Hash&quot;)" allow-clear size="large" /><div class="kind-tabs"><button v-for="[id, name] in filters" :key="id" :aria-pressed="filter === id" @click="filter = id">{{ ui(name) }}</button></div></section>
+    <p class="scope-note">{{ ui(current.note) }}</p>
+    <DestinyLoading v-if="loading" :label="ui('正在加载{0}…', [ui(current.label)])" />
+    <p v-else-if="error" role="alert" class="error">{{ uiMessage(error) }} <button @click="load">{{ ui("重试加载") }}</button></p>
     <template v-else>
-      <div class="result-line" role="status" aria-live="polite"><strong>{{ filtered.length.toLocaleString() }} 条 / 本类型 {{ records.length.toLocaleString() }} 条</strong><small>快照 {{ payload?.syncedAt?.slice(0, 10) }} 第 {{ page }} / {{ pages }} 页</small></div>
+      <div class="result-line" role="status" aria-live="polite"><strong>{{ filtered.length.toLocaleString() }} {{ ui("条 / 本类型") }} {{ records.length.toLocaleString() }} {{ ui("条") }}</strong><small>{{ ui("快照") }} {{ payload?.syncedAt?.slice(0, 10) }} {{ ui("第") }} {{ page }} / {{ pages }} {{ ui("页") }}</small></div>
       <div class="catalog-grid" :class="{ 'artifact-grid': dataset === 'artifacts' }">
         <article v-for="(item, index) in visible" :key="recordKey(item, index)" class="catalog-item">
-          <header><img v-if="icon(item)" :src="icon(item)" alt="" loading="lazy" /><span v-else class="no-image" aria-label="官方未提供图标">—</span><div><small v-if="dataset === 'artifacts'" class="category">{{ artifactKind(item) }}</small><h2><EntityLink :item="item" :kind="dataset" :label="displayName(item)" /></h2><small v-if="item.nameZh && item.name">{{ locale === 'zh' ? item.name : item.nameZh }}</small><small>Hash {{ item.hash || item.itemHash }}</small></div></header>
-          <p v-if="item.category" class="category">{{ item.category }}</p><p v-if="item.typeName || item.itemTypeDisplayName">{{ item.typeName || item.itemTypeDisplayName }}</p>
-          <p v-if="item.weaponFamily || item.armorSlot">{{ item.weaponFamily || item.armorSlot }} {{ item.classId || item.ammoSlot }}</p><p v-if="item.energyCost != null">能量消耗 {{ item.energyCost }}</p>
-          <p v-if="description(item)" class="description">{{ description(item) }}</p><p v-else-if="!effects(item).length && !item.nodes?.length && !item.itemHash" class="missing">官方未提供详细描述</p>
-          <div v-if="effects(item).length" class="effects"><div v-for="(perk, p) in effects(item)" :key="perk.hash || perk.sandboxPerkHash || p"><strong v-if="perk.requiredSetCount">{{ perk.requiredSetCount }} 件：{{ displayName(perk) }}</strong><p>{{ description(perk) || '无公开效果文本' }}</p></div></div>
-          <template v-if="dataset === 'artifacts'"><p class="scope-note">{{ item.note }}</p><RouterLink v-if="item.selectable" to="/manual-loadout">进入配装工具配置 →</RouterLink><details v-if="item.nodes.length"><summary>查看全部 {{ item.nodes.length }} 个节点与{{ item.selectable ? '插槽池' : '层级' }}</summary><div class="node-list"><div v-for="node in item.nodes" :key="node.hash" class="node"><img v-if="icon(node)" :src="icon(node)" alt="" loading="lazy" /><div><strong>{{ displayName(node) }}</strong><small>Hash {{ node.hash }}</small><p v-for="(perk, p) in effects(node)" :key="p">{{ description(perk) }}</p></div></div></div><div v-for="socket in item.sockets" :key="socket.socketIndex" class="pool"><strong>插槽 {{ socket.socketIndex + 1 }} {{ socket.nodeHashes.length }} 候选</strong><p>{{ socket.nodeHashes.map(h => displayName(item.nodes.find(n => n.hash === h))).join(' / ') }}</p></div><p v-for="tier in item.tiers" :key="tier.tierIndex">第 {{ tier.tierIndex }} 层 前置 {{ tier.minimumUnlockPointsUsedRequirement }}：{{ tier.items.map(displayName).join(' / ') }}</p></details></template>
-          <details v-if="item.perkSockets?.length" @toggle="loadWeaponDetails"><summary>全部词条候选 {{ item.perkSockets.length }} 个插槽</summary><p v-if="plugError" class="error">{{ plugError }}</p><div v-for="socket in item.perkSockets" :key="socket.socketIndex" class="pool"><strong>{{ columnName(socket) }} {{ socket.plugItemHashes.length }} 候选</strong><p>{{ socket.plugItemHashes.map(h => plugDetails[h] ? displayName(plugDetails[h]) : `#${h}`).join(' / ') }}</p></div></details>
-          <details v-if="item.vendorSources?.length || item.activitySources?.length"><summary>全部静态来源 {{ (item.vendorSources?.length || 0) + (item.activitySources?.length || 0) }} 条</summary><p v-for="(s, n) in [...(item.vendorSources || []), ...(item.activitySources || [])]" :key="n">{{ sourceName(s) }} #{{ s.vendorHash || s.activityHash }}</p></details>
-          <details v-if="item.itemHashes?.length"><summary>套装全部成员 {{ item.itemHashes.length }} 件</summary><p v-for="(hash, n) in item.itemHashes" :key="hash">{{ item.items?.[n] }} #{{ hash }}</p></details>
-          <template v-if="item.itemHash"><p>{{ sourceName(item) }} #{{ item.vendorHash || item.activityHash }}</p><p>物品 #{{ item.itemHash }} 数量 {{ item.quantity }}</p></template>
+          <header><img v-if="icon(item)" :src="icon(item)" alt="" loading="lazy" /><span v-else class="no-image" :aria-label="ui(&quot;官方未提供图标&quot;)">—</span><div><small v-if="dataset === 'artifacts'" class="category">{{ ui(artifactKind(item)) }}</small><h2><EntityLink :item="item" :kind="dataset" :label="displayName(item)" /></h2><small v-if="item.nameZh && item.name">{{ locale === 'zh' ? item.name : item.nameZh }}</small><small>Hash {{ item.hash || item.itemHash }}</small></div></header>
+          <ItemDefinitionInfo :item="item" compact /><p v-if="item.category" class="category">{{ ui(item.category) }}</p><p v-if="item.typeName || item.itemTypeDisplayName">{{ item.typeName || item.itemTypeDisplayName }}</p>
+          <p v-if="item.weaponFamily || item.armorSlot">{{ item.weaponFamily || item.armorSlot }} {{ item.classId || item.ammoSlot }}</p><p v-if="item.energyCost != null">{{ ui("能量消耗") }} {{ item.energyCost }}</p>
+          <p v-if="description(item)" class="description">{{ description(item) }}</p><p v-else-if="!effects(item).length && !item.nodes?.length && !item.itemHash" class="missing">{{ ui("官方未提供详细描述") }}</p>
+          <div v-if="effects(item).length" class="effects"><div v-for="(perk, p) in effects(item)" :key="perk.hash || perk.sandboxPerkHash || p"><strong v-if="perk.requiredSetCount">{{ perk.requiredSetCount }} {{ ui("件：") }}{{ displayName(perk) }}</strong><p>{{ description(perk) || ui("无公开效果文本") }}</p></div></div>
+          <template v-if="dataset === 'artifacts'"><p class="scope-note">{{ ui(item.note) }}</p><RouterLink v-if="item.selectable" to="/manual-loadout">{{ ui("进入配装工具配置 →") }}</RouterLink><details v-if="item.nodes.length"><summary>{{ ui("查看全部") }} {{ item.nodes.length }} {{ ui("个节点与") }}{{ item.selectable ? ui("插槽池") : ui("层级") }}</summary><div class="node-list"><div v-for="node in item.nodes" :key="node.hash" class="node"><img v-if="icon(node)" :src="icon(node)" alt="" loading="lazy" /><div><strong>{{ displayName(node) }}</strong><small>Hash {{ node.hash }}</small><p v-for="(perk, p) in effects(node)" :key="p">{{ description(perk) }}</p></div></div></div><div v-for="socket in item.sockets" :key="socket.socketIndex" class="pool"><strong>{{ ui("插槽") }} {{ socket.socketIndex + 1 }} {{ socket.nodeHashes.length }} {{ ui("候选") }}</strong><p>{{ socket.nodeHashes.map(h => displayName(item.nodes.find(n => n.hash === h))).join(' / ') }}</p></div><p v-for="tier in item.tiers" :key="tier.tierIndex">{{ ui("第") }} {{ tier.tierIndex }} {{ ui("层 前置") }} {{ tier.minimumUnlockPointsUsedRequirement }}：{{ tier.items.map(displayName).join(' / ') }}</p></details></template>
+          <details v-if="item.perkSockets?.length" @toggle="loadWeaponDetails"><summary>{{ ui("全部词条候选") }} {{ item.perkSockets.length }} {{ ui("个插槽") }}</summary><p v-if="plugError" class="error">{{ plugError }}</p><div v-for="socket in item.perkSockets" :key="socket.socketIndex" class="pool"><strong>{{ ui(columnName(socket)) }} {{ socket.plugItemHashes.length }} {{ ui("候选") }}</strong><p>{{ socket.plugItemHashes.map(h => plugDetails[h] ? displayName(plugDetails[h]) : `#${h}`).join(' / ') }}</p></div></details>
+          <details v-if="item.vendorSources?.length || item.activitySources?.length"><summary>{{ ui("全部静态来源") }} {{ (item.vendorSources?.length || 0) + (item.activitySources?.length || 0) }} {{ ui("条") }}</summary><p v-for="(s, n) in [...(item.vendorSources || []), ...(item.activitySources || [])]" :key="n">{{ sourceName(s) }} #{{ s.vendorHash || s.activityHash }}</p></details>
+          <details v-if="item.itemHashes?.length"><summary>{{ ui("套装全部成员") }} {{ item.itemHashes.length }} {{ ui("件") }}</summary><p v-for="(hash, n) in item.itemHashes" :key="hash">{{ item.items?.[n] }} #{{ hash }}</p></details>
+          <template v-if="item.itemHash"><p>{{ sourceName(item) }} #{{ item.vendorHash || item.activityHash }}</p><p>{{ ui("物品 #") }}{{ item.itemHash }} {{ ui("数量") }} {{ item.quantity }}</p></template>
           <SourceProvenance :item="item" :snapshot="payload || {}" official compact />
-          <details v-if="item.raw"><summary>{{ item.sourceComponent }} 查看标准字段</summary><pre>{{ JSON.stringify(item.raw, null, 2) }}</pre></details>
+          <details v-if="item.raw"><summary>{{ item.sourceComponent }} {{ ui("查看标准字段") }}</summary><pre>{{ JSON.stringify(item.raw, null, 2) }}</pre></details>
         </article>
       </div>
-      <p v-if="!visible.length">没有匹配项，试试其他名称或清空筛选。</p>
-      <nav class="pagination" aria-label="分页"><button :disabled="page === 1" @click="page--">上一页</button><span>{{ page }} / {{ pages }}</span><button :disabled="page >= pages" @click="page++">下一页</button></nav>
+      <p v-if="!visible.length">{{ ui("没有匹配项，试试其他名称或清空筛选。") }}</p>
+      <nav class="pagination" :aria-label="ui(&quot;分页&quot;)"><button :disabled="page === 1" @click="page--">{{ ui("上一页") }}</button><span>{{ page }} / {{ pages }}</span><button :disabled="page >= pages" @click="page++">{{ ui("下一页") }}</button></nav>
     </template>
   </div>
 </template>

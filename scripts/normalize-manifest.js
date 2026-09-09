@@ -1,4 +1,5 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises'
+import { definitionMetadata } from '../packages/manifest-catalog/item-metadata.js'
 
 const input = new URL('../data/manifest/DestinyInventoryItemDefinition.json', import.meta.url)
 const outputDir = new URL('../data/catalog/', import.meta.url)
@@ -23,6 +24,7 @@ const localizedDefinitions = localeSnapshot.items || {}
 const items = Object.entries(definitions)
   .map(([hash, item]) => ({
     hash: Number(hash),
+    ...definitionMetadata(item, definitions, localizedDefinitions[hash]),
     name: item.displayProperties?.name || '',
     nameZh: localizedDefinitions[hash]?.name || null,
     description: item.displayProperties?.description || '',

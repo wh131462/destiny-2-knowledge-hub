@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
       <router-link to="/" class="logo" aria-label="Destiny 2 Knowledge Hub">
         <img src="/favicon.svg" class="logo-icon" alt="" aria-hidden="true" />
         <span class="logo-text">
-          <span class="cn">命运2</span>
+          <span class="cn">{{ locale === 'en' ? 'Destiny 2' : '命运2' }}</span>
           <span class="en">DESTINY 2 HUB</span>
         </span>
       </router-link>
@@ -162,7 +162,7 @@ onBeforeUnmount(() => {
               <span class="result-type" :title="t(`searchTypes.${result.type}`)">{{ t(`searchTypes.${result.type}`) }}</span>
               <span class="result-copy">
                 <strong :title="locale === 'en' ? result.titleEn : result.title">{{ locale === 'en' ? result.titleEn : result.title }}</strong>
-                <small :title="result.description">{{ result.description }}</small>
+                <small :title="locale === 'en' ? result.descriptionEn : result.description">{{ locale === 'en' ? result.descriptionEn : result.description }}</small>
               </span>
               <span class="result-arrow" aria-hidden="true">→</span>
             </button>

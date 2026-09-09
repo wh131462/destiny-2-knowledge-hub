@@ -33,21 +33,35 @@
   --shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
   --font-en: 'Orbitron', sans-serif;
   --font-cn: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --ease-out: cubic-bezier(.22,1,.36,1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--bg-deep); }
 
 body {
   font-family: var(--font-cn);
-  background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(77, 184, 255, 0.10), transparent 60%),
-    radial-gradient(1000px 500px at 10% 110%, rgba(232, 193, 90, 0.08), transparent 60%),
-    var(--bg-deep);
+  background: var(--bg-deep);
   color: var(--text-main);
+  /* Override the UI reset's 100% height so long pages grow with their content. */
+  height: auto;
   min-height: 100vh;
   line-height: 1.65;
+  isolation: isolate;
+}
+
+/* One viewport-sized atmosphere: no tiling seams or content-height-dependent glow. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 85% 8%, rgba(77, 184, 255, 0.09), transparent 65%),
+    radial-gradient(ellipse at 8% 90%, rgba(232, 193, 90, 0.045), transparent 60%);
+  background-repeat: no-repeat;
 }
 
 button:focus-visible,
@@ -64,6 +78,19 @@ button:active, .btn:active { transform: translateY(1px) scale(0.99); }
 #app { display: flex; flex-direction: column; min-height: 100vh; }
 
 main { flex: 1; width: 100%; max-width: 1240px; margin: 0 auto; padding: 28px 20px 80px; }
+
+::selection { color: var(--bg-deep); background: var(--gold); }
+
+/* Shared control feedback respects the existing Ant Design theme. */
+.btn, .ant-btn { transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background .2s var(--ease-out), border-color .2s var(--ease-out); }
+.btn:focus-visible, .ant-btn:focus-visible { box-shadow: 0 0 0 3px rgba(232,193,90,.2); }
+.ant-select-selector, .ant-input, .ant-input-affix-wrapper { transition: border-color .2s var(--ease-out), box-shadow .2s var(--ease-out), background .2s var(--ease-out) !important; }
+.ant-select-dropdown { box-shadow: 0 18px 50px rgba(0,0,0,.45); backdrop-filter: blur(16px); }
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) { color: var(--text-main); }
+.ant-empty-description { color: var(--text-dim); }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.build-flow > header { animation: rise-in .45s var(--ease-out) both; }
 
 a { color: var(--blue); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--gold-bright); }
@@ -282,3 +309,28 @@ html { scrollbar-width: thin; scrollbar-color: #2a3a5e var(--bg-deep); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* Shared layout for browsing, reading and editing builds. */
+.build-flow { --build-header-height: 72px; --build-nav-height: 56px; min-width: 0; }
+.build-flow h1, .build-flow h2, .build-flow h3, .build-flow h4 { font-family: var(--font-cn); }
+.build-flow [data-build-section] { scroll-margin-top: calc(var(--build-header-height) + var(--build-nav-height) + 16px); }
+.build-flow [data-build-section]:focus { outline: none; }
+.build-flow [data-build-section]:focus-visible { outline: 2px solid var(--gold-dim); outline-offset: 4px; }
+.build-flow .flow-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+.build-flow .flow-actions .btn { border-radius: var(--radius-sm); }
+.build-flow .flow-kicker { color: var(--gold); font: .65rem var(--font-en); letter-spacing: .16em; }
+.build-flow .flow-muted { color: var(--text-sub); font-size: .8rem; }
+.build-flow .flow-empty { padding: clamp(2rem, 6vw, 5rem) 1.5rem; text-align: center; border: 1px dashed var(--line); border-radius: var(--radius); background: var(--bg-dark); }
+.build-flow .flow-empty p { max-width: 36rem; margin: .8rem auto 1.5rem; }
+.build-flow .flow-empty h2 { margin: .7rem 0; }
+.build-flow .flow-empty .flow-actions { justify-content: center; }
+.build-flow .flow-notice { margin: 1rem 0; padding: .9rem 1rem; border: 1px solid var(--line-soft); border-radius: var(--radius-sm); color: var(--text-sub); font-size: .8rem; }
+.build-flow .ant-select { min-width: 0; max-width: 100%; }
+.build-flow .ant-select-selection-item { text-overflow: ellipsis; }
+@media (max-width: 600px) {
+  .build-flow .flow-actions > * { min-height: 44px; }
+  .build-flow .flow-empty { padding-inline: 1rem; }
+}
+
+.build-select-popup.ant-select-dropdown { min-width: 0 !important; max-width: calc(100vw - 28px); }
+.build-select-popup .ant-select-item-option-content { white-space: normal; overflow-wrap: anywhere; line-height: 1.6; }

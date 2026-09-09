@@ -1,4 +1,7 @@
 <script setup>
+import { translateUi } from '@/i18n/messages'
+import DestinyLoading from '@/components/DestinyLoading.vue'
+import { ui, uiMessage } from '@/i18n'
 import { ref, watch, onBeforeUnmount } from 'vue'
 import { embedLoadoutImages, rasterizeLoadoutHtml } from '@/utils/loadoutImage'
 import { renderLoadoutHtml, exportFilename } from '../../../packages/loadout-export/index.js'
@@ -24,7 +27,7 @@ async function generate() {
   try {
     const { assets, failed } = await embedLoadoutImages(model, { signal, onProgress: (done, total) => { if (request === sequence) progress.value = `正在内嵌配图 ${done} / ${total}` } })
     if (request !== sequence) return
-    const warnings = failed.length ? [...model.warnings, `${failed.length} 张配图加载失败，已用文字占位；推荐内容完整保留。`] : model.warnings
+    const warnings = failed.length ? [...model.warnings, translateUi('{0} 张配图加载失败，已用文字占位；推荐内容完整保留。', model.locale, [failed.length])] : model.warnings
     if (failed.length) warning.value = `${failed.length} 张配图加载失败，已用文字占位。可重新生成以重试。`
     const html = renderLoadoutHtml({ ...model, warnings }, assets)
     htmlUrl.value = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }))
@@ -42,21 +45,21 @@ onBeforeUnmount(dispose)
 </script>
 
 <template>
-  <a-modal :open="open" title="导出配装一图流" width="1080px" :footer="null" wrap-class-name="loadout-image-modal" @cancel="emit('close')">
+  <a-modal :open="open" :title="ui(&quot;导出配装一图流&quot;)" width="1080px" :footer="null" wrap-class-name="loadout-image-modal" @cancel="emit('close')">
     <div class="image-export">
-      <p class="export-caption">独立排版的 PNG 长图，不含编辑控件。所有 Perk 组合和备注均会展开；也可保存内嵌配图的 HTML，离线查看或自行截图。</p>
-      <p v-if="loading || busy" role="status" class="export-progress">{{ loading ? '正在准备配装数据…' : progress }}</p>
-      <p v-if="preparationError || error" role="alert" class="export-error">{{ preparationError || error }}</p>
-      <p v-if="warning" role="status" class="export-warning">{{ warning }}</p>
-      <div v-if="pngUrl" class="image-preview"><img :src="pngUrl" alt="配装一图流 PNG 预览" /></div>
-      <div v-else class="export-placeholder">{{ loading || busy ? '正在生成一图流，请稍候' : '暂无 PNG 预览，可重试或保存完整 HTML' }}</div>
+      <p class="export-caption">{{ ui("独立排版的 PNG 长图，不含编辑控件。所有 Perk 组合和备注均会展开；也可保存内嵌配图的 HTML，离线查看或自行截图。") }}</p>
+      <DestinyLoading v-if="loading || busy" compact :label="loading ? ui('正在准备配装数据…') : uiMessage(progress)" />
+      <p v-if="preparationError || error" role="alert" class="export-error">{{ uiMessage(preparationError || error) }}</p>
+      <p v-if="warning" role="status" class="export-warning">{{ uiMessage(warning) }}</p>
+      <div v-if="pngUrl" class="image-preview"><img :src="pngUrl" :alt="ui(&quot;配装一图流 PNG 预览&quot;)" /></div>
+      <div v-else class="export-placeholder">{{ loading || busy ? ui("正在生成一图流，请稍候") : ui("暂无 PNG 预览，可重试或保存完整 HTML") }}</div>
       <footer class="export-actions">
-        <span>{{ dimensions || '独立 HTML 固定排版宽度 1200 px' }}</span>
-        <button type="button" :disabled="busy || loading" @click="emit('retry')">重新生成</button>
-        <a v-if="htmlUrl" :href="htmlUrl" :download="`${filename}.html`">保存独立 HTML</a>
-        <a v-if="pngUrl" class="download-png" :href="pngUrl" :download="`${filename}.png`">下载 PNG 长图</a>
+        <span>{{ dimensions || ui("独立 HTML 固定排版宽度 1200 px") }}</span>
+        <button type="button" :disabled="busy || loading" @click="emit('retry')">{{ ui("重新生成") }}</button>
+        <a v-if="htmlUrl" :href="htmlUrl" :download="`${filename}.html`">{{ ui("保存独立 HTML") }}</a>
+        <a v-if="pngUrl" class="download-png" :href="pngUrl" :download="`${filename}.png`">{{ ui("下载 PNG 长图") }}</a>
       </footer>
-      <p class="export-caption">生成在本地浏览器完成，不上传配装。关闭预览后继续编辑；再次打开会生成最新内容。</p>
+      <p class="export-caption">{{ ui("生成在本地浏览器完成，不上传配装。关闭预览后继续编辑；再次打开会生成最新内容。") }}</p>
     </div>
   </a-modal>
 </template>

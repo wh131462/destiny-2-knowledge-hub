@@ -1,4 +1,5 @@
 <script setup>
+import { ui } from '@/i18n'
 defineProps({ result: { type: Object, required: true } })
 
 const names = {
@@ -10,11 +11,11 @@ const names = {
 <template>
   <div class="stat-grid">
     <div v-for="(value, key) in result.values" :key="key" class="stat">
-      <span>{{ names[key] }}</span>
+      <span>{{ ui(names[key]) }}</span>
       <strong>{{ value }}</strong>
       <div class="track"><i :style="{ width: `${Math.min(100, Math.max(0, value / 2))}%` }"></i></div>
     </div>
-    <div class="dr-note">Health 不提供固定 PvE 减伤；伤害抗性来自胸甲模组、增益、护盾和活动规则。</div>
+    <div class="dr-note">{{ ui("Health 不提供固定 PvE 减伤；伤害抗性来自胸甲模组、增益、护盾和活动规则。") }}</div>
   </div>
 </template>
 

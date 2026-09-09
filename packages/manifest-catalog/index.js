@@ -1,3 +1,4 @@
+import { definitionMetadata } from './item-metadata.js'
 // Public definitions are not a claim of current acquisition or account unlocks.
 export const isPublic = item => Boolean(item?.displayProperties?.name?.trim() && !item.redacted && !item.blacklisted)
 export const isArtifactItem = item => item?.equippingBlock?.equipmentSlotTypeHash === 1506418338
@@ -32,7 +33,7 @@ export function buildPlugCatalog({ inventory, perks, locales }) {
     ...definition(hash, item, locales.items?.[hash]), itemType: item.itemType, typeName: item.itemTypeDisplayName,
     category: item.plug.plugCategoryIdentifier, categoryHash: item.plug.plugCategoryHash,
     placeholder: Boolean(isPlaceholder(item)), energyCost: item.plug.energyCost?.energyCost ?? null,
-    insertionRules: item.plug.insertionRules || [], enabledRules: item.plug.enabledRules || [],
+    ...definitionMetadata(item, inventory, locales.items?.[hash]),
     investmentStats: item.investmentStats || [], perkDetails: perkDetails(item, perks, locales.perks)
   }))
 }
@@ -42,7 +43,7 @@ export function buildArtifactCatalog({ inventory, artifacts, plugSets, perks, lo
     const item = inventory[hash]
     if (!item) throw new Error(`Missing artifact node ${hash}`)
     return { ...definition(hash, item, locales.items?.[hash]), perkDetails: perkDetails(item, perks, locales.perks),
-      insertionRules: item.plug?.insertionRules || [] }
+      ...definitionMetadata(item, inventory, locales.items?.[hash]) }
   }
   const reprised = Object.entries(inventory).filter(([, item]) => isPublic(item) && isReprisedArtifact(item)).map(([hash, item]) => {
     const sockets = (item.sockets?.socketEntries || []).map((socket, socketIndex) => {

@@ -1,4 +1,5 @@
 <script setup>
+import { ui } from '@/i18n'
 import { computed } from 'vue'
 import { sources, DATA_VERSION } from '@/data/v2'
 import ConfidenceBadge from './ConfidenceBadge.vue'
@@ -10,19 +11,19 @@ const version = computed(() => props.item.manifestVersion || props.snapshot.mani
 </script>
 <template>
   <details class="provenance" :open="!compact">
-    <summary>来源与版本 <span>{{ official ? '官方定义' : item.confidence ? `条目分级 ${item.confidence}` : '查看依据' }}</span></summary>
+    <summary>{{ ui("来源与版本") }} <span>{{ official ? ui("官方定义") : item.confidence ? ui("条目分级 {0}", [item.confidence]) : ui("查看依据") }}</span></summary>
     <div class="provenance-body">
       <dl class="evidence-facts">
-        <div><dt>{{ official ? '定义快照' : '资料版本' }}</dt><dd>{{ version || '未登记' }}</dd></div>
-        <div><dt>快照同步</dt><dd>{{ snapshot.syncedAt?.slice(0, 10) || '未登记' }}</dd></div>
-        <div><dt>条目核验</dt><dd>{{ item.verifiedAt || '未登记独立核验时间' }}</dd></div>
+        <div><dt>{{ official ? ui("定义快照") : ui("资料版本") }}</dt><dd>{{ version || ui("未登记") }}</dd></div>
+        <div><dt>{{ ui("快照同步") }}</dt><dd>{{ snapshot.syncedAt?.slice(0, 10) || ui("未登记") }}</dd></div>
+        <div v-if="item.verifiedAt"><dt>{{ ui("条目核验") }}</dt><dd>{{ item.verifiedAt }}</dd></div>
       </dl>
-      <p v-if="!official && item.confidence" class="entry-confidence">条目分级 <ConfidenceBadge :level="item.confidence" /></p>
+      <p v-if="!official && item.confidence" class="entry-confidence">{{ ui("条目分级") }} <ConfidenceBadge :level="item.confidence" /></p>
       <ul class="source-list">
-        <li v-for="source in sourceRows" :key="source.id"><div><ConfidenceBadge v-if="source.level" :level="source.level" /><a v-if="source.url" :href="source.url" target="_blank" rel="noopener noreferrer">{{ source.title }} ↗</a><strong v-else>{{ source.title }}</strong></div><small>来源检查：{{ source.checkedAt || '未登记' }}</small><p v-if="source.note">{{ source.note }}</p></li>
+        <li v-for="source in sourceRows" :key="source.id"><div><ConfidenceBadge v-if="source.level" :level="source.level" /><a v-if="source.url" :href="source.url" target="_blank" rel="noopener noreferrer">{{ source.title }} ↗</a><strong v-else>{{ source.title }}</strong></div><small>{{ ui("来源检查：") }}{{ source.checkedAt || ui("未登记") }}</small><p v-if="source.note">{{ source.note }}</p></li>
       </ul>
-      <p v-if="!sourceRows.length" class="evidence-empty">尚未登记条目来源。</p>
-      <details class="entry-history"><summary>条目变更记录 <span>{{ history.length }} 条</span></summary><ol v-if="history.length"><li v-for="(change, index) in history" :key="index"><time>{{ change.date }}</time><strong v-if="change.version">{{ change.version }}</strong><p>{{ change.summary }}</p></li></ol><p v-else class="evidence-empty">尚未登记逐条变更记录。快照同步时间不代表内容变更或实机核验。</p></details>
+      <p v-if="!sourceRows.length" class="evidence-empty">{{ ui("尚未登记条目来源。") }}</p>
+      <details class="entry-history"><summary>{{ ui("条目变更记录") }} <span>{{ history.length }} {{ ui("条") }}</span></summary><ol v-if="history.length"><li v-for="(change, index) in history" :key="index"><time>{{ change.date }}</time><strong v-if="change.version">{{ change.version }}</strong><p>{{ change.summary }}</p></li></ol><p v-else class="evidence-empty">{{ ui("尚未登记逐条变更记录。快照同步时间不代表内容变更或实机核验。") }}</p></details>
     </div>
   </details>
 </template>

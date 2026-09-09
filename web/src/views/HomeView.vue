@@ -1,6 +1,7 @@
 <script setup>
+import { ui, useI18n, localized } from '@/i18n'
 import { classes } from '@/data/classes'
-import { useI18n, localized } from '@/i18n'
+import ClassEmblem from '@/components/ClassEmblem.vue'
 
 const { t, locale } = useI18n()
 
@@ -25,19 +26,20 @@ const modules = [
     <!-- Hero -->
     <section class="hero">
       <div class="hero-inner">
-        <div class="hero-brand" :aria-label="locale === 'en' ? 'Destiny 2 Knowledge Hub' : '命运2知识中枢 Destiny 2 Knowledge Hub'">
+        <div class="hero-brand" :aria-label="locale === 'en' ? 'Destiny 2 Knowledge Hub' : ui(&quot;命运2知识中枢 Destiny 2 Knowledge Hub&quot;)">
           <img src="/favicon.svg" class="hero-brand-icon" alt="" aria-hidden="true" />
           <div class="hero-brand-copy">
-            <strong>{{ locale === 'en' ? 'Destiny 2 Knowledge Hub' : '命运2知识中枢' }}</strong>
+            <strong>{{ locale === 'en' ? 'Destiny 2 Knowledge Hub' : ui("命运2知识中枢") }}</strong>
             <span>DESTINY 2 KNOWLEDGE HUB</span>
           </div>
         </div>
         <p class="eyebrow">DESTINY 2 / KNOWLEDGE HUB</p>
-        <h1>{{ locale === 'en' ? 'Light as a blade,' : '以光为刃，' }} <span class="gold">{{ locale === 'en' ? 'knowledge as a shield' : '以知为盾' }}</span></h1>
+        <h1>{{ locale === 'en' ? 'Light as a blade,' : ui("以光为刃，") }} <span class="gold">{{ locale === 'en' ? 'knowledge as a shield' : ui("以知为盾") }}</span></h1>
         <div class="hero-actions">
-          <router-link to="/manual-loadout" class="btn primary">创建构筑</router-link>
-          <router-link to="/builds" class="btn">浏览构筑方案</router-link>
-          <router-link to="/classes" class="text-action">查看职业与子职业 →</router-link>
+          <router-link to="/manual-loadout" class="btn primary">{{ ui("创建构筑") }}</router-link>
+          <router-link to="/builds" class="btn">{{ ui("浏览构筑方案") }}</router-link>
+          <router-link to="/classes" class="text-action">{{ ui("查看职业与子职业 →") }}</router-link>
+          <a class="text-action official-link" href="https://www.bungie.net/7/en/Destiny" target="_blank" rel="noopener noreferrer">{{ locale === 'en' ? 'Bungie official site ↗' : 'Bungie 官网 ↗' }}</a>
         </div>
       </div>
       <!-- 星光效果 -->
@@ -55,7 +57,7 @@ const modules = [
           <div class="mod-icon">{{ m.icon }}</div>
           <h3>{{ locale === 'en' ? ({ classes: 'Classes', builds: 'Builds', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', lore: 'Lore', glossary: 'Glossary' }[m.to.slice(1)] || m.title) : m.title }}</h3>
           <span class="en-tag">{{ m.en }}</span>
-          <p>{{ m.desc }}</p>
+          <p>{{ ui(m.desc) }}</p>
         </router-link>
       </div>
     </section>
@@ -70,15 +72,15 @@ const modules = [
         <router-link v-for="c in classCards" :key="c.id" :to="`/classes/${c.id}`" class="card class-card">
           <div class="class-inner">
             <div class="class-icon" :style="{ borderColor: c.color, color: c.color }">
-              {{ c.name[0] }}
+              <ClassEmblem :class-id="c.id" />
             </div>
             <div>
               <h3>{{ localized(c) }}</h3>
               <span v-if="locale === 'zh'" class="en-tag">{{ c.en.toUpperCase() }}</span>
             </div>
           </div>
-          <p>{{ c.role }}：职业技能「{{ c.classAbility.split('（')[0] }}」</p>
-          <div class="sub-count">{{ c.count }} 个子职业分支</div>
+          <p>{{ ui(c.role) }} · {{ ui("职业技能") }}: {{ ui(c.classAbility) }}</p>
+          <div class="sub-count">{{ c.count }} {{ ui("个子职业分支") }}</div>
         </router-link>
       </div>
     </section>
@@ -155,12 +157,13 @@ const modules = [
 .class-inner { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
 .class-icon {
   width: 46px; height: 46px;
+  flex-shrink: 0;
   border-radius: 12px;
   border: 2px solid;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; font-weight: 800;
   background: rgba(255,255,255,0.03);
 }
+.class-icon .class-emblem { width: 30px; height: 30px; }
 .sub-count { margin-top: 10px; font-size: 0.78rem; color: var(--text-dim); }
 @media (max-width: 640px) {
   .hero-brand { margin-bottom: 22px; }

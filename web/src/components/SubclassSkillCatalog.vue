@@ -1,4 +1,5 @@
 <script setup>
+import { ui, localized, localizedField } from '@/i18n'
 import EntityLink from '@/components/EntityLink.vue'
 import { computed, ref } from 'vue'
 import { abilityById, aspectById, facetById, fragmentById } from '@/data/v2'
@@ -24,17 +25,17 @@ const groups = computed(() => pools.map(([key, label]) => {
 </script>
 
 <template>
-  <section class="skill-catalog" aria-label="完整技能图鉴">
-    <header><div><h3>完整技能图鉴</h3><p>快照 {{ subclass.verifiedAt }} 按该子职业的官方插槽列出全部选项；点击卡片展开效果。账号解锁条件请在游戏内查看。</p></div><a-input v-model:value="search" aria-label="搜索职业技能图鉴" placeholder="搜索中文 / 英文技能" allow-clear /></header>
-    <p role="status" aria-live="polite" class="search-count">{{ groups.reduce((sum, group) => sum + group.items.length, 0) }} / {{ groups.reduce((sum, group) => sum + group.total, 0) }} 个技能</p>
+  <section class="skill-catalog" :aria-label="ui(&quot;完整技能图鉴&quot;)">
+    <header><div><h3>{{ ui("完整技能图鉴") }}</h3><p>{{ ui("快照") }} {{ subclass.verifiedAt }} {{ ui("按该子职业的官方插槽列出全部选项；点击卡片展开效果。账号解锁条件请在游戏内查看。") }}</p></div><a-input v-model:value="search" :aria-label="ui(&quot;搜索职业技能图鉴&quot;)" :placeholder="ui(&quot;搜索中文 / 英文技能&quot;)" allow-clear /></header>
+    <p role="status" aria-live="polite" class="search-count">{{ groups.reduce((sum, group) => sum + group.items.length, 0) }} / {{ groups.reduce((sum, group) => sum + group.total, 0) }} {{ ui("个技能") }}</p>
     <section v-for="group in groups.filter(g => !search.trim() || g.items.length)" :key="group.key" class="catalog-group">
-      <h4>{{ group.label }} <small>{{ group.items.length }} / {{ group.total }}</small></h4>
+      <h4>{{ ui(group.label) }} <small>{{ group.items.length }} / {{ group.total }}</small></h4>
       <div class="catalog-cards"><details v-for="item in group.items" :key="item.id">
-        <summary><img v-if="visualIcon(item)" :src="visualIcon(item)" alt="" loading="lazy" /><span><strong>{{ item.name }}</strong><small>{{ item.en }}</small></span></summary>
-        <p>{{ visualDescription(item) || item.description || '当前定义未提供效果说明。' }}</p>
-      <EntityLink :item="item" label="来源、版本与相关构筑" />
+        <summary><img v-if="visualIcon(item)" :src="visualIcon(item)" alt="" loading="lazy" /><span><strong>{{ localized(item) }}</strong><small>{{ item.en }}</small></span></summary>
+        <p>{{ visualDescription(item) || localizedField(item, 'description') || ui("当前定义未提供效果说明。") }}</p>
+      <EntityLink :item="item" :label="ui(&quot;来源、版本与相关构筑&quot;)" />
       </details></div>
-      <p v-if="!group.items.length" class="no-match">此分组没有匹配项</p>
+      <p v-if="!group.items.length" class="no-match">{{ ui("此分组没有匹配项") }}</p>
     </section>
   </section>
 </template>

@@ -1,7 +1,7 @@
 <script setup>
+import { ui, useI18n } from '@/i18n'
 import { ref, computed } from 'vue'
 import { glossary, glossaryCats } from '@/data/glossary'
-import { useI18n } from '@/i18n'
 
 const { t } = useI18n()
 
@@ -35,7 +35,7 @@ const filtered = computed(() =>
           class="btn small"
           :class="{ active: cat === c }"
           @click="cat = cat === c ? '' : c"
-        >{{ c }}</button>
+        >{{ ui(c) }}</button>
       </div>
     </div>
 
@@ -43,13 +43,13 @@ const filtered = computed(() =>
       <div v-for="g in filtered" :key="g.term" class="card term-card">
         <div class="term-top">
           <h3>{{ g.term }}</h3>
-          <span class="badge blue">{{ g.cat }}</span>
+          <span class="badge blue">{{ ui(g.cat) }}</span>
         </div>
         <span class="en-tag">{{ g.en.toUpperCase() }}</span>
-        <p>{{ g.desc }}</p>
+        <p>{{ ui(g.desc) }}</p>
       </div>
     </div>
-    <div v-if="!filtered.length" class="empty">未找到匹配的术语</div>
+    <div v-if="!filtered.length" class="empty">{{ ui("未找到匹配的术语") }}</div>
   </div>
 </template>
 

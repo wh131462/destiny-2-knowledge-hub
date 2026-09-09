@@ -1,12 +1,14 @@
 <script setup>
+import { ui } from '@/i18n'
+import { variantName } from '@/i18n/metadata'
 import { computed } from 'vue'
 import { entityLocation } from '../../../packages/knowledge-links/index.js'
 const props = defineProps({ item: Object, kind: { type: String, default: 'items' }, label: String, newTab: Boolean })
 const to = computed(() => entityLocation(props.item, props.kind))
-const text = computed(() => props.label || props.item?.nameZh || props.item?.name || props.item?.en || '查看条目')
+const text = computed(() => props.label || (props.item?.nameZh || props.item?.name ? variantName(props.item) : props.item?.en || ui('查看条目')))
 </script>
 <template>
-  <RouterLink v-if="to" :to="to" class="entity-link" :target="newTab ? '_blank' : undefined" :rel="newTab ? 'noopener' : undefined" :aria-label="newTab ? `${text}（在新标签页查看百科）` : undefined">{{ text }}<span aria-hidden="true"> ↗</span></RouterLink>
+  <RouterLink v-if="to" :to="to" class="entity-link" :target="newTab ? '_blank' : undefined" :rel="newTab ? 'noopener' : undefined" :aria-label="newTab ? ui(&quot;{0}（在新标签页查看百科）&quot;, [text]) : undefined">{{ text }}<span aria-hidden="true"> ↗</span></RouterLink>
   <span v-else>{{ text }}</span>
 </template>
 <style scoped>

@@ -1,9 +1,10 @@
 <script setup>
+import { ui, useI18n, localized } from '@/i18n'
 import { ref, computed } from 'vue'
 import { classes, elements } from '@/data/classes'
 import ElementBadge from '@/components/ElementBadge.vue'
 import { subclasses } from '@/data/v2'
-import { useI18n, localized } from '@/i18n'
+import ClassPortrait from '@/components/ClassPortrait.vue'
 
 const { t, locale } = useI18n()
 
@@ -15,7 +16,7 @@ const classList = computed(() => {
     ...c,
     subclasses: c.subclasses.filter(s => s.type !== 'prismatic' &&
       (!filterElement.value || s.element === filterElement.value) &&
-      (!keyword.value || s.branch.includes(keyword.value) || c.name.includes(keyword.value))
+      (!keyword.value || `${s.branch} ${c.name} ${c.en}`.toLowerCase().includes(keyword.value.toLowerCase()))
     ).concat(subclasses.filter(s => s.classId === c.id && s.type === 'prismatic').filter(s =>
       (!filterElement.value || filterElement.value === 'prismatic') &&
       (!keyword.value || s.name.includes(keyword.value) || s.en.toLowerCase().includes(keyword.value.toLowerCase()))
@@ -48,46 +49,43 @@ const elementKeys = Object.keys(elements)
     </div>
 
     <div v-if="classList.length" class="grid" style="gap: 24px;">
-      <div v-for="c in classList" :key="c.id" class="card class-block">
-        <div class="class-title">
-          <router-link :to="`/classes/${c.id}`" class="class-name">
-            {{ localized(c) }} <span v-if="locale === 'zh'" class="en">{{ c.en }}</span>
-          </router-link>
-          <span class="badge gold">{{ c.role }}</span>
-        </div>
-        <p class="desc">{{ c.desc }}</p>
+      <div v-for="(c, index) in classList" :key="c.id" class="card class-block">
+        <ClassPortrait :class-id="c.id" :name="localized(c)" :eager="index === 0" />
+        <div class="class-content">
+          <div class="class-title">
+            <router-link :to="`/classes/${c.id}`" class="class-name">
+              {{ localized(c) }} <span v-if="locale === 'zh'" class="en">{{ c.en }}</span>
+            </router-link>
+            <span class="badge gold">{{ ui(c.role) }}</span>
+          </div>
+          <p class="desc">{{ ui(c.desc) }}</p>
 
-        <div class="sub-grid">
-          <router-link
-            v-for="s in c.subclasses"
-            :key="s.id"
-            :to="`/classes/${c.id}?el=${s.element}`"
-            class="sub-card"
-            :class="{ prismatic: s.type === 'prismatic' }"
-          >
-            <div class="sub-top">
-              <span v-if="s.type === 'prismatic'" class="prism-badge">棱镜</span>
-              <ElementBadge v-else :element="s.element" />
-              <span class="branch">{{ localized(s) }}</span>
-            </div>
-              <div v-if="s.type !== 'prismatic'" class="super">
-                <span class="lbl">超能力</span> {{ s.super }}
+          <div class="sub-grid">
+            <router-link
+              v-for="s in c.subclasses"
+              :key="s.id"
+              :to="`/classes/${c.id}?el=${s.element}`"
+              class="sub-card"
+              :class="{ prismatic: s.type === 'prismatic' }"
+            >
+              <div class="sub-top">
+                <span v-if="s.type === 'prismatic'" class="prism-badge">{{ ui("棱镜") }}</span>
+                <ElementBadge v-else :element="s.element" />
+                <span class="branch">{{ localized(s) }}</span>
               </div>
-              <p v-if="s.type !== 'prismatic'" class="focus">{{ s.focus }}</p>
-              <p v-else class="focus">跨元素技能池、超越、21 个棱镜特性</p>
-          </router-link>
+                <div v-if="s.type !== 'prismatic'" class="super">
+                  <span class="lbl">{{ ui("超能力") }}</span> {{ s.superEntries.map(localized).join(' / ') || ui('按当前装备选择超能力') }}
+                </div>
+                <p v-if="s.type !== 'prismatic'" class="focus">{{ ui(s.focus) }}</p>
+                <p v-else class="focus">{{ ui("跨元素技能池、超越、21 个棱镜特性") }}</p>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
 
-    <div v-else class="empty">未找到匹配的内容，试试其他关键词或元素。</div>
+    <div v-else class="empty">{{ ui("未找到匹配的内容，试试其他关键词或元素。") }}</div>
 
-    <div class="note gold">
-      💡 点击职业名进入详情页；每个职业的五大元素分支与棱镜分支都在同一页中：
-      <span v-for="(el, key) in elements" :key="key">
-        <ElementBadge :element="key" />
-      </span>
-    </div>
   </div>
 </template>
 
@@ -97,7 +95,10 @@ const elementKeys = Object.keys(elements)
 .page-head p { color: var(--text-dim); }
 .filters { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
 .el-filters { display: flex; gap: 8px; flex-wrap: wrap; }
-.class-block { padding: 22px; }
+.class-block { display: grid; grid-template-columns: minmax(240px, 30%) minmax(0, 1fr); padding: 0; }
+.class-block:hover { transform: none; }
+.class-block .class-portrait { height: 100%; min-height: 440px; }
+.class-content { padding: 26px; min-width: 0; }
 .class-title { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
 .class-name { font-size: 1.25rem; font-weight: 700; color: var(--text-main); }
 .class-name .en {
@@ -130,4 +131,10 @@ const elementKeys = Object.keys(elements)
 .super { font-size: 0.78rem; color: var(--text-sub); margin-bottom: 6px; }
 .super .lbl { color: var(--gold-dim); font-size: 0.68rem; letter-spacing: 0.1em; }
 .focus { font-size: 0.8rem; color: var(--text-sub); }
+@media (max-width: 700px) {
+  .class-block { grid-template-columns: 1fr; }
+  .class-block .class-portrait { height: 340px; min-height: 0; }
+  .class-content { padding: 20px; }
+  .sub-grid { grid-template-columns: minmax(0, 1fr); }
+}
 </style>

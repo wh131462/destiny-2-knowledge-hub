@@ -24,6 +24,7 @@ export function weaponPerkColumns(weapon, byHash = new Map()) {
     const hashes = socket.plugItemHashes || []
     const missingHashes = [...new Set(hashes)].filter(h => !byHash.has(Number(h)))
     const plugs = [...new Set(hashes)].map(h => byHash.get(Number(h))).filter(p => p && !p.placeholder && p.name && p.typeName && !p.redacted && !p.blacklisted)
+      .map(p => ({ ...p, craftingOptions: (socket.plugOptions || []).filter(entry => entry.plugItemHash === p.hash) }))
     if (!plugs.length && !missingHashes.length) continue
     const type = plugs[0]?.typeName.replace(/^Enhanced\s+/, '')
     let [key, label] = types[type] || (type ? [null, type] : [socket.perkColumn, `插槽 ${socket.socketIndex + 1}（数据缺失）`])
@@ -44,9 +45,13 @@ export function weaponPerkColumns(weapon, byHash = new Map()) {
 
 export function resolvePerkSelections(row, column) {
   const values = alternatives(row.recommendedPerks?.[column.key])
-  const hashes = row.recommendedPerkHashes?.[column.key] || []
-  const chosen = column.options.filter(p => hashes.includes(p.hash))
-  const unknownHashes = hashes.filter(h => !column.options.some(p => p.hash === h))
+  // Draft JSON stores hashes as numbers, while manifest payloads may expose
+  // them as strings. Compare by numeric value so a selected perk remains
+  // selected on the detail/export view regardless of source typing.
+  const hashes = (row.recommendedPerkHashes?.[column.key] || []).map(Number)
+  const optionHashes = new Set(column.options.map(p => Number(p.hash)))
+  const chosen = column.options.filter(p => hashes.includes(Number(p.hash)))
+  const unknownHashes = hashes.filter(h => !optionHashes.has(h))
   const manual = []
   for (const token of values) {
     const matches = column.options.filter(p => matchesPerkToken(p, token))

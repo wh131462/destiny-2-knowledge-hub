@@ -1,4 +1,5 @@
 // A recommendation document, never a character inventory or a stat-roll solver.
+import { modConditionErrors } from '../manifest-catalog/item-metadata.js'
 export const SCHEMA = 'd2hub-manual-loadout-v3'
 export const statLabels = { health: '生命值', melee: '近战', grenade: '手雷', class: '职业', super: '超能', weapons: '武器' }
 export const armorLabels = { helmet: '头盔', arms: '臂铠', chest: '胸甲', legs: '腿甲', classItem: '职业装备' }
@@ -65,6 +66,7 @@ export function targetErrors(targets) {
 }
 export function isArmorMod(mod) {
   return Boolean(mod && Number.isFinite(mod.energyCost) && !mod.redacted && !mod.blacklisted &&
+    !['deprecated', 'placeholder'].includes(mod.definitionState) &&
     !/ghost|artifact/i.test(mod.category || '') && !/^(Empty|Locked|Deprecated)\b/i.test(mod.name || '') &&
     (mod.category || '').startsWith('enhancements.'))
 }
@@ -79,7 +81,7 @@ export function armorSockets(armor, mods, plugSets = noPlugSets) {
     options: [...new Set([...(s.allowedPlugHashes || []), ...(sets.get(s.plugSetHash) || []), ...(sets.get(s.randomizedPlugSetHash) || [])])].map(h => modByHash.get(Number(h))).filter(Boolean)
   })).filter(s => s.options.length)
 }
-export function modErrors(armor, assignments, mods, plugSets) {
+export function modErrors(armor, assignments, mods, plugSets, conditions = {}) {
   const sockets = armorSockets(armor, mods, plugSets)
   const seen = new Set(), errors = []
   let energy = 0
@@ -90,7 +92,7 @@ export function modErrors(armor, assignments, mods, plugSets) {
     if (seen.has(assignment.socketIndex)) errors.push('同一插槽不能放置两个模组')
     seen.add(assignment.socketIndex)
     if (!mod) errors.push('模组与所选护甲插槽不兼容，或能量数据缺失')
-    else energy += mod.energyCost
+    else { energy += mod.energyCost; errors.push(...modConditionErrors(mod, conditions)) }
   }
   if (energy > 10) errors.push(`模组能量 ${energy}/10，超过满升级规划容量`)
   return errors

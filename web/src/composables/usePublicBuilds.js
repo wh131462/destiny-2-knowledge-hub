@@ -2,6 +2,8 @@ import { computed, readonly, ref, shallowRef, onMounted } from 'vue'
 import { curatedBuilds } from '@/data/v2'
 import { communityConfig } from '@/utils/communityConfig'
 import { fetchSnapshot } from '../../../packages/community-builds/client.js'
+import { listLocalDrafts } from '@/utils/localDrafts'
+import { decodeDraft } from '../../../packages/loadout-planner/index.js'
 
 const sourceStatus = ref(communityConfig.error ? 'error' : communityConfig.enabled ? 'idle' : 'unconfigured')
 const snapshot = shallowRef(null), error = ref(communityConfig.error)
@@ -21,6 +23,11 @@ async function refresh() {
 }
 
 function loadPublicBuilds() {
+  const local = listLocalDrafts().map(entry => {
+    let draft = null
+    try { draft = decodeDraft(entry.encoded) } catch { draft = { name: entry.name } }
+    return { ...draft, id: entry.id, name: entry.name, goal: draft?.goal || draft?.notes || '保存在此浏览器的本地草稿', source: 'local-draft', detailPath: `/builds/draft/${encodeURIComponent(entry.id)}`, editPath: `/manual-loadout?draft=${encodeURIComponent(entry.id)}`, author: { displayName: '本地草稿' }, publishedAt: entry.updatedAt, activityIds: [] }
+  })
   const editorial = curatedBuilds
     .filter(build => (build.visibility || (build.isTemplateBaseline ? 'private' : 'public')) === 'public')
     .map(build => ({
@@ -37,7 +44,7 @@ function loadPublicBuilds() {
     tags: build.submission.tags, activityIds: build.submission.activityIds,
     author: { ...build.author, displayName: build.author.login }, publishedAt: build.updatedAt
   }))
-  return [...community, ...editorial]
+  return [...local, ...community, ...editorial]
 }
 
 export function usePublicBuilds() {

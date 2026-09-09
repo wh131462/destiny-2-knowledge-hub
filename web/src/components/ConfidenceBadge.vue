@@ -1,6 +1,6 @@
 <script setup>
+import { ui, useI18n } from '@/i18n'
 import { verificationLevels } from '@/data/v2'
-import { useI18n } from '@/i18n'
 
 const { locale } = useI18n()
 
@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <span class="confidence" :class="`level-${level.toLowerCase()}`" :title="locale === 'en' ? englishDescriptions[level] : verificationLevels[level]?.description">
-    {{ level }}：{{ locale === 'en' ? (englishLabels[level] || 'Unverified') : (verificationLevels[level]?.label || '待核验') }}
+    {{ level }}：{{ locale === 'en' ? (englishLabels[level] || 'Unverified') : (verificationLevels[level]?.label || ui("待核验")) }}
   </span>
 </template>
 

@@ -1,0 +1,42 @@
+/* Shared by the HTML startup screen and Vue loading components. */
+.destiny-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-width: 0;
+  padding: 44px 20px;
+  color: #e8edf7;
+  text-align: center;
+  font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', sans-serif;
+}
+.destiny-loading__mark { display: block; width: 88px; height: 88px; flex-shrink: 0; }
+.destiny-loading__copy { display: grid; gap: 7px; min-width: 0; }
+.destiny-loading__label { color: #c9d1df; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.destiny-loading__detail { color: #9aa7c0; font-size: 12px; line-height: 1.7; }
+.destiny-loading__brand { color: #a8843a; font-size: 9px; letter-spacing: .26em; line-height: 1.8; }
+.destiny-loading--compact { flex-direction: row; justify-content: flex-start; gap: 12px; padding: 14px 0; text-align: left; }
+.destiny-loading--compact .destiny-loading__mark { width: 36px; height: 36px; }
+.destiny-loading--screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at 75% 20%, #10203380, transparent 65%), #060a14f5;
+  pointer-events: none;
+  animation: destiny-loading-reveal .2s ease-out .16s both;
+}
+.destiny-loading--screen .destiny-loading__mark { width: 108px; height: 108px; margin-bottom: 10px; }
+.destiny-loading--boot { margin: 0; animation-delay: 0s; }
+.destiny-loading--boot-error { pointer-events: auto; }
+.destiny-loading--boot-error a { color: #e8c15a; }
+.destiny-loading[hidden] { display: none; }
+@keyframes destiny-loading-reveal { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 600px) {
+  .destiny-loading--screen .destiny-loading__mark { width: 88px; height: 88px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .destiny-loading { animation: none; }
+}

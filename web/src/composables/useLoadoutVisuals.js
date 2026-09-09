@@ -1,10 +1,12 @@
 import { computed } from 'vue'
 import { aspectDefinition } from '../../../packages/loadout-planner/index.js'
 import { manifestText } from '../utils/manifestText.js'
+import { useI18n, manifestDescription } from '../i18n/index.js'
 
 // Resolve art from the appropriate definition type. Display fallback must never
 // pick a same-name collectible, bounty or the other subclass's aspect variant.
 export function useLoadoutVisuals({ subclassAssets, fragmentAssets, manifestAbilities, assetFor, iconFor }, subclass) {
+  const { locale } = useI18n()
   const subclassByName = computed(() => new Map(subclassAssets.value.map(item => [item.name, item])))
   const fragmentByName = computed(() => new Map(fragmentAssets.value.map(item => [item.name, item])))
   const visualAsset = item => {
@@ -25,7 +27,7 @@ export function useLoadoutVisuals({ subclassAssets, fragmentAssets, manifestAbil
   }
   const visualDescription = item => {
     const asset = visualAsset(item)
-    return manifestText(asset?.perkDetails?.filter(p => p.visibility !== 2).map(p => p.descriptionZh || p.description).filter(Boolean).join('\n\n') || asset?.descriptionZh || asset?.description || item?.description || '')
+    return manifestText(asset?.perkDetails?.filter(p => p.visibility !== 2).map(manifestDescription).filter(Boolean).join('\n\n') || manifestDescription(asset) || item?.description || '', locale.value)
   }
   return { visualIcon, visualDescription, visualAsset }
 }

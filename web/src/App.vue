@@ -1,10 +1,17 @@
 <script setup>
+import { computed } from 'vue'
 import { theme } from 'ant-design-vue'
+import enUS from 'ant-design-vue/es/locale/en_US'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import SiteHeader from '@/components/SiteHeader.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
+import DestinyLoading from '@/components/DestinyLoading.vue'
+import { navigationLoading } from '@/composables/useNavigationLoading'
 import { useI18n } from '@/i18n'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const antLocale = computed(() => locale.value === 'en' ? enUS : zhCN)
+const reloadPage = () => window.location.reload()
 
 const antTheme = {
   algorithm: theme.darkAlgorithm,
@@ -33,10 +40,15 @@ const antTheme = {
 </script>
 
 <template>
-  <a-config-provider :theme="antTheme">
+  <a-config-provider :theme="antTheme" :locale="antLocale">
     <a class="skip-link" href="#main-content">{{ t('common.skipToMain') }}</a>
     <SiteHeader />
-    <main id="main-content" tabindex="-1">
+    <DestinyLoading v-if="navigationLoading.pending" fullscreen />
+    <main id="main-content" tabindex="-1" :aria-busy="navigationLoading.pending">
+      <div v-if="navigationLoading.error" class="note" role="alert">
+        {{ locale === 'en' ? 'Unable to load this page. Check your connection and try again.' : '页面加载失败，请检查网络后重试。' }}
+        <button type="button" class="btn small" @click="reloadPage">{{ t('common.retry') }}</button>
+      </div>
       <router-view />
     </main>
     <SiteFooter />

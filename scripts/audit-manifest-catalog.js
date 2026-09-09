@@ -49,6 +49,16 @@ function compare(id, label, scope, expected, actual, key = i => i.hash) {
     missingChineseNames: actual.filter(i => i.name && !i.nameZh && !(i.en && i.name !== i.en)).length })
 }
 const publicItems = Object.values(inv).filter(isPublic)
+const { definitionMetadata, plugOptionMetadata } = await import('../packages/manifest-catalog/item-metadata.js')
+const metadataLocales = await read('data/catalog/manifest-locales-zh-chs.json')
+for (const file of ['manifest-items', 'manifest-equipment-rich', 'manifest-equipment-catalog', 'manifest-mods', 'manifest-plugs']) {
+  for (const item of await catalog(file)) {
+    const expected = definitionMetadata(inv[item.hash], inv, metadataLocales.items[item.hash])
+    for (const key of ['versionInfo', 'definitionState', 'availabilityStatus', 'insertionRules', 'enabledRules', 'tooltipNotifications', 'equipRequirements', 'artifactVariant']) {
+      if (JSON.stringify(expected[key] ?? null) !== JSON.stringify(item[key] ?? null)) errors.push(`版本或条件字段丢失：${file}/${item.hash}/${key}`)
+    }
+  }
+}
 compare('items', '物品定义', '全部有名称、非隐藏/黑名单物品；包含历史版本，不代表当前可获取', publicItems, await catalog('manifest-items'))
 const equipment = await catalog('manifest-equipment-rich')
 for (const [type, label] of [[3, '武器'], [2, '护甲']]) compare('equipment-' + type, label, '按 itemType；按 Hash 保留同名版本', publicItems.filter(i => i.itemType === type), equipment.filter(i => i.itemType === type))
@@ -68,10 +78,16 @@ compare('plugsets', '插槽候选池', '全部非隐藏 / 黑名单 PlugSet', Ob
 for (const set of sets) {
   const expected = (rawSets[set.hash].reusablePlugItems || []).map(i => i.plugItemHash).filter(Boolean)
   if (JSON.stringify(expected) !== JSON.stringify(set.plugItemHashes)) errors.push(`PlugSet 候选被截断：${set.hash}`)
+  if (JSON.stringify((rawSets[set.hash].reusablePlugItems || []).map(plugOptionMetadata)) !== JSON.stringify(set.reusablePlugItems)) errors.push(`PlugSet 候选条件丢失：${set.hash}`)
 }
 for (const item of equipment) for (const socket of item.socketPools.filter(s => /WEAPON PERK/i.test(s.socketCategory || ''))) {
   const expected = plugHashes(inv[item.hash].sockets.socketEntries[socket.socketIndex], rawSets)
   if (JSON.stringify(expected) !== JSON.stringify(socket.plugItemHashes)) errors.push(`武器词条被截断：${item.hash}/${socket.socketIndex}`)
+  const rawSocket = inv[item.hash].sockets.socketEntries[socket.socketIndex]
+  const expectedOptions = [rawSocket.reusablePlugSetHash, rawSocket.randomizedPlugSetHash].filter(Boolean).flatMap(setHash =>
+    (rawSets[setHash]?.reusablePlugItems || []).map(plugOptionMetadata).filter(entry => entry.craftingRequirements || entry.currentlyCanRoll === false)
+      .map(entry => ({ ...entry, plugSetHash: setHash, source: setHash === rawSocket.randomizedPlugSetHash ? 'randomized' : 'reusable' })))
+  if (JSON.stringify(expectedOptions) !== JSON.stringify(socket.plugOptions)) errors.push(`武器插槽锻造条件丢失：${item.hash}/${socket.socketIndex}`)
 }
 const artifacts = await catalog('manifest-artifact')
 compare('reprised-artifacts', '复刻神器', '按物品槽位与复刻预览类型识别，不使用旧赛季 singleton 表', publicItems.filter(isReprisedArtifact), artifacts.filter(a => a.kind === 'reprised'))

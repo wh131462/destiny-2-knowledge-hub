@@ -1,4 +1,5 @@
 import { weaponPerkColumns } from '../loadout-planner/weapon-perks.js'
+import { versionSummary } from './item-metadata.js'
 
 // Ordered display stats, not investment stats or values after equipping perks.
 const statLabels = {
@@ -41,6 +42,18 @@ export function weaponVersions(weapon, weapons) {
 
 export const weaponVersionKey = weapon => JSON.stringify([weapon.name, weapon.itemSubType])
 
+export function weaponVersionHighlights(weapon, versions, byHash) {
+  if (!weapon || versions.length < 2) return []
+  const otherColumns = versions.filter(item => item.hash !== weapon.hash).flatMap(item => weaponArchivePerks(item, byHash))
+  return weaponArchivePerks(weapon, byHash).flatMap(column => {
+    const others = new Set(otherColumns.filter(other => other.key === column.key).flatMap(other => other.options.map(option => option.hash)))
+    const unique = column.options.filter(option => !others.has(option.hash))
+    if (!unique.length) return []
+    const names = [...new Set(unique.map(option => option.nameZh || option.name))]
+    return [`${column.label}独有候选：${names.slice(0, 4).join('、')}${names.length > 4 ? `等 ${names.length} 项` : ''}`]
+  })
+}
+
 export function weaponVersionGroups(weapons) {
   const groups = new Map()
   for (const weapon of weapons) {
@@ -58,7 +71,7 @@ export function matchWeaponVersion(weapon, query, versions) {
   const match = query.trim().match(/^(.*?)\s*#\s*(\d+)$/)
   const text = (match ? match[1] : query).trim().toLowerCase()
   if (match && versions[Number(match[2]) - 1]?.hash !== weapon.hash) return false
-  return !text || [weapon.hash, weapon.name, weapon.nameZh, weapon.weaponFamily,
+  return !text || [weapon.hash, weapon.name, weapon.nameZh, weapon.weaponFamily, versionSummary(weapon),
     ...(weapon.categoryNames || []), ...(weapon.perkOptions || []), ...(weapon.perkOptionsZh || [])]
     .filter(value => value != null).join(' ').toLowerCase().includes(text)
 }

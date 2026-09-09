@@ -9,6 +9,7 @@ export function validateLoadout(d, context) {
   const armor = slot => entity(d.armor[slot]?.manifestHash)
   const exotic = item => item?.tierTypeHash === 2759499571
   const errors = [...targetErrors(d.statRecommendations)]
+  const artifact = artifacts.find(a => Number(a.hash) === Number(d.artifactHash))
   if (!subclass || subclass.classId !== d.classId) errors.push('职业与子职业不匹配')
   const slots = [['superId', 'superIds', '超能'], ['classAbilityId', 'classAbilityIds', '职业技能'], ['movementId', 'movementIds', '跳跃'], ['meleeId', 'meleeIds', '近战'], ['grenadeId', 'grenadeIds', '手雷']]
   for (const [key, pool, label] of slots) {
@@ -32,10 +33,9 @@ export function validateLoadout(d, context) {
   for (const slot of Object.keys(armorLabels)) {
     const item = armor(slot)
     if (d.armor[slot] && (!item || item.classId !== d.classId || item.armorSlot !== slot)) errors.push(`${armorLabels[slot]}的职业或栏位不匹配`)
-    errors.push(...modErrors(item, d.mods[slot], mods, plugSets).map(e => `${armorLabels[slot]}：${e}`))
+    errors.push(...modErrors(item, d.mods[slot], mods, plugSets, { artifact, artifactNodeHashes: d.artifactNodeHashes }).map(e => `${armorLabels[slot]}：${e}`))
     if (slot === 'classItem' && exotic(item) && subclass?.type !== 'prismatic') errors.push('异域职业装备的棱镜专属效果在当前子职业下不生效')
   }
-  const artifact = artifacts.find(a => Number(a.hash) === Number(d.artifactHash))
   errors.push(...artifactErrors(artifact, d.artifactNodeHashes, d.artifactAssignments))
   if (d.artifactHash && !artifact) errors.push('所选神器不在当前快照中，请重新选择')
   if (d.ghostArmorerHash && !mods.some(m => m.hash === d.ghostArmorerHash && m.category === 'enhancements.ghosts_economic' && / Armorer$/.test(m.name))) errors.push('所选护甲商不在当前快照中')

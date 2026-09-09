@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { installNavigationLoading } from '@/utils/navigationLoading'
+import { updateNavigationLoading } from '@/composables/useNavigationLoading'
 
 const routes = [
   { path: '/encyclopedia/:kind/:id', name: 'encyclopedia-entry', component: () => import('@/views/EncyclopediaEntryView.vue') },
@@ -16,6 +18,7 @@ const routes = [
   { path: '/manifest', name: 'manifest', component: () => import('@/views/ManifestCatalogView.vue') },
   { path: '/builds', name: 'public-builds', component: () => import('@/views/BuildLabView.vue') },
   { path: '/builds/community/:issueNumber', name: 'community-build-detail', component: () => import('@/views/CommunityBuildDetailView.vue') },
+  { path: '/builds/draft/:draftId', name: 'local-draft-preview', component: () => import('@/views/LocalDraftPreviewView.vue') },
   { path: '/build-lab', redirect: '/builds' },
   { path: '/build-workbench', name: 'build-workbench', component: () => import('@/views/BuildWorkbenchView.vue') },
   { path: '/smart-loadout', redirect: '/builds' },
@@ -25,10 +28,16 @@ const routes = [
   { path: '/:pathMatch(.*)*', name: 'not-found', component: () => import('@/views/NotFoundView.vue') },
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.path === from.path) return false
     return { top: 0 }
   }
 })
+
+installNavigationLoading(router, updateNavigationLoading)
+
+export default router

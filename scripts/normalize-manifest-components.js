@@ -4,6 +4,7 @@ import { armorSets } from '../content/catalog/sets.js'
 import { acquisitionById } from '../content/acquisition/paths.js'
 import { buildArtifactCatalog, buildPlugCatalog, perkDetails as resolvePerks, definition } from '../packages/manifest-catalog/index.js'
 import { buildSubclassCatalog } from '../packages/subclass-catalog/index.js'
+import { definitionMetadata, plugOptionMetadata } from '../packages/manifest-catalog/item-metadata.js'
 
 const root = new URL('../', import.meta.url)
 const manifestDir = new URL('data/manifest/', root)
@@ -154,6 +155,9 @@ const equipment = Object.entries(inventory).map(([hash, item]) => {
       plugSetHash: socket.reusablePlugSetHash || null,
       plugItemCount: socketPlugHashes(socket).length,
       plugItemHashes,
+      plugOptions: shouldExpand ? [socket.reusablePlugSetHash, socket.randomizedPlugSetHash].filter(Boolean).flatMap(setHash =>
+        (plugSetByHash.get(setHash)?.reusablePlugItems || []).map(plugOptionMetadata).filter(entry => entry.craftingRequirements || entry.currentlyCanRoll === false).map(entry => ({ ...entry, plugSetHash: setHash,
+          source: setHash === socket.randomizedPlugSetHash ? 'randomized' : 'reusable' }))) : [],
       plugNames: plugItemHashes.map(itemName),
       plugNamesZh: plugItemHashes.map(itemNameZh)
     }
@@ -164,6 +168,7 @@ const equipment = Object.entries(inventory).map(([hash, item]) => {
   return {
     hash: Number(hash),
     name: clean(item.displayProperties?.name),
+    ...definitionMetadata(item, inventory, inventoryZh[hash]),
     nameZh: itemNameZh(hash) || null,
     description: item.displayProperties?.description || '',
     descriptionZh: itemDescriptionZh(hash) || null,
@@ -215,6 +220,7 @@ const mods = Object.entries(inventory).map(([hash, item]) => {
   return {
     hash: Number(hash),
     name: displayName,
+    ...definitionMetadata(item, inventory, inventoryZh[hash]),
     nameZh: itemNameZh(hash) || null,
     description: item.displayProperties?.description || '',
     descriptionZh: itemDescriptionZh(hash) || null,
@@ -236,6 +242,7 @@ const allPlugs = buildPlugCatalog({ inventory, perks, locales: localeSnapshot })
 const plugSetEntries = Object.entries(plugSets).map(([hash, set]) => ({
   hash: Number(hash),
   plugItemHashes: (set.reusablePlugItems || []).map(item => item.plugItemHash).filter(Boolean),
+  reusablePlugItems: (set.reusablePlugItems || []).map(plugOptionMetadata),
   isFakePlugSet: Boolean(set.isFakePlugSet),
   redacted: Boolean(set.redacted),
   blacklisted: Boolean(set.blacklisted)
@@ -258,8 +265,11 @@ const equipmentCatalogPayload = {
   count: equipment.length,
   items: equipment.map(item => ({
     hash: item.hash, name: item.name, nameZh: item.nameZh, description: item.description, descriptionZh: item.descriptionZh, icon: item.icon, itemType: item.itemType, itemSubType: item.itemSubType,
+    versionInfo: item.versionInfo, typeName: item.typeName, definitionState: item.definitionState, availabilityStatus: item.availabilityStatus,
+    insertionRules: item.insertionRules, enabledRules: item.enabledRules, tooltipNotifications: item.tooltipNotifications,
+    equipRequirements: item.equipRequirements,
     classId: item.classId, armorSlot: item.armorSlot, weaponFamily: item.weaponFamily, ammoSlot: item.ammoSlot,
-    damageType: item.damageType, perkSockets: item.socketPools.filter(s => s.plugItemHashes.length).map(s => ({ socketIndex: s.socketIndex, perkColumn: s.perkColumn, plugItemHashes: s.plugItemHashes })), perkOptions: item.perkOptions, perkOptionsZh: item.perkOptionsZh,
+    damageType: item.damageType, perkSockets: item.socketPools.filter(s => s.plugItemHashes.length).map(s => ({ socketIndex: s.socketIndex, perkColumn: s.perkColumn, plugItemHashes: s.plugItemHashes, plugOptions: s.plugOptions })), perkOptions: item.perkOptions, perkOptionsZh: item.perkOptionsZh,
     vendorSources: item.vendorSources.map(source => ({ vendorHash: source.vendorHash, vendorName: source.vendorName, vendorNameZh: source.vendorNameZh, itemHash: source.itemHash })),
     activitySources: item.activitySources.map(source => ({ activityHash: source.activityHash, activityName: source.activityName, activityNameZh: source.activityNameZh, itemHash: source.itemHash }))
   }))

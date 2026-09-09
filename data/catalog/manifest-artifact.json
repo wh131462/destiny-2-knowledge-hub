@@ -55,6 +55,13 @@
                 {
                   "failureMessage": ""
                 }
+              ],
+              "typeName": "Artifact Perk",
+              "tooltipNotifications": [
+                {
+                  "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+                  "displayStyle": "ui_display_style_info"
+                }
               ]
             },
             {
@@ -82,6 +89,13 @@
                 },
                 {
                   "failureMessage": ""
+                }
+              ],
+              "typeName": "Artifact Perk",
+              "tooltipNotifications": [
+                {
+                  "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+                  "displayStyle": "ui_display_style_info"
                 }
               ]
             },
@@ -111,6 +125,13 @@
                 {
                   "failureMessage": ""
                 }
+              ],
+              "typeName": "Artifact Perk",
+              "tooltipNotifications": [
+                {
+                  "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+                  "displayStyle": "ui_display_style_info"
+                }
               ]
             },
             {
@@ -138,6 +159,13 @@
                 },
                 {
                   "failureMessage": ""
+                }
+              ],
+              "typeName": "Artifact Perk",
+              "tooltipNotifications": [
+                {
+                  "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+                  "displayStyle": "ui_display_style_info"
                 }
               ]
             },
@@ -167,6 +195,13 @@
                 {
                   "failureMessage": ""
                 }
+              ],
+              "typeName": "Artifact Perk",
+              "tooltipNotifications": [
+                {
+                  "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+                  "displayStyle": "ui_display_style_info"
+                }
               ]
             },
             {
@@ -195,7 +230,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 4217417023,
@@ -223,7 +259,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             }
           ],
           "minimumUnlockPointsUsedRequirement": 0,
@@ -259,7 +296,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3619040075,
@@ -287,7 +325,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3619040074,
@@ -315,7 +354,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3619040077,
@@ -343,7 +383,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3619040076,
@@ -371,7 +412,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3619040079,
@@ -399,7 +441,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3619040078,
@@ -427,7 +470,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             }
           ],
           "minimumUnlockPointsUsedRequirement": 3,
@@ -463,7 +507,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3834273540,
@@ -491,7 +536,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3834273541,
@@ -519,7 +565,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3834273538,
@@ -547,7 +594,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3834273539,
@@ -575,7 +623,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3834273536,
@@ -603,7 +652,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 3834273537,
@@ -631,7 +681,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             }
           ],
           "minimumUnlockPointsUsedRequirement": 5,
@@ -677,7 +728,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2903198437,
@@ -705,7 +757,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2903198436,
@@ -733,7 +786,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2903198435,
@@ -761,7 +815,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2903198434,
@@ -789,7 +844,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2903198433,
@@ -817,7 +873,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2903198432,
@@ -845,7 +902,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             }
           ],
           "minimumUnlockPointsUsedRequirement": 7,
@@ -881,7 +939,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2742146822,
@@ -909,7 +968,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2742146823,
@@ -937,7 +997,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2742146816,
@@ -965,7 +1026,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2742146817,
@@ -993,7 +1055,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2742146818,
@@ -1021,7 +1084,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             },
             {
               "hash": 2742146819,
@@ -1049,7 +1113,8 @@
                 {
                   "failureMessage": ""
                 }
-              ]
+              ],
+              "typeName": "Artifact Perk"
             }
           ],
           "minimumUnlockPointsUsedRequirement": 10,
@@ -1083,6 +1148,13 @@
             {
               "failureMessage": ""
             }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
+            }
           ]
         },
         {
@@ -1110,6 +1182,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -1139,6 +1218,13 @@
             {
               "failureMessage": ""
             }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
+            }
           ]
         },
         {
@@ -1166,6 +1252,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -1195,6 +1288,13 @@
             {
               "failureMessage": ""
             }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
+            }
           ]
         },
         {
@@ -1223,7 +1323,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4217417023,
@@ -1251,7 +1352,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040072,
@@ -1279,7 +1381,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040075,
@@ -1307,7 +1410,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040074,
@@ -1335,7 +1439,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040077,
@@ -1363,7 +1468,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040076,
@@ -1391,7 +1497,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040079,
@@ -1419,7 +1526,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3619040078,
@@ -1447,7 +1555,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273543,
@@ -1475,7 +1584,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273540,
@@ -1503,7 +1613,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273541,
@@ -1531,7 +1642,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273538,
@@ -1559,7 +1671,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273539,
@@ -1587,7 +1700,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273536,
@@ -1615,7 +1729,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273537,
@@ -1643,7 +1758,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198438,
@@ -1681,7 +1797,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198437,
@@ -1709,7 +1826,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198436,
@@ -1737,7 +1855,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198435,
@@ -1765,7 +1884,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198434,
@@ -1793,7 +1913,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198433,
@@ -1821,7 +1942,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198432,
@@ -1849,7 +1971,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146821,
@@ -1877,7 +2000,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146822,
@@ -1905,7 +2029,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146823,
@@ -1933,7 +2058,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146816,
@@ -1961,7 +2087,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146817,
@@ -1989,7 +2116,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146818,
@@ -2017,7 +2145,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146819,
@@ -2045,7 +2174,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "note": "旧赛季节点定义，仅用于查阅和保留旧草稿；不是复刻神器的可选节点。"
@@ -2252,7 +2382,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3153265449,
@@ -2280,7 +2411,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3153265448,
@@ -2308,7 +2440,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646301,
@@ -2346,7 +2479,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3153265454,
@@ -2374,7 +2508,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3153265453,
@@ -2402,7 +2537,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3153265452,
@@ -2430,7 +2566,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646243,
@@ -2458,7 +2595,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646240,
@@ -2486,7 +2624,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646241,
@@ -2514,7 +2653,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646246,
@@ -2542,7 +2682,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646247,
@@ -2570,7 +2711,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646244,
@@ -2598,7 +2740,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3459646245,
@@ -2626,7 +2769,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604388,
@@ -2654,7 +2798,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604391,
@@ -2692,7 +2837,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604390,
@@ -2720,7 +2866,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604385,
@@ -2748,7 +2895,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604384,
@@ -2776,7 +2924,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604387,
@@ -2804,7 +2953,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2659604386,
@@ -2832,7 +2982,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],
@@ -3041,7 +3192,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273540,
@@ -3069,7 +3221,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273541,
@@ -3097,7 +3250,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273538,
@@ -3125,7 +3279,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273539,
@@ -3153,7 +3308,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273536,
@@ -3181,7 +3337,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3834273537,
@@ -3209,7 +3366,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198438,
@@ -3247,7 +3405,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198437,
@@ -3275,7 +3434,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198436,
@@ -3303,7 +3463,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198435,
@@ -3331,7 +3492,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198434,
@@ -3359,7 +3521,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198433,
@@ -3387,7 +3550,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198432,
@@ -3415,7 +3579,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146821,
@@ -3443,7 +3608,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146822,
@@ -3471,7 +3637,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146823,
@@ -3499,7 +3666,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146816,
@@ -3527,7 +3695,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146817,
@@ -3555,7 +3724,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146818,
@@ -3583,7 +3753,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2742146819,
@@ -3611,7 +3782,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],
@@ -3820,7 +3992,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 255237663,
@@ -3848,7 +4021,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 255237662,
@@ -3876,7 +4050,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 255237657,
@@ -3904,7 +4079,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 255237656,
@@ -3932,7 +4108,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 255237659,
@@ -3959,6 +4136,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -3988,7 +4172,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4232817857,
@@ -4016,7 +4201,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4232817858,
@@ -4043,6 +4229,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -4072,7 +4265,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4232817860,
@@ -4100,7 +4294,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4232817861,
@@ -4128,7 +4323,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4232817862,
@@ -4166,7 +4362,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4232817863,
@@ -4193,6 +4390,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -4222,7 +4426,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2311625537,
@@ -4250,7 +4455,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2311625536,
@@ -4278,7 +4484,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2311625543,
@@ -4306,7 +4513,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2311625542,
@@ -4334,7 +4542,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2311625541,
@@ -4361,6 +4570,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -4390,7 +4606,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],
@@ -4609,7 +4826,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4037132131,
@@ -4647,7 +4865,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4037132130,
@@ -4675,7 +4894,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4037132133,
@@ -4713,7 +4933,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4037132132,
@@ -4751,7 +4972,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4037132135,
@@ -4789,7 +5011,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 4037132134,
@@ -4817,7 +5040,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645149,
@@ -4845,7 +5069,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645150,
@@ -4883,7 +5108,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645151,
@@ -4911,7 +5137,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645144,
@@ -4949,7 +5176,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645145,
@@ -4987,7 +5215,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645146,
@@ -5025,7 +5254,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 611645147,
@@ -5063,7 +5293,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519998,
@@ -5091,7 +5322,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519997,
@@ -5119,7 +5351,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519996,
@@ -5147,7 +5380,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519995,
@@ -5185,7 +5419,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519994,
@@ -5223,7 +5458,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519993,
@@ -5251,7 +5487,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3117519992,
@@ -5289,7 +5526,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],
@@ -5498,7 +5736,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3116632768,
@@ -5526,7 +5765,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3116632769,
@@ -5554,7 +5794,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3116632774,
@@ -5582,7 +5823,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3116632775,
@@ -5620,7 +5862,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3116632772,
@@ -5647,6 +5890,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -5676,6 +5926,13 @@
             {
               "failureMessage": ""
             }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
+            }
           ]
         },
         {
@@ -5704,7 +5961,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2344320969,
@@ -5731,6 +5989,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -5760,7 +6025,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2344320975,
@@ -5788,7 +6054,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2344320974,
@@ -5816,7 +6083,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2344320973,
@@ -5844,7 +6112,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2344320972,
@@ -5871,6 +6140,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -5900,7 +6176,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1533272842,
@@ -5927,6 +6204,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -5956,7 +6240,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1533272844,
@@ -5994,7 +6279,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1533272845,
@@ -6022,7 +6308,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1533272846,
@@ -6049,6 +6336,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -6078,7 +6372,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],
@@ -6287,7 +6582,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3547711349,
@@ -6315,7 +6611,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3547711348,
@@ -6343,7 +6640,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2903198437,
@@ -6371,7 +6669,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3547711346,
@@ -6399,7 +6698,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2317325398,
@@ -6427,7 +6727,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2317325399,
@@ -6455,7 +6756,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856464,
@@ -6483,7 +6785,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 51032916,
@@ -6511,7 +6814,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 51032917,
@@ -6539,7 +6843,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 51032914,
@@ -6567,7 +6872,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 51032915,
@@ -6595,7 +6901,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3116632769,
@@ -6623,7 +6930,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856467,
@@ -6651,7 +6959,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646301,
@@ -6689,7 +6998,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1328115227,
@@ -6727,7 +7037,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1328115226,
@@ -6755,7 +7066,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1328115229,
@@ -6783,7 +7095,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1328115228,
@@ -6810,6 +7123,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "This perk will be enabled when you equip a weapon of the appropriate archetype.",
+              "displayStyle": "ui_display_style_info"
             }
           ]
         },
@@ -6839,7 +7159,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563985,
@@ -6867,7 +7188,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],
@@ -7086,7 +7408,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856470,
@@ -7114,7 +7437,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856471,
@@ -7162,7 +7486,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856464,
@@ -7190,7 +7515,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856465,
@@ -7217,6 +7543,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "Exhaust is applied by [Disruption] disrupting combatants or by weapons with the Psychohack or Subjugation Origin Traits.",
+              "displayStyle": "ui_display_style_perk_info"
             }
           ]
         },
@@ -7256,7 +7589,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 3585856467,
@@ -7284,7 +7618,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646296,
@@ -7312,7 +7647,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646299,
@@ -7350,7 +7686,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646298,
@@ -7378,7 +7715,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646301,
@@ -7416,7 +7754,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646300,
@@ -7454,7 +7793,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646303,
@@ -7482,7 +7822,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 2596646302,
@@ -7510,7 +7851,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563991,
@@ -7548,7 +7890,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563988,
@@ -7575,6 +7918,13 @@
             },
             {
               "failureMessage": ""
+            }
+          ],
+          "typeName": "Artifact Perk",
+          "tooltipNotifications": [
+            {
+              "displayString": "Exhaust is applied by [Disruption] disrupting combatants or by weapons with the Psychohack or Subjugation Origin Traits.",
+              "displayStyle": "ui_display_style_perk_info"
             }
           ]
         },
@@ -7614,7 +7964,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563986,
@@ -7652,7 +8003,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563987,
@@ -7680,7 +8032,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563984,
@@ -7708,7 +8061,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         },
         {
           "hash": 1319563985,
@@ -7736,7 +8090,8 @@
             {
               "failureMessage": ""
             }
-          ]
+          ],
+          "typeName": "Artifact Perk"
         }
       ],
       "tiers": [],

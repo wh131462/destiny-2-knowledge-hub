@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
   "syncedAt": "2026-09-08T04:56:13.952Z",
-  "auditedAt": "2026-09-09T02:26:08.915Z",
+  "auditedAt": "2026-09-09T05:58:05.091Z",
   "status": "passed",
   "scope": "已接入的官方定义与关系完整性，不等于全游戏实时状态或全部历史节点树。",
   "rows": [

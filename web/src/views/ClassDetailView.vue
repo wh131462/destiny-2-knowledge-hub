@@ -1,4 +1,5 @@
 <script setup>
+import { ui, useI18n, localized } from '@/i18n'
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { classes, stats } from '@/data/classes'
@@ -6,7 +7,8 @@ import { sources } from '@/data/v2'
 import ElementBadge from '@/components/ElementBadge.vue'
 import ConfidenceBadge from '@/components/ConfidenceBadge.vue'
 import SubclassSkillCatalog from '@/components/SubclassSkillCatalog.vue'
-import { useI18n, localized } from '@/i18n'
+import ClassPortrait from '@/components/ClassPortrait.vue'
+import ClassEmblem from '@/components/ClassEmblem.vue'
 
 const { locale } = useI18n()
 
@@ -32,33 +34,32 @@ function selectSubclass(element) {
 
 <template>
   <div v-if="classObj">
-    <router-link to="/classes" class="back">← 返回职业百科</router-link>
+    <router-link to="/classes" class="back">{{ ui("← 返回职业百科") }}</router-link>
 
     <div class="class-hero" :style="{ borderColor: classObj.color }">
-      <div class="class-icon" :style="{ borderColor: classObj.color, color: classObj.color }">
-        {{ classObj.name[0] }}
-      </div>
-      <div>
+      <ClassPortrait :class-id="classObj.id" :name="localized(classObj)" eager />
+      <div class="class-hero-copy">
+        <ClassEmblem :class-id="classObj.id" :style="{ color: classObj.color }" />
         <h1>{{ localized(classObj) }} <span v-if="locale === 'zh'" class="en">{{ classObj.en }}</span></h1>
-        <p class="role">{{ classObj.role }}</p>
-        <p class="desc">{{ classObj.desc }}</p>
+        <p class="role">{{ ui(classObj.role) }}</p>
+        <p class="desc">{{ ui(classObj.desc) }}</p>
       </div>
     </div>
 
     <div class="info-grid">
       <div class="panel">
-        <h3>职业技能</h3>
-        <p>{{ classObj.classAbility }}</p>
-        <h3>职业特长</h3>
+        <h3>{{ ui("职业技能") }}</h3>
+        <p>{{ ui(classObj.classAbility) }}</p>
+        <h3>{{ ui("职业特长") }}</h3>
         <ul class="tight">
-          <li v-for="t in classObj.traits" :key="t">{{ t }}</li>
+          <li v-for="t in classObj.traits" :key="t">{{ ui(t) }}</li>
         </ul>
-        <h3>属性倾向</h3>
-        <p>{{ classObj.stats.join(' → ') }}</p>
+        <h3>{{ ui("属性倾向") }}</h3>
+        <p>{{ classObj.stats.map(ui).join(' → ') }}</p>
       </div>
 
       <div class="panel">
-        <h3>子职业选择</h3>
+        <h3>{{ ui("子职业选择") }}</h3>
         <div class="el-tabs">
           <button
             v-for="s in classObj.subclasses"
@@ -68,7 +69,7 @@ function selectSubclass(element) {
             @click="selectSubclass(s.element)"
           >
             <ElementBadge :element="s.element" />
-            <span class="branch">{{ s.branch }}</span>
+            <span class="branch">{{ localized(s) }}</span>
           </button>
         </div>
       </div>
@@ -77,25 +78,25 @@ function selectSubclass(element) {
     <div v-if="activeSub" class="panel sub-detail" :class="{ 'prismatic-detail': activeSub.type === 'prismatic' }">
       <div class="sub-head">
         <ElementBadge :element="activeSub.element" />
-        <h2>{{ activeSub.branch }}</h2>
-        <span class="badge blue">{{ localized(classObj) }}：{{ activeSub.type === 'prismatic' ? '跨元素子职业' : activeSub.element }}</span>
+        <h2>{{ localized(activeSub) }}</h2>
+        <span class="badge blue">{{ localized(classObj) }}：{{ activeSub.type === 'prismatic' ? ui("跨元素子职业") : activeSub.element }}</span>
       </div>
 
       <div v-if="activeSub.type !== 'prismatic'" class="detail-grid">
         <div class="detail-col">
-          <h4>超能力 Super</h4>
-          <p class="super">{{ activeSub.super }}</p>
-          <h4>定位</h4>
-          <p>{{ activeSub.focus }}</p>
-          <h4>天赋 Aspects</h4>
+          <h4>{{ ui("超能力 Super") }}</h4>
+          <p class="super">{{ activeSub.superEntries.map(localized).join(' / ') || ui('按当前装备选择超能力') }}</p>
+          <h4>{{ ui("定位") }}</h4>
+          <p>{{ ui(activeSub.focus) }}</p>
+          <h4>{{ ui("天赋 Aspects") }}</h4>
           <div class="aspects">
-            <span v-for="a in activeSub.aspects" :key="a" class="aspect">{{ a }}</span>
+            <span v-for="a in activeSub.aspectEntries" :key="a.id" class="aspect">{{ localized(a) }}</span>
           </div>
         </div>
         <div class="detail-col">
-          <h4>推荐构筑方向</h4>
+          <h4>{{ ui("推荐构筑方向") }}</h4>
           <div class="build-suggest">
-            {{ activeSub.build }}
+            {{ activeSub.type === 'prismatic' ? ui(activeSub.build) : ui('{0}：先确定技能循环，再用异域和模组补齐生存与弹药。', [ui(activeSub.focus)]) }}
           </div>
         </div>
       </div>
@@ -104,14 +105,14 @@ function selectSubclass(element) {
         <section class="prism-intro">
           <div>
             <p class="eyebrow">PRISMATIC / CLASS SUBCLASS</p>
-            <h3>{{ locale === 'en' ? `Prismatic ${classObj.en}` : `${classObj.name}的棱镜分支` }}</h3>
-            <p>{{ locale === 'en' ? 'Prismatic is not a sixth element. It combines a class-specific selection of Light and Darkness abilities, then connects both sides through Transcendence.' : '棱镜不是第六种元素，而是该职业专属的跨元素子职业：从光能与暗影技能池中组合能力，并通过“超越”连接两侧能量。' }}</p>
+            <h3>{{ locale === 'en' ? `Prismatic ${classObj.en}` : ui("{0}的棱镜分支", [classObj.name]) }}</h3>
+            <p>{{ locale === 'en' ? 'Prismatic is not a sixth element. It combines a class-specific selection of Light and Darkness abilities, then connects both sides through Transcendence.' : ui("棱镜不是第六种元素，而是该职业专属的跨元素子职业：从光能与暗影技能池中组合能力，并通过“超越”连接两侧能量。") }}</p>
           </div>
           <div class="prism-counts">
-            <span><b>{{ activeSub.superIds.length }}</b> 超能力</span>
-            <span><b>{{ activeSub.meleeIds.length }}</b> 近战</span>
-            <span><b>{{ activeSub.grenadeIds.length }}</b> 手雷</span>
-            <span><b>{{ activeSub.aspectIds.length }}</b> 星相</span>
+            <span><b>{{ activeSub.superIds.length }}</b> {{ ui("超能力") }}</span>
+            <span><b>{{ activeSub.meleeIds.length }}</b> {{ ui("近战") }}</span>
+            <span><b>{{ activeSub.grenadeIds.length }}</b> {{ ui("手雷") }}</span>
+            <span><b>{{ activeSub.aspectIds.length }}</b> {{ ui("星相") }}</span>
           </div>
         </section>
 
@@ -119,11 +120,11 @@ function selectSubclass(element) {
         <section class="transcendence">
           <div>
             <p class="eyebrow">TRANSCENDENCE</p>
-            <h3>{{ locale === 'en' ? 'Transcendence is more than a Super' : '超越不是普通大招' }}</h3>
-            <p>{{ locale === 'en' ? 'Light and Darkness damage fill opposite sides of the meter. Fill both to enter Transcendence and gain enhanced ability regeneration plus a class-specific grenade.' : '造成光能与暗影伤害会分别填充两侧能量；两侧充满后进入超越，获得强化技能回复，并暂时使用职业专属超越手雷。' }}</p>
+            <h3>{{ locale === 'en' ? 'Transcendence is more than a Super' : ui("超越不是普通大招") }}</h3>
+            <p>{{ locale === 'en' ? 'Light and Darkness damage fill opposite sides of the meter. Fill both to enter Transcendence and gain enhanced ability regeneration plus a class-specific grenade.' : ui("造成光能与暗影伤害会分别填充两侧能量；两侧充满后进入超越，获得强化技能回复，并暂时使用职业专属超越手雷。") }}</p>
           </div>
           <div class="trans-grenade">
-            <span>{{ localized(classObj) }}专属</span>
+            <span>{{ localized(classObj) }}{{ ui("专属") }}</span>
             <strong>{{ localized(activeSub.transcendenceGrenade) }}</strong>
             <small v-if="locale === 'zh'">{{ activeSub.transcendenceGrenade.en }}</small>
           </div>
@@ -132,37 +133,41 @@ function selectSubclass(element) {
 
         <footer class="source-note">
           <ConfidenceBadge level="A" />
-          <p>技能池和棱镜体系以本地 Bungie Manifest 快照及《终焉之形》官方资料为基线；平衡更新后仍需重新核验。</p>
-          <a v-if="prismaticSource?.url" :href="prismaticSource.url" target="_blank" rel="noreferrer">查看官方入口 ↗</a>
+          <p>{{ ui("技能池和棱镜体系以本地 Bungie Manifest 快照及《终焉之形》官方资料为基线；平衡更新后仍需重新核验。") }}</p>
+          <a v-if="prismaticSource?.url" :href="prismaticSource.url" target="_blank" rel="noreferrer">{{ ui("查看官方入口 ↗") }}</a>
         </footer>
       </template>
     </div>
 
     <SubclassSkillCatalog v-if="activeSub" :key="activeSub.id" :subclass="activeSub" />
     <div class="note">
-      属性快捷参考：
-      <span v-for="s in stats.slice(0, 3)" :key="s.key" class="stat-chip">{{ s.name }}</span>
-      （详情见防具与套装页）
+      {{ ui("属性快捷参考：") }}
+      <span v-for="s in stats.slice(0, 3)" :key="s.key" class="stat-chip">{{ localized(s) }}</span>
+      {{ ui("（详情见防具与套装页）") }}
     </div>
   </div>
 
-  <div v-else class="empty">未找到该职业</div>
+  <div v-else class="empty">{{ ui("未找到该职业") }}</div>
 </template>
 
 <style scoped>
 .back { font-size: 0.85rem; color: var(--text-sub); }
 .back:hover { color: var(--gold-bright); }
 .class-hero {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(240px, 36%) minmax(0, 1fr);
   align-items: center;
-  gap: 20px;
-  padding: 24px;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
   border: 1px solid var(--line-soft);
   border-left-width: 4px;
   border-radius: var(--radius);
   background: linear-gradient(160deg, var(--bg-card), var(--bg-dark));
   margin: 14px 0 18px;
 }
+.class-hero-copy { padding: 32px; min-width: 0; }
+.class-hero-copy > .class-emblem { width: 48px; height: 48px; margin-bottom: 16px; }
 .class-icon {
   width: 64px; height: 64px;
   border-radius: 16px;
@@ -266,6 +271,9 @@ function selectSubclass(element) {
 .source-note p { flex: 1; color: var(--text-dim); font-size: .72rem; }
 .source-note a { color: var(--gold-bright); font-size: .72rem; white-space: nowrap; }
 @media (max-width: 700px) {
+  .class-hero { grid-template-columns: 1fr; }
+  .class-hero .class-portrait { height: 340px; }
+  .class-hero-copy { padding: 24px; }
   .info-grid, .detail-grid, .prism-intro, .pool-layout, .transcendence { grid-template-columns: 1fr; }
   .aspects-block { grid-column: auto; }
   .prism-aspects, .facet-list { grid-template-columns: 1fr; }

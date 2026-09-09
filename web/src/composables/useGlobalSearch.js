@@ -1,3 +1,4 @@
+import { translateUi } from '../i18n/messages.js'
 import { computed, ref } from 'vue'
 import { classesV2, subclasses, gearItems, armorSets, activitiesV2, curatedBuilds, abilities, aspects, facets, fragments, mechanics, armorMods } from '@/data/v2'
 import { weaponTypes } from '@/data/weapons'
@@ -7,14 +8,15 @@ import { glossary } from '@/data/glossary'
 
 const text = (...values) => values.flat(Infinity).filter(Boolean).join(' ')
 
-const makeResult = ({ id, type, title, titleEn, description, route, keywords = [] }) => ({
+const makeResult = ({ id, type, title, titleEn, description, descriptionEn, route, keywords = [] }) => ({
   id,
   type,
   title,
   titleEn: titleEn || title,
   description: description || '',
+  descriptionEn: descriptionEn || translateUi(description || '', 'en'),
   route,
-  haystack: text(title, titleEn, description, keywords).toLowerCase()
+  haystack: text(title, titleEn, description, descriptionEn, translateUi(description || '', 'en'), keywords).toLowerCase()
 })
 
 const classResults = classesV2.map(item => makeResult({
@@ -33,6 +35,7 @@ const subclassResults = subclasses.map(item => makeResult({
   title: item.name,
   titleEn: item.en,
   description: `${item.classId}：${item.type === 'prismatic' ? '棱镜职业' : item.element}`,
+  descriptionEn: `${item.classId}: ${item.type === 'prismatic' ? 'Prismatic subclass' : item.element}`,
   route: `/classes/${item.classId}?el=${item.element}`,
   keywords: [item.classId, item.element, ...(item.aspectIds || [])]
 }))
@@ -53,6 +56,7 @@ const gearResults = gearItems.map(item => makeResult({
   title: item.name,
   titleEn: item.en,
   description: [item.frame, item.element, item.rarity === 'exotic' ? '异域' : ''].filter(Boolean).join('、'),
+  descriptionEn: [translateUi(item.frame, 'en'), item.element, item.rarity === 'exotic' ? 'Exotic' : ''].filter(Boolean).join(', '),
   route: `/encyclopedia/curated/${item.id}`,
   keywords: [item.slot, item.ammo, ...(item.aliases || []), ...(item.perkOptions || []), ...(item.mechanicIds || [])]
 }))
@@ -89,9 +93,9 @@ const activityResults = activitiesV2.map(item => makeResult({
 
 const loreResults = [
   ...enemyRaces.map(item => makeResult({ id: `enemy-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: item.desc, route: '/lore', keywords: [item.type, item.units] })),
-  ...characters.map(item => makeResult({ id: `character-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.role}：${item.desc}`, route: '/lore', keywords: [item.role] })),
-  ...expansions.map(item => makeResult({ id: `expansion-${item.year}-${item.name}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.year}：${item.feature}`, route: '/lore', keywords: [item.destination, item.saga] })),
-  ...sagas.map(item => makeResult({ id: `saga-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.years}：${item.desc}`, route: '/lore', keywords: item.key }))
+  ...characters.map(item => makeResult({ id: `character-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.role}：${item.desc}`, descriptionEn: `${translateUi(item.role, 'en')}: ${translateUi(item.desc, 'en')}`, route: '/lore', keywords: [item.role] })),
+  ...expansions.map(item => makeResult({ id: `expansion-${item.year}-${item.name}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.year}：${item.feature}`, descriptionEn: `${item.year}: ${translateUi(item.feature, 'en')}`, route: '/lore', keywords: [item.destination, item.saga] })),
+  ...sagas.map(item => makeResult({ id: `saga-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.years}：${item.desc}`, descriptionEn: `${item.years}: ${translateUi(item.desc, 'en')}`, route: '/lore', keywords: item.key }))
 ]
 
 const glossaryResults = glossary.map(item => makeResult({
@@ -99,7 +103,7 @@ const glossaryResults = glossary.map(item => makeResult({
   type: 'glossary',
   title: item.term,
   titleEn: item.en,
-  description: `${item.cat}：${item.desc}`,
+  description: `${item.cat}：${item.desc}`, descriptionEn: `${translateUi(item.cat, 'en')}: ${translateUi(item.desc, 'en')}`,
   route: '/glossary',
   keywords: [item.cat]
 }))

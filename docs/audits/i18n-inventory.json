@@ -1,0 +1,886 @@
+{
+  "scope": "Vue SFC template literal text and static display attributes; static message keys and literal t()/translate() calls.",
+  "limitations": [
+    "Candidates require review: language-specific branches, language names, brands and bilingual reference text may be intentional.",
+    "Expressions, script strings, runtime content, shared packages, CSS text and HTML metadata are not included in literal candidate counts.",
+    "An i18n import does not prove coverage; wrapper components may inherit localization from their children.",
+    "Static call matching does not resolve aliases or dynamic keys and is not a complete missing-key analysis.",
+    "routedView only means directly imported by the current router; component reachability is not calculated."
+  ],
+  "summary": {
+    "vueFiles": 48,
+    "directlyRoutedViews": 18,
+    "vueFilesImportingI18n": 44,
+    "filesWithLiteralCandidates": 3,
+    "templateLiteralCandidates": 102,
+    "directlyRoutedViewsWithoutI18nImport": [
+      "web/src/views/ManifestCatalogView.vue"
+    ]
+  },
+  "sourceMessages": {
+    "uiEnglishKeys": 1332,
+    "editorialEnglishKeys": 1063,
+    "unresolvedLiteralUiCalls": [],
+    "note": "Source-call inventory is supplemental. Dynamic data coverage is checked by tests/i18n.test.js for the listed editorial catalogs; neither proves all runtime text is translated."
+  },
+  "dictionary": {
+    "keysPerLocale": {
+      "zh": 147,
+      "en": 147
+    },
+    "missingEnglishKeys": [],
+    "missingChineseKeys": [],
+    "unresolvedLiteralCalls": []
+  },
+  "files": [
+    {
+      "file": "web/src/App.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ActivityGuideCard.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ArmorSetExplorer.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ArmorSystemGuide.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/BuildSectionNav.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/CatalogCoverage.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ClassEmblem.vue",
+      "routedView": false,
+      "importsI18n": false,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ClassPortrait.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/CommunityPublishGuide.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/CommunitySubmission.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ConfidenceBadge.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/DestinyLoading.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ElementBadge.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/EntityLink.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ItemDefinitionInfo.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/LoadoutImageExport.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/LoadoutTile.vue",
+      "routedView": false,
+      "importsI18n": false,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/ManifestDataCatalog.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/RelatedBuilds.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/SiteFooter.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/SiteHeader.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 1,
+      "candidates": [
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "中文"
+        }
+      ]
+    },
+    {
+      "file": "web/src/components/SourceProvenance.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/StatGrid.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/StatRecommendations.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/SubclassSkillCatalog.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/WeaponPerkCombinations.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/WeaponPerkEditor.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/components/WeaponRecommendations.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/ActivitiesView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/ArmorView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/BuildDetailView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/BuildLabView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/BuildWorkbenchView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/ClassDetailView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/ClassesView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/CommunityBuildDetailView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/DataStatusView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/EncyclopediaEntryView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/GlossaryView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/HomeView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/LoreView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/ManifestCatalogView.vue",
+      "routedView": true,
+      "importsI18n": false,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/ManualLoadoutView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/NotFoundView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/SmartLoadoutView.vue",
+      "routedView": false,
+      "importsI18n": false,
+      "literalCandidates": 66,
+      "candidates": [
+        {
+          "kind": "literal-text",
+          "line": 189,
+          "text": "智能配装"
+        },
+        {
+          "kind": "literal-text",
+          "line": 190,
+          "text": "选择职业与玩法偏好，查阅已收录的一图流推荐；可编辑副本，补充属性目标、推荐词条和刷装备注。"
+        },
+        {
+          "kind": "literal-text",
+          "line": 192,
+          "text": "推荐引擎"
+        },
+        {
+          "kind": "literal-text",
+          "line": 192,
+          "text": "个候选"
+        },
+        {
+          "kind": "literal-text",
+          "line": 192,
+          "text": "基于站内编辑目录，非实时游戏模拟"
+        },
+        {
+          "kind": "literal-text",
+          "line": 192,
+          "text": "改为手动配装 ↗"
+        },
+        {
+          "kind": "literal-text",
+          "line": 196,
+          "text": "01. 职业"
+        },
+        {
+          "kind": "literal-aria-label",
+          "line": 196,
+          "text": "职业"
+        },
+        {
+          "kind": "literal-text",
+          "line": 197,
+          "text": "02. 子职业"
+        },
+        {
+          "kind": "literal-aria-label",
+          "line": 197,
+          "text": "子职业"
+        },
+        {
+          "kind": "literal-text",
+          "line": 198,
+          "text": "03. 玩法目标"
+        },
+        {
+          "kind": "literal-text",
+          "line": 201,
+          "text": "智能候选"
+        },
+        {
+          "kind": "literal-text",
+          "line": 204,
+          "text": "内容复核："
+        },
+        {
+          "kind": "literal-text",
+          "line": 204,
+          "text": "编辑此推荐 ↗"
+        },
+        {
+          "kind": "literal-text",
+          "line": 207,
+          "text": "核心装备"
+        },
+        {
+          "kind": "literal-text",
+          "line": 207,
+          "text": "普通护甲套装建议："
+        },
+        {
+          "kind": "literal-text",
+          "line": 207,
+          "text": "Manifest 中暂无该装备的官方图标，已隐藏占位内容。"
+        },
+        {
+          "kind": "literal-text",
+          "line": 208,
+          "text": "天赋与技能 / Abilities"
+        },
+        {
+          "kind": "literal-text",
+          "line": 208,
+          "text": "点击图标查看详情"
+        },
+        {
+          "kind": "literal-text",
+          "line": 208,
+          "text": "星相 / Aspects"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "使用提示"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "优先保证"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "推荐组合包含"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "个机制节点"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "方案声明了超载反制，请按武器与当前活动规则核对"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "进入高难活动前需补充反冠军武器"
+        },
+        {
+          "kind": "literal-text",
+          "line": 214,
+          "text": "赛季神器"
+        },
+        {
+          "kind": "literal-text",
+          "line": 214,
+          "text": "点击查看全部节点"
+        },
+        {
+          "kind": "literal-text",
+          "line": 214,
+          "text": "本方案指定："
+        },
+        {
+          "kind": "literal-text",
+          "line": 215,
+          "text": "层，"
+        },
+        {
+          "kind": "literal-text",
+          "line": 215,
+          "text": "个节点"
+        },
+        {
+          "kind": "literal-text",
+          "line": 220,
+          "text": "未指定神器时不自动填节点。请在编辑副本中先选择神器，再配置节点；模组按满升级护甲的 10 能量规划。"
+        },
+        {
+          "kind": "literal-text",
+          "line": 221,
+          "text": "武器"
+        },
+        {
+          "kind": "literal-text",
+          "line": 221,
+          "text": "点击查看词条"
+        },
+        {
+          "kind": "literal-text",
+          "line": 222,
+          "text": "模组 / Mods"
+        },
+        {
+          "kind": "literal-text",
+          "line": 222,
+          "text": "点击查看效果"
+        },
+        {
+          "kind": "literal-text",
+          "line": 226,
+          "text": "六维属性建议"
+        },
+        {
+          "kind": "literal-text",
+          "line": 227,
+          "text": "护甲套装 / Armor Set"
+        },
+        {
+          "kind": "literal-text",
+          "line": 227,
+          "text": "点击查看装备"
+        },
+        {
+          "kind": "literal-text",
+          "line": 227,
+          "text": "：按套装 Hash 对应部位展示；核心异域替换同部位，避免重复计算套装件数"
+        },
+        {
+          "kind": "literal-text",
+          "line": 227,
+          "text": "Manifest 中暂无该套装的可用部位数据，未生成占位装备。"
+        },
+        {
+          "kind": "literal-text",
+          "line": 227,
+          "text": "刷装备注"
+        },
+        {
+          "kind": "literal-text",
+          "line": 227,
+          "text": "普通护甲仅作部位模板，随机属性按目标取舍。可在编辑副本中选择机灵护甲商，查看其主副属性偏向并留下获取建议。"
+        },
+        {
+          "kind": "literal-aria-label",
+          "line": 232,
+          "text": "关闭详情"
+        },
+        {
+          "kind": "literal-text",
+          "line": 233,
+          "text": "暂无官方图标"
+        },
+        {
+          "kind": "literal-text",
+          "line": 234,
+          "text": "中文"
+        },
+        {
+          "kind": "literal-text",
+          "line": 235,
+          "text": "Manifest 实体信息"
+        },
+        {
+          "kind": "literal-text",
+          "line": 236,
+          "text": "装备套装 / Item Set"
+        },
+        {
+          "kind": "literal-text",
+          "line": 236,
+          "text": "中文"
+        },
+        {
+          "kind": "literal-text",
+          "line": 236,
+          "text": "件套"
+        },
+        {
+          "kind": "literal-text",
+          "line": 237,
+          "text": "武器素体数值"
+        },
+        {
+          "kind": "literal-text",
+          "line": 238,
+          "text": "Perk / 词条"
+        },
+        {
+          "kind": "literal-text",
+          "line": 239,
+          "text": "第"
+        },
+        {
+          "kind": "literal-text",
+          "line": 239,
+          "text": "列"
+        },
+        {
+          "kind": "literal-text",
+          "line": 239,
+          "text": "个可选项"
+        },
+        {
+          "kind": "literal-text",
+          "line": 239,
+          "text": "中文："
+        },
+        {
+          "kind": "literal-text",
+          "line": 239,
+          "text": "该插槽的 PlugSet 仅提供哈希数据，名称未在当前本地化快照中返回。"
+        },
+        {
+          "kind": "literal-text",
+          "line": 240,
+          "text": "Manifest 获取来源 / Acquisition"
+        },
+        {
+          "kind": "literal-text",
+          "line": 241,
+          "text": "神器节点"
+        },
+        {
+          "kind": "literal-text",
+          "line": 242,
+          "text": "：节点说明"
+        },
+        {
+          "kind": "literal-text",
+          "line": 242,
+          "text": "中文"
+        },
+        {
+          "kind": "literal-text",
+          "line": 242,
+          "text": "Manifest 未返回该节点的中英文说明。"
+        },
+        {
+          "kind": "literal-text",
+          "line": 243,
+          "text": "推荐职责"
+        },
+        {
+          "kind": "literal-text",
+          "line": 244,
+          "text": "关联机制"
+        },
+        {
+          "kind": "literal-text",
+          "line": 245,
+          "text": "点击卡片外区域或右上角关闭"
+        },
+        {
+          "kind": "literal-text",
+          "line": 248,
+          "text": "当前筛选没有可用的已核验构筑。"
+        }
+      ]
+    },
+    {
+      "file": "web/src/views/ToolsView.vue",
+      "routedView": false,
+      "importsI18n": true,
+      "literalCandidates": 35,
+      "candidates": [
+        {
+          "kind": "literal-text",
+          "line": 121,
+          "text": "🧬 构筑推荐器"
+        },
+        {
+          "kind": "literal-text",
+          "line": 122,
+          "text": "选择 职业 × 元素 × 玩法，生成推荐构筑方案"
+        },
+        {
+          "kind": "literal-text",
+          "line": 126,
+          "text": "职业"
+        },
+        {
+          "kind": "literal-text",
+          "line": 138,
+          "text": "元素"
+        },
+        {
+          "kind": "literal-text",
+          "line": 150,
+          "text": "玩法"
+        },
+        {
+          "kind": "literal-text",
+          "line": 159,
+          "text": "⚡ 生成推荐"
+        },
+        {
+          "kind": "literal-text",
+          "line": 160,
+          "text": "重置"
+        },
+        {
+          "kind": "literal-text",
+          "line": 172,
+          "text": "✦ 异域护甲"
+        },
+        {
+          "kind": "literal-text",
+          "line": 176,
+          "text": "🛡️ 推荐套装"
+        },
+        {
+          "kind": "literal-text",
+          "line": 180,
+          "text": "📊 属性目标"
+        },
+        {
+          "kind": "literal-text",
+          "line": 186,
+          "text": "🔫 武器搭配"
+        },
+        {
+          "kind": "literal-text",
+          "line": 193,
+          "text": "为什么推荐这套？"
+        },
+        {
+          "kind": "literal-text",
+          "line": 196,
+          "text": "难度："
+        },
+        {
+          "kind": "literal-text",
+          "line": 197,
+          "text": "职业："
+        },
+        {
+          "kind": "literal-text",
+          "line": 202,
+          "text": "👆 选择职业、元素与玩法后点击「生成推荐」"
+        },
+        {
+          "kind": "literal-text",
+          "line": 209,
+          "text": "🛡️ 套装配置器"
+        },
+        {
+          "kind": "literal-text",
+          "line": 210,
+          "text": "选择职业与玩法，查看推荐的套装搭配与模组思路"
+        },
+        {
+          "kind": "literal-text",
+          "line": 214,
+          "text": "职业"
+        },
+        {
+          "kind": "literal-text",
+          "line": 226,
+          "text": "玩法"
+        },
+        {
+          "kind": "literal-text",
+          "line": 240,
+          "text": "属性优先级"
+        },
+        {
+          "kind": "literal-text",
+          "line": 245,
+          "text": "模组思路（按部位）"
+        },
+        {
+          "kind": "literal-text",
+          "line": 250,
+          "text": "套装协同要点"
+        },
+        {
+          "kind": "literal-text",
+          "line": 256,
+          "text": "推荐理由"
+        },
+        {
+          "kind": "literal-text",
+          "line": 258,
+          "text": "✦ 异域核心："
+        },
+        {
+          "kind": "literal-text",
+          "line": 261,
+          "text": "👆 选择职业以查看套装配置建议"
+        },
+        {
+          "kind": "literal-text",
+          "line": 268,
+          "text": "🔫 武器推荐器"
+        },
+        {
+          "kind": "literal-text",
+          "line": 269,
+          "text": "按活动场景选择，查看各槽位推荐武器与理由"
+        },
+        {
+          "kind": "literal-text",
+          "line": 273,
+          "text": "活动场景"
+        },
+        {
+          "kind": "literal-text",
+          "line": 289,
+          "text": "推荐组合"
+        },
+        {
+          "kind": "literal-text",
+          "line": 293,
+          "text": "动能槽 Kinetic"
+        },
+        {
+          "kind": "literal-text",
+          "line": 297,
+          "text": "能量槽 Energy"
+        },
+        {
+          "kind": "literal-text",
+          "line": 301,
+          "text": "重型槽 Power"
+        },
+        {
+          "kind": "literal-text",
+          "line": 306,
+          "text": "推荐理由"
+        },
+        {
+          "kind": "literal-text",
+          "line": 312,
+          "text": "ℹ️ 以上推荐基于《命运2知识库》提炼的规则库生成，为非官方内容。实际搭配请以游戏内版本为准（当前 9.7.0.3）。产物设计为可扩展：在"
+        },
+        {
+          "kind": "literal-text",
+          "line": 313,
+          "text": "中追加规则即可扩充推荐。"
+        }
+      ]
+    },
+    {
+      "file": "web/src/views/WeaponTierListView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    },
+    {
+      "file": "web/src/views/WeaponsView.vue",
+      "routedView": true,
+      "importsI18n": true,
+      "literalCandidates": 0,
+      "candidates": []
+    }
+  ]
+}

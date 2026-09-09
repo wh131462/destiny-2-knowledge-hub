@@ -1,7 +1,7 @@
 <script setup>
+import { ui, useI18n, localized } from '@/i18n'
 import { ref, computed } from 'vue'
 import { enemyRaces, characters, expansions, sagas } from '@/data/world'
-import { useI18n, localized } from '@/i18n'
 
 const { t, locale } = useI18n()
 
@@ -37,7 +37,7 @@ const filteredChars = computed(() =>
         class="tab"
         :class="{ active: tab === t.id }"
         @click="tab = t.id"
-      >{{ t.label }}</button>
+      >{{ ui(t.label) }}</button>
     </div>
 
     <a-input v-model:value="keyword" class="search-box" size="large" allow-clear :placeholder="t('pages.lore.search')" style="margin: 16px 0;" />
@@ -51,14 +51,14 @@ const filteredChars = computed(() =>
             <span class="badge gold">{{ s.years }}</span>
           </div>
           <span v-if="locale === 'zh'" class="en-tag">{{ s.en.toUpperCase() }}</span>
-          <p class="desc">{{ s.desc }}</p>
+          <p class="desc">{{ ui(s.desc) }}</p>
           <div class="keys">
-            <span v-for="k in s.key" :key="k" class="chip">{{ k }}</span>
+            <span v-for="k in s.key" :key="k" class="chip">{{ ui(k) }}</span>
           </div>
         </div>
       </div>
       <div class="note gold">
-        📖 光与暗传奇（2014–2024）以击败见证者收官；命运传奇（2025–2026）随《凯旋纪念碑》收官，后续《碎裂循环》《炼金术士》取消。
+        {{ ui("📖 光与暗传奇（2014–2024）以击败见证者收官；命运传奇（2025–2026）随《凯旋纪念碑》收官，后续《碎裂循环》《炼金术士》取消。") }}
       </div>
     </template>
 
@@ -68,16 +68,16 @@ const filteredChars = computed(() =>
         <div v-for="r in filteredRaces" :key="r.id" class="card enemy-card">
           <div class="enemy-top">
             <h3>{{ localized(r) }}</h3>
-            <span class="badge blue">{{ r.type }}</span>
+            <span class="badge blue">{{ ui(r.type) }}</span>
           </div>
           <span v-if="locale === 'zh'" class="en-tag">{{ r.en.toUpperCase() }}</span>
-          <p class="desc">{{ r.desc }}</p>
+          <p class="desc">{{ ui(r.desc) }}</p>
           <div class="units">
-            <span v-for="u in r.units" :key="u" class="unit-chip">{{ u }}</span>
+            <span v-for="u in r.units" :key="u" class="unit-chip">{{ ui(u) }}</span>
           </div>
         </div>
       </div>
-      <div v-if="!filteredRaces.length" class="empty">未找到匹配的势力</div>
+      <div v-if="!filteredRaces.length" class="empty">{{ ui("未找到匹配的势力") }}</div>
     </template>
 
     <!-- 角色 -->
@@ -86,26 +86,26 @@ const filteredChars = computed(() =>
         <div v-for="c in filteredChars" :key="c.id" class="card char-card" :class="{ villain: c.villain }">
           <div class="char-top">
             <h3>{{ localized(c) }}</h3>
-            <span class="badge" :class="c.villain ? 'gold' : 'blue'">{{ c.role }}</span>
+            <span class="badge" :class="c.villain ? 'gold' : 'blue'">{{ ui(c.role) }}</span>
           </div>
           <span v-if="locale === 'zh'" class="en-tag">{{ c.en.toUpperCase() }}</span>
-          <p>{{ c.desc }}</p>
+          <p>{{ ui(c.desc) }}</p>
         </div>
       </div>
-      <div v-if="!filteredChars.length" class="empty">未找到匹配的角色</div>
+      <div v-if="!filteredChars.length" class="empty">{{ ui("未找到匹配的角色") }}</div>
     </template>
 
     <!-- 资料片 -->
     <template v-if="tab === 'expansions'">
       <div class="panel">
         <table>
-          <tr><th>年份</th><th>资料片</th><th>核心系统</th><th>目的地</th><th>传奇</th></tr>
+          <tr><th>{{ ui("年份") }}</th><th>{{ ui("资料片") }}</th><th>{{ ui("核心系统") }}</th><th>{{ ui("目的地") }}</th><th>{{ ui("传奇") }}</th></tr>
           <tr v-for="e in expansions" :key="e.year + e.name" :class="{ fate: e.saga }">
             <td>{{ e.year }}</td>
             <td>{{ e.name }}<span class="en-inline">{{ e.en }}</span></td>
-            <td>{{ e.feature }}</td>
-            <td>{{ e.destination }}</td>
-            <td><span v-if="e.saga" class="badge blue">{{ e.saga }}</span><span v-else class="dim">光与暗</span></td>
+            <td>{{ ui(e.feature) }}</td>
+            <td>{{ ui(e.destination) }}</td>
+            <td><span v-if="e.saga" class="badge blue">{{ ui(e.saga) }}</span><span v-else class="dim">{{ ui("光与暗") }}</span></td>
           </tr>
         </table>
       </div>

@@ -1,8 +1,8 @@
 <script setup>
+import { ui, useI18n } from '@/i18n'
 import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { activitiesV2 } from '@/data/v2'
-import { useI18n } from '@/i18n'
 import { useManifestAssets } from '@/composables/useManifestAssets'
 import ActivityGuideCard from '@/components/ActivityGuideCard.vue'
 
@@ -32,7 +32,7 @@ const matches = item => {
   const query = keyword.value.trim().toLowerCase()
   const searchable = [item.name, item.en, item.intent, ...item.aliases, item.destination, ...item.tags,
     ...item.rewards, ...item.rewards.map(name => rewardByName.value.get(name)?.nameZh), ...item.encounters.map(encounter => encounter.name)]
-  return (!query || searchable.join(' ').toLowerCase().includes(query))
+  return (!query || [...searchable, ...searchable.map(ui)].join(' ').toLowerCase().includes(query))
     && (tab.value !== 'dungeons' || !trait.value || item.tags.includes(trait.value))
     && (tab.value !== 'raids' || raidScope.value === 'all' || Boolean(item.historical) === (raidScope.value === 'historical'))
 }
@@ -48,13 +48,13 @@ watch(() => route.query.entry, id => {
 <template>
   <div>
     <header class="page-head"><h1>{{ t('pages.activities.title') }}</h1><p>{{ t('pages.activities.subtitle') }}</p></header>
-    <nav class="tabs" aria-label="活动分类"><button v-for="item in tabs" :key="item.id" class="tab" :class="{ active: tab === item.id }" :aria-pressed="tab === item.id" @click="selectTab(item.id)">{{ locale === 'en' ? item.en : item.label }}<span>{{ activitiesV2.filter(entry => categoryTab(entry) === item.id).length }}</span></button></nav>
-    <div class="activity-heading"><div><p class="activity-eyebrow">{{ activeTab.en.toUpperCase() }} / FIELD GUIDE</p><h2>{{ activeTab.title }}</h2><p>{{ activeTab.subtitle }}</p></div><span aria-live="polite">{{ filteredEntries.length }} / {{ entries.length }} 篇指南</span></div>
-    <a-input v-model:value="keyword" class="search-box" size="large" allow-clear aria-label="搜索活动名称、别名或奖励" placeholder="搜索名称、英文、旧称或代表武器…" />
-    <div v-if="tab === 'dungeons'" class="activity-filters" aria-label="地牢特点筛选"><button type="button" :aria-pressed="!trait" @click="trait = ''">全部地牢</button><button v-for="filter in traits" :key="filter" type="button" :aria-pressed="trait === filter" @click="trait = filter">{{ filter }}</button></div>
-    <div v-if="tab === 'raids'" class="activity-filters" aria-label="突袭资料筛选"><button type="button" :aria-pressed="raidScope === 'all'" @click="raidScope = 'all'">全部突袭</button><button type="button" :aria-pressed="raidScope === 'later'" @click="raidScope = 'later'">后续与复刻突袭 {{ raidCounts.later }}</button><button type="button" :aria-pressed="raidScope === 'historical'" @click="raidScope = 'historical'">原版已退役 {{ raidCounts.historical }}</button></div>
+    <nav class="tabs" :aria-label="ui(&quot;活动分类&quot;)"><button v-for="item in tabs" :key="item.id" class="tab" :class="{ active: tab === item.id }" :aria-pressed="tab === item.id" @click="selectTab(item.id)">{{ locale === 'en' ? item.en : item.label }}<span>{{ activitiesV2.filter(entry => categoryTab(entry) === item.id).length }}</span></button></nav>
+    <div class="activity-heading"><div><p class="activity-eyebrow">{{ activeTab.en.toUpperCase() }} / FIELD GUIDE</p><h2>{{ ui(activeTab.title) }}</h2><p>{{ ui(activeTab.subtitle) }}</p></div><span aria-live="polite">{{ filteredEntries.length }} / {{ entries.length }} {{ ui("篇指南") }}</span></div>
+    <a-input v-model:value="keyword" class="search-box" size="large" allow-clear :aria-label="ui(&quot;搜索活动名称、别名或奖励&quot;)" :placeholder="ui(&quot;搜索名称、英文、旧称或代表武器…&quot;)" />
+    <div v-if="tab === 'dungeons'" class="activity-filters" :aria-label="ui(&quot;地牢特点筛选&quot;)"><button type="button" :aria-pressed="!trait" @click="trait = ''">{{ ui("全部地牢") }}</button><button v-for="filter in traits" :key="filter" type="button" :aria-pressed="trait === filter" @click="trait = filter">{{ ui(filter) }}</button></div>
+    <div v-if="tab === 'raids'" class="activity-filters" :aria-label="ui(&quot;突袭资料筛选&quot;)"><button type="button" :aria-pressed="raidScope === 'all'" @click="raidScope = 'all'">{{ ui("全部突袭") }}</button><button type="button" :aria-pressed="raidScope === 'later'" @click="raidScope = 'later'">{{ ui("后续与复刻突袭") }} {{ raidCounts.later }}</button><button type="button" :aria-pressed="raidScope === 'historical'" @click="raidScope = 'historical'">{{ ui("原版已退役") }} {{ raidCounts.historical }}</button></div>
     <div class="activity-list"><ActivityGuideCard v-for="(item, index) in filteredEntries" :key="item.id" :item="item" :index="index" :expanded="openGuide === item.id" :reward-by-name="rewardByName" @toggle="openGuide = openGuide === item.id ? null : item.id" /></div>
-    <div v-if="!filteredEntries.length" class="empty">没有匹配的活动。<button type="button" class="clear-filters" @click="clearFilters">清除筛选</button></div>
+    <div v-if="!filteredEntries.length" class="empty">{{ ui("没有匹配的活动。") }}<button type="button" class="clear-filters" @click="clearFilters">{{ ui("清除筛选") }}</button></div>
   </div>
 </template>
 

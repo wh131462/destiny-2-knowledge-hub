@@ -1,4 +1,5 @@
 import { computed, ref } from 'vue'
+import { translateUi, translateGeneratedMessage } from './messages.js'
 
 const STORAGE_KEY = 'd2-hub-locale'
 const initialLocale = typeof window !== 'undefined' ? window.localStorage.getItem(STORAGE_KEY) || 'zh' : 'zh'
@@ -17,7 +18,16 @@ const messages = {
       searchPlaceholder: '搜索武器、职业、构筑…',
       searchHint: '全局搜索：武器、护甲、职业、活动、剧情、术语和构筑',
       searchNoResults: '暂无结果，试试其他关键词',
-      searchCatalog: '前往官方目录搜索'
+      searchCatalog: '前往官方目录搜索',
+      refresh: '刷新列表', refreshing: '刷新中…', loading: '正在加载…', clearFilters: '清除筛选',
+      allClasses: '全部职业', allActivities: '全部玩法', sort: '排序', recentlyUpdated: '最近更新', sortByName: '名称排序',
+      createBuild: '创建构筑', viewDetails: '查看完整方案', anonymousGuardian: '匿名守护者', updatedAt: '更新于',
+      noMatches: '没有符合筛选的构筑', noPublicBuilds: '暂时没有公开构筑方案', tryOtherFilters: '试试其他关键词，或清除筛选，重新发现适合你的方案。',
+      startBuild: '从职业与技能开始，记录你的装备搭配与玩法思路。', connectionInterrupted: '暂时无法读取构筑', retry: '重新加载',
+      networkRetry: '请检查网络后重试。你也可以先创建自己的构筑。', communitySubmission: '社区投稿', coreArmor: '核心护甲', recommendedWeapon: '推荐武器',
+      buildCount: '份方案', totalCount: '共', snapshotUpdated: '数据更新于', syncing: '正在读取社区构筑…', syncHint: '投稿与更新会在同步完成后显示',
+      notSynced: '当前页面尚未启用列表同步；可以创建构筑并通过 GitHub 提交。', lastSyncedData: '当前显示上次成功同步的数据。',
+      noData: '暂无数据'
     },
     nav: { home: '首页', knowledge: '知识图鉴', build: '构筑工具', data: '数据中心', classes: '职业百科', weaponTierList: '武器天梯', weapons: '武器百科', armor: '防具与套装', activities: '活动图鉴', lore: '世界观', buildLab: '构筑实验室', workbench: '自定义工作台', smartLoadout: '智能配装', publicBuilds: '构筑方案', manualLoadout: '创建构筑', manifest: '官方目录', glossary: '术语表', dataStatus: '数据状态' },
     searchTypes: { classes: '职业', subclasses: '子职业', weapons: '武器', armor: '防具', activities: '活动', lore: '世界观', glossary: '术语', builds: '构筑' },
@@ -49,7 +59,16 @@ const messages = {
       searchPlaceholder: 'Search weapons, classes, builds…',
       searchHint: 'Global search: weapons, armor, classes, activities, lore, terms, and builds',
       searchNoResults: 'No results. Try another keyword.',
-      searchCatalog: 'Search the official catalog'
+      searchCatalog: 'Search the official catalog',
+      refresh: 'Refresh list', refreshing: 'Refreshing…', loading: 'Loading…', clearFilters: 'Clear filters',
+      allClasses: 'All classes', allActivities: 'All activities', sort: 'Sort', recentlyUpdated: 'Recently updated', sortByName: 'Sort by name',
+      createBuild: 'Create build', viewDetails: 'View full build', anonymousGuardian: 'Anonymous Guardian', updatedAt: 'Updated',
+      noMatches: 'No builds match these filters', noPublicBuilds: 'No public builds yet', tryOtherFilters: 'Try another keyword or clear the filters to discover a suitable build.',
+      startBuild: 'Start with a class and abilities, then record your gear and playstyle.', connectionInterrupted: 'Unable to load builds', retry: 'Reload',
+      networkRetry: 'Check your connection and try again. You can also create your own build first.', communitySubmission: 'Community submission', coreArmor: 'Core armor', recommendedWeapon: 'Recommended weapon',
+      buildCount: 'builds', totalCount: 'of', snapshotUpdated: 'Data updated', syncing: 'Loading community builds…', syncHint: 'Submissions and updates appear after synchronization',
+      notSynced: 'List synchronization is not enabled yet; create a build and submit it through GitHub.', lastSyncedData: 'Showing the last successfully synchronized data.',
+      noData: 'No data'
     },
     nav: { home: 'Home', knowledge: 'Knowledge', build: 'Build Tools', data: 'Data Hub', classes: 'Classes', weaponTierList: 'Weapon Tier List', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', lore: 'Lore', buildLab: 'Build Lab', workbench: 'Custom Workbench', smartLoadout: 'Smart Loadout', publicBuilds: 'Builds', manualLoadout: 'Create Build', manifest: 'Official Catalog', glossary: 'Glossary', dataStatus: 'Data Status' },
     searchTypes: { classes: 'CLASS', subclasses: 'SUBCLASS', weapons: 'WEAPON', armor: 'ARMOR', activities: 'ACTIVITY', lore: 'LORE', glossary: 'TERM', builds: 'BUILD' },
@@ -79,20 +98,67 @@ export function translate(key, fallback = key) {
   return resolve(key, messages[locale.value]) ?? fallback
 }
 
+// Source-key messages are restricted to site-authored interface copy.
+// Never pass author names, notes, imported drafts, or other user content here.
+export function ui(source, parameters) {
+  return translateUi(source, locale.value, parameters)
+}
+
+export function uiMessage(source) {
+  return translateGeneratedMessage(source, locale.value)
+}
+
+export function manifestName(item, fallback = '') {
+  if (!item) return fallback
+  return locale.value === 'en' ? item.name || item.nameZh || fallback : item.nameZh || item.name || fallback
+}
+
+export function manifestDescription(item) {
+  return locale.value === 'en' ? item?.description || item?.descriptionZh || '' : item?.descriptionZh || item?.description || ''
+}
+
+export function localizedOptions(options) {
+  return options?.map(option => ({ ...option, label: ui(option.label), ...(option.options ? { options: localizedOptions(option.options) } : {}) }))
+}
+
 export function localized(item) {
   if (!item) return ''
   if (typeof item === 'string') return item
-  return locale.value === 'en' ? (item.nameEn || item.en || item.name || item.label || '') : (item.name || item.label || item.en || '')
+  return locale.value === 'en' ? (item.nameEn || item.en || ui(item.name || item.label || item.nameZh || '')) : (item.nameZh || item.name || item.label || item.en || '')
+}
+
+/** Select a localized field while retaining a safe fallback for partial snapshots. */
+export function localizedField(item, field, fallback = '') {
+  if (!item) return fallback
+  const english = item[`${field}En`] || (item[`${field}Zh`] !== undefined ? item[field] : undefined)
+  const chinese = item[`${field}Zh`] || item[field]
+  return locale.value === 'en' ? (english || ui(chinese) || fallback) : (chinese || english || fallback)
+}
+
+export function formatDate(value, options = {}) {
+  if (!value) return ''
+  try { return new Intl.DateTimeFormat(locale.value === 'en' ? 'en-US' : 'zh-CN', options).format(new Date(value)) } catch { return String(value) }
+}
+
+function updateDocumentLanguage() {
+  if (typeof document === 'undefined') return
+  const english = locale.value === 'en'
+  document.documentElement.lang = english ? 'en' : 'zh-CN'
+  document.title = english ? 'Destiny 2 Knowledge Hub' : '命运2 知识中枢 | Destiny 2 Hub'
+  const description = english ? 'Destiny 2 reference guides, classes, equipment, and build planning.' : '命运2（Destiny 2）知识库主题站 - 信息查阅、推荐搭配、套装配置'
+  document.querySelector('meta[name="description"]')?.setAttribute('content', description)
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title)
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
 }
 
 export function setLocale(next) {
   locale.value = next === 'en' ? 'en' : 'zh'
   if (typeof window !== 'undefined') window.localStorage.setItem(STORAGE_KEY, locale.value)
-  if (typeof document !== 'undefined') document.documentElement.lang = locale.value === 'en' ? 'en' : 'zh-CN'
+  updateDocumentLanguage()
 }
 
 export function useI18n() {
-  return { locale: computed(() => locale.value), t: translate, localized, setLocale, isEnglish: computed(() => locale.value === 'en') }
+  return { locale: computed(() => locale.value), t: translate, localized, localizedField, formatDate, setLocale, isEnglish: computed(() => locale.value === 'en') }
 }
 
-if (typeof document !== 'undefined') document.documentElement.lang = locale.value === 'en' ? 'en' : 'zh-CN'
+updateDocumentLanguage()

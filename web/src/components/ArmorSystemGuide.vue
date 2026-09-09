@@ -1,8 +1,10 @@
 <script setup>
+import { useI18n, ui } from '@/i18n'
 import { ref } from 'vue'
-import { armorName, armorDescription } from '../../../packages/manifest-catalog/armor.js'
+import { armorName, armorDescription } from '@/i18n/metadata'
 import { manifestText } from '@/utils/manifestText'
 defineProps({ catalog: { type: Object, required: true } })
+const { locale } = useI18n()
 const icon = item => item?.icon ? `https://www.bungie.net${item.icon}` : ''
 const bundledArchetypes = import.meta.glob('../assets/armor-archetypes/*.png', { eager: true, query: '?url', import: 'default' })
 const failedArchetypes = ref(new Set())
@@ -17,12 +19,12 @@ const decisions = [
 
 <template>
   <div class="armor-guide">
-    <header class="guide-heading"><span class="overline">UNDERSTAND YOUR ARMOR</span><h2>从五个部位，到一套完整循环</h2><p>异域特性、套装、属性原型与模组，分别解决配装中的不同问题。</p></header>
-    <div class="decision-grid"><article v-for="step in decisions" :key="step.number"><span>{{ step.number }}</span><h3>{{ step.title }}</h3><p>{{ step.copy }}</p></article></div>
-    <section><div class="guide-section-heading"><h2>当前六维属性</h2><span>STAT DEFINITIONS</span></div><p class="guide-note">以下直接采用当前官方定义。配装目标范围为 0–200，具体收益曲线随属性与补丁变化，不能把点数直接换算成统一伤害百分比。</p><div class="stats-grid"><article v-for="stat in catalog.stats" :key="stat.hash"><div><img v-if="icon(stat)" :src="icon(stat)" alt="" /><h3>{{ armorName(stat) }}<small>{{ stat.name }}</small></h3></div><p>{{ manifestText(armorDescription(stat)) }}</p></article></div></section>
-    <section><div class="guide-section-heading"><h2>护甲原型 <small> / {{ catalog.archetypes.length }} 种定义</small></h2><span>ARMOR ARCHETYPES</span></div><p class="guide-note">主要与次要属性方向来自原型定义。实际数值以掉落实例为准，原型也不等同于套装加成。</p><div class="archetype-grid"><article v-for="type in catalog.archetypes" :key="type.hash"><div class="archetype-icon"><img v-if="archetypeIcon(type) && !failedArchetypes.has(type.hash)" :src="archetypeIcon(type)" :alt="`${armorName(type)}原型图标`" width="44" height="44" @error="failedArchetypes.add(type.hash)" /><span v-else role="img" :aria-label="`${armorName(type)}原型图标暂不可用`">{{ armorName(type).slice(0, 1) }}</span></div><div><h3>{{ armorName(type) }}<small>{{ type.name }}</small></h3><p>{{ manifestText(armorDescription(type)) }}</p></div></article></div></section>
-    <section class="upgrade-guide"><div class="guide-section-heading"><h2>分清四种「升级」</h2><span>INSPECTION CHECKLIST</span></div><dl><div><dt>装备 Tier</dt><dd>装备分层与稀有度是两件事。比较具体掉落的 Tier、属性分布与可用调整功能；传说（紫色）本身不是 Tier 5 的证明。</dd></div><div><dt>能量与模组</dt><dd>模组消耗不能超过该件护甲的可用能量，同时还受部位和实际插槽限制。外观、着色器与固有特性插槽不等于额外战斗模组位。</dd></div><div><dt>大师与属性调整</dt><dd>检查该件装备提供的大师与调整功能；调整模组可能以减少一项属性为代价提升另一项。不要把目录中的默认零值当作实物属性。</dd></div><div><dt>幻化与外观</dt><dd>护甲合成解锁外观，通用装饰品改变外形，不改变原装备的属性与套装归属。异域装饰品适用于对应异域，不能借外观绕过装备限制。</dd></div></dl></section>
-    <div class="guide-cta"><div><h3>把选择连成一套构筑</h3><p>先用套装预览核对件数，再到构筑工具配置异域、武器、技能与模组。</p></div><RouterLink to="/manual-loadout">创建构筑 ↗</RouterLink></div>
+    <header class="guide-heading"><span class="overline">UNDERSTAND YOUR ARMOR</span><h2>{{ ui("从五个部位，到一套完整循环") }}</h2><p>{{ ui("异域特性、套装、属性原型与模组，分别解决配装中的不同问题。") }}</p></header>
+    <div class="decision-grid"><article v-for="step in decisions" :key="step.number"><span>{{ step.number }}</span><h3>{{ ui(step.title) }}</h3><p>{{ ui(step.copy) }}</p></article></div>
+    <section><div class="guide-section-heading"><h2>{{ ui("当前六维属性") }}</h2><span>STAT DEFINITIONS</span></div><p class="guide-note">{{ ui("以下直接采用当前官方定义。配装目标范围为 0–200，具体收益曲线随属性与补丁变化，不能把点数直接换算成统一伤害百分比。") }}</p><div class="stats-grid"><article v-for="stat in catalog.stats" :key="stat.hash"><div><img v-if="icon(stat)" :src="icon(stat)" alt="" /><h3>{{ armorName(stat) }}<small>{{ stat.name }}</small></h3></div><p>{{ manifestText(armorDescription(stat), locale) }}</p></article></div></section>
+    <section><div class="guide-section-heading"><h2>{{ ui("护甲原型") }} <small> / {{ catalog.archetypes.length }} {{ ui("种定义") }}</small></h2><span>ARMOR ARCHETYPES</span></div><p class="guide-note">{{ ui("主要与次要属性方向来自原型定义。实际数值以掉落实例为准，原型也不等同于套装加成。") }}</p><div class="archetype-grid"><article v-for="type in catalog.archetypes" :key="type.hash"><div class="archetype-icon"><img v-if="archetypeIcon(type) && !failedArchetypes.has(type.hash)" :src="archetypeIcon(type)" :alt="`${armorName(type)}原型图标`" width="44" height="44" @error="failedArchetypes.add(type.hash)" /><span v-else role="img" :aria-label="ui(&quot;{0}原型图标暂不可用&quot;, [armorName(type)])">{{ armorName(type).slice(0, 1) }}</span></div><div><h3>{{ armorName(type) }}<small>{{ type.name }}</small></h3><p>{{ manifestText(armorDescription(type), locale) }}</p></div></article></div></section>
+    <section class="upgrade-guide"><div class="guide-section-heading"><h2>{{ ui("分清四种「升级」") }}</h2><span>INSPECTION CHECKLIST</span></div><dl><div><dt>{{ ui("装备 Tier") }}</dt><dd>{{ ui("装备分层与稀有度是两件事。比较具体掉落的 Tier、属性分布与可用调整功能；传说（紫色）本身不是 Tier 5 的证明。") }}</dd></div><div><dt>{{ ui("能量与模组") }}</dt><dd>{{ ui("模组消耗不能超过该件护甲的可用能量，同时还受部位和实际插槽限制。外观、着色器与固有特性插槽不等于额外战斗模组位。") }}</dd></div><div><dt>{{ ui("大师与属性调整") }}</dt><dd>{{ ui("检查该件装备提供的大师与调整功能；调整模组可能以减少一项属性为代价提升另一项。不要把目录中的默认零值当作实物属性。") }}</dd></div><div><dt>{{ ui("幻化与外观") }}</dt><dd>{{ ui("护甲合成解锁外观，通用装饰品改变外形，不改变原装备的属性与套装归属。异域装饰品适用于对应异域，不能借外观绕过装备限制。") }}</dd></div></dl></section>
+    <div class="guide-cta"><div><h3>{{ ui("把选择连成一套构筑") }}</h3><p>{{ ui("先用套装预览核对件数，再到构筑工具配置异域、武器、技能与模组。") }}</p></div><RouterLink to="/manual-loadout">{{ ui("创建构筑 ↗") }}</RouterLink></div>
   </div>
 </template>
 

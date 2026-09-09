@@ -22,7 +22,10 @@ const payload = {
   generatedAt: new Date().toISOString(),
   syncedAt: inventory.syncedAt,
   ...Object.fromEntries(Object.entries(extras).map(([key, snapshot]) => [key, project(snapshot.data, ['name', 'description'])])),
-  items: project(inventory.data, ['name', 'description']),
+  items: Object.fromEntries(Object.entries(project(inventory.data, ['name', 'description'])).map(([hash, item]) => [hash, { ...item,
+    ...(inventory.data[hash].plug ? { insertionRules: inventory.data[hash].plug.insertionRules || [], enabledRules: inventory.data[hash].plug.enabledRules || [] } : {}),
+    ...(inventory.data[hash].tooltipNotifications?.length ? { tooltipNotifications: inventory.data[hash].tooltipNotifications } : {})
+  }])),
   activities: project(activities.data, ['name', 'description']),
   perks: project(perks.data, ['name', 'description']),
   vendors: project(vendors.data, ['name'])

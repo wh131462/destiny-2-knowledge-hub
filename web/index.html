@@ -11,12 +11,33 @@
     <meta property="og:description" content="可溯源的命运2中文机制数据库、含棱镜体系的职业百科与合法构筑实验室。" />
     <meta property="og:type" content="website" />
     <title>命运2 知识中枢 | Destiny 2 Hub</title>
+    <link rel="stylesheet" href="/loading.css" />
+    <script>
+      window.addEventListener('error', function (event) {
+        if (event.target?.tagName !== 'SCRIPT' && !(event instanceof ErrorEvent)) return;
+        document.getElementById('boot-loader')?.setAttribute('hidden', '');
+        document.getElementById('boot-error')?.removeAttribute('hidden');
+      }, true);
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div id="boot-loader" class="destiny-loading destiny-loading--screen destiny-loading--boot" role="status">
+        <img class="destiny-loading__mark" src="/destiny-loader.svg" alt="" width="108" height="108" />
+        <div class="destiny-loading__copy">
+          <span class="destiny-loading__brand">DESTINY 2 · KNOWLEDGE HUB</span>
+          <span class="destiny-loading__label">正在加载 · Loading…</span>
+        </div>
+      </div>
+      <div id="boot-error" class="destiny-loading destiny-loading--screen destiny-loading--boot destiny-loading--boot-error" role="alert" hidden>
+        <span>加载失败，请检查网络后重试。 / Unable to load. Please try again.</span>
+        <a href="" onclick="window.location.reload(); return false">重新加载 / Reload</a>
+      </div>
+    </div>
+    <noscript><style>#boot-loader { display: none; }</style>请启用 JavaScript 以访问知识库。 / Please enable JavaScript.</noscript>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -1,19 +1,20 @@
 <script setup>
+import { ui } from '@/i18n'
 import EntityLink from '@/components/EntityLink.vue'
 import { computed, ref, watch } from 'vue'
 import WeaponPerkEditor from './WeaponPerkEditor.vue'
 import { useWeaponPerks } from '@/composables/useWeaponPerks'
 import { MAX_PERK_COMBINATIONS, addPerkCombination, updatePerkCombination, removePerkCombination } from '../../../packages/loadout-planner/index.js'
-import { weaponPerkColumns, resolvePerkSelections, perkLabel } from '../../../packages/loadout-planner/weapon-perks.js'
+import { weaponPerkColumns, resolvePerkSelections, perkLabel } from '@/i18n/metadata'
 
 const props = defineProps({ weapon: Object, row: { type: Object, required: true }, weaponIndex: Number, manifestVersion: String })
 const emit = defineEmits(['change'])
-const activeId = ref(props.row.perkCombinations[0]?.id)
+const activeId = ref(props.weapon?.hash ? props.row.perkCombinations[0]?.id : null)
 const pool = useWeaponPerks()
 const compatible = computed(() => pool.state.value === 'ready' && pool.version.value === props.manifestVersion)
 const columns = computed(() => weaponPerkColumns(compatible.value ? props.weapon : null, pool.byHash.value))
 const atLimit = computed(() => props.row.perkCombinations.length >= MAX_PERK_COMBINATIONS)
-const name = (combo, index) => combo.name.trim() || `组合 ${index + 1}`
+const name = (combo, index) => combo.name.trim() || ui('组合 {0}', [index + 1])
 const image = p => p?.icon ? (/^https?:/.test(p.icon) ? p.icon : `https://www.bungie.net${p.icon}`) : ''
 function summary(combo) {
   const list = [...columns.value]
@@ -33,11 +34,14 @@ function update(id, changes) { emit('change', updatePerkCombination(props.row, i
 function add(copyId) {
   if (atLimit.value) return
   const next = addPerkCombination(props.row, copyId)
-  activeId.value = next.perkCombinations.at(-1).id
+  const created = next.perkCombinations.at(-1)
+  const source = props.row.perkCombinations.find(combo => combo.id === copyId)
+  created.name = source ? ui('{0} 副本', [source.name.slice(0, 75)]) : ui('组合 {0}', [created.id.slice(6)])
+  activeId.value = created.id
   emit('change', next)
 }
 function remove(id) { emit('change', removePerkCombination(props.row, id)) }
-watch(() => props.weapon?.hash, hash => { activeId.value = props.row.perkCombinations[0]?.id; if (hash) pool.load() }, { immediate: true })
+watch(() => props.weapon?.hash, hash => { activeId.value = hash ? props.row.perkCombinations[0]?.id : null; if (hash) pool.load() }, { immediate: true })
 watch(() => props.row.perkCombinations.map(c => c.id).join('|'), () => {
   if (activeId.value && !props.row.perkCombinations.some(c => c.id === activeId.value)) activeId.value = props.row.perkCombinations[0]?.id
 })
@@ -46,39 +50,39 @@ watch(() => props.row.perkCombinations.map(c => c.id).join('|'), () => {
 <template>
   <div class="perk-combinations">
     <header class="combinations-toolbar">
-      <span>PERK SETS <b>{{ row.perkCombinations.length }} 组独立备选</b></span>
-      <button type="button" :disabled="atLimit" :aria-label="`武器${weaponIndex + 1}新增空白组合`" @click="add()">＋ 新增空白组合</button>
+      <span>PERK SETS <b>{{ row.perkCombinations.length }} {{ ui("组独立备选") }}</b></span>
+      <button type="button" :disabled="atLimit" :aria-label="ui(&quot;武器{0}新增空白组合&quot;, [weaponIndex + 1])" @click="add()">{{ ui("＋ 新增空白组合") }}</button>
     </header>
-    <p v-if="atLimit" class="combination-hint">每把武器最多 {{ MAX_PERK_COMBINATIONS }} 组。</p>
+    <p v-if="atLimit" class="combination-hint">{{ ui("每把武器最多") }} {{ MAX_PERK_COMBINATIONS }} {{ ui("组。") }}</p>
     <template v-for="(combo, index) in row.perkCombinations" :key="combo.id">
-      <div v-if="index" class="combination-or" aria-hidden="true">或 / OR</div>
-      <section class="perk-combination" :class="{ editing: activeId === combo.id }" :aria-label="`武器${weaponIndex + 1}推荐组合${index + 1}`">
+      <div v-if="index" class="combination-or" aria-hidden="true">{{ ui("或 / OR") }}</div>
+      <section class="perk-combination" :class="{ editing: activeId === combo.id }" :aria-label="ui(&quot;武器{0}推荐组合{1}&quot;, [weaponIndex + 1, index + 1])">
         <header class="combination-header">
           <span class="combination-number">{{ String(index + 1).padStart(2, '0') }}</span>
           <h3>{{ name(combo, index) }}</h3>
           <div class="combination-actions">
-            <button type="button" :aria-expanded="activeId === combo.id" :aria-controls="`weapon-${weaponIndex}-${combo.id}-editor`" @click="activeId = activeId === combo.id ? null : combo.id">{{ activeId === combo.id ? '收起' : '编辑' }}</button>
-            <button type="button" :disabled="atLimit" :aria-label="`复制组合${index + 1}`" @click="add(combo.id)">复制</button>
-            <a-popconfirm title="删除这一组推荐？其他组合不会改变。" ok-text="删除组合" cancel-text="保留" :disabled="row.perkCombinations.length === 1" @confirm="remove(combo.id)">
-              <button type="button" :disabled="row.perkCombinations.length === 1" :aria-label="`删除组合${index + 1}`">删除</button>
+            <button type="button" :aria-expanded="activeId === combo.id" :aria-controls="`weapon-${weaponIndex}-${combo.id}-editor`" @click="activeId = activeId === combo.id ? null : combo.id">{{ activeId === combo.id ? ui("收起") : ui("编辑") }}</button>
+            <button type="button" :disabled="atLimit" :aria-label="ui(&quot;复制组合{0}&quot;, [index + 1])" @click="add(combo.id)">{{ ui("复制") }}</button>
+            <a-popconfirm :title="ui(&quot;删除这一组推荐？其他组合不会改变。&quot;)" :ok-text="ui(&quot;删除组合&quot;)" :cancel-text="ui(&quot;保留&quot;)" :disabled="row.perkCombinations.length === 1" @confirm="remove(combo.id)">
+              <button type="button" :disabled="row.perkCombinations.length === 1" :aria-label="ui(&quot;删除组合{0}&quot;, [index + 1])">{{ ui("删除") }}</button>
             </a-popconfirm>
           </div>
         </header>
         <dl v-if="summary(combo).length" class="combination-summary">
           <div v-for="column in summary(combo)" :key="column.key" class="combination-slot">
-            <dt>{{ column.label }}</dt>
+            <dt>{{ ui(column.label) }}</dt>
             <dd><template v-for="(value, valueIndex) in column.values" :key="valueIndex"><span v-if="valueIndex" class="choice-or">/</span><span class="summary-perk"><img v-if="value.image" :src="value.image" alt="" /><EntityLink v-if="value.item" :item="value.item" kind="plugs" :label="value.text" new-tab /><span v-else>{{ value.text }}</span></span></template></dd>
           </div>
         </dl>
-        <p v-else class="combination-hint">尚未配置词条 在这一组内选择一套完整搭配</p>
+        <p v-else class="combination-hint">{{ ui("尚未配置词条 在这一组内选择一套完整搭配") }}</p>
         <p v-if="combo.notes" class="combination-notes">{{ combo.notes }}</p>
         <div v-if="activeId === combo.id" :id="`weapon-${weaponIndex}-${combo.id}-editor`" class="combination-editor">
           <div class="combination-meta">
-            <label>组合名称<a-input :value="combo.name" :aria-label="`武器${weaponIndex + 1}组合${index + 1}名称`" :maxlength="80" placeholder="例如：回弹续航 / 手雷循环" @update:value="update(combo.id, { name: $event })" /></label>
-            <label>本组合用途<a-textarea :value="combo.notes" :aria-label="`武器${weaponIndex + 1}组合${index + 1}备注`" :maxlength="3000" :auto-size="{ minRows: 1, maxRows: 4 }" placeholder="适用场景、触发方式或替换条件" @update:value="update(combo.id, { notes: $event })" /></label>
+            <label>{{ ui("组合名称") }}<a-input :value="combo.name" :aria-label="ui(&quot;武器{0}组合{1}名称&quot;, [weaponIndex + 1, index + 1])" :maxlength="80" :placeholder="ui(&quot;例如：回弹续航 / 手雷循环&quot;)" @update:value="update(combo.id, { name: $event })" /></label>
+            <label>{{ ui("本组合用途") }}<a-textarea :value="combo.notes" :aria-label="ui(&quot;武器{0}组合{1}备注&quot;, [weaponIndex + 1, index + 1])" :maxlength="3000" :auto-size="{ minRows: 1, maxRows: 4 }" :placeholder="ui(&quot;适用场景、触发方式或替换条件&quot;)" @update:value="update(combo.id, { notes: $event })" /></label>
           </div>
           <WeaponPerkEditor :weapon="weapon" :row="combo" :weapon-index="weaponIndex" :combination-name="name(combo, index)" :manifest-version="manifestVersion" @change="update(combo.id, $event)" />
-          <p class="combination-hint">当前仅编辑「{{ name(combo, index) }}」。组内同栏的 / 表示可互换；需要特定配对时请另建一组。</p>
+          <p class="combination-hint">{{ ui("当前仅编辑「") }}{{ name(combo, index) }}{{ ui("」。组内同栏的 / 表示可互换；需要特定配对时请另建一组。") }}</p>
         </div>
       </section>
     </template>

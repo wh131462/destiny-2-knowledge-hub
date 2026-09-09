@@ -1,6 +1,6 @@
 <script setup>
+import { ui, localized, useI18n } from '@/i18n'
 import { computed, ref } from 'vue'
-import { localized, useI18n } from '@/i18n'
 const props = defineProps({ item: { type: Object, required: true }, index: { type: Number, default: 0 }, expanded: Boolean, rewardByName: { type: Map, default: () => new Map() } })
 defineEmits(['toggle'])
 const { locale } = useI18n()
@@ -18,18 +18,18 @@ const buildLinks = computed(() => {
 </script>
 <template>
   <article class="activity-card" :class="{ expanded, historical: item.historical }">
-    <header class="activity-card-head"><span class="activity-index">{{ String(index + 1).padStart(2, '0') }}</span><div><small>{{ isChoice ? localized(item) : item.release }}</small><h3>{{ isChoice && locale !== 'en' ? item.intent : localized(item) }}</h3><span class="en-tag">{{ item.en }}</span></div><span class="team-size">{{ item.fireteam }}{{ /^\d+[–\-]?\d*$/.test(item.fireteam) ? ' 人' : '' }}</span></header>
-    <p class="activity-location">{{ item.destination }}</p>
-    <div v-if="item.tags.length || item.historical" class="activity-tags"><span v-if="item.historical" class="archive-tag">原版已退役</span><span v-for="tag in item.tags" :key="tag">{{ tag }}</span></div>
-    <p class="activity-intro">{{ item.intro }}</p>
-    <div class="mechanic-preview"><h4>{{ isChoice ? '游玩重点' : '核心机制' }}</h4><p>{{ item.mechanics }}</p></div>
-    <p v-if="item.gaps" class="guide-gap"><strong>资料待补</strong>{{ item.gaps }}</p>
-    <button class="activity-expand" type="button" :aria-expanded="expanded" :aria-controls="`${item.id}-guide`" @click="$emit('toggle')">{{ expanded ? '收起指南' : '查看流程、准备与奖励' }}<span aria-hidden="true">{{ expanded ? '−' : '+' }}</span></button>
+    <header class="activity-card-head"><span class="activity-index">{{ String(index + 1).padStart(2, '0') }}</span><div><small>{{ isChoice ? localized(item) : ui(item.release) }}</small><h3>{{ isChoice && locale !== 'en' ? item.intent : localized(item) }}</h3><span class="en-tag">{{ item.en }}</span></div><span class="team-size">{{ ui(item.fireteam) }}{{ /^\d+[–\-]?\d*$/.test(item.fireteam) ? ui(" 人") : '' }}</span></header>
+    <p class="activity-location">{{ ui(item.destination) }}</p>
+    <div v-if="item.tags.length || item.historical" class="activity-tags"><span v-if="item.historical" class="archive-tag">{{ ui("原版已退役") }}</span><span v-for="tag in item.tags" :key="tag">{{ ui(tag) }}</span></div>
+    <p class="activity-intro">{{ ui(item.intro) }}</p>
+    <div class="mechanic-preview"><h4>{{ isChoice ? ui("游玩重点") : ui("核心机制") }}</h4><p>{{ ui(item.mechanics) }}</p></div>
+    <p v-if="item.gaps" class="guide-gap"><strong>{{ ui("资料待补") }}</strong>{{ ui(item.gaps) }}</p>
+    <button class="activity-expand" type="button" :aria-expanded="expanded" :aria-controls="`${item.id}-guide`" @click="$emit('toggle')">{{ expanded ? ui("收起指南") : ui("查看流程、准备与奖励") }}<span aria-hidden="true">{{ expanded ? '−' : '+' }}</span></button>
     <div v-if="expanded" :id="`${item.id}-guide`" class="activity-detail">
-      <section><h4>{{ isChoice ? '开始游玩' : item.category === 'event' ? '参与流程与版本差异' : '遭遇流程' }}</h4><ol class="encounter-list"><li v-for="encounter in item.encounters" :key="encounter.name"><h5>{{ encounter.name }}</h5><p>{{ encounter.objective }}</p><p class="encounter-caution"><strong>留意</strong>{{ encounter.caution }}</p></li></ol></section>
-      <section><h4>装备与队伍准备</h4><ul class="preparation-list"><li v-for="tip in item.preparation" :key="tip">{{ tip }}</li></ul><div v-if="buildLinks.length" class="build-links"><router-link v-for="link in buildLinks" :key="link.id" :to="{ path: '/builds', query: { activity: link.id } }">{{ link.label }} →</router-link></div></section>
-      <section><h4>{{ item.historical ? '原版历史奖励' : item.category === 'event' ? '历届代表奖励' : '奖励与获取说明' }}</h4><div v-if="item.rewards.length" class="activity-rewards"><router-link v-for="name in item.rewards" :key="name" :to="{ path: '/weapons', query: { q: name } }"><img v-if="rewardIcon(name)" :src="rewardIcon(name)" alt="" loading="lazy" @error="failedIcons.add(name)" /><i v-else class="reward-placeholder" aria-hidden="true">◇</i><span>{{ rewardName(name) }}<small>{{ name }}</small></span><span aria-hidden="true">↗</span></router-link></div><p>{{ item.rewardNote }}</p><p v-if="item.rewards.length" class="reward-scope">所列为代表武器，完整逐关掉落表另计。</p></section>
-      <footer class="guide-reference"><p><strong>适用范围</strong>{{ item.scope }}</p><div class="reference-meta"><span>玩法：社区资料 准备建议：本站编辑</span><time :datetime="item.reference.checkedAt">资料核对 {{ item.reference.checkedAt }}</time></div><div v-for="reference in references" :key="reference.url" class="reference-row"><a :href="reference.url" target="_blank" rel="noopener noreferrer">{{ reference.title }} ↗</a><a v-if="reference.revisionUrl" :href="reference.revisionUrl" target="_blank" rel="noopener noreferrer">核对版本 ↗</a></div><router-link v-for="evidence in item.evidence || []" :key="evidence.hash" :to="`/encyclopedia/activities/${evidence.hash}`">{{ evidence.label }} ↗</router-link></footer>
+      <section><h4>{{ isChoice ? ui("开始游玩") : item.category === 'event' ? ui("参与流程与版本差异") : ui("遭遇流程") }}</h4><ol class="encounter-list"><li v-for="encounter in item.encounters" :key="encounter.name"><h5>{{ ui(encounter.name) }}</h5><p>{{ ui(encounter.objective) }}</p><p class="encounter-caution"><strong>{{ ui("留意") }}</strong>{{ ui(encounter.caution) }}</p></li></ol></section>
+      <section><h4>{{ ui("装备与队伍准备") }}</h4><ul class="preparation-list"><li v-for="tip in item.preparation" :key="tip">{{ ui(tip) }}</li></ul><div v-if="buildLinks.length" class="build-links"><router-link v-for="link in buildLinks" :key="link.id" :to="{ path: '/builds', query: { activity: link.id } }">{{ ui(link.label) }} →</router-link></div></section>
+      <section><h4>{{ item.historical ? ui("原版历史奖励") : item.category === 'event' ? ui("历届代表奖励") : ui("奖励与获取说明") }}</h4><div v-if="item.rewards.length" class="activity-rewards"><router-link v-for="name in item.rewards" :key="name" :to="{ path: '/weapons', query: { q: name } }"><img v-if="rewardIcon(name)" :src="rewardIcon(name)" alt="" loading="lazy" @error="failedIcons.add(name)" /><i v-else class="reward-placeholder" aria-hidden="true">◇</i><span>{{ rewardName(name) }}<small>{{ name }}</small></span><span aria-hidden="true">↗</span></router-link></div><p>{{ ui(item.rewardNote) }}</p><p v-if="item.rewards.length" class="reward-scope">{{ ui("所列为代表武器，完整逐关掉落表另计。") }}</p></section>
+      <footer class="guide-reference"><p><strong>{{ ui("适用范围") }}</strong>{{ ui(item.scope) }}</p><div class="reference-meta"><span>{{ ui("玩法：社区资料 准备建议：本站编辑") }}</span><time :datetime="item.reference.checkedAt">{{ ui("资料核对") }} {{ item.reference.checkedAt }}</time></div><div v-for="reference in references" :key="reference.url" class="reference-row"><a :href="reference.url" target="_blank" rel="noopener noreferrer">{{ ui(reference.title) }} ↗</a><a v-if="reference.revisionUrl" :href="reference.revisionUrl" target="_blank" rel="noopener noreferrer">{{ ui("核对版本 ↗") }}</a></div><router-link v-for="evidence in item.evidence || []" :key="evidence.hash" :to="`/encyclopedia/activities/${evidence.hash}`">{{ ui(evidence.label) }} ↗</router-link></footer>
     </div>
   </article>
 </template>

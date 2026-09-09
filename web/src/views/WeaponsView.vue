@@ -1,4 +1,7 @@
 <script setup>
+import DestinyLoading from '@/components/DestinyLoading.vue'
+import { ui, useI18n, localized, localizedField, manifestDescription } from '@/i18n'
+import ItemDefinitionInfo from '@/components/ItemDefinitionInfo.vue'
 import EntityLink from '@/components/EntityLink.vue'
 import SourceProvenance from '@/components/SourceProvenance.vue'
 import RelatedBuilds from '@/components/RelatedBuilds.vue'
@@ -6,14 +9,13 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { weaponTypes } from '@/data/weapons'
 import { gearItems, acquisitionById } from '@/data/v2'
-import { useI18n, localized } from '@/i18n'
 import { useManifestAssets } from '@/composables/useManifestAssets'
 import { useWeaponPerks } from '@/composables/useWeaponPerks'
-import { weaponBaseStats, weaponArchivePerks, weaponIntrinsics, weaponVersionGroups, weaponVersionKey, matchWeaponVersion } from '../../../packages/manifest-catalog/weapon-details.js'
-import { perkLabel } from '../../../packages/loadout-planner/weapon-perks.js'
+import { weaponBaseStats, weaponArchivePerks, weaponIntrinsics, weaponVersionHighlights, weaponVersionGroups, weaponVersionKey, matchWeaponVersion } from '../../../packages/manifest-catalog/weapon-details.js'
+import { perkLabel } from '@/i18n/metadata'
 import { manifestText } from '@/utils/manifestText'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const { weaponItems, status, iconFor, assetFor, recordsForHash, vendorEntries, activityRewards, snapshot } = useManifestAssets()
 
 const { byHash: plugsByHash, state: perkState, load: loadPerks } = useWeaponPerks()
@@ -26,11 +28,11 @@ const versionsFor = item => item ? versionGroups.value.get(weaponVersionKey(item
 const versions = computed(() => versionsFor(selectedWeapon.value))
 const versionNumber = item => versionsFor(item).findIndex(version => version.hash === item.hash) + 1
 const versionSummary = item => weaponBaseStats(item).filter(stat => ['Rounds Per Minute', 'Charge Time', 'Draw Time', 'Impact', 'Range', 'Handling'].includes(stat.key)).map(stat => `${stat.label} ${stat.value}`).join(' ')
-const versionSource = item => [...new Set([...(item.vendorSources || []).map(source => source.vendorNameZh || source.vendorName), ...(item.activitySources || []).map(source => source.activityNameZh || source.activityName)])].filter(Boolean).join('、') || '获取来源未登记'
+const versionSource = item => [...new Set([...(item.vendorSources || []).map(source => localizedField(source, 'vendorName')), ...(item.activitySources || []).map(source => localizedField(source, 'activityName'))])].filter(Boolean).join('、') || '获取来源未登记'
 const watermark = item => item.iconWatermark ? `https://www.bungie.net${item.iconWatermark}` : ''
 const perkCount = item => pools(item).reduce((sum, pool) => sum + pool.options.length, 0)
 const plugIcon = plug => plug.icon ? (plug.icon.startsWith('http') ? plug.icon : `https://www.bungie.net${plug.icon}`) : ''
-const plugDescription = plug => manifestText(plug.descriptionZh || plug.description || '')
+const plugDescription = plug => manifestText(manifestDescription(plug), locale.value)
 
 const route = useRoute()
 const keyword = ref(String(route.query.q || ''))
@@ -78,13 +80,13 @@ const officialWeapons = computed(() => {
 })
 const displayedCount = computed(() => officialWeapons.value.length)
 const canonicalExotics = computed(() => gearItems.filter(item => item.type === 'weapon' && item.rarity === 'exotic').filter(item => !query.value || `${item.name} ${item.en} ${(item.aliases || []).join(' ')}`.toLowerCase().includes(query.value)))
-const filteredArchetypes = computed(() => weaponTypes.filter(w => (!slotFilter.value || (slotFilter.value === 'kinetic' ? w.slot.includes('动能') : slotFilter.value === 'energy' ? w.slot.includes('能量') : w.slot.includes('重型'))) && (!query.value || `${w.name} ${w.en} ${w.desc}`.toLowerCase().includes(query.value))))
+const filteredArchetypes = computed(() => weaponTypes.filter(w => (!slotFilter.value || (slotFilter.value === 'kinetic' ? w.slot.includes('动能') : slotFilter.value === 'energy' ? w.slot.includes('能量') : w.slot.includes('重型'))) && (!query.value || `${w.name} ${w.en} ${w.desc} ${ui(w.desc)}`.toLowerCase().includes(query.value))))
 
-function zhName(item) { return item?.nameZh || item?.name || item?.en || '未命名武器' }
+function zhName(item) { return localized(item) || ui('未命名武器') }
 function enName(item) { return item?.name || item?.en || item?.nameZh || 'Unnamed weapon' }
 function icon(item) { const value = iconFor(item); return value || (item?.icon ? `https://www.bungie.net${item.icon}` : '') }
-function slotLabel(item) { return officialSlotNames[item?.ammoSlot] || item?.ammoSlot || '槽位未登记' }
-function rarityLabel(item) { return isExotic(item) ? '异域 / Exotic' : isLegendary(item) ? '传说 / Legendary' : '其他 / Other' }
+function slotLabel(item) { return ui(officialSlotNames[item?.ammoSlot] || item?.ammoSlot || '槽位未登记') }
+function rarityLabel(item) { return ui(isExotic(item) ? '异域 / Exotic' : isLegendary(item) ? '传说 / Legendary' : '其他 / Other') }
 function pools(item) { return weaponArchivePerks(item, plugsByHash.value) }
 function sources(item) {
   const asset = assetFor(item) || item
@@ -99,70 +101,71 @@ function resetFilters() { keyword.value = ''; slotFilter.value = ''; familyFilte
 
 <template>
   <div class="weapons-page">
-    <div class="page-head weapon-head"><div><p class="eyebrow">WEAPON ARCHIVE / MANIFEST ATLAS</p><h1>{{ t('pages.weapons.title') }}</h1><p>{{ t('pages.weapons.subtitle') }}</p></div><div class="catalog-stat"><strong>{{ weaponItems.length.toLocaleString() }}</strong><span>官方武器实体 / Manifest weapon entities</span></div></div>
+    <div class="page-head weapon-head"><div><p class="eyebrow">WEAPON ARCHIVE / MANIFEST ATLAS</p><h1>{{ t('pages.weapons.title') }}</h1><p>{{ t('pages.weapons.subtitle') }}</p></div><div class="catalog-stat"><strong>{{ weaponItems.length.toLocaleString() }}</strong><span>{{ ui("官方武器实体 / Manifest weapon entities") }}</span></div></div>
 
     <section class="weapon-controls panel">
-      <div class="control-main"><a-input v-model:value="keyword" size="large" allow-clear placeholder="搜索武器、Hash 或 武器名#版本号…" /><button class="reset-link" type="button" @click="resetFilters">重置筛选 / Reset</button></div>
-      <div class="filter-row"><a-radio-group v-model:value="slotFilter" button-style="solid" class="filter-radio"><a-radio-button v-for="slot in slots" :key="slot.id" :value="slot.id">{{ slot.label }}<small>{{ slot.en }}</small></a-radio-button></a-radio-group><a-select v-model:value="familyFilter" allow-clear class="filter-select" placeholder="武器类型 / Weapon family"><a-select-option v-for="family in familyOptions" :key="family" :value="family">{{ family }}</a-select-option></a-select><a-select v-model:value="rarityFilter" class="filter-select" placeholder="稀有度 / Rarity"><a-select-option v-for="rarity in rarityOptions" :key="rarity.id" :value="rarity.id">{{ rarity.label }} / {{ rarity.en }}</a-select-option></a-select><a-select v-model:value="sortBy" class="filter-select" aria-label="排序"><a-select-option value="name">名称 / Name</a-select-option><a-select-option value="family">类型 / Family</a-select-option><a-select-option value="rarity">稀有度 / Rarity</a-select-option></a-select></div>
-      <div class="version-controls" role="status" aria-live="polite"><label><input v-model="showAllVersions" type="checkbox" /> 展开所有版本</label><span>{{ matchingGroups.size.toLocaleString() }} 款武器 {{ matchingWeapons.length.toLocaleString() }} 个版本</span></div>
+      <div class="control-main"><a-input v-model:value="keyword" size="large" allow-clear :placeholder="ui(&quot;搜索武器、Hash 或 武器名#版本号…&quot;)" /><button class="reset-link" type="button" @click="resetFilters">{{ ui("重置筛选 / Reset") }}</button></div>
+      <div class="filter-row"><a-radio-group v-model:value="slotFilter" button-style="solid" class="filter-radio"><a-radio-button v-for="slot in slots" :key="slot.id" :value="slot.id">{{ ui(slot.label) }}<small>{{ slot.en }}</small></a-radio-button></a-radio-group><a-select v-model:value="familyFilter" allow-clear class="filter-select" :placeholder="ui(&quot;武器类型 / Weapon family&quot;)"><a-select-option v-for="family in familyOptions" :key="family" :value="family">{{ family }}</a-select-option></a-select><a-select v-model:value="rarityFilter" class="filter-select" :placeholder="ui(&quot;稀有度 / Rarity&quot;)"><a-select-option v-for="rarity in rarityOptions" :key="rarity.id" :value="rarity.id">{{ ui(rarity.label) }} / {{ rarity.en }}</a-select-option></a-select><a-select v-model:value="sortBy" class="filter-select" :aria-label="ui(&quot;排序&quot;)"><a-select-option value="name">{{ ui("名称 / Name") }}</a-select-option><a-select-option value="family">{{ ui("类型 / Family") }}</a-select-option><a-select-option value="rarity">{{ ui("稀有度 / Rarity") }}</a-select-option></a-select></div>
+      <div class="version-controls" role="status" aria-live="polite"><label><input v-model="showAllVersions" type="checkbox" /> {{ ui("展开所有版本") }}</label><span>{{ matchingGroups.size.toLocaleString() }} {{ ui("款武器") }} {{ matchingWeapons.length.toLocaleString() }} {{ ui("个版本") }}</span></div>
     </section>
 
-    <section class="manifest-section"><div class="section-title"><div><h2>官方武器实体 / Official weapons</h2><p>每条记录均来自当前 Bungie Manifest 快照；点击卡片查看素体数值、Perk 池和获取来源。</p></div><span class="en">{{ officialCount.toLocaleString() }} MATCHES</span></div>
-      <p v-if="status === 'loading'" class="empty">正在加载官方武器目录 / Loading Manifest weapons…</p><p v-else-if="status === 'error'" class="empty error">官方武器目录加载失败 / Failed to load the official catalog.</p>
-      <template v-else><div class="result-line"><span>显示 {{ displayedCount }} / {{ officialCount.toLocaleString() }} {{ showAllVersions ? '个版本' : '款武器' }}</span><small>图标、名称、槽位、素体数值、Perk 池与来源均优先读取 Manifest</small></div><div class="official-grid"><button v-for="w in officialWeapons" :key="w.hash" type="button" class="official-weapon" :class="{ exotic: isExotic(w) }" @click="openDetail(w)"><div class="weapon-thumb"><img v-if="icon(w)" :src="icon(w)" :alt="`${zhName(w)} / ${enName(w)}`" loading="lazy" /><span v-else>无图标</span><img v-if="watermark(w)" class="watermark" :src="watermark(w)" alt="发行标记" /></div><div class="weapon-copy"><div class="official-top"><span class="badge" :class="{ gold: isExotic(w) }">{{ rarityLabel(w) }}</span><small>Hash {{ w.hash }}</small></div><h3>{{ zhName(w) }}</h3><p class="en-name">{{ enName(w) }}</p><p>{{ w.weaponFamily || '武器类型未登记' }} {{ slotLabel(w) }}</p><p class="version-badge">{{ showAllVersions ? `版本 #${versionNumber(w)} / ${versionsFor(w).length}` : `${versionsFor(w).length} 个版本 查看版本与 Perk 池` }}</p><div class="weapon-facts"><span v-if="w.socketCount">{{ w.socketCount }} 插槽 / sockets</span><span v-if="perkState === 'ready' && perkCount(w)">{{ perkCount(w) }} 个 Perk 选项 / perk options</span></div></div></button></div><p v-if="!officialWeapons.length" class="empty">没有匹配的官方武器实体 / No matching Manifest weapons.</p><p v-else-if="officialCount > displayedCount" class="catalog-note"><button class="load-more" type="button" @click="visibleLimit += 120">加载更多（还有 {{ officialCount - displayedCount }} {{ showAllVersions ? '个版本' : '款武器' }}）</button></p></template>
+    <section class="manifest-section"><div class="section-title"><div><h2>{{ ui("官方武器实体 / Official weapons") }}</h2><p>{{ ui("每条记录均来自当前 Bungie Manifest 快照；点击卡片查看素体数值、Perk 池和获取来源。") }}</p></div><span class="en">{{ officialCount.toLocaleString() }} MATCHES</span></div>
+      <DestinyLoading v-if="status === 'loading'" :label="ui('正在加载官方武器目录 / Loading Manifest weapons…')" /><p v-else-if="status === 'error'" class="empty error">{{ ui("官方武器目录加载失败 / Failed to load the official catalog.") }}</p>
+      <template v-else><div class="result-line"><span>{{ ui("显示") }} {{ displayedCount }} / {{ officialCount.toLocaleString() }} {{ showAllVersions ? ui("个版本") : ui("款武器") }}</span><small>{{ ui("图标、名称、槽位、素体数值、Perk 池与来源均优先读取 Manifest") }}</small></div><div class="official-grid"><button v-for="w in officialWeapons" :key="w.hash" type="button" class="official-weapon" :class="{ exotic: isExotic(w) }" @click="openDetail(w)"><div class="weapon-thumb"><img v-if="icon(w)" :src="icon(w)" :alt="`${zhName(w)} / ${enName(w)}`" loading="lazy" /><span v-else>{{ ui("无图标") }}</span><img v-if="watermark(w)" class="watermark" :src="watermark(w)" :alt="ui(&quot;发行标记&quot;)" /></div><div class="weapon-copy"><div class="official-top"><span class="badge" :class="{ gold: isExotic(w) }">{{ rarityLabel(w) }}</span><small>Hash {{ w.hash }}</small></div><h3>{{ zhName(w) }}</h3><p class="en-name">{{ enName(w) }}</p><p>{{ w.weaponFamily || ui("武器类型未登记") }} {{ slotLabel(w) }}</p><p class="version-badge">{{ showAllVersions ? ui("版本 #{0} / {1}", [versionNumber(w), versionsFor(w).length]) : ui("{0} 个版本 查看版本与 Perk 池", [versionsFor(w).length]) }}</p><ItemDefinitionInfo :item="w" compact /><div class="weapon-facts"><span v-if="w.socketCount">{{ w.socketCount }} {{ ui("插槽 / sockets") }}</span><span v-if="perkState === 'ready' && perkCount(w)">{{ perkCount(w) }} {{ ui("个 Perk 选项 / perk options") }}</span></div></div></button></div><p v-if="!officialWeapons.length" class="empty">{{ ui("没有匹配的官方武器实体 / No matching Manifest weapons.") }}</p><p v-else-if="officialCount > displayedCount" class="catalog-note"><button class="load-more" type="button" @click="visibleLimit += 120">{{ ui("加载更多（还有") }} {{ officialCount - displayedCount }} {{ showAllVersions ? ui("个版本") : ui("款武器") }}）</button></p></template>
     </section>
 
-    <section class="knowledge-section"><div class="section-title"><div><h2>{{ t('pages.weapons.archetypes') }} / Archetypes</h2><p>这里解释武器原型在战斗中的定位，不代替具体武器的 Manifest 数据。</p></div><span class="en">FIELD GUIDE</span></div><div class="grid grid-3"><article v-for="w in filteredArchetypes" :key="w.id" class="card archetype-card"><div class="w-top"><span class="badge gold">{{ w.slot }}</span><span class="range">{{ w.range }}距离 / range</span></div><h3>{{ localized(w) }}</h3><span class="en-tag">{{ w.en.toUpperCase() }}</span><p>{{ w.desc }}</p></article></div><div v-if="!filteredArchetypes.length" class="empty">没有匹配的武器原型。</div></section>
+    <section class="knowledge-section"><div class="section-title"><div><h2>{{ t('pages.weapons.archetypes') }} / Archetypes</h2><p>{{ ui("这里解释武器原型在战斗中的定位，不代替具体武器的 Manifest 数据。") }}</p></div><span class="en">FIELD GUIDE</span></div><div class="grid grid-3"><article v-for="w in filteredArchetypes" :key="w.id" class="card archetype-card"><div class="w-top"><span class="badge gold">{{ ui(w.slot) }}</span><span class="range">{{ ui(w.range) }}{{ ui("距离 / range") }}</span></div><h3>{{ localized(w) }}</h3><span class="en-tag">{{ w.en.toUpperCase() }}</span><p>{{ ui(w.desc) }}</p></article></div><div v-if="!filteredArchetypes.length" class="empty">{{ ui("没有匹配的武器原型。") }}</div></section>
 
-    <section class="knowledge-section"><div class="section-title"><div><h2>{{ t('pages.weapons.exotics') }} / Featured exotics</h2><p>精选构筑中的异域武器入口；完整实体、素体和 Perk 信息以官方武器列表为准。</p></div><span class="en">CURATED INDEX</span></div><div class="grid grid-3"><article v-for="w in canonicalExotics" :key="w.id" class="card exotic-card"><div class="exo-top"><span class="badge gold">异域 / EXOTIC</span><span class="wtype">{{ w.type }}</span></div><h3>✦ {{ localized(w) }}</h3><span class="en-tag">{{ w.en.toUpperCase() }}</span><p>{{ w.description || '官方装备定义已接入；点击上方 Manifest 条目查看可核验数据。' }}</p><div class="how">槽位：{{ w.slot }} / {{ w.en }}；获取路径：{{ acquisitionById[w.acquisitionId]?.name || '待核验 / pending verification' }}</div></article></div><div v-if="!canonicalExotics.length" class="empty">没有匹配的精选异域武器。</div></section>
+    <section class="knowledge-section"><div class="section-title"><div><h2>{{ t('pages.weapons.exotics') }} / Featured exotics</h2><p>{{ ui("精选构筑中的异域武器入口；完整实体、素体和 Perk 信息以官方武器列表为准。") }}</p></div><span class="en">CURATED INDEX</span></div><div class="grid grid-3"><article v-for="w in canonicalExotics" :key="w.id" class="card exotic-card"><div class="exo-top"><span class="badge gold">{{ ui("异域 / EXOTIC") }}</span><span class="wtype">{{ w.type }}</span></div><h3>✦ {{ localized(w) }}</h3><span class="en-tag">{{ w.en.toUpperCase() }}</span><p>{{ w.description || ui("官方装备定义已接入；点击上方 Manifest 条目查看可核验数据。") }}</p><div class="how">{{ ui("槽位：") }}{{ ui(w.slot) }} / {{ w.en }}{{ ui("；获取路径：") }}{{ acquisitionById[w.acquisitionId]?.name || ui("待核验 / pending verification") }}</div></article></div><div v-if="!canonicalExotics.length" class="empty">{{ ui("没有匹配的精选异域武器。") }}</div></section>
 
     <div v-if="selectedWeapon" class="weapon-overlay" @click.self="closeDetail">
       <section class="weapon-dialog" role="dialog" aria-modal="true" :aria-label="`${zhName(selectedWeapon)} weapon details`" tabindex="-1" @keydown.esc="closeDetail">
-        <button type="button" class="detail-close" aria-label="关闭详情" @click="closeDetail">×</button>
+        <button type="button" class="detail-close" :aria-label="ui(&quot;关闭详情&quot;)" @click="closeDetail">×</button>
         <header class="weapon-detail-head">
           <div class="detail-weapon-icon"><img v-if="icon(selectedWeapon)" :src="icon(selectedWeapon)" :alt="zhName(selectedWeapon)" /></div>
-          <div><span class="badge" :class="{ gold: isExotic(selectedWeapon) }">{{ rarityLabel(selectedWeapon) }}</span><h2>{{ zhName(selectedWeapon) }}</h2><p>{{ enName(selectedWeapon) }}</p><small>Hash {{ selectedWeapon.hash }} {{ selectedWeapon.weaponFamily || '武器类型未登记' }} {{ slotLabel(selectedWeapon) }}</small><small>版本 #{{ versionNumber(selectedWeapon) }} / {{ versions.length }}</small></div>
+          <div><span class="badge" :class="{ gold: isExotic(selectedWeapon) }">{{ rarityLabel(selectedWeapon) }}</span><h2>{{ zhName(selectedWeapon) }}</h2><p>{{ enName(selectedWeapon) }}</p><small>Hash {{ selectedWeapon.hash }} {{ selectedWeapon.weaponFamily || ui("武器类型未登记") }} {{ slotLabel(selectedWeapon) }}</small><small>{{ ui("版本 #") }}{{ versionNumber(selectedWeapon) }} / {{ versions.length }}</small></div>
         </header>
         <section v-if="versions.length > 1" class="detail-block version-block">
-          <h3>武器版本 / Versions</h3>
-          <p class="stat-note">编号用于区分同名版本，不代表发行先后。输入“武器名#编号”可直接查询；普通、专家等型号分别列出。</p>
+          <h3>{{ ui("武器版本 / Versions") }}</h3>
+          <p class="stat-note">{{ ui("编号用于区分同名版本，不代表发行先后。输入“武器名#编号”可直接查询；普通、专家等型号分别列出。") }}</p>
           <div class="version-list">
             <button v-for="(version, index) in versions" :key="version.hash" type="button" :aria-pressed="version.hash === selectedWeapon.hash" @click="openDetail(version)">
-              <span class="version-heading"><span class="version-icon"><img v-if="icon(version)" :src="icon(version)" alt="" /><img v-if="watermark(version)" class="watermark" :src="watermark(version)" alt="发行标记" /></span><span><strong>#{{ index + 1 }}{{ version.hash === selectedWeapon.hash ? ' 已选' : '' }}</strong><small>Hash {{ version.hash }}</small></span></span>
-              <span class="version-summary">{{ versionSummary(version) || '素体数值未登记' }}</span>
-              <span v-if="perkState === 'ready'" class="version-summary">{{ pools(version).length }} 列 Perk {{ perkCount(version) }} 个选项</span>
-              <span class="version-source">{{ versionSource(version) }}</span>
+              <span class="version-heading"><span class="version-icon"><img v-if="icon(version)" :src="icon(version)" alt="" /><img v-if="watermark(version)" class="watermark" :src="watermark(version)" :alt="ui(&quot;发行标记&quot;)" /></span><span><strong>#{{ index + 1 }}{{ version.hash === selectedWeapon.hash ? ui(" 已选") : '' }}</strong><small>Hash {{ version.hash }}</small></span></span>
+              <ItemDefinitionInfo :item="version" compact /><span class="version-summary">{{ versionSummary(version) || ui("素体数值未登记") }}</span>
+              <span v-if="perkState === 'ready'" class="version-summary">{{ pools(version).length }} {{ ui("列 Perk") }} {{ perkCount(version) }} {{ ui("个选项") }}</span>
+              <span v-for="difference in weaponVersionHighlights(version, versions, plugsByHash)" :key="difference" class="version-summary">{{ difference }}</span><span class="version-source">{{ versionSource(version) }}</span>
             </button>
           </div>
         </section>
+        <ItemDefinitionInfo :item="selectedWeapon" />
         <section v-if="intrinsics.length" class="detail-block intrinsic-list">
-          <article v-for="intrinsic in intrinsics" :key="intrinsic.hash" class="intrinsic-item"><img v-if="plugIcon(intrinsic)" :src="plugIcon(intrinsic)" alt="" /><div><small>固有特性 / Intrinsic</small><h3>{{ perkLabel(intrinsic) }}</h3><p>{{ plugDescription(intrinsic) }}</p></div></article>
+          <article v-for="intrinsic in intrinsics" :key="intrinsic.hash" class="intrinsic-item"><img v-if="plugIcon(intrinsic)" :src="plugIcon(intrinsic)" alt="" /><div><small>{{ ui("固有特性 / Intrinsic") }}</small><h3>{{ perkLabel(intrinsic) }}</h3><p>{{ plugDescription(intrinsic) }}</p></div></article>
         </section>
-        <section v-if="selectedWeapon.descriptionZh || selectedWeapon.description" class="detail-block"><h3>武器说明 / Description</h3><p>{{ manifestText(selectedWeapon.descriptionZh || selectedWeapon.description) }}</p></section>
+        <section v-if="selectedWeapon.descriptionZh || selectedWeapon.description" class="detail-block"><h3>{{ ui("武器说明 / Description") }}</h3><p>{{ manifestText(manifestDescription(selectedWeapon), locale) }}</p></section>
         <section class="detail-block">
-          <h3>武器素体 / Base stats</h3>
-          <p class="stat-note">基础数值，不叠加 Perk、催化或大师属性。</p>
-          <div v-if="selectedStats.length" class="stat-grid"><div v-for="stat in selectedStats" :key="stat.key" class="stat-item"><span>{{ stat.label }}</span><strong>{{ stat.value }}</strong><i v-if="stat.bar"><b :style="{ width: `${stat.percent}%` }"></b></i></div></div>
-          <p v-else class="muted">该版本未提供素体数值。</p>
+          <h3>{{ ui("武器素体 / Base stats") }}</h3>
+          <p class="stat-note">{{ ui("基础数值，不叠加 Perk、催化或大师属性。") }}</p>
+          <div v-if="selectedStats.length" class="stat-grid"><div v-for="stat in selectedStats" :key="stat.key" class="stat-item"><span>{{ ui(stat.label) }}</span><strong>{{ stat.value }}</strong><i v-if="stat.bar"><b :style="{ width: `${stat.percent}%` }"></b></i></div></div>
+          <p v-else class="muted">{{ ui("该版本未提供素体数值。") }}</p>
         </section>
         <section class="detail-block">
-          <h3>Perk 池 / Perk pools</h3>
-          <p v-if="perkState === 'loading' || perkState === 'idle'" class="muted" role="status">正在加载 Perk 详情…</p>
-          <p v-else-if="perkState === 'error'" class="muted" role="alert">Perk 详情加载失败。<button type="button" class="reset-link" @click="loadPerks">重试</button></p>
+          <h3>{{ ui("Perk 池 / Perk pools") }}</h3>
+          <DestinyLoading v-if="perkState === 'loading' || perkState === 'idle'" compact :label="ui('正在加载 Perk 详情…')" />
+          <p v-else-if="perkState === 'error'" class="muted" role="alert">{{ ui("Perk 详情加载失败。") }}<button type="button" class="reset-link" @click="loadPerks">{{ ui("重试") }}</button></p>
           <template v-else>
-            <p v-if="selectedPools.length" class="stat-note">按实际插槽展示可用词条；强化词条单独标注。</p>
+            <p v-if="selectedPools.length" class="stat-note">{{ ui("按实际插槽展示可用词条；强化词条单独标注。") }}</p>
             <div v-if="selectedPools.length" class="pool-list">
               <article v-for="pool in selectedPools" :key="pool.socketIndex" class="perk-column">
-                <header><strong>{{ pool.label }}</strong><small>{{ pool.options.length }} 项</small></header>
-                <details v-for="perk in pool.options" :key="perk.hash" class="perk-option"><summary><img v-if="plugIcon(perk)" :src="plugIcon(perk)" alt="" loading="lazy" /><span>{{ perkLabel(perk) }}<small>{{ perk.name }}</small></span></summary><p>{{ plugDescription(perk) || '该词条暂无说明。' }}</p><EntityLink :item="perk" kind="plugs" label="来源与条目详情" /></details>
-                <p v-if="pool.missingHashes.length" class="muted">{{ pool.missingHashes.length }} 项词条详情缺失</p>
+                <header><strong>{{ pool.label }}</strong><small>{{ pool.options.length }} {{ ui("项") }}</small></header>
+                <details v-for="perk in pool.options" :key="perk.hash" class="perk-option"><summary><img v-if="plugIcon(perk)" :src="plugIcon(perk)" alt="" loading="lazy" /><span>{{ perkLabel(perk) }}<small>{{ perk.name }}</small></span></summary><p>{{ plugDescription(perk) || ui("该词条暂无说明。") }}</p><ItemDefinitionInfo :item="perk" /><EntityLink :item="perk" kind="plugs" :label="ui(&quot;来源与条目详情&quot;)" /></details>
+                <p v-if="pool.missingHashes.length" class="muted">{{ pool.missingHashes.length }} {{ ui("项词条详情缺失") }}</p>
               </article>
             </div>
-            <p v-else class="muted">该版本未提供可展开的武器 Perk 列。</p>
+            <p v-else class="muted">{{ ui("该版本未提供可展开的武器 Perk 列。") }}</p>
           </template>
         </section>
-        <section v-if="sources(selectedWeapon).length" class="detail-block"><h3>获取来源 / Acquisition</h3><div class="source-list"><article v-for="(source, index) in sources(selectedWeapon)" :key="`${source.kind}-${index}`"><span>{{ source.kind }}</span><strong>{{ source.zh }}</strong><small>{{ source.en }}</small></article></div></section>
-        <EntityLink :item="selectedWeapon" kind="equipment" label="打开独立百科条目" /><SourceProvenance :item="selectedWeapon" :snapshot="snapshot" official compact /><RelatedBuilds :item="selectedWeapon" />
+        <section v-if="sources(selectedWeapon).length" class="detail-block"><h3>{{ ui("获取来源 / Acquisition") }}</h3><div class="source-list"><article v-for="(source, index) in sources(selectedWeapon)" :key="`${source.kind}-${index}`"><span>{{ ui(source.kind) }}</span><strong>{{ locale === 'en' ? source.en : source.zh }}</strong><small>{{ source.en }}</small></article></div></section>
+        <EntityLink :item="selectedWeapon" kind="equipment" :label="ui(&quot;打开独立百科条目&quot;)" /><SourceProvenance :item="selectedWeapon" :snapshot="snapshot" official compact /><RelatedBuilds :item="selectedWeapon" />
       </section>
     </div>
   </div>

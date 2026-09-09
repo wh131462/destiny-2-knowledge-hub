@@ -1,4 +1,5 @@
 <script setup>
+import { ui, useI18n, localized, uiMessage, formatDate } from '@/i18n'
 import { computed, ref, watch } from 'vue'
 import {
   MANIFEST_VERSION,
@@ -12,7 +13,6 @@ import {
 } from '@/data/v2'
 import ConfidenceBadge from '@/components/ConfidenceBadge.vue'
 import StatRecommendations from '@/components/StatRecommendations.vue'
-import { useI18n, localized } from '@/i18n'
 import { useManifestAssets } from '@/composables/useManifestAssets'
 
 const { locale, t } = useI18n()
@@ -132,53 +132,53 @@ const previewSlotNames = { kinetic: '动能槽', energy: '能量槽', power: '�
         <h1>{{ t('pages.workbench.title') }}</h1>
         <p>{{ t('pages.workbench.subtitle') }}</p>
       </div>
-      <router-link to="/builds" class="back-link">返回构筑方案 ↗</router-link>
+      <router-link to="/builds" class="back-link">{{ ui("返回构筑方案 ↗") }}</router-link>
     </header>
 
-    <section v-if="currentBuild" class="workbench-preview" aria-label="当前构筑预览">
-      <div class="preview-heading"><div><span class="eyebrow">IN-GAME LOADOUT PREVIEW</span><h2>{{ currentBuild.name || '未命名构筑' }}</h2><p>编辑配置时，槽位、图标和词条会同步更新。</p></div></div>
+    <section v-if="currentBuild" class="workbench-preview" :aria-label="ui(&quot;当前构筑预览&quot;)">
+      <div class="preview-heading"><div><span class="eyebrow">IN-GAME LOADOUT PREVIEW</span><h2>{{ currentBuild.name || ui("未命名构筑") }}</h2><p>{{ ui("编辑配置时，槽位、图标和词条会同步更新。") }}</p></div></div>
       <div class="preview-slots">
-        <div class="preview-slot exotic"><span>异域护甲</span><div class="preview-art"><img v-if="previewIcon(gearById[currentBuild.exoticArmorId])" :src="previewIcon(gearById[currentBuild.exoticArmorId])" :alt="displayGear(currentBuild.exoticArmorId)" /><b v-else>{{ displayGear(currentBuild.exoticArmorId).slice(0, 1) }}</b></div><strong>{{ displayGear(currentBuild.exoticArmorId) }}</strong></div>
-        <div v-for="item in previewWeapons" :key="item.itemId" class="preview-slot"><span>{{ previewSlotNames[item.gear.slot] }}</span><div class="preview-art"><img v-if="previewIcon(item.gear)" :src="previewIcon(item.gear)" :alt="item.gear.name" /><b v-else>{{ item.gear.name.slice(0, 1) }}</b></div><strong>{{ item.gear.name }}</strong><small>{{ item.perks.join('、') || '固定异域特性' }}</small></div>
-        <div class="preview-slot subclass"><span>子职业核心</span><div class="subclass-lines"><strong>{{ subclassName }}</strong><small>{{ currentBuild.abilities?.aspectIds?.map(id => id).join('、') || '等待星相配置' }}</small><small>{{ currentBuild.abilities?.facetIds?.length || 0 }} 个棱镜特性</small></div></div>
+        <div class="preview-slot exotic"><span>{{ ui("异域护甲") }}</span><div class="preview-art"><img v-if="previewIcon(gearById[currentBuild.exoticArmorId])" :src="previewIcon(gearById[currentBuild.exoticArmorId])" :alt="displayGear(currentBuild.exoticArmorId)" /><b v-else>{{ displayGear(currentBuild.exoticArmorId).slice(0, 1) }}</b></div><strong>{{ displayGear(currentBuild.exoticArmorId) }}</strong></div>
+        <div v-for="item in previewWeapons" :key="item.itemId" class="preview-slot"><span>{{ ui(previewSlotNames[item.gear.slot]) }}</span><div class="preview-art"><img v-if="previewIcon(item.gear)" :src="previewIcon(item.gear)" :alt="item.gear.name" /><b v-else>{{ item.gear.name.slice(0, 1) }}</b></div><strong>{{ item.gear.name }}</strong><small>{{ item.perks.join('、') || ui("固定异域特性") }}</small></div>
+        <div class="preview-slot subclass"><span>{{ ui("子职业核心") }}</span><div class="subclass-lines"><strong>{{ subclassName }}</strong><small>{{ currentBuild.abilities?.aspectIds?.map(id => id).join('、') || ui("等待星相配置") }}</small><small>{{ currentBuild.abilities?.facetIds?.length || 0 }} {{ ui("个棱镜特性") }}</small></div></div>
       </div>
     </section>
 
     <section class="editor-layout">
       <div class="editor-pane">
         <div class="toolbar">
-          <label><span>{{ locale === 'en' ? 'Advanced JSON editor' : '高级 JSON 编辑器' }}</span><small class="toolbar-note">暂无预置案例，请导入或从空白配置开始</small></label>
-          <div class="toolbar-actions"><a-button size="small" @click="fileInput?.click()">导入文件</a-button><input ref="fileInput" type="file" accept="application/json,.json" hidden @change="importFile" /><a-button size="small" @click="formatDraft">格式化</a-button><a-button size="small" danger @click="clearDraft">清空</a-button></div>
+          <label><span>{{ locale === 'en' ? 'Advanced JSON editor' : ui("高级 JSON 编辑器") }}</span><small class="toolbar-note">{{ ui("暂无预置案例，请导入或从空白配置开始") }}</small></label>
+          <div class="toolbar-actions"><a-button size="small" @click="fileInput?.click()">{{ ui("导入文件") }}</a-button><input ref="fileInput" type="file" accept="application/json,.json" hidden @change="importFile" /><a-button size="small" @click="formatDraft">{{ ui("格式化") }}</a-button><a-button size="small" danger @click="clearDraft">{{ ui("清空") }}</a-button></div>
         </div>
-        <a-textarea v-model:value="draftText" class="json-editor" :auto-size="{ minRows: 24 }" spellcheck="false" aria-label="构筑 JSON 编辑器" />
-        <div class="editor-footer"><span>Manifest {{ MANIFEST_VERSION }}：需要完整构筑对象</span><div><a-button type="primary" size="small" @click="saveDraft">保存到本地</a-button><a-button size="small" @click="exportDraft">导出 JSON</a-button></div></div>
-        <p v-if="savedMessage" class="saved-message" role="status">{{ savedMessage }}</p>
+        <a-textarea v-model:value="draftText" class="json-editor" :auto-size="{ minRows: 24 }" spellcheck="false" :aria-label="ui(&quot;构筑 JSON 编辑器&quot;)" />
+        <div class="editor-footer"><span>Manifest {{ MANIFEST_VERSION }}{{ ui("：需要完整构筑对象") }}</span><div><a-button type="primary" size="small" @click="saveDraft">{{ ui("保存到本地") }}</a-button><a-button size="small" @click="exportDraft">{{ ui("导出 JSON") }}</a-button></div></div>
+        <p v-if="savedMessage" class="saved-message" role="status">{{ uiMessage(savedMessage) }}</p>
       </div>
 
       <aside class="saved-pane">
-        <h2>本地版本</h2>
-        <p v-if="!savedBuilds.length" class="muted">还没有保存的自定义构筑。</p>
+        <h2>{{ ui("本地版本") }}</h2>
+        <p v-if="!savedBuilds.length" class="muted">{{ ui("还没有保存的自定义构筑。") }}</p>
         <ul v-else>
-          <li v-for="entry in savedBuilds" :key="entry.id"><button type="button" class="saved-load" @click="loadSavedBuild(entry)"><strong>{{ entry.name }}</strong><small>{{ new Date(entry.updatedAt).toLocaleString('zh-CN') }}</small></button><a-button type="text" danger size="small" class="delete" title="删除本地版本" @click="deleteSavedBuild(entry.id)">×</a-button></li>
+          <li v-for="entry in savedBuilds" :key="entry.id"><button type="button" class="saved-load" @click="loadSavedBuild(entry)"><strong>{{ entry.name }}</strong><small>{{ formatDate(entry.updatedAt, { dateStyle: 'medium', timeStyle: 'short' }) }}</small></button><a-button type="text" danger size="small" class="delete" :title="ui(&quot;删除本地版本&quot;)" @click="deleteSavedBuild(entry.id)">×</a-button></li>
         </ul>
       </aside>
     </section>
 
     <section class="validation-panel" :class="{ valid: isValid, invalid: validation && !validation.valid }">
-      <div class="validation-title"><div><span class="eyebrow">LIVE VALIDATION</span><h2>{{ parseError ? '无法解析构筑' : (isValid ? '已通过本站目录结构检查' : '配置尚未通过校验') }}</h2></div><ConfidenceBadge v-if="currentBuild?.confidence" :level="currentBuild.confidence" /></div>
-      <p v-if="parseError" class="parse-error">{{ parseError }}</p>
+      <div class="validation-title"><div><span class="eyebrow">LIVE VALIDATION</span><h2>{{ parseError ? ui("无法解析构筑") : (isValid ? ui("已通过本站目录结构检查") : ui("配置尚未通过校验")) }}</h2></div><ConfidenceBadge v-if="currentBuild?.confidence" :level="currentBuild.confidence" /></div>
+      <p v-if="parseError" class="parse-error">{{ uiMessage(parseError) }}</p>
       <template v-else-if="validation">
-        <div v-if="validation.errors.length" class="issue-list"><h3>必须修复（{{ validation.errors.length }}）</h3><button v-for="item in validation.errors" :key="`${item.code}-${item.path}`" type="button" @click="savedMessage = `请检查 ${item.path || 'root'}`"><code>{{ item.path || 'root' }}</code><span>{{ item.message }}</span></button></div>
-        <div v-if="validation.warnings.length" class="issue-list warnings"><h3>场景提醒（{{ validation.warnings.length }}）</h3><p v-for="item in validation.warnings" :key="item.message"><code>{{ item.code }}</code><span>{{ item.message }}</span></p></div>
-        <p v-if="!validation.errors.length && !validation.warnings.length" class="ok-text">本站目录结构检查通过；不代表已获得装备、属性可达或当前版本实战认证。</p>
+        <div v-if="validation.errors.length" class="issue-list"><h3>{{ ui("必须修复（") }}{{ validation.errors.length }}）</h3><button v-for="item in validation.errors" :key="`${item.code}-${item.path}`" type="button" @click="savedMessage = `请检查 ${item.path || 'root'}`"><code>{{ item.path || 'root' }}</code><span>{{ uiMessage(item.message) }}</span></button></div>
+        <div v-if="validation.warnings.length" class="issue-list warnings"><h3>{{ ui("场景提醒（") }}{{ validation.warnings.length }}）</h3><p v-for="item in validation.warnings" :key="item.message"><code>{{ item.code }}</code><span>{{ uiMessage(item.message) }}</span></p></div>
+        <p v-if="!validation.errors.length && !validation.warnings.length" class="ok-text">{{ ui("本站目录结构检查通过；不代表已获得装备、属性可达或当前版本实战认证。") }}</p>
       </template>
-      <p v-else class="muted">开始编辑或导入 JSON 后，这里会实时显示校验结果。</p>
+      <p v-else class="muted">{{ ui("开始编辑或导入 JSON 后，这里会实时显示校验结果。") }}</p>
     </section>
 
     <section v-if="isValid" class="analysis-grid">
-      <article class="analysis-card identity"><span class="eyebrow">BUILD PROFILE</span><h2>{{ currentBuild.name || '未命名构筑' }}</h2><p>{{ subclassName }}：{{ currentBuild.goal || '未填写目标' }}</p><div class="chips"><span>{{ currentBuild.classId }}</span><span>{{ acquisition.length }} 件核心装备</span><span>{{ unlocks.length }} 项解锁</span></div></article>
-      <article class="analysis-card"><h2>六维属性建议</h2><StatRecommendations :targets="currentBuild.targetStats" /></article>
-      <article class="analysis-card acquisition-card"><h2>实现路径</h2><p class="muted">编辑整理的获取路线；随机掉落与轮换请在游戏中确认。</p><ol><li v-for="item in acquisition" :key="`${item.itemId}-${item.order}`"><strong>{{ displayGear(item.itemId) }}</strong><span>{{ item.pathName }}</span><small>{{ item.deterministic ? '确定路径' : '需要刷取' }}</small></li></ol></article>
+      <article class="analysis-card identity"><span class="eyebrow">BUILD PROFILE</span><h2>{{ currentBuild.name || ui("未命名构筑") }}</h2><p>{{ subclassName }}：{{ currentBuild.goal || ui("未填写目标") }}</p><div class="chips"><span>{{ currentBuild.classId }}</span><span>{{ acquisition.length }} {{ ui("件核心装备") }}</span><span>{{ unlocks.length }} {{ ui("项解锁") }}</span></div></article>
+      <article class="analysis-card"><h2>{{ ui("六维属性建议") }}</h2><StatRecommendations :targets="currentBuild.targetStats" /></article>
+      <article class="analysis-card acquisition-card"><h2>{{ ui("实现路径") }}</h2><p class="muted">{{ ui("编辑整理的获取路线；随机掉落与轮换请在游戏中确认。") }}</p><ol><li v-for="item in acquisition" :key="`${item.itemId}-${item.order}`"><strong>{{ displayGear(item.itemId) }}</strong><span>{{ item.pathName }}</span><small>{{ item.deterministic ? ui("确定路径") : ui("需要刷取") }}</small></li></ol></article>
     </section>
   </div>
 </template>

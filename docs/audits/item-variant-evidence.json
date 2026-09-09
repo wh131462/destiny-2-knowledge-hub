@@ -1,0 +1,445 @@
+{
+  "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+  "inventorySyncedAt": "2026-09-08T04:56:13.952Z",
+  "scope": "Local definition snapshots and actual catalog grouping/validation functions; no live account, current availability, or browser verification.",
+  "counts": {
+    "equipment": 8237,
+    "weapons": 2208,
+    "armor": 6029,
+    "weaponGroupsWithMultipleVersions": 580,
+    "weaponGroupsWithDifferentReleaseTags": 498,
+    "weaponGroupsWithDifferentHolofoilFlag": 85,
+    "weaponGroupsWithDifferentRecipePresence": 48,
+    "weaponGroupsWithDifferentPerkPools": 505,
+    "armorGroupsWithMultipleVersions": 1506,
+    "armorGroupsWithDifferentModCandidates": 1036,
+    "mods": 513,
+    "modsWithNonemptyRules": 334,
+    "sameNameOneAndThreeEnergyGroups": 75,
+    "oneEnergyVariantsRequiringArtifact": 75,
+    "modEnergyMismatches": 0,
+    "armorDefinitionsOfferingArtifactHeavyFinder": 908,
+    "weaponsWithPerkCraftingRequirements": 172,
+    "plugDefinitionsWithRules": 5831,
+    "sameNameNormalEnhancedWeaponModGroups": 29
+  },
+  "validationReproduction": {
+    "armor": {
+      "hash": 26254737,
+      "name": "战神头冠",
+      "socketIndex": 1,
+      "errors": [
+        "重型弹药搜寻者为神器减费版：需先配置对应神器与解锁项"
+      ]
+    },
+    "modHash": 644105,
+    "rawModRules": [
+      "Requires Guardian Rank 3",
+      "Must Be Selected in the Seasonal Artifact"
+    ],
+    "artifactHash": null,
+    "loadoutErrors": [
+      "头盔：重型弹药搜寻者为神器减费版：需先配置对应神器与解锁项"
+    ]
+  },
+  "examples": {
+    "fatebringer": [
+      {
+        "hash": 2171478765,
+        "name": "命运终结者",
+        "isHolofoil": false,
+        "releaseTags": [
+          "releases.v520.season"
+        ],
+        "recipeItemHash": null,
+        "originSockets": [],
+        "specialSockets": []
+      },
+      {
+        "hash": 4184168210,
+        "name": "命运终结者",
+        "isHolofoil": false,
+        "releaseTags": [
+          "releases.v820.season"
+        ],
+        "recipeItemHash": 1718491554,
+        "originSockets": [
+          {
+            "socketIndex": 8,
+            "candidates": [
+              "失时弹匣",
+              "失时弹匣",
+              "空原始插槽"
+            ]
+          }
+        ],
+        "specialSockets": [
+          {
+            "socketIndex": 11,
+            "category": "crafting.recipes.empty_socket"
+          },
+          {
+            "socketIndex": 12,
+            "category": "crafting.plugs.weapons.mods.extractors"
+          },
+          {
+            "socketIndex": 13,
+            "category": "crafting.plugs.weapons.mods.transfusers.level"
+          },
+          {
+            "socketIndex": 14,
+            "category": "weapon_tiering_tier5_skins"
+          }
+        ]
+      }
+    ],
+    "longArm": [
+      {
+        "hash": 8293111,
+        "name": "长臂",
+        "isHolofoil": false,
+        "releaseTags": [
+          "releases.v630.season"
+        ],
+        "recipeItemHash": null,
+        "originSockets": [
+          {
+            "socketIndex": 8,
+            "candidates": [
+              "特克斯平衡枪托"
+            ]
+          }
+        ],
+        "specialSockets": []
+      },
+      {
+        "hash": 14929251,
+        "name": "长臂",
+        "isHolofoil": true,
+        "releaseTags": [
+          "releases.v820.season"
+        ],
+        "recipeItemHash": null,
+        "originSockets": [
+          {
+            "socketIndex": 8,
+            "candidates": [
+              "特克斯平衡枪托",
+              "重力井"
+            ]
+          }
+        ],
+        "specialSockets": [
+          {
+            "socketIndex": 11,
+            "category": "crafting.recipes.empty_socket"
+          },
+          {
+            "socketIndex": 12,
+            "category": "crafting.plugs.weapons.mods.enhancers"
+          },
+          {
+            "socketIndex": 13,
+            "category": "crafting.plugs.weapons.mods.transfusers.level"
+          }
+        ]
+      },
+      {
+        "hash": 3418719964,
+        "name": "长臂",
+        "isHolofoil": false,
+        "releaseTags": [
+          "releases.v970.core"
+        ],
+        "recipeItemHash": null,
+        "originSockets": [
+          {
+            "socketIndex": 8,
+            "candidates": [
+              "特克斯平衡枪托",
+              "特克斯平衡枪托"
+            ]
+          }
+        ],
+        "specialSockets": [
+          {
+            "socketIndex": 10,
+            "category": "weapon_tiering_tier5_skins"
+          }
+        ]
+      },
+      {
+        "hash": 4249949938,
+        "name": "长臂",
+        "isHolofoil": false,
+        "releaseTags": [
+          "releases.v820.season"
+        ],
+        "recipeItemHash": null,
+        "originSockets": [
+          {
+            "socketIndex": 8,
+            "candidates": [
+              "特克斯平衡枪托",
+              "重力井"
+            ]
+          }
+        ],
+        "specialSockets": [
+          {
+            "socketIndex": 11,
+            "category": "crafting.recipes.empty_socket"
+          },
+          {
+            "socketIndex": 12,
+            "category": "crafting.plugs.weapons.mods.enhancers"
+          },
+          {
+            "socketIndex": 13,
+            "category": "crafting.plugs.weapons.mods.transfusers.level"
+          }
+        ]
+      }
+    ],
+    "sunbracers": [
+      {
+        "hash": 950745251,
+        "name": "炎阳护腕",
+        "modernModSockets": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "modSocketDefinitions": [
+          {
+            "socketIndex": 0,
+            "initialItemHash": 1980618587,
+            "category": "enhancements.v2_general"
+          },
+          {
+            "socketIndex": 1,
+            "initialItemHash": 3820147479,
+            "category": "enhancements.v2_arms"
+          },
+          {
+            "socketIndex": 2,
+            "initialItemHash": 3820147479,
+            "category": "enhancements.v2_arms"
+          },
+          {
+            "socketIndex": 3,
+            "initialItemHash": 3820147479,
+            "category": "enhancements.v2_arms"
+          },
+          {
+            "socketIndex": 5,
+            "initialItemHash": 2024015888,
+            "category": "v460.plugs.armor.masterworks"
+          },
+          {
+            "socketIndex": 14,
+            "initialItemHash": 2121121504,
+            "category": "core.gear_systems.armor_tiering.plugs.tuning.mods"
+          }
+        ]
+      },
+      {
+        "hash": 1862800747,
+        "name": "炎阳护腕",
+        "modernModSockets": [],
+        "modSocketDefinitions": [
+          {
+            "socketIndex": 3,
+            "initialItemHash": 2600899007,
+            "category": "enhancements.universal"
+          }
+        ]
+      },
+      {
+        "hash": 3787517196,
+        "name": "炎阳护腕",
+        "modernModSockets": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "modSocketDefinitions": [
+          {
+            "socketIndex": 0,
+            "initialItemHash": 1980618587,
+            "category": "enhancements.v2_general"
+          },
+          {
+            "socketIndex": 1,
+            "initialItemHash": 3820147479,
+            "category": "enhancements.v2_arms"
+          },
+          {
+            "socketIndex": 2,
+            "initialItemHash": 3820147479,
+            "category": "enhancements.v2_arms"
+          },
+          {
+            "socketIndex": 3,
+            "initialItemHash": 3820147479,
+            "category": "enhancements.v2_arms"
+          },
+          {
+            "socketIndex": 5,
+            "initialItemHash": 2248916764,
+            "category": "v460.plugs.armor.masterworks.stat.resistance_3"
+          },
+          {
+            "socketIndex": 12,
+            "initialItemHash": 4173924323,
+            "category": "enhancements.artifice"
+          },
+          {
+            "socketIndex": 14,
+            "initialItemHash": 1656746282,
+            "category": "enhancements.artifice.exotic"
+          }
+        ]
+      }
+    ],
+    "fatebringerCraftingRequirements": [
+      {
+        "weaponHash": 4184168210,
+        "weaponName": "命运终结者",
+        "socketIndex": 3,
+        "setHash": 1359881065,
+        "plugHash": 3619207468,
+        "plugName": "Keep Away",
+        "requirements": {
+          "unlockRequirements": [
+            {
+              "failureDescription": "Requires Weapon Level 4"
+            }
+          ],
+          "requiredLevel": 4,
+          "materialRequirementHashes": [
+            4034325565
+          ]
+        }
+      }
+    ],
+    "restrictedPlugs": [
+      {
+        "hash": 52638289,
+        "name": "近战光学瞄准镜：高",
+        "typeName": "Weapon Mod",
+        "rules": [
+          "Requires Shaped or Enhanced Weapon"
+        ]
+      },
+      {
+        "hash": 325500297,
+        "name": "丰足弹药",
+        "typeName": "Enhanced Weapon Mod",
+        "rules": [
+          "Requires Shaped or Enhanced Weapon"
+        ]
+      },
+      {
+        "hash": 299264772,
+        "name": "专家射程",
+        "typeName": "Weapon Mod",
+        "rules": [
+          "Requires Guardian Rank 6: Masterwork Weapons",
+          "Requires Adept Weapon"
+        ]
+      },
+      {
+        "hash": 1285109625,
+        "name": "跳跃射击",
+        "typeName": "Weapon Mod",
+        "rules": [
+          "This weapon mod is no longer active.",
+          "This mod only works in specific activities."
+        ]
+      },
+      {
+        "hash": 79833168,
+        "name": "旅行者的神盾",
+        "typeName": "Pale Blessing Destination Mod",
+        "rules": [
+          "Not Yet Unlocked",
+          "Expired. Destination Mod cannot be equipped.",
+          "Expired. Destination Mod effects are no longer active."
+        ]
+      }
+    ]
+  },
+  "ruleCounts": {
+    "Requires Mod Item": 2742,
+    "You do not own this emote": 804,
+    "Requires Level 10": 699,
+    "Not Yet Unlocked": 367,
+    "Duplicate artifact mod already equipped.": 231,
+    "Requires Guardian Rank 6: Vendor Challenges": 130,
+    "Must Be Selected in the Seasonal Artifact": 121,
+    "Requires Guardian Rank 3": 114,
+    "Requires Guardian Rank 4: Modify Armor": 112,
+    "Content Temporarily Disabled\nSee help.bungie.net for more info": 101,
+    "Complete objectives to unlock": 97,
+    "Remove all equipped mods.": 82,
+    "Not Yet Found": 65,
+    "Requires Guardian Rank 7: Threats and Surges": 65,
+    "Requires Guardian Rank 2": 44,
+    "Complete Objectives to Unlock": 39,
+    "Requires Guardian Rank 6: Masterwork Weapons": 35,
+    "You haven't unlocked this ability.": 28,
+    "Requires Shaped or Enhanced Weapon": 26,
+    "Requires \"Praxic's Path\" Quest Completion": 25,
+    "Requires matching item to be unlocked in Collections.": 19,
+    "Requires Adept Weapon": 16,
+    "Expired. Destination Mod cannot be equipped.": 15,
+    "Expired. Destination Mod effects are no longer active.": 15,
+    "Similar mod already applied.": 12,
+    "Requires Weapon Level: {var:3043319754}": 12,
+    "This weapon mod is no longer active.": 12,
+    "This mod only works in specific activities.": 12,
+    "Memento required": 11,
+    "Requires Clan Level 5": 10,
+    "Requires Clan Level 3": 9,
+    "For Warlocks only": 7,
+    "Only Active in the Dreaming City": 7,
+    "Only Active on Nessus": 7,
+    "For Hunters only": 7,
+    "Only Active in the EDZ": 7,
+    "For Titans only": 7,
+    "Requires Clan Level 4": 7,
+    "Only Active on the Tangled Shore": 7,
+    "Only Active on the Moon": 7,
+    "Requires Clan Level 6": 6,
+    "Requires Clan Level 2": 6,
+    "Purchase the corresponding upgrade from Eva to unlock this perk.": 6,
+    "Active only during the Revelry": 6,
+    "Only Active in Crucible": 4,
+    "Requires Clanmates": 3,
+    "Only 1 Augmentation mod allowed.": 3,
+    "Requires purchase from Eververse.": 3,
+    "Only Active During This Year's Dawning": 3,
+    "Only Active in Strikes": 3,
+    "Requires a Festival of the Lost mask.": 3,
+    "Only Active in Gambit": 2,
+    "Mod Disabled": 2,
+    "Add Ingredients First": 2,
+    "Requires Weapon Level 11": 2,
+    "Exclusive Item": 1,
+    "Access Restricted": 1,
+    "Requires All Recipes Discovered": 1,
+    "Enhancement 3 required": 1,
+    "Requires Recent Prestige Leviathan Clear": 1,
+    "Requires Weapon Level 17": 1,
+    "Requires Destiny 2: Forsaken Pack": 1,
+    "Enhancement 2 required": 1,
+    "Requires Recent Flawless Ticket": 1,
+    "Requires Weapon Level 30": 1,
+    "Requires Weapon Level 25": 1,
+    "Requires Weapon Level 1": 1,
+    "Requires Weapon Level 20": 1
+  }
+}

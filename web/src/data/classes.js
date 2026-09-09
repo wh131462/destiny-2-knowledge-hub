@@ -34,6 +34,8 @@ const viewSubclasses = (classId) => subclasses
     return {
       ...item,
       branch: `${item.name} ${item.en}`,
+      superEntries: superAbilities,
+      aspectEntries: (item.aspectIds || []).map(id => aspectById[id]).filter(Boolean),
       super: superAbilities.map(ability => ability.name + ' ' + ability.en).join(' / ') || '按当前装备选择超能力',
       focus: focusByElement[item.element] || '元素技能协同',
       aspects: aspectNames,

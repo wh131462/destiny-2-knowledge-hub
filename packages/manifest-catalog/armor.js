@@ -12,7 +12,9 @@ export const armorClasses = [
 ]
 export const armorStatNames = ['Health', 'Melee', 'Grenade', 'Class', 'Super', 'Weapons']
 const publicItem = item => item && !item.redacted && !item.blacklisted && Boolean(item.name)
-const definition = item => ({ hash: item.hash, name: item.name, nameZh: item.nameZh, icon: item.icon, description: item.description, descriptionZh: item.descriptionZh })
+const definition = item => ({ hash: item.hash, name: item.name, nameZh: item.nameZh, icon: item.icon, description: item.description, descriptionZh: item.descriptionZh,
+  itemType: item.itemType, typeName: item.typeName, versionInfo: item.versionInfo, definitionState: item.definitionState, availabilityStatus: item.availabilityStatus, artifactVariant: item.artifactVariant,
+  insertionRules: item.insertionRules, enabledRules: item.enabledRules, tooltipNotifications: item.tooltipNotifications, equipRequirements: item.equipRequirements })
 const combineDescriptions = values => {
   const unique = [...new Set(values.filter(Boolean))]
   return unique.filter(value => !unique.some(other => other !== value && other.includes(value))).join('\n\n')
