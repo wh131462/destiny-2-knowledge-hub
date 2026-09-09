@@ -22,6 +22,7 @@ import { createLoadoutExportModel } from '@/utils/loadoutExportModel'
 const manifest = useManifestAssets()
 const { equipmentItems, weaponItems, manifestMods, artifacts, manifestAbilities, itemSets, plugSets, snapshot, status } = manifest
 const draft = ref(blankDraft())
+const armorTransfer = ref(null), armorTransferOpen = ref(false)
 const route = useRoute()
 const community = usePublicBuilds()
 const submissionOpen = ref(false), submissionOrigin = ref(null), submissionMetadata = ref(null), communityImportError = ref('')
@@ -93,6 +94,15 @@ const validationContext = computed(() => ({
 }))
 const issues = computed(() => status.value === 'ready' ? validateLoadout(draft.value, validationContext.value) : [])
 
+function applyArmorTransfer() {
+  const transfer = armorTransfer.value
+  if (!transfer) return
+  if (transfer.classId !== draft.value.classId) changeClass(transfer.classId)
+  for (const slot of Object.keys(armorLabels)) selectArmor(slot, transfer.armor?.[slot] || null)
+  armorTransferOpen.value = false; armorTransfer.value = null
+  message.value = `已带入${transfer.setName || '套装'}${transfer.exoticName ? `（异域：${transfer.exoticName}）` : ''}，并覆盖原防具配置。`
+}
+function cancelArmorTransfer() { armorTransferOpen.value = false; armorTransfer.value = null }
 function changeClass(id) {
   if (id === draft.value.classId) return
   draft.value.classId = id
@@ -271,6 +281,7 @@ watch(status, state => {
   const build = buildById[route.query.build]
   if (build) { draft.value = curatedDraft(build, { equipment: equipmentItems.value, mods: manifestMods.value, itemSets: itemSets.value, plugSets: plugSets.value }); message.value = '已创建推荐副本，可以修改目标、分栏词条与备注。' }
   draft.value.manifestVersion ||= snapshot.value.manifestVersion || ''
+  try { const raw = sessionStorage.getItem('d2hub-armor-transfer-v1'); if (raw) { armorTransfer.value = JSON.parse(raw); sessionStorage.removeItem('d2hub-armor-transfer-v1'); armorTransferOpen.value = true } } catch { /* ignore malformed handoff */ }
 }, { immediate: true })
 let communityImported = ''
 watch(() => [status.value, community.status.value, route.query.community, route.query.mode], () => {
@@ -302,6 +313,7 @@ watch(search, () => { page.value = 1 })
     <CommunitySubmission :open="submissionOpen" :draft="draft" :context="validationContext" :ready="status === 'ready'" :origin="submissionOrigin" :metadata="submissionMetadata" :source-warning="sourceWarning" @close="submissionOpen = false" />
     <p class="snapshot">装备快照：{{ snapshot.syncedAt?.slice(0, 10) || '加载中' }} {{ snapshot.manifestVersion || '—' }}。这是一份推荐清单，不读取账号或判断是否拥有装备。</p>
     <a-alert v-if="status === 'error'" type="error" show-icon message="装备数据加载失败，请刷新重试。未加载时不能核验配置。" />
+    <a-modal v-model:open="armorTransferOpen" title="带入套装配置？" ok-text="确定并覆盖" cancel-text="取消" @ok="applyArmorTransfer" @cancel="cancelArmorTransfer"><p v-if="armorTransfer">将带入 {{ armorTransfer.setName || '已选套装' }} 的五个部位{{ armorTransfer.exoticName ? `，包含异域 ${armorTransfer.exoticName}` : '' }}。</p><p>确定后会覆盖当前防具选择和防具模组；武器、技能、神器等其他配置不会改变。</p></a-modal>
     <a-alert v-if="message" type="info" :message="message" closable @close="message = ''" />
     <article class="loadout-sheet">
       <header class="sheet-title">
@@ -356,7 +368,7 @@ watch(search, () => { page.value = 1 })
       <footer class="sheet-footer"><p>推荐草稿可随时保存与导出。空白项表示未指定，不代表缺少装备。</p><p v-if="draft.manifestVersion && draft.manifestVersion !== snapshot.manifestVersion">导入来源版本与本地快照不同，保留原推荐，请重新核对。</p><details v-if="issues.length" open><summary>配置提示</summary><ul><li v-for="issue in issues" :key="issue">{{ issue }}</li></ul></details></footer>
     </article>
     <a-modal :open="Boolean(picker)" :title="pickerTitle" :footer="null" width="1120px" wrap-class-name="loadout-visual-modal" @cancel="picker = null">
-      <div class="picker-toolbar"><a-input v-model:value="search" aria-label="搜索选择卡片" placeholder="搜索中文、英文或 Hash" allow-clear /><span role="status" aria-live="polite">{{ pickerItems.length }} / {{ pickerPool.length }} 个候选 <template v-if="multiPick">· 已选 {{ pickerSelected.length }} / {{ pickerLimit ?? '—' }}</template></span></div>
+      <div class="picker-toolbar"><a-input v-model:value="search" aria-label="搜索选择卡片" placeholder="搜索中文、英文或 Hash" allow-clear /><span role="status" aria-live="polite">{{ pickerItems.length }} / {{ pickerPool.length }} 个候选 <template v-if="multiPick"> 已选 {{ pickerSelected.length }} / {{ pickerLimit ?? '—' }}</template></span></div>
       <p class="muted">{{ multiPick ? '点击卡片选择，再点已选卡片取消；选好后点击完成。' : '点击卡片即可应用；悬停或聚焦可查看右侧详情。' }}<template v-if="['weapon', 'armor'].includes(picker?.kind)"> 同名装备按 Hash 区分，更换版本会清空对应词条或模组。</template><template v-if="picker?.kind === 'artifact'"> 更换神器会清空原节点。</template></p>
       <div class="visual-picker-body"><div class="visual-picker-results"><div v-if="pickerPage.length" class="visual-picker-grid"><LoadoutTile v-for="item in pickerPage" :key="item.id || item.hash" :image="visualIcon(item)" :label="label(item)" :subtitle="english(item)" :description="visualDescription(item)" :badge="pickerBadge(item)" :active="itemSelected(item)" :disabled="Boolean(disabledReason(item))" toggle :color="accent" @mouseenter="preview = item" @focus="preview = item" @click="pick(item)" /></div><div v-else class="picker-empty">{{ status === 'loading' ? '正在加载图文目录…' : '没有匹配项，试试其他名称或清空搜索。' }}</div></div>
         <aside v-if="previewItem" class="picker-preview" aria-label="卡片详情"><img v-if="visualIcon(previewItem)" :src="visualIcon(previewItem)" alt="" /><small>{{ pickerTitle }}</small><h3>{{ label(previewItem) }}</h3><span>{{ english(previewItem) }}</span><b>{{ pickerBadge(previewItem) }}</b><p>{{ visualDescription(previewItem) || '快照未提供详细说明，可在构筑备注中补充使用建议。' }}</p><EntityLink :item="previewItem" label="查看百科与来源" new-tab /></aside>

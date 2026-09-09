@@ -77,6 +77,12 @@ export function armorSetPreview(assignments, sets, items, classId) {
   const slots = armorSlots.map(slot => {
     const choice = String(assignments[slot.id] || '')
     if (choice === 'exotic') { exoticCount++; return { ...slot, exotic: true, valid: exoticCount === 1 } }
+    if (choice.startsWith('exotic:')) {
+      exoticCount++
+      const item = byHash.get(Number(choice.slice(7)))
+      const compatible = item?.tierTypeHash === 2759499571 && item.classId === classId && item.armorSlot === slot.id
+      return { ...slot, item: compatible ? item : undefined, exotic: true, valid: compatible && exoticCount === 1 }
+    }
     const set = bySet.get(choice)
     const item = set?.itemHashes.map(hash => byHash.get(hash)).find(item => item?.classId === classId && item.armorSlot === slot.id && item.tierTypeHash !== 2759499571)
     if (item) counts.set(set.hash, (counts.get(set.hash) || 0) + 1)

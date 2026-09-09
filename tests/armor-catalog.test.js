@@ -104,3 +104,30 @@ test('projection excludes cosmetics from intrinsic perks and uses perk details f
   assert.equal(result.mods[0].descriptionZh, '弹药量表')
   assert.equal(result.mods[0].energyCost, 1)
 })
+
+test('concrete Exotic armor occupies its actual slot and never contributes to set bonuses', () => {
+  for (const slot of armorSlots) {
+    const exotic = catalog.items.find(item => item.classId === 'titan' && item.armorSlot === slot.id && item.tierTypeHash === 2759499571)
+    assert.ok(exotic)
+    const assignments = plan(armorSlots.map(() => first.hash))
+    assignments[slot.id] = `exotic:${exotic.hash}`
+    const result = armorSetPreview(assignments, catalog.sets, catalog.items, 'titan')
+    assert.equal(result.valid, true)
+    assert.equal(result.exoticCount, 1)
+    assert.equal(result.sets[0].count, 4)
+    assert.equal(result.slots.find(item => item.id === slot.id).item.hash, exotic.hash)
+  }
+})
+
+test('concrete Exotic selections reject duplicate, wrong-class, wrong-slot and non-Exotic definitions', () => {
+  const helmet = catalog.items.find(item => item.classId === 'titan' && item.armorSlot === 'helmet' && item.tierTypeHash === 2759499571)
+  const arms = catalog.items.find(item => item.classId === 'titan' && item.armorSlot === 'arms' && item.tierTypeHash === 2759499571)
+  const base = plan(armorSlots.map(() => first.hash))
+  const check = (changes, classId = 'titan') => armorSetPreview({ ...base, ...changes }, catalog.sets, catalog.items, classId)
+  assert.equal(check({ helmet: `exotic:${helmet.hash}`, arms: `exotic:${arms.hash}` }).valid, false)
+  assert.equal(check({ helmet: `exotic:${helmet.hash}`, arms: 'exotic' }).valid, false)
+  assert.equal(check({ arms: `exotic:${helmet.hash}` }).valid, false)
+  assert.equal(check({ helmet: `exotic:${helmet.hash}` }, 'hunter').valid, false)
+  assert.equal(check({ helmet: `exotic:${first.itemHashes[0]}` }).valid, false)
+  assert.equal(check({ helmet: 'exotic:unknown' }).valid, false)
+})
