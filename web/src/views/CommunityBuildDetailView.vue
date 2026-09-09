@@ -54,7 +54,7 @@ async function copyCode() {
       <section class="section"><h2>属性建议与获取思路</h2><div class="stats"><div v-for="stat in model.stats" :key="stat.name"><span>{{ stat.name }}</span><strong>{{ stat.value }}</strong></div></div><p v-if="model.statNotes" class="notes">{{ model.statNotes }}</p><div v-if="model.ghost" class="card"><img @error="hideImage" v-if="model.ghost.image" :src="model.ghost.image" alt="" /><div><h3>{{ model.ghost.name }}</h3><p>{{ model.ghost.description }}</p></div></div><p v-if="model.farmingNotes" class="notes">{{ model.farmingNotes }}</p></section>
       <section v-if="model.notes" class="section"><h2>作者备注</h2><p class="notes">{{ model.notes }}</p></section>
     </template>
-    <section v-else-if="status !== 'error'" class="unavailable"><span class="eyebrow">BUILD UNAVAILABLE</span><h1>{{ status === 'unconfigured' ? '社区投稿尚未启用' : '这份构筑暂不可用' }}</h1><p>投稿可能尚未同步、已经下架或需要修复。请刷新列表查看最新结果。</p><router-link to="/builds" class="btn">返回构筑方案</router-link></section>
+    <section v-else-if="status !== 'error'" class="unavailable"><span class="eyebrow">BUILD UNAVAILABLE</span><h1>{{ status === 'unconfigured' ? '当前页面尚未启用列表同步' : '这份构筑暂不可用' }}</h1><p>投稿可能尚未同步、已经下架或需要修复。请刷新列表查看最新结果。</p><router-link to="/builds" class="btn">返回构筑方案</router-link></section>
   </div>
 </template>
 

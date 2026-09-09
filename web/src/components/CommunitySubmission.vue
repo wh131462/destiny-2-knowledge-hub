@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
+import CommunityPublishGuide from '@/components/CommunityPublishGuide.vue'
 import { activitiesV2 } from '@/data/v2'
 import { communityConfig } from '@/utils/communityConfig'
 import { createSubmission, submissionBody, validateSubmission, newIssueUrl, issueUrl } from '../../../packages/community-builds/index.js'
@@ -20,7 +21,7 @@ const prepared = computed(() => {
     return { ...validation, body: validation.valid ? submissionBody(value) : '' }
   } catch (e) { return { errors: [e.message], body: '' } }
 })
-const href = computed(() => !communityConfig.enabled ? '' : props.origin ? issueUrl(communityConfig.repository, props.origin.number) : newIssueUrl(communityConfig.repository, props.draft.name))
+const href = computed(() => !communityConfig.submissionEnabled ? '' : props.origin ? issueUrl(communityConfig.repository, props.origin.number) : newIssueUrl(communityConfig.repository, props.draft.name))
 async function copy() {
   try { await navigator.clipboard.writeText(prepared.value.body); copyMessage.value = '投稿内容已复制。请在 GitHub 粘贴并确认提交。' }
   catch { copyMessage.value = '自动复制不可用，请在下方文本框中全选并手动复制。' }
@@ -31,7 +32,8 @@ async function copy() {
   <a-modal :open="open" :title="origin ? `修改原投稿 #${origin.number}` : '发布社区构筑'" width="780px" wrap-class-name="community-submission-modal" :footer="null" @cancel="emit('close')">
     <div class="submission">
       <p class="intro">给其他守护者留一份可以照着搭配的方案。先复制内容，再前往 GitHub {{ origin ? '编辑原 Issue 正文' : '创建投稿' }}。</p>
-      <p v-if="!communityConfig.enabled" role="status">{{ communityConfig.error || '社区投稿尚未启用。你仍可保存草稿或导出配装。' }}</p>
+      <CommunityPublishGuide :editing="Boolean(origin)" in-submission />
+      <p v-if="!communityConfig.enabled" role="status">{{ communityConfig.error || '当前页面尚未启用列表同步，仍可前往 GitHub 提交；本站展示需要等待同步配置完成。' }}</p>
       <p v-if="sourceWarning" class="notice" role="alert">{{ sourceWarning }}</p>
       <p v-if="origin" class="notice">原投稿更新于 {{ origin.updatedAt }}。只有作者或有权限的人可以修改；提交前请在 GitHub 核对最新正文。</p>
       <label>玩法说明 <a-textarea v-model:value="summary" placeholder="这套构筑适合什么场景？核心循环和装备选择是什么？" :rows="4" :maxlength="2000" /></label>

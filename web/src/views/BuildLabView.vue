@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
+import CommunityPublishGuide from '@/components/CommunityPublishGuide.vue'
 import { useRoute } from 'vue-router'
 import { activityById, classesV2, gearById, subclassById } from '@/data/v2'
 import { useManifestAssets } from '@/composables/useManifestAssets'
@@ -50,8 +51,9 @@ const weaponItems = build => build.source === 'community' ? build.submission.loa
       <router-link to="/manual-loadout" class="btn primary">创建构筑</router-link>
     </header>
 
+    <CommunityPublishGuide />
     <div class="community-status" aria-live="polite">
-      <span v-if="status === 'unconfigured'">社区投稿尚未启用，可以先在本地创建构筑。</span>
+      <span v-if="status === 'unconfigured'">当前页面尚未启用列表同步；可以创建构筑并通过 GitHub 提交。</span>
       <span v-else-if="error" role="alert">{{ error }} {{ snapshot ? '当前显示上次成功同步的数据。' : '' }}</span>
       <span v-else>{{ snapshot ? `数据更新于 ${new Date(snapshot.generatedAt).toLocaleString()}` : '正在读取社区构筑…' }} GitHub 操作将在同步完成后显示</span>
       <button v-if="config.enabled" type="button" class="btn" :disabled="status === 'loading'" @click="refresh">{{ status === 'loading' ? '刷新中…' : '刷新列表' }}</button>

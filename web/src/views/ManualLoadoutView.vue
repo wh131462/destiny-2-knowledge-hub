@@ -1,5 +1,6 @@
 <script setup>
 import CommunitySubmission from '@/components/CommunitySubmission.vue'
+import CommunityPublishGuide from '@/components/CommunityPublishGuide.vue'
 import { usePublicBuilds } from '@/composables/usePublicBuilds'
 import { parseSubmission, assertSubmission, issueUrl } from '../../../packages/community-builds/index.js'
 import EntityLink from '@/components/EntityLink.vue'
@@ -289,7 +290,7 @@ watch(() => [status.value, community.status.value, route.query.community, route.
   if (!route.query.community || status.value !== 'ready' || communityImported === key) return
   if (!Number.isSafeInteger(number) || number <= 0) { communityImportError.value = '构筑编号无效。'; return }
   if (community.status.value === 'error') { communityImportError.value = '社区构筑读取失败，请重试。'; return }
-  if (community.status.value === 'unconfigured') { communityImportError.value = '社区投稿尚未启用。'; return }
+  if (community.status.value === 'unconfigured') { communityImportError.value = '当前页面尚未启用列表同步，暂时无法读取这份社区构筑。'; return }
   if (community.status.value !== 'ready') return
   const source = community.snapshot.value?.builds.find(b => b.number === number)
   if (!source) { communityImportError.value = '这份构筑暂不可用，可能尚未同步、已下架或被屏蔽。'; return }
@@ -308,6 +309,7 @@ watch(search, () => { page.value = 1 })
       <div><span class="eyebrow">BUILD CREATOR / 手动构筑</span><h1>创建构筑</h1></div>
       <nav><router-link to="/builds" class="gallery-link">浏览公开方案</router-link><a-button @click="save">保存草稿</a-button><a-button @click="restore" :disabled="status !== 'ready'">恢复草稿</a-button><a-button @click="transfer('import')" :disabled="status !== 'ready'">导入</a-button><a-button @click="transfer('export')">导出代码</a-button><a-button :disabled="status !== 'ready'" @click="exportImage">导出一图流</a-button><a-button type="primary" :disabled="status !== 'ready'" @click="openSubmission">{{ submissionOrigin ? '更新投稿' : '发布构筑' }}</a-button></nav>
     </header>
+    <CommunityPublishGuide :editing="Boolean(submissionOrigin)" />
     <p v-if="communityImportError" class="community-alert" role="alert">{{ communityImportError }} <button v-if="community.config.enabled" class="btn" @click="community.refresh">重新读取</button></p>
     <p v-if="submissionOrigin" class="community-origin">正在编辑原投稿 #{{ submissionOrigin.number }} <a :href="issueUrl(community.config.repository, submissionOrigin.number)" target="_blank" rel="noopener noreferrer">前往 GitHub 管理</a> <button type="button" class="btn" @click="resetCommunitySource">改为发布新投稿</button></p>
     <CommunitySubmission :open="submissionOpen" :draft="draft" :context="validationContext" :ready="status === 'ready'" :origin="submissionOrigin" :metadata="submissionMetadata" :source-warning="sourceWarning" @close="submissionOpen = false" />
