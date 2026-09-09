@@ -30,6 +30,8 @@ destiny-2-knowledge-hub/
 
 ## 本地开发
 
+开发约定见 [项目开发规则](AGENTS.md)。前端下拉选择器统一使用 Ant Design Vue 的 `a-select`，禁止使用原生 `<select>` / `<option>`，包括筛选、装备版本和套装分配。
+
 ```bash
 cd web
 npm install

@@ -212,7 +212,7 @@ p { color: var(--text-sub); }
 .ant-select-selection-placeholder { color: var(--text-dim) !important; }
 .ant-select-dropdown {
   min-width: min(12rem, calc(100vw - 2rem)) !important;
-  background: var(--bg-card) !important;
+  background: #141d33 !important;
   border: 1px solid var(--line-soft);
 }
 .ant-select-item { color: var(--text-sub); }
