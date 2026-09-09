@@ -70,7 +70,7 @@ watch(() => props.row.perkCombinations.map(c => c.id).join('|'), () => {
             <dd><template v-for="(value, valueIndex) in column.values" :key="valueIndex"><span v-if="valueIndex" class="choice-or">/</span><span class="summary-perk"><img v-if="value.image" :src="value.image" alt="" /><EntityLink v-if="value.item" :item="value.item" kind="plugs" :label="value.text" new-tab /><span v-else>{{ value.text }}</span></span></template></dd>
           </div>
         </dl>
-        <p v-else class="combination-hint">尚未配置词条 · 在这一组内选择一套完整搭配</p>
+        <p v-else class="combination-hint">尚未配置词条 在这一组内选择一套完整搭配</p>
         <p v-if="combo.notes" class="combination-notes">{{ combo.notes }}</p>
         <div v-if="activeId === combo.id" :id="`weapon-${weaponIndex}-${combo.id}-editor`" class="combination-editor">
           <div class="combination-meta">

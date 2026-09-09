@@ -22,7 +22,7 @@ export function addPerkCombination(weapon, copyId) {
   if (copyId && !source) throw new Error('要复制的 Perk 组合不存在')
   let index = 1
   while (weapon.perkCombinations.some(c => c.id === `combo-${index}`)) index++
-  const combination = emptyPerkCombination(`combo-${index}`, source ? `${source.name.slice(0, 75)} · 副本` : `组合 ${index}`)
+  const combination = emptyPerkCombination(`combo-${index}`, source ? `${source.name.slice(0, 75)} 副本` : `组合 ${index}`)
   if (source) {
     // Vue rows may be proxies; copy each mutable collection without sharing arrays.
     combination.recommendedPerks = Object.fromEntries(Object.entries(source.recommendedPerks).map(([key, values]) => [key, [...values]]))

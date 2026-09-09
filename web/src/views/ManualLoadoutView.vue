@@ -142,7 +142,7 @@ const pickerTitle = computed(() => {
   if (!p) return ''
   return { weapon: `选择${['动能栏位', '能量栏位', '威能栏位'][p.key] || '武器'}`, armor: `选择${armorLabels[p.key] || '护甲'}`,
     ability: `选择${abilitySlots.find(s => s.key === p.key)?.label || '技能'}`, aspect: '选择星相', trait: subclass.value?.type === 'prismatic' ? '选择棱镜特性' : '选择元素碎片',
-    mod: `${armorLabels[p.key] || ''} · 模组插槽 ${(p.socketIndex ?? 0) + 1}`, artifact: '选择神器', artifactNode: `神器插槽 ${(p.socketIndex ?? 0) + 1} · 选择节点`, ghost: '选择机灵护甲商' }[p.kind]
+    mod: `${armorLabels[p.key] || ''} 模组插槽 ${(p.socketIndex ?? 0) + 1}`, artifact: '选择神器', artifactNode: `神器插槽 ${(p.socketIndex ?? 0) + 1} 选择节点`, ghost: '选择机灵护甲商' }[p.kind]
 })
 function itemSelected(item) {
   if (!picker.value || !item) return false
@@ -178,8 +178,8 @@ function disabledReason(item) {
 function pickerBadge(item) {
   if (disabledReason(item)) return disabledReason(item)
   if (picker.value?.kind === 'aspect') return `提供 ${aspectDefinition(item, subclass.value, manifestAbilities.value)?.fragmentSlots ?? '?'} 个碎片槽`
-  if (Number.isFinite(item?.energyCost)) return `${item.energyCost} 点能量${itemSelected(item) ? ' · 已选' : ''}`
-  return [itemSelected(item) ? '已选' : '', item?.hash ? `#${item.hash}` : ''].filter(Boolean).join(' · ')
+  if (Number.isFinite(item?.energyCost)) return `${item.energyCost} 点能量${itemSelected(item) ? ' 已选' : ''}`
+  return [itemSelected(item) ? '已选' : '', item?.hash ? `#${item.hash}` : ''].filter(Boolean).join(' ')
 }
 function clearChoice() {
   const { kind, key, socketIndex } = picker.value
@@ -298,9 +298,9 @@ watch(search, () => { page.value = 1 })
       <nav><router-link to="/builds" class="gallery-link">浏览公开方案</router-link><a-button @click="save">保存草稿</a-button><a-button @click="restore" :disabled="status !== 'ready'">恢复草稿</a-button><a-button @click="transfer('import')" :disabled="status !== 'ready'">导入</a-button><a-button @click="transfer('export')">导出代码</a-button><a-button :disabled="status !== 'ready'" @click="exportImage">导出一图流</a-button><a-button type="primary" :disabled="status !== 'ready'" @click="openSubmission">{{ submissionOrigin ? '更新投稿' : '发布构筑' }}</a-button></nav>
     </header>
     <p v-if="communityImportError" class="community-alert" role="alert">{{ communityImportError }} <button v-if="community.config.enabled" class="btn" @click="community.refresh">重新读取</button></p>
-    <p v-if="submissionOrigin" class="community-origin">正在编辑原投稿 #{{ submissionOrigin.number }} · <a :href="issueUrl(community.config.repository, submissionOrigin.number)" target="_blank" rel="noopener noreferrer">前往 GitHub 管理</a> · <button type="button" class="btn" @click="resetCommunitySource">改为发布新投稿</button></p>
+    <p v-if="submissionOrigin" class="community-origin">正在编辑原投稿 #{{ submissionOrigin.number }} <a :href="issueUrl(community.config.repository, submissionOrigin.number)" target="_blank" rel="noopener noreferrer">前往 GitHub 管理</a> <button type="button" class="btn" @click="resetCommunitySource">改为发布新投稿</button></p>
     <CommunitySubmission :open="submissionOpen" :draft="draft" :context="validationContext" :ready="status === 'ready'" :origin="submissionOrigin" :metadata="submissionMetadata" :source-warning="sourceWarning" @close="submissionOpen = false" />
-    <p class="snapshot">装备快照：{{ snapshot.syncedAt?.slice(0, 10) || '加载中' }} · {{ snapshot.manifestVersion || '—' }}。这是一份推荐清单，不读取账号或判断是否拥有装备。</p>
+    <p class="snapshot">装备快照：{{ snapshot.syncedAt?.slice(0, 10) || '加载中' }} {{ snapshot.manifestVersion || '—' }}。这是一份推荐清单，不读取账号或判断是否拥有装备。</p>
     <a-alert v-if="status === 'error'" type="error" show-icon message="装备数据加载失败，请刷新重试。未加载时不能核验配置。" />
     <a-alert v-if="message" type="info" :message="message" closable @close="message = ''" />
     <article class="loadout-sheet">
@@ -312,7 +312,7 @@ watch(search, () => { page.value = 1 })
       <div class="top-grid">
         <section class="panel talents"><h2><b>01</b> 天赋与技能</h2><p class="muted">来自当前 Manifest 子职业的完整可选插槽；不按推荐构筑或账号解锁状态缩减。</p>
           <div class="abilities"><LoadoutTile v-for="slot in abilitySlots" :key="slot.key" compact :image="visualIcon(abilityAt(slot.key))" :label="abilityAt(slot.key)?.name || `选择${slot.label}`" :eyebrow="slot.label" :subtitle="english(abilityAt(slot.key))" :description="visualDescription(abilityAt(slot.key))" :action-label="`选择${slot.label}：${abilityAt(slot.key)?.name || '未指定'}`" :empty="!abilityAt(slot.key)" :color="accent" @click="openPicker('ability', slot.key)" /></div>
-          <div v-if="intrinsicAbilities.length" class="intrinsic-abilities"><details v-for="item in intrinsicAbilities" :key="item.id"><summary><img v-if="visualIcon(item)" :src="visualIcon(item)" alt="" /><span>{{ item.name }}<small>{{ item.kind === 'transcendenceGrenade' ? '超越期间替换手雷 · 固定能力' : '棱镜固定能力 · 点击查看' }}</small></span></summary><p>{{ visualDescription(item) }}</p></details></div>
+          <div v-if="intrinsicAbilities.length" class="intrinsic-abilities"><details v-for="item in intrinsicAbilities" :key="item.id"><summary><img v-if="visualIcon(item)" :src="visualIcon(item)" alt="" /><span>{{ item.name }}<small>{{ item.kind === 'transcendenceGrenade' ? '超越期间替换手雷 固定能力' : '棱镜固定能力 点击查看' }}</small></span></summary><p>{{ visualDescription(item) }}</p></details></div>
           <div class="selection-heading"><h3>星相 <small>ASPECTS</small></h3><span>{{ draft.abilities.aspectIds.length }} / 2</span></div>
           <div class="aspect-slots"><LoadoutTile v-for="index in Math.max(2, chosenAspects.length)" :key="index" compact :image="visualIcon(chosenAspects[index - 1])" :label="chosenAspects[index - 1]?.name || `选择星相 ${index}`" :subtitle="english(chosenAspects[index - 1])" :description="visualDescription(chosenAspects[index - 1])" :action-label="`选择星相${index}：${chosenAspects[index - 1]?.name || '未指定'}`" :empty="!chosenAspects[index - 1]" :color="accent" @click="openPicker('aspect')" /></div>
           <div class="selection-heading"><h3>{{ subclass?.type === 'prismatic' ? '棱镜特性' : '元素碎片' }} <small>FRAGMENTS</small></h3><span>{{ draft.abilities[traitKey].length }} / {{ capacity ?? '—' }}</span></div>
@@ -320,16 +320,16 @@ watch(search, () => { page.value = 1 })
           <div class="fragment-slots"><LoadoutTile v-for="index in Math.max(capacity || 0, draft.abilities[traitKey].length, 1)" :key="index" compact :image="visualIcon(traitAt(index - 1))" :label="traitAt(index - 1)?.name || `选择碎片 ${index}`" :description="visualDescription(traitAt(index - 1))" :action-label="`选择碎片${index}：${traitAt(index - 1)?.name || '未指定'}`" :empty="!traitAt(index - 1)" :color="accent" :disabled="capacity == null && !draft.abilities[traitKey].length" @click="openPicker('trait')" /></div>
         </section>
         <section class="panel artifact"><h2><b>02</b> 神器与节点</h2>
-          <LoadoutTile :image="visualIcon(artifact)" :label="artifact ? label(artifact) : '选择神器'" eyebrow="ARTIFACT / 神器本体" :subtitle="artifact ? english(artifact) : '点击查看神器图鉴，再配置节点'" :badge="artifact ? (artifact.selectable ? `${artifact.sockets.length} 个官方插槽 · 点击更换` : '旧定义 · 请重新选择') : ''" :empty="!artifact" action-label="选择神器" @click="openPicker('artifact')" />
+          <LoadoutTile :image="visualIcon(artifact)" :label="artifact ? label(artifact) : '选择神器'" eyebrow="ARTIFACT / 神器本体" :subtitle="artifact ? english(artifact) : '点击查看神器图鉴，再配置节点'" :badge="artifact ? (artifact.selectable ? `${artifact.sockets.length} 个官方插槽 点击更换` : '旧定义 请重新选择') : ''" :empty="!artifact" action-label="选择神器" @click="openPicker('artifact')" />
           <p class="muted">{{ artifact?.note || '先选择复刻神器，再按每个插槽的官方候选池配置。节点不可重复，更换神器会清空节点。' }} <RouterLink to="/manifest">查看神器与历史目录</RouterLink></p>
-          <div v-if="artifact?.selectable" class="artifact-sockets"><LoadoutTile v-for="socket in artifact.sockets" :key="socket.socketIndex" compact :image="visualIcon(nodeAt(socket.socketIndex))" :label="nodeAt(socket.socketIndex) ? label(nodeAt(socket.socketIndex)) : '选择节点'" :eyebrow="`插槽 ${socket.socketIndex + 1} · ${socket.nodeHashes.length} 个候选`" :description="visualDescription(nodeAt(socket.socketIndex))" :empty="!nodeAt(socket.socketIndex)" :action-label="`神器插槽${socket.socketIndex + 1}`" @click="openPicker('artifactNode', null, socket.socketIndex)" /></div>
+          <div v-if="artifact?.selectable" class="artifact-sockets"><LoadoutTile v-for="socket in artifact.sockets" :key="socket.socketIndex" compact :image="visualIcon(nodeAt(socket.socketIndex))" :label="nodeAt(socket.socketIndex) ? label(nodeAt(socket.socketIndex)) : '选择节点'" :eyebrow="`插槽 ${socket.socketIndex + 1} ${socket.nodeHashes.length} 个候选`" :description="visualDescription(nodeAt(socket.socketIndex))" :empty="!nodeAt(socket.socketIndex)" :action-label="`神器插槽${socket.socketIndex + 1}`" @click="openPicker('artifactNode', null, socket.socketIndex)" /></div>
           <p v-else-if="artifact" class="muted">旧节点已保留在草稿中，但不视为当前有效配置。请重新选择复刻神器。</p>
           <p v-else class="empty-note">尚未选择神器。无神器依赖的构筑可以留空。</p>
         </section>
       </div>
       <section class="panel"><h2><b>03</b> 武器与 Perk 组合 <small>每组是一套独立搭配，不与其他组交叉配对</small></h2>
         <article v-for="(row, index) in draft.weapons" :key="index" class="weapon-row">
-          <LoadoutTile :image="visualIcon(weapon(index))" :label="weapon(index) ? label(weapon(index)) : '选择武器'" :eyebrow="['动能栏位', '能量栏位', '威能栏位'][index]" :subtitle="english(weapon(index))" :badge="row.manifestHash ? `#${row.manifestHash} · 点击更换` : '点击浏览武器卡片'" :empty="!weapon(index)" :action-label="`选择武器${index + 1}`" @click="openPicker('weapon', index)" />
+          <LoadoutTile :image="visualIcon(weapon(index))" :label="weapon(index) ? label(weapon(index)) : '选择武器'" :eyebrow="['动能栏位', '能量栏位', '威能栏位'][index]" :subtitle="english(weapon(index))" :badge="row.manifestHash ? `#${row.manifestHash} 点击更换` : '点击浏览武器卡片'" :empty="!weapon(index)" :action-label="`选择武器${index + 1}`" @click="openPicker('weapon', index)" />
           <WeaponPerkCombinations :weapon="weapon(index)" :row="row" :weapon-index="index" :manifest-version="snapshot.manifestVersion" @change="next => draft.weapons[index] = next" />
           <a-input v-model:value="row.notes" :aria-label="`武器${index + 1}备注`" placeholder="武器职责、替代武器或固定异域特性备注" :maxlength="3000" />
         </article>
@@ -344,7 +344,7 @@ watch(search, () => { page.value = 1 })
           <a-button v-if="draft.mods[slot].some(m => !sockets(slot).some(s => s.index === m.socketIndex))" size="small" @click="draft.mods[slot] = []">清除未匹配的旧模组</a-button>
         </article></div>
         <p class="muted">按所选 Hash 的模组插槽检查；10 能量是假设已满升级的规划预算，不以装备总插槽数推导。突袭、调谐、锻造与巧匠等附加限制还需游戏内核对。</p>
-        <div v-for="set in setEffects" :key="set.hash" class="set-note"><strong>{{ label(set) }} · 推荐 {{ set.count }} 件</strong><span v-for="perk in set.perks" :key="perk.sandboxPerkHash" :class="{ inactive: set.count < perk.requiredSetCount }">{{ perk.requiredSetCount }} 件：{{ label(perk) }} — {{ description(perk) }}</span></div>
+        <div v-for="set in setEffects" :key="set.hash" class="set-note"><strong>{{ label(set) }} 推荐 {{ set.count }} 件</strong><span v-for="perk in set.perks" :key="perk.sandboxPerkHash" :class="{ inactive: set.count < perk.requiredSetCount }">{{ perk.requiredSetCount }} 件：{{ label(perk) }} — {{ description(perk) }}</span></div>
         <a-textarea v-model:value="draft.armorNotes" aria-label="护甲套装备注" placeholder="套装件数、核心异域、可替换部位、调谐或异域职业装备特性备注" :auto-size="{ minRows: 2, maxRows: 8 }" :maxlength="10000" />
       </section>
       <section class="panel"><h2><b>05</b> 六维目标与刷装建议</h2><StatRecommendations :targets="draft.statRecommendations" editable @change="(key, bound, value) => draft.statRecommendations[key][bound] = value" />

@@ -51,7 +51,7 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
 
     <section class="tier-intro">
       <div>
-        <p class="tier-kicker">CRUCIBLE FIELD INDEX · 2026.09</p>
+        <p class="tier-kicker">CRUCIBLE FIELD INDEX 2026.09</p>
         <h1>手炮竞技天梯</h1>
         <p>将射速、属性、框架、初始词条与实战判断放进同一张横向天梯。排名按竞技场泛用性整理，默认展示核心信息，可展开配置与评语，点击武器查看详情。</p>
       </div>
@@ -60,7 +60,7 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
 
     <section class="tier-controls" aria-label="天梯筛选">
       <label class="tier-search"><span>检索武器</span><input v-model="keyword" type="search" placeholder="名称、框架或评语…" /></label>
-      <label><span>梯级</span><select v-model="tierFilter"><option value="">全部梯级</option><option v-for="(_, tier) in tierMeta" :key="tier" :value="tier">{{ tier }} · {{ tierMeta[tier].label }}</option></select></label>
+      <label><span>梯级</span><select v-model="tierFilter"><option value="">全部梯级</option><option v-for="(_, tier) in tierMeta" :key="tier" :value="tier">{{ tier }} {{ tierMeta[tier].label }}</option></select></label>
       <label><span>射速</span><select v-model="rpmFilter"><option value="">全部射速</option><option value="120">120 RPM</option><option value="140">140 RPM</option><option value="150">150 RPM</option><option value="180">180 RPM</option></select></label>
       <button type="button" class="tier-reset" @click="resetFilters">清除筛选</button>
     </section>
@@ -72,19 +72,19 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
     </div>
 
     <section class="tier-board-shell" aria-labelledby="tier-board-title">
-      <header class="tier-board-head"><div><span>WEAPON COMPARISON</span><h2 id="tier-board-title">武器横向对比</h2></div><p role="status" aria-live="polite"><b>{{ rows.length }}</b> / {{ handCannonTierList.length }} 件 · 输入即筛选</p></header>
-      <div class="column-controls" role="group" aria-label="表格显示列"><span>显示内容</span><button type="button" :aria-pressed="showTraits" @click="showTraits = !showTraits">{{ showTraits ? '收起词条配置' : '展开词条配置' }}</button><button type="button" :aria-pressed="showAnalysis" @click="showAnalysis = !showAnalysis">{{ showAnalysis ? '收起实战评语' : '展开实战评语' }}</button><small>当前 {{ displayColumns }} 列 · 手机端逐条展开</small></div>
+      <header class="tier-board-head"><div><span>WEAPON COMPARISON</span><h2 id="tier-board-title">武器横向对比</h2></div><p role="status" aria-live="polite"><b>{{ rows.length }}</b> / {{ handCannonTierList.length }} 件 输入即筛选</p></header>
+      <div class="column-controls" role="group" aria-label="表格显示列"><span>显示内容</span><button type="button" :aria-pressed="showTraits" @click="showTraits = !showTraits">{{ showTraits ? '收起词条配置' : '展开词条配置' }}</button><button type="button" :aria-pressed="showAnalysis" @click="showAnalysis = !showAnalysis">{{ showAnalysis ? '收起实战评语' : '展开实战评语' }}</button><small>当前 {{ displayColumns }} 列 手机端逐条展开</small></div>
       <div v-if="status === 'loading'" class="tier-loading"><i v-for="n in 8" :key="n"></i></div>
       <div v-else-if="status === 'error'" class="empty error">Manifest 加载失败，暂时无法生成天梯详情。</div>
       <div v-else class="tier-table-scroll" tabindex="0" role="region" aria-label="武器对比表，可横向滚动">
         <table class="tier-table" :class="{ expanded: showTraits, analyzed: showAnalysis }"><caption class="table-caption">手炮竞技对比，评级来自编辑判断；词条为官方初始配置。</caption>
           <colgroup><col class="col-weapon" /><col class="col-rpm" /><col class="col-element" /><col class="col-frame" /><col class="col-source" /><template v-if="showTraits"><col class="col-barrel" /><col class="col-magazine" /><col class="col-perk" /><col class="col-perk" /><col class="col-origin" /></template><col v-if="showAnalysis" class="col-comment" /><col class="col-rank" /><col class="col-tier" /></colgroup>
           <thead>
-            <tr class="column-groups"><th>武器</th><th colspan="4">INFO · 基础信息</th><th v-if="showTraits" colspan="5">TRAITS · 初始配置</th><th :colspan="showAnalysis ? 3 : 2">ANALYSIS · 评级</th></tr>
+            <tr class="column-groups"><th>武器</th><th colspan="4">INFO 基础信息</th><th v-if="showTraits" colspan="5">TRAITS 初始配置</th><th :colspan="showAnalysis ? 3 : 2">ANALYSIS 评级</th></tr>
             <tr><th class="sticky-weapon">武器 / Weapon</th><th>射速</th><th>属性</th><th>框架</th><th>来源</th><template v-if="showTraits"><th>枪管</th><th>弹匣</th><th>特性 1</th><th>特性 2</th><th>起源特性</th></template><th v-if="showAnalysis">实战评语</th><th class="sticky-rank">排名</th><th class="sticky-tier">T级</th></tr>
           </thead>
           <tbody>
-            <template v-for="(row, index) in rows" :key="row.rank"><tr v-if="index === 0 || rows[index - 1].tier !== row.tier" class="tier-divider"><th :colspan="displayColumns" scope="rowgroup">{{ row.tier }} · {{ tierMeta[row.tier].label }} <span>{{ rows.filter(r => r.tier === row.tier).length }} 件</span></th></tr><tr :class="`row-tier-${row.tier.toLowerCase()}`">
+            <template v-for="(row, index) in rows" :key="row.rank"><tr v-if="index === 0 || rows[index - 1].tier !== row.tier" class="tier-divider"><th :colspan="displayColumns" scope="rowgroup">{{ row.tier }} {{ tierMeta[row.tier].label }} <span>{{ rows.filter(r => r.tier === row.tier).length }} 件</span></th></tr><tr :class="`row-tier-${row.tier.toLowerCase()}`">
               <td class="sticky-weapon weapon-cell"><button type="button" :disabled="!row.item" @click="selectedWeapon = row.item"><span class="tier-weapon-icon"><img v-if="icon(row.item)" :src="icon(row.item)" :alt="`${row.nameZh} 武器图标`" loading="lazy" /><i v-else>HC</i></span><span><strong>{{ row.nameZh }}</strong><small>{{ row.name }}</small></span></button></td>
               <td class="numeric">{{ row.rpm }}</td><td><span :class="['element-dot', row.elementClass]"></span>{{ row.element }}</td><td>{{ row.frame }}</td><td>{{ row.source }}</td><template v-if="showTraits"><td>{{ row.barrel }}</td><td>{{ row.magazine }}</td><td>{{ row.perk1 }}</td><td>{{ row.perk2 }}</td><td>{{ row.origin }}</td></template><td v-if="showAnalysis" class="comment-cell">{{ row.note }}</td><td class="sticky-rank numeric">{{ row.rank }}</td><td :class="['sticky-tier', `tier-${row.tier.toLowerCase()}`]"><strong>{{ row.tier }}</strong></td>
             </tr></template>
@@ -92,14 +92,14 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
         </table>
         <div v-if="!rows.length" class="empty">没有符合当前条件的手炮。</div>
       </div>
-      <div v-if="status !== 'loading' && status !== 'error'" class="tier-mobile-list"><article v-for="row in rows" :key="row.rank"><header><span :class="['mobile-grade', `tier-${row.tier.toLowerCase()}`]">{{ row.tier }}</span><div><EntityLink v-if="row.item" :item="row.item" kind="equipment" :label="row.nameZh" /><strong v-else>{{ row.nameZh }}</strong><small>{{ row.name }} · #{{ row.rank }}</small></div><span>{{ row.rpm }} RPM</span></header><p>{{ row.element }} · {{ row.frame }} · {{ row.source }}</p><details :open="showTraits || showAnalysis"><summary>配置与实战评语</summary><dl><div><dt>枪管 / 弹匣</dt><dd>{{ row.barrel }} / {{ row.magazine }}</dd></div><div><dt>特性</dt><dd>{{ row.perk1 }} / {{ row.perk2 }}</dd></div><div><dt>起源特性</dt><dd>{{ row.origin }}</dd></div></dl><p>{{ row.note }}</p></details></article><p v-if="!rows.length" class="empty">没有符合当前条件的手炮。</p></div>
-      <footer class="tier-method"><span>判定维度：有效射程 · 击杀容错 · 操控手感 · 词条上限 · 获取成本</span><span>排名为编辑评估，基础数据来自当前 Bungie Manifest 快照</span></footer>
+      <div v-if="status !== 'loading' && status !== 'error'" class="tier-mobile-list"><article v-for="row in rows" :key="row.rank"><header><span :class="['mobile-grade', `tier-${row.tier.toLowerCase()}`]">{{ row.tier }}</span><div><EntityLink v-if="row.item" :item="row.item" kind="equipment" :label="row.nameZh" /><strong v-else>{{ row.nameZh }}</strong><small>{{ row.name }} #{{ row.rank }}</small></div><span>{{ row.rpm }} RPM</span></header><p>{{ row.element }} {{ row.frame }} {{ row.source }}</p><details :open="showTraits || showAnalysis"><summary>配置与实战评语</summary><dl><div><dt>枪管 / 弹匣</dt><dd>{{ row.barrel }} / {{ row.magazine }}</dd></div><div><dt>特性</dt><dd>{{ row.perk1 }} / {{ row.perk2 }}</dd></div><div><dt>起源特性</dt><dd>{{ row.origin }}</dd></div></dl><p>{{ row.note }}</p></details></article><p v-if="!rows.length" class="empty">没有符合当前条件的手炮。</p></div>
+      <footer class="tier-method"><span>判定维度：有效射程 击杀容错 操控手感 词条上限 获取成本</span><span>排名为编辑评估，基础数据来自当前 Bungie Manifest 快照</span></footer>
     </section>
 
     <div v-if="selectedWeapon" class="weapon-overlay" @click.self="selectedWeapon = null">
       <section class="weapon-dialog" role="dialog" aria-modal="true" :aria-label="`${selectedWeapon.nameZh || selectedWeapon.name} weapon details`">
         <button type="button" class="detail-close" aria-label="关闭详情" @click="selectedWeapon = null">×</button>
-        <header class="detail-head"><img v-if="icon(selectedWeapon)" :src="icon(selectedWeapon)" :alt="`${selectedWeapon.nameZh || selectedWeapon.name} 武器图标`" /><div><small>MANIFEST WEAPON</small><h2>{{ selectedWeapon.nameZh || selectedWeapon.name }}</h2><p>{{ selectedWeapon.name }}</p><span>Hash {{ selectedWeapon.hash }} · {{ selectedWeapon.weaponFamily }}</span></div></header>
+        <header class="detail-head"><img v-if="icon(selectedWeapon)" :src="icon(selectedWeapon)" :alt="`${selectedWeapon.nameZh || selectedWeapon.name} 武器图标`" /><div><small>MANIFEST WEAPON</small><h2>{{ selectedWeapon.nameZh || selectedWeapon.name }}</h2><p>{{ selectedWeapon.name }}</p><span>Hash {{ selectedWeapon.hash }} {{ selectedWeapon.weaponFamily }}</span></div></header>
         <div class="stat-grid"><div v-for="stat in stats(selectedWeapon)" :key="stat.key"><span>{{ stat.label }}<small>{{ stat.key }}</small></span><strong>{{ stat.value }}</strong><i><b :style="{ width: `${Math.min(100, stat.value)}%` }"></b></i></div></div>
         <footer><EntityLink :item="selectedWeapon" kind="equipment" label="查看百科、来源与相关构筑" /></footer>
       </section>

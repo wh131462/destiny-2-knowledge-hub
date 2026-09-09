@@ -50,7 +50,7 @@ export function createLoadoutExportModel(draft, context) {
     ...card(byHash(equipment, draft.armor[slot]?.manifestHash), draft.armor[slot]?.manifestHash ? `未匹配 #${draft.armor[slot].manifestHash}` : '护甲未指定', label),
     mods: draft.mods[slot].map(row => {
       const mod = byHash(mods, row.manifestHash)
-      return card(mod, `未匹配模组 #${row.manifestHash}`, `插槽 ${row.socketIndex + 1}${mod?.energyCost != null ? ` · ${mod.energyCost} 能量` : ''}`)
+      return card(mod, `未匹配模组 #${row.manifestHash}`, `插槽 ${row.socketIndex + 1}${mod?.energyCost != null ? ` ${mod.energyCost} 能量` : ''}`)
     })
   }))
   const sets = itemSets.flatMap(set => {
@@ -64,7 +64,7 @@ export function createLoadoutExportModel(draft, context) {
     stats: Object.entries(statLabels).map(([key, name]) => ({ name, value: formatTarget(draft.statRecommendations[key]) })),
     talentGroups, weapons, armor, sets,
     artifact: card(artifact, draft.artifactHash ? `未匹配神器 #${draft.artifactHash}` : '未指定神器'),
-    artifactNodes: artifactNodes.map(row => card(byHash(allNodes, row.nodeHash), `未匹配节点 #${row.nodeHash}`, row.socketIndex == null ? '原节点 · 待核对插槽' : `插槽 ${row.socketIndex + 1}`)),
+    artifactNodes: artifactNodes.map(row => card(byHash(allNodes, row.nodeHash), `未匹配节点 #${row.nodeHash}`, row.socketIndex == null ? '原节点 待核对插槽' : `插槽 ${row.socketIndex + 1}`)),
     ghost: draft.ghostArmorerHash ? card(byHash(mods, draft.ghostArmorerHash), `未匹配护甲商 #${draft.ghostArmorerHash}`, '机灵护甲商', true) : null,
     statNotes: draft.statNotes, farmingNotes: draft.farmingNotes, armorNotes: draft.armorNotes, notes: draft.notes,
     warnings: [...new Set([...issues, ...(draft.manifestVersion && draft.manifestVersion !== snapshot.manifestVersion ? ['原配装版本与当前快照不同，请核对推荐。'] : [])])]

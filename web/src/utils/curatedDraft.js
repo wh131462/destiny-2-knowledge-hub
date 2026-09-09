@@ -16,7 +16,7 @@ export function recommendedColumns(selection, equipment) {
 
 export function curatedDraft(build, { equipment, mods, itemSets, plugSets }) {
   const draft = blankDraft()
-  Object.assign(draft, { name: `${build.name} · 副本`, classId: build.classId, subclassId: build.subclassId, manifestVersion: build.manifestVersion })
+  Object.assign(draft, { name: `${build.name} 副本`, classId: build.classId, subclassId: build.subclassId, manifestVersion: build.manifestVersion })
   draft.abilities = { ...draft.abilities, ...structuredClone(build.abilities) }
   const exotic = gearById[build.exoticArmorId]
   const exoticEntity = equipment.find(i => Number(i.hash) === Number(exotic?.manifestHash))

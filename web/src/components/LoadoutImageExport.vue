@@ -32,7 +32,7 @@ async function generate() {
     const result = await rasterizeLoadoutHtml(html, { signal })
     if (request !== sequence) return
     pngUrl.value = URL.createObjectURL(result.blob)
-    dimensions.value = `${result.pixelWidth} × ${result.pixelHeight} px · ${(result.blob.size / 1024 / 1024).toFixed(1)} MB`
+    dimensions.value = `${result.pixelWidth} × ${result.pixelHeight} px ${(result.blob.size / 1024 / 1024).toFixed(1)} MB`
   } catch (e) {
     if (request === sequence && e.name !== 'AbortError') error.value = e.message || '长图生成失败，请重试。'
   } finally { if (request === sequence) busy.value = false }
@@ -51,7 +51,7 @@ onBeforeUnmount(dispose)
       <div v-if="pngUrl" class="image-preview"><img :src="pngUrl" alt="配装一图流 PNG 预览" /></div>
       <div v-else class="export-placeholder">{{ loading || busy ? '正在生成一图流，请稍候' : '暂无 PNG 预览，可重试或保存完整 HTML' }}</div>
       <footer class="export-actions">
-        <span>{{ dimensions || '独立 HTML · 固定排版宽度 1200 px' }}</span>
+        <span>{{ dimensions || '独立 HTML 固定排版宽度 1200 px' }}</span>
         <button type="button" :disabled="busy || loading" @click="emit('retry')">重新生成</button>
         <a v-if="htmlUrl" :href="htmlUrl" :download="`${filename}.html`">保存独立 HTML</a>
         <a v-if="pngUrl" class="download-png" :href="pngUrl" :download="`${filename}.png`">下载 PNG 长图</a>

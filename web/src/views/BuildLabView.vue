@@ -53,7 +53,7 @@ const weaponItems = build => build.source === 'community' ? build.submission.loa
     <div class="community-status" aria-live="polite">
       <span v-if="status === 'unconfigured'">社区投稿尚未启用，可以先在本地创建构筑。</span>
       <span v-else-if="error" role="alert">{{ error }} {{ snapshot ? '当前显示上次成功同步的数据。' : '' }}</span>
-      <span v-else>{{ snapshot ? `数据更新于 ${new Date(snapshot.generatedAt).toLocaleString()}` : '正在读取社区构筑…' }} · GitHub 操作将在同步完成后显示</span>
+      <span v-else>{{ snapshot ? `数据更新于 ${new Date(snapshot.generatedAt).toLocaleString()}` : '正在读取社区构筑…' }} GitHub 操作将在同步完成后显示</span>
       <button v-if="config.enabled" type="button" class="btn" :disabled="status === 'loading'" @click="refresh">{{ status === 'loading' ? '刷新中…' : '刷新列表' }}</button>
     </div>
     <section v-if="hasPublicBuilds" class="gallery-controls" aria-label="筛选公开构筑">
@@ -65,7 +65,7 @@ const weaponItems = build => build.source === 'community' ? build.submission.loa
 
     <div v-if="hasPublicBuilds" class="result-line">
       <span>{{ results.length }} 份公开方案</span>
-      <small>社区投稿 · 保留完整词条组合与作者备注</small>
+      <small>社区投稿 保留完整词条组合与作者备注</small>
     </div>
 
     <div v-if="status === 'loading'" class="build-list loading" aria-label="正在加载构筑">

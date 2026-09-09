@@ -49,24 +49,24 @@ watch([search, variant], () => { page.value = 1; preview.value = null })
         <label :for="`weapon-${weaponIndex}-${column.key}`">{{ column.label }}</label>
         <button type="button" class="perk-choice" :disabled="!compatible || !column.options.length" :aria-label="`武器${weaponIndex + 1}选择${column.label}Perk`" @click="open(column.key)">
           <span class="perk-icons"><img v-for="p in selection(column).chosen.slice(0, 3)" :key="p.hash" :src="icon(p)" alt="" /><span v-if="!selection(column).chosen.length" aria-hidden="true">＋</span></span>
-          <span>{{ column.options.length ? (selection(column).chosen.length ? `${selection(column).chosen.length} 个推荐 · 更改` : `选择 Perk · ${column.options.length} 个候选`) : !weapon ? '先选择武器' : column.key === 'masterwork' ? '大师之作保留手动建议' : '无可选择数据 · 可手填' }}</span>
+          <span>{{ column.options.length ? (selection(column).chosen.length ? `${selection(column).chosen.length} 个推荐 更改` : `选择 Perk ${column.options.length} 个候选`) : !weapon ? '先选择武器' : column.key === 'masterwork' ? '大师之作保留手动建议' : '无可选择数据 可手填' }}</span>
         </button>
         <a-input :id="`weapon-${weaponIndex}-${column.key}`" :value="text(column.key)" :aria-label="`武器${weaponIndex + 1}${column.label}`" placeholder="选择或手填，/ 分隔备选" :maxlength="3000" @blur="emit('change', manualPerkRecommendation(row, column.key, $event.target.value))" />
         <small v-if="column.missingHashes?.length" class="error">{{ column.missingHashes.length }} 个候选缺少公开详情，暂不可选</small>
         <small v-if="compatible && selection(column).unknownHashes.length" class="error">保留的旧词条 Hash 不在当前池中：{{ selection(column).unknownHashes.join(' / ') }}，请核对</small>
       </div>
     </div>
-    <a-modal :open="Boolean(current)" :title="`${weapon?.nameZh || weapon?.name || ''} · ${combinationName || '当前组合'} · ${current?.label || ''}`" width="1120px" :footer="null" wrap-class-name="weapon-perk-modal" @cancel="activeKey = null">
+    <a-modal :open="Boolean(current)" :title="`${weapon?.nameZh || weapon?.name || ''} ${combinationName || '当前组合'} ${current?.label || ''}`" width="1120px" :footer="null" wrap-class-name="weapon-perk-modal" @cancel="activeKey = null">
       <div v-if="current" class="perk-modal-content">
-        <p class="pool-caption">仅修改「{{ combinationName || '当前组合' }}」 · 武器 #{{ weapon.hash }} · 实际插槽 {{ current.socketIndex + 1 }} · {{ current.options.length }} 个候选。同栏多选以 / 表示组内可互换，不会影响其他组合。</p>
+        <p class="pool-caption">仅修改「{{ combinationName || '当前组合' }}」 武器 #{{ weapon.hash }} 实际插槽 {{ current.socketIndex + 1 }} {{ current.options.length }} 个候选。同栏多选以 / 表示组内可互换，不会影响其他组合。</p>
         <p class="pool-caption">普通与强化词条分别标记。静态候选可能受强化、锻造、解锁等条件限制，不等于随机掉落池；不按账号是否拥有过滤。</p>
         <nav class="perk-column-tabs" aria-label="推荐词条栏目"><button v-for="c in columns.filter(c => c.options.length)" :key="c.key" type="button" :aria-pressed="current.key === c.key" @click="open(c.key)">{{ c.label }} <small>{{ c.options.length }}</small></button></nav>
         <div class="perk-search"><a-input v-model:value="search" aria-label="搜索武器Perk" placeholder="搜索中文、英文、效果或 Hash" allow-clear /><div class="perk-variants" role="group" aria-label="词条版本"><button v-for="[key, label] in [['all','全部'],['normal','普通'],['enhanced','强化']]" :key="key" type="button" :aria-pressed="variant === key" @click="variant = key">{{ label }}</button></div></div>
         <p class="pool-caption" role="status" aria-live="polite">{{ candidates.length }} / {{ current.options.length }} 个词条</p>
         <p v-if="current.missingHashes?.length" class="error pool-caption">{{ current.missingHashes.length }} 个原始候选没有公开词条详情，未将其当成可选 Perk。</p>
         <div class="perk-browser">
-          <div class="perk-results"><div class="perk-grid"><LoadoutTile v-for="p in visible" :key="p.hash" :image="icon(p)" :label="perkLabel(p)" :subtitle="p.name" :description="description(p)" :badge="`${isEnhancedPerk(p) ? '强化词条' : current.options.length === 1 ? '固定选项' : '普通词条'} · #${p.hash}`" toggle :active="isSelected(p)" @click="toggle(p)" @mouseenter="preview = p" @focus="preview = p" /></div><p v-if="!visible.length" class="pool-caption">没有匹配项，清空搜索或切换词条版本。</p></div>
-          <aside v-if="detail" class="perk-detail" aria-label="武器Perk详情"><img v-if="icon(detail)" :src="icon(detail)" alt="" /><h3>{{ perkLabel(detail) }}</h3><small>{{ detail.name }} · #{{ detail.hash }}</small><p>{{ description(detail) || '官方没有提供详细效果文本。' }}</p><EntityLink :item="detail" kind="plugs" label="查看百科与来源" new-tab /></aside>
+          <div class="perk-results"><div class="perk-grid"><LoadoutTile v-for="p in visible" :key="p.hash" :image="icon(p)" :label="perkLabel(p)" :subtitle="p.name" :description="description(p)" :badge="`${isEnhancedPerk(p) ? '强化词条' : current.options.length === 1 ? '固定选项' : '普通词条'} #${p.hash}`" toggle :active="isSelected(p)" @click="toggle(p)" @mouseenter="preview = p" @focus="preview = p" /></div><p v-if="!visible.length" class="pool-caption">没有匹配项，清空搜索或切换词条版本。</p></div>
+          <aside v-if="detail" class="perk-detail" aria-label="武器Perk详情"><img v-if="icon(detail)" :src="icon(detail)" alt="" /><h3>{{ perkLabel(detail) }}</h3><small>{{ detail.name }} #{{ detail.hash }}</small><p>{{ description(detail) || '官方没有提供详细效果文本。' }}</p><EntityLink :item="detail" kind="plugs" label="查看百科与来源" new-tab /></aside>
         </div>
         <div class="selected-perks" aria-label="本栏推荐"><span v-if="!chosen.chosen.length && !chosen.manual.length">本栏尚未指定推荐</span><button v-for="p in chosen.chosen" :key="p.hash" type="button" :aria-label="`取消推荐${perkLabel(p)}`" @click="toggle(p)"><img v-if="icon(p)" :src="icon(p)" alt="" />{{ perkLabel(p) }} ×</button></div>
         <p v-if="chosen.manual.length || chosen.unknownHashes.length" class="pool-caption">保留的手填 / 未匹配旧推荐：{{ [...chosen.manual, ...chosen.unknownHashes.map(h => `#${h}`)].join(' / ') }}。选择其他 Perk 不会删除它们。</p>

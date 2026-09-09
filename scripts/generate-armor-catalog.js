@@ -9,7 +9,7 @@ export async function generateArmorCatalog() {
   const catalog = createArmorCatalog(input)
   const json = JSON.stringify(catalog)
   for (const dir of ['data/catalog', 'web/public/data']) await writeFile(new URL(`../${dir}/manifest-armor.json`, import.meta.url), json + '\n')
-  console.log(`防具目录：${catalog.items.length} 个定义 · ${catalog.sets.length} 套 · ${catalog.mods.length} 个模组 · ${(json.length / 1024 / 1024).toFixed(1)} MB`)
+  console.log(`防具目录：${catalog.items.length} 个定义 ${catalog.sets.length} 套 ${catalog.mods.length} 个模组 ${(json.length / 1024 / 1024).toFixed(1)} MB`)
 }
 
 if (process.argv[1] && import.meta.url === new URL(process.argv[1], 'file:').href) await generateArmorCatalog()

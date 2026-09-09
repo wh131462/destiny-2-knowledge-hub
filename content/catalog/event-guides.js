@@ -1,8 +1,8 @@
 const step = (name, objective, caution) => ({ name, objective, caution })
-const reference = (page, title) => ({ title: `${title} · Destinypedia`, url: `https://www.destinypedia.com/${page}`, checkedAt: '2026-09-08' })
+const reference = (page, title) => ({ title: `${title} Destinypedia`, url: `https://www.destinypedia.com/${page}`, checkedAt: '2026-09-08' })
 const guide = (id, name, en, fireteam, tags, intro, mechanics, encounters, preparation, rewards, rewardNote, page, extra = {}) => ({
   id: `event-${id}`, name, en, aliases: [], fireteam, tags, intro, mechanics, encounters, preparation, rewards, rewardNote,
-  destination: '限时活动 · 开放时查看活动页', release: '节日与赛事',
+  destination: '限时活动 开放时查看活动页', release: '节日与赛事',
   scope: '玩法与历年版本资料；日期、任务、货币和当期奖励以该届活动页为准。',
   reference: reference(page, en), ...extra
 })
@@ -17,20 +17,20 @@ export const eventGuides = [
     ['准备可边移动边清怪的装备，再留一把武器处理精英或首领。', '组队可分区域找火种，转场前确认附近是否有未拾取目标。', '先决定想收集外观还是刷特定武器，再选择任务与奖励。'],
     ['Something New', 'Compass Rose'], '新玩意、玫瑰罗盘是历届代表武器；当届是否返场、词条池与护甲锻造条件须分别确认。', 'Solstice', {
       references: [reference('European_Aerial_Zone', 'European Aerial Zone'), reference('Portal', '活动页与至日锻造')],
-      evidence: [{ hash: 2176145966, label: '篝火盛典 · 官方活动定义' }]
+      evidence: [{ hash: 2176145966, label: '篝火盛典 官方活动定义' }]
     }),
   guide('festival-of-the-lost', '英灵日', 'Festival of the Lost', '3 / 6 人模式', ['节日 PvE', '版本分流', '面具收集'],
     '围绕面具、糖果与无头者展开的节日。玩法并非一直是同一个副本：早期有闹鬼森林，2021 年起有三人闹鬼遗失区域，2025 年增加六人闹鬼忧愁圣坛。',
     '闹鬼遗失区域通过召唤无头者获得破盾投掷物；闹鬼忧愁圣坛则要收集甜点、投喂目标并完成波次防守。两套流程不能混用。',
     [step('选择对应届次的玩法', '查看活动页所列模式、面具与任务要求，再选择闹鬼遗失区域或闹鬼忧愁圣坛等具体入口。', '三人和六人是不同模式的队伍规模，不能只按节日名称判断。'),
-      step('闹鬼遗失区域 · 2021 年起的版本', '站入召唤圈唤出无头者并击败；首领免疫时再次处理无头者，拾取南瓜炸弹破盾。', '幽灵书页与实体书页属于特定届次的进度系统，不是所有版本必需材料。'),
-      step('闹鬼忧愁圣坛 · 2025 版', '收集精英掉落的甜点并交给无头者；面对带盾食人魔时调用邪魔族魔法，让友方尖啸者破盾。', '交付、清怪与解盾需要同时推进，仅攻击免疫目标无法过关。'),
+      step('闹鬼遗失区域 2021 年起的版本', '站入召唤圈唤出无头者并击败；首领免疫时再次处理无头者，拾取南瓜炸弹破盾。', '幽灵书页与实体书页属于特定届次的进度系统，不是所有版本必需材料。'),
+      step('闹鬼忧愁圣坛 2025 版', '收集精英掉落的甜点并交给无头者；面对带盾食人魔时调用邪魔族魔法，让友方尖啸者破盾。', '交付、清怪与解盾需要同时推进，仅攻击免疫目标无法过关。'),
       step('圣坛防守与收尾', '波次间按需要建造防御设施，完成后续波次后迎战先前投喂的无头者首领。', '该段属于圣坛版，不能套到闹鬼遗失区域的南瓜破盾流程。')],
     ['按任务要求装备面具，进入前确认自己选中的具体模式。', '范围清怪配合快速处理精英的武器，注意预留首领伤害手段。', '收集图鉴时先查缺少的面具、武器版本和节日目标。'],
     ['Mechabre', 'Jurassic Green', 'BrayTech Werewolf'], '列出历届代表武器，不表示每届都能获取相同版本；面具、纪念物与任务奖励也依当届规则。', 'Festival_of_the_Lost', {
       aliases: ['邪魔节', '失落节'],
       references: [reference('Haunted_Sectors', 'Haunted Sectors'), reference('Haunted_Altars_of_Sorrow', 'Haunted Altars of Sorrow')],
-      evidence: [{ hash: 1983194435, label: '闹鬼忧愁圣坛 · 六人匹配定义' }],
+      evidence: [{ hash: 1983194435, label: '闹鬼忧愁圣坛 六人匹配定义' }],
       scope: '区分闹鬼遗失区域与 2025 年闹鬼忧愁圣坛；未声明其中任一模式正在开放。'
     }),
   guide('dawning', '曙光节', 'The Dawning', '随所选活动', ['节日任务', '烘焙送礼', '日常兼顾'],
@@ -45,12 +45,12 @@ export const eventGuides = [
     '泰坦、猎人和术士通过活动目标争取职业荣誉。核心是完成相应挑战、取得奖牌并为职业贡献进度；历年专属战斗模式与计分方式会变化。',
     '根据活动目标获得并交付奖牌，查看职业进度。急速强攻是其中一种计时遭遇玩法，需在倒计时结束前连续完成经典战斗。',
     [step('确认职业与活动目标', '领取当届引导，阅读职业物品、挑战和奖牌获取要求，选择适合自己的模式。', '2020 年的桂冠收集规则不能当作每届固定要求。'),
-      step('急速强攻 · 对应模式开放时', '按所选入口完成连续遭遇，在计时限制内处理机制与首领；专家、职业匹配和无匹配入口要分清。', '官方快照记录了多种入口，存在定义并不代表这些入口同时开放。'),
+      step('急速强攻 对应模式开放时', '按所选入口完成连续遭遇，在计时限制内处理机制与首领；专家、职业匹配和无匹配入口要分清。', '官方快照记录了多种入口，存在定义并不代表这些入口同时开放。'),
       step('交付奖牌与领取奖励', '在活动指定位置交付已获得的奖牌，查看个人挑战和职业竞赛进度，再决定下一项任务。', '个人进度与职业总体排名不是同一个指标，奖牌上限与来源看当届说明。')],
     ['计时首领战准备清怪与爆发两套职责，避免所有人同时耗尽重弹。', '要完成职业匹配相关目标时，确认选对活动入口。', '按自己的挑战缺口安排活动，不必仅为职业排名反复刷同一目标。'],
     ['Heir Apparent', 'The Title', 'Taraxippos'], '法定继承人关联节日异域任务，催化剂有独立目标；力拔头筹与幽灵骏马为历届代表传说武器。', 'Guardian_Games', {
       aliases: ['守护者运动会'],
-      evidence: [{ hash: 139413740, label: '专家急速强攻 · 官方计时目标与职业匹配定义' }]
+      evidence: [{ hash: 139413740, label: '专家急速强攻 官方计时目标与职业匹配定义' }]
     }),
   guide('iron-banner', '铁旗', 'Iron Banner', '6 人 / 队', ['PvP', '目标争夺', '萨拉丁声望'],
     '由萨拉丁主持的限时熔炉竞技赛事。铁旗包含不同轮次的团队模式，围绕据点、火花或其他地图目标争取胜利，同时积累声望与铁旗奖励。',
@@ -60,7 +60,7 @@ export const eventGuides = [
       step('声望与聚焦', '完成对局和活动挑战，前往萨拉丁处检查声望奖励、记忆水晶与可聚焦装备。', '旧版铁旗代币与固定声望倍率已经过改动，费用和加成看商人当前说明。')],
     ['采用 PvP 的射程搭配、操控与生存思路，反冠军装备不是这里的配装重点。', '选择一把熟悉的主武器，另一把补足近身或远程短板。', '观察队伍推进方向，尽量和队友一起接战。'],
     ['Multimach CCX', 'Tinasha\'s Mastery'], '列出铁旗代表武器；萨拉丁的当前聚焦列表、复刻版本与解锁条件决定能换到什么。', 'Iron_Banner', {
-      aliases: ['钢铁旗', '钢铁旗帜'], combatMode: 'pvp', destination: '熔炉竞技场 · 萨拉丁',
+      aliases: ['钢铁旗', '钢铁旗帜'], combatMode: 'pvp', destination: '熔炉竞技场 萨拉丁',
       scope: 'Destiny 2 铁旗规则；初代与早期 D2 的战力优势、代币和声望规则不适用。'
     })
 ]

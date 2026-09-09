@@ -42,8 +42,8 @@ async function copy() {
       <ul v-if="prepared.errors?.length" class="notice" aria-label="投稿检查"><li v-for="error in prepared.errors" :key="error">{{ error }}</li></ul>
       <p v-for="warning in prepared.warnings" :key="warning" class="notice">{{ warning }}</p>
       <template v-if="prepared.body">
-        <label>投稿内容 · 可手动复制 <textarea :value="prepared.body" readonly rows="8" aria-label="投稿内容" spellcheck="false" /></label>
-        <div class="actions"><button type="button" class="btn primary" @click="copy">1 · 复制投稿内容</button><a v-if="href" class="btn" :href="href" target="_blank" rel="noopener noreferrer">2 · {{ origin ? '前往原 Issue 修改' : '前往 GitHub 投稿' }} ↗</a></div>
+        <label>投稿内容 可手动复制 <textarea :value="prepared.body" readonly rows="8" aria-label="投稿内容" spellcheck="false" /></label>
+        <div class="actions"><button type="button" class="btn primary" @click="copy">1 复制投稿内容</button><a v-if="href" class="btn" :href="href" target="_blank" rel="noopener noreferrer">2 {{ origin ? '前往原 Issue 修改' : '前往 GitHub 投稿' }} ↗</a></div>
       </template>
       <p role="status">{{ copyMessage }}</p>
       <p class="footnote">跳转不会自动提交。投稿为公开内容；关闭 Issue 可从本站下架，重新开启可恢复。被管理者屏蔽的投稿需先解除屏蔽；下架不会隐藏 GitHub 原文。更新将在同步成功后显示。</p>

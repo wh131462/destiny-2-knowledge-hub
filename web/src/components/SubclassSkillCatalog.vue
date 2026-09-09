@@ -14,7 +14,7 @@ const pools = [
   ['superIds', '超能'], ['classAbilityIds', '职业技能'], ['movementIds', '跳跃 / 移动'],
   ['meleeIds', '近战'], ['grenadeIds', '手雷'], ['aspectIds', '星相'],
   ['fragmentIds', '元素碎片'], ['facetIds', '棱镜特性'],
-  ['transcendenceIds', '超越 · 固定能力'], ['transcendenceGrenadeIds', '超越手雷 · 固定能力']
+  ['transcendenceIds', '超越 固定能力'], ['transcendenceGrenadeIds', '超越手雷 固定能力']
 ]
 const groups = computed(() => pools.map(([key, label]) => {
   const all = (props.subclass[key] || []).map(id => byId[id]).filter(Boolean)
@@ -25,7 +25,7 @@ const groups = computed(() => pools.map(([key, label]) => {
 
 <template>
   <section class="skill-catalog" aria-label="完整技能图鉴">
-    <header><div><h3>完整技能图鉴</h3><p>快照 {{ subclass.verifiedAt }} · 按该子职业的官方插槽列出全部选项；点击卡片展开效果。账号解锁条件请在游戏内查看。</p></div><a-input v-model:value="search" aria-label="搜索职业技能图鉴" placeholder="搜索中文 / 英文技能" allow-clear /></header>
+    <header><div><h3>完整技能图鉴</h3><p>快照 {{ subclass.verifiedAt }} 按该子职业的官方插槽列出全部选项；点击卡片展开效果。账号解锁条件请在游戏内查看。</p></div><a-input v-model:value="search" aria-label="搜索职业技能图鉴" placeholder="搜索中文 / 英文技能" allow-clear /></header>
     <p role="status" aria-live="polite" class="search-count">{{ groups.reduce((sum, group) => sum + group.items.length, 0) }} / {{ groups.reduce((sum, group) => sum + group.total, 0) }} 个技能</p>
     <section v-for="group in groups.filter(g => !search.trim() || g.items.length)" :key="group.key" class="catalog-group">
       <h4>{{ group.label }} <small>{{ group.items.length }} / {{ group.total }}</small></h4>
