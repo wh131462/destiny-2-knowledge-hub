@@ -12,11 +12,17 @@ import {
   gearById,
   modById,
   subclassById,
-  subclasses
+  subclasses,
+  elements
 } from '@/data/v2'
+import ClassEmblem from '@/components/ClassEmblem.vue'
+import { useLoadoutVisuals } from '@/composables/useLoadoutVisuals'
+import StatRecommendations from '@/components/StatRecommendations.vue'
+import WeaponRecommendations from '@/components/WeaponRecommendations.vue'
 import { useManifestAssets } from '@/composables/useManifestAssets'
 
-const { iconFor, assetFor, artifacts, equipmentItems, manifestMods, manifestPerks, plugSets, itemSets, vendorEntries, activityRewards, recordsForHash, entityForHash } = useManifestAssets()
+const manifest = useManifestAssets()
+const { artifacts, equipmentItems, manifestPerks, plugSets, itemSets, vendorEntries, activityRewards, recordsForHash, entityForHash } = manifest
 const route = useRoute()
 
 const classOptions = [
@@ -60,25 +66,12 @@ const recommendedBuild = computed(() => {
 })
 const subclass = computed(() => subclassById[recommendedBuild.value?.subclassId])
 const classInfo = computed(() => classOptions.find(item => item.id === recommendedBuild.value?.classId) || classOptions[0])
-const statTargets = computed(() => {
-  const build = recommendedBuild.value
-  const target = build?.targetStats || {}
-  const style = selectedStyle.value
-  return [
-    { key: 'health', label: '生命', value: target.resilience >= 100 ? '高' : '中', hint: '优先保证高压容错' },
-    { key: 'melee', label: '近战', value: style === 'addClear' && build?.classId === 'hunter' ? '80+' : '60+', hint: '技能循环核心' },
-    { key: 'grenade', label: '手雷', value: target.discipline >= 80 ? '80+' : '60+', hint: '控场与启动技能' },
-    { key: 'super', label: '超能', value: style === 'bossDamage' ? '80+' : '60+', hint: '按活动窗口积累' },
-    { key: 'classAbility', label: '职业', value: build?.classId === 'hunter' ? '80+' : '60+', hint: '闪身 / 路障 / 裂隙' },
-    { key: 'weapon', label: '武器', value: style === 'bossDamage' ? '150–200' : '100–150', hint: '武器协同预算' }
-  ]
-})
-
 const abilityItems = computed(() => {
   const abilities = recommendedBuild.value?.abilities || {}
   return [
     ['超能', abilities.superId],
     ['职业技能', abilities.classAbilityId],
+    ['跳跃', abilities.movementId],
     ['近战', abilities.meleeId],
     ['手雷', abilities.grenadeId]
   ].map(([label, id]) => ({ label, item: abilityById[id] })).filter(entry => entry.item)
@@ -94,31 +87,25 @@ const armorSlots = [
   ['helmet', '头盔'], ['arms', '臂铠'], ['chest', '胸甲'], ['legs', '腿甲'], ['classItem', '职业装备']
 ]
 const modsBySlot = computed(() => armorSlots.map(([key, label]) => ({ key, label, mods: (recommendedBuild.value?.armorMods?.[key] || []).map(id => modById[id]).filter(Boolean) })))
-const ghostMods = computed(() => {
-  const armorerName = selectedStyle.value === 'bossDamage' ? 'Gunner Armorer' : selectedStyle.value === 'survivability' ? 'Bulwark Armorer' : 'Brawler Armorer'
-  const findMod = englishName => manifestMods.value.find(item => item.name === englishName)
-  return [armorerName, 'Expert Tracker', 'Activity Mod Socket'].map(findMod).filter(Boolean)
-})
-const artifact = computed(() => artifacts.value?.[0] || null)
-const artifactHighlights = computed(() => (artifact.value?.tiers || []).map(tier => ({ ...tier, item: tier.items?.[0] || null })).filter(tier => tier.item))
+const artifact = computed(() => artifacts.value.find(a => Number(a.hash) === Number(recommendedBuild.value?.artifactHash)) || null)
+const artifactHighlights = computed(() => (artifact.value?.tiers || []).flatMap(tier => tier.items.filter(item => recommendedBuild.value?.artifactNodeHashes?.includes(item.hash)).map(item => ({ ...tier, item }))))
 const armorPieces = computed(() => {
   const build = recommendedBuild.value
-  const set = armorSetById[build?.armorSetId]
-  if (!set) return []
-  const prefix = String(set.en || '').replace(/\s+(Suit|Set)$/i, '').trim()
-  const slotLabels = { helmet: '头盔', arms: '臂铠', chest: '胸甲', legs: '腿甲', classItem: '职业' }
-  return armorSlots.map(([slot]) => {
-    const item = equipmentItems.value.find(candidate => candidate.itemType === 2 && candidate.classId === build?.classId && candidate.armorSlot === slot && candidate.name.startsWith(prefix) && candidate.icon)
-    return item ? { label: slotLabels[slot] || slot, item } : null
+  const set = itemSets.value.find(s => Number(s.hash) === Number(armorSetById[build?.armorSetId]?.manifestHash))
+  const core = equipmentItems.value.find(e => Number(e.hash) === Number(gearById[build?.exoticArmorId]?.manifestHash))
+  return armorSlots.map(([slot, label]) => {
+    const item = core?.armorSlot === slot ? core : equipmentItems.value.find(e => e.classId === build?.classId && e.armorSlot === slot && set?.itemHashes?.includes(e.hash))
+    return item ? { label, item } : null
   }).filter(Boolean)
 })
 
-function icon(item) { return iconFor(item) }
+const { visualIcon, visualAsset } = useLoadoutVisuals(manifest, subclass)
+function icon(item) { return visualIcon(item) }
 function name(item) { return item?.nameZh || item?.name || item?.en || '未命名实体' }
 function englishName(item, detail = null) { return item?.en || detail?.asset?.name || item?.name || '' }
 function openDetail(item, extra = {}) {
   if (!item) return
-  selectedDetail.value = { item, asset: assetFor(item), ...extra }
+  selectedDetail.value = { item, asset: visualAsset(item), ...extra }
 }
 function closeDetail() { selectedDetail.value = null }
 function onDetailKeydown(event) {
@@ -179,12 +166,14 @@ function displayBuildName(build) {
   return (build?.name || '智能配装方案').replace(/\s*(?:可复现基准流)\s*$/, '').trim()
 }
 function chooseClass(id) {
+  if (id === selectedClass.value) return
   selectedClass.value = id
   const first = classSubclasses.value[0]
   selectedSubclass.value = first?.id || ''
   selectedBuildId.value = ''
 }
 function chooseSubclass(id) {
+  if (id === selectedSubclass.value) return
   selectedSubclass.value = id
   selectedBuildId.value = ''
 }
@@ -198,44 +187,44 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onDetailKeydown))
       <div>
         <p class="eyebrow">SMART LOADOUT / ONE-FLOW BUILD</p>
         <h1>智能配装</h1>
-        <p class="hero-copy">选择职业、子职业和玩法目标，系统自动组合天赋、技能、武器与模组，并生成一张可以直接保存的配装卡。</p>
+        <p class="hero-copy">选择职业与玩法偏好，查阅已收录的一图流推荐；可编辑副本，补充属性目标、推荐词条和刷装备注。</p>
       </div>
-      <div class="hero-status"><span>推荐引擎</span><strong>BUILD AI / {{ rankedBuilds.length || 0 }} 个候选</strong><small>基于当前站内已核验目录</small><router-link to="/manual-loadout" class="manual-link">改为手动配装 ↗</router-link></div>
+      <div class="hero-status"><span>推荐引擎</span><strong>BUILD GUIDE / {{ rankedBuilds.length || 0 }} 个候选</strong><small>基于站内编辑目录，非实时游戏模拟</small><router-link to="/manual-loadout" class="manual-link">改为手动配装 ↗</router-link></div>
     </section>
 
     <section class="control-panel">
-      <div class="control-block"><span class="control-label">01. 职业</span><a-radio-group v-model:value="selectedClass" button-style="solid" class="choice-row" @change="chooseClass(selectedClass)"><a-radio-button v-for="item in classOptions" :key="item.id" :value="item.id">{{ item.name }} <small>{{ item.en }}</small></a-radio-button></a-radio-group></div>
-      <div class="control-block"><span class="control-label">02. 子职业</span><a-select v-model:value="selectedSubclass" class="smart-select" @change="chooseSubclass(selectedSubclass)"><a-select-option v-for="item in classSubclasses" :key="item.id" :value="item.id">{{ item.name }} / {{ item.en }}</a-select-option></a-select></div>
+      <div class="control-block"><span class="control-label">01. 职业</span><div class="visual-classes" role="group" aria-label="职业"><button v-for="item in classOptions" :key="item.id" type="button" :aria-label="`选择${item.name}`" :aria-pressed="selectedClass === item.id" @click="chooseClass(item.id)"><ClassEmblem :class-id="item.id" /><span>{{ item.name }}<small>{{ item.en }}</small></span></button></div></div>
+      <div class="control-block"><span class="control-label">02. 子职业</span><div class="visual-subclasses" role="group" aria-label="子职业"><button v-for="item in classSubclasses" :key="item.id" type="button" :aria-label="`选择${item.name}`" :aria-pressed="selectedSubclass === item.id" :style="{ '--branch-color': elements[item.element]?.color }" @click="chooseSubclass(item.id)"><img v-if="icon(item)" :src="icon(item)" alt="" /><span v-else aria-hidden="true">◇</span><strong>{{ elements[item.element]?.name }}</strong><small>{{ item.name }}</small></button></div></div>
       <div class="control-block"><span class="control-label">03. 玩法目标</span><a-radio-group v-model:value="selectedStyle" button-style="solid" class="style-row"><a-radio-button v-for="item in styleOptions" :key="item.id" :value="item.id"><strong>{{ item.name }}</strong><small>{{ item.desc }}</small></a-radio-button></a-radio-group></div>
     </section>
 
     <section class="candidate-strip" v-if="rankedBuilds.length > 1"><span>智能候选</span><button v-for="item in rankedBuilds.slice(0,4)" :key="item.id" :class="{active:(recommendedBuild?.id===item.id)}" @click="selectedBuildId=item.id">{{ displayBuildName(item) }}</button></section>
 
     <section v-if="recommendedBuild" class="one-flow-card" :style="{'--accent': classInfo.color}">
-        <header class="flow-title"><div><p>{{ classInfo.en }} / {{ subclass?.name || 'SUBCLASS' }} / {{ selectedStyle === 'bossDamage' ? '爆发' : selectedStyle === 'survivability' ? '生存' : '清怪' }}</p><h2>{{ displayBuildName(recommendedBuild) }}</h2><span>{{ recommendedBuild.goal }}</span></div><div class="flow-badge"><b>SMART PICK</b><small>仅显示已通过 Manifest 精确映射</small></div></header>
+        <header class="flow-title"><div><p>{{ classInfo.en }} / {{ subclass?.name || 'SUBCLASS' }} / {{ selectedStyle === 'bossDamage' ? '爆发' : selectedStyle === 'survivability' ? '生存' : '清怪' }}</p><h2>{{ displayBuildName(recommendedBuild) }}</h2><span>{{ recommendedBuild.goal }}</span></div><div class="flow-badge"><b>SMART PICK</b><small>内容复核：{{ recommendedBuild.verifiedAt }}</small><router-link :to="`/manual-loadout?build=${recommendedBuild.id}`">编辑此推荐 ↗</router-link></div></header>
 
       <div class="flow-grid top-grid">
-        <section class="flow-panel core-panel"><h3>核心装备</h3><button v-if="icon(gearById[recommendedBuild.exoticArmorId])" class="core-item interactive-card" type="button" @click="openDetail(gearById[recommendedBuild.exoticArmorId])"><div class="large-icon"><img :src="icon(gearById[recommendedBuild.exoticArmorId])" :alt="name(gearById[recommendedBuild.exoticArmorId])"></div><div><strong>{{ name(gearById[recommendedBuild.exoticArmorId]) }}</strong><small>{{ englishName(gearById[recommendedBuild.exoticArmorId]) }}</small><small>异域护甲：{{ armorSetById[recommendedBuild.armorSetId]?.name }} / {{ armorSetById[recommendedBuild.armorSetId]?.en }}</small></div></button><p v-else class="data-missing">Manifest 中暂无该装备的官方图标，已隐藏占位内容。</p></section>
-        <section class="flow-panel abilities-panel"><h3>天赋与技能 / Abilities <em>点击图标查看详情</em></h3><div class="ability-row"><template v-for="entry in abilityItems" :key="entry.label"><button v-if="icon(entry.item)" class="ability-card interactive-card" type="button" @click="openDetail(entry.item)"><span>{{ entry.label }}</span><div class="icon-box"><img :src="icon(entry.item)" :alt="name(entry.item)"></div><strong>{{ name(entry.item) }}</strong><small>{{ englishName(entry.item) }}</small></button></template></div><div class="trait-row"><div><span>星相 / Aspects</span><button v-for="item in aspectItems" :key="item.id" type="button" class="trait-chip" @click="openDetail(item)">{{ name(item) }}<small>{{ englishName(item) }}</small></button></div><div><span>{{ recommendedBuild.abilities?.facetIds?.length ? '棱镜特性 / Facets' : '碎片 / Fragments' }}</span><button v-for="item in facetItems.slice(0,5)" :key="item.id" type="button" class="trait-chip" @click="openDetail(item)">{{ name(item) }}<small>{{ englishName(item) }}</small></button></div></div></section>
-        <section class="flow-panel recommendation-panel"><h3>智能判断</h3><ul><li>优先保证 <b>{{ selectedStyle === 'bossDamage' ? '武器与超能爆发' : selectedStyle === 'survivability' ? '生命与职业技能' : '手雷与近战循环' }}</b></li><li>推荐组合包含 <b>{{ recommendedBuild.mechanicIds?.length || 0 }} 个机制节点</b></li><li v-if="recommendedBuild.championCoverage?.overload?.length">已覆盖超载冠军</li><li v-else>进入高难活动前需补充反冠军武器</li></ul></section>
+        <section class="flow-panel core-panel"><h3>核心装备</h3><button v-if="icon(gearById[recommendedBuild.exoticArmorId])" class="core-item interactive-card" type="button" @click="openDetail(gearById[recommendedBuild.exoticArmorId])"><div class="large-icon"><img :src="icon(gearById[recommendedBuild.exoticArmorId])" :alt="name(gearById[recommendedBuild.exoticArmorId])"></div><div><strong>{{ name(gearById[recommendedBuild.exoticArmorId]) }}</strong><small>{{ englishName(gearById[recommendedBuild.exoticArmorId]) }}</small><small>普通护甲套装建议：{{ armorSetById[recommendedBuild.armorSetId]?.name }} / {{ armorSetById[recommendedBuild.armorSetId]?.en }}</small></div></button><p v-else class="data-missing">Manifest 中暂无该装备的官方图标，已隐藏占位内容。</p></section>
+        <section class="flow-panel abilities-panel"><h3>天赋与技能 / Abilities <em>点击图标查看详情</em></h3><div class="ability-row"><template v-for="entry in abilityItems" :key="entry.label"><button v-if="icon(entry.item)" class="ability-card interactive-card" type="button" @click="openDetail(entry.item)"><span>{{ entry.label }}</span><div class="icon-box"><img :src="icon(entry.item)" :alt="name(entry.item)"></div><strong>{{ name(entry.item) }}</strong><small>{{ englishName(entry.item) }}</small></button></template></div><div class="trait-row"><div><span>星相 / Aspects</span><button v-for="item in aspectItems" :key="item.id" type="button" class="trait-chip" @click="openDetail(item)"><img v-if="icon(item)" :src="icon(item)" alt="" />{{ name(item) }}<small>{{ englishName(item) }}</small></button></div><div><span>{{ recommendedBuild.abilities?.facetIds?.length ? '棱镜特性 / Facets' : '碎片 / Fragments' }}</span><button v-for="item in facetItems" :key="item.id" type="button" class="trait-chip" @click="openDetail(item)"><img v-if="icon(item)" :src="icon(item)" alt="" />{{ name(item) }}<small>{{ englishName(item) }}</small></button></div></div></section>
+        <section class="flow-panel recommendation-panel"><h3>使用提示</h3><ul><li>优先保证 <b>{{ selectedStyle === 'bossDamage' ? '武器与超能爆发' : selectedStyle === 'survivability' ? '生命与职业技能' : '手雷与近战循环' }}</b></li><li>推荐组合包含 <b>{{ recommendedBuild.mechanicIds?.length || 0 }} 个机制节点</b></li><li v-if="recommendedBuild.championCoverage?.overload?.length">方案声明了超载反制，请按武器与当前活动规则核对</li><li v-else>进入高难活动前需补充反冠军武器</li></ul></section>
       </div>
 
       <section v-if="artifact" class="flow-panel artifact-panel">
         <div class="artifact-heading">
-          <div><h3>赛季神器 <em>点击查看全部节点</em></h3><p>本赛季：{{ name(artifact) }} / {{ englishName(artifact) }}，按玩法目标优先解锁关键被动</p></div>
+          <div><h3>赛季神器 <em>点击查看全部节点</em></h3><p>本方案指定：{{ name(artifact) }} / {{ englishName(artifact) }}</p></div>
           <button v-if="icon(artifact)" type="button" class="artifact-summary interactive-card" @click="openDetail(artifact)"><div class="artifact-icon"><img :src="icon(artifact)" :alt="name(artifact)"></div><span>{{ artifact.tiers?.length || 0 }} 层，{{ artifact.tiers?.reduce((sum, tier) => sum + (tier.items?.length || 0), 0) || 0 }} 个节点</span></button>
         </div>
         <div class="artifact-grid"><template v-for="tier in artifactHighlights" :key="tier.tierHash"><button v-if="icon(tier.item)" type="button" class="artifact-node interactive-card" @click="openDetail(tier.item, { artifactTier: tier })"><span>{{ tierTitle(tier) }}</span><div class="artifact-node-icon"><img :src="icon(tier.item)" :alt="name(tier.item)"></div><strong>{{ name(tier.item) }}</strong><small>{{ englishName(tier.item) }}</small><small>{{ tier.minimumUnlockPointsUsedRequirement ? `需 ${tier.minimumUnlockPointsUsedRequirement} 点` : '可直接解锁' }}</small></button></template></div>
       </section>
 
-      <p class="data-note">属性增强模组在当前 Manifest 快照中没有可确认的英文实体，已标记为待核验，不展示伪造数值。</p><div class="flow-grid middle-grid">
-        <section class="flow-panel weapon-panel"><h3>武器 <em>点击查看词条</em></h3><div class="weapon-list"><template v-for="item in weapons" :key="item.itemId"><button v-if="icon(item.item)" class="weapon-card interactive-card" type="button" @click="openDetail(item.item, { perks: item.perks, purpose: item.purpose })"><div class="weapon-icon"><img :src="icon(item.item)" :alt="name(item.item)"></div><div><span>{{ item.item.slot || '武器槽位' }} / {{ item.item.ammo || '弹药' }}</span><strong>{{ name(item.item) }}</strong><small>{{ englishName(item.item) }}</small><small>{{ item.perks?.join(' + ') || '点击查看官方 Perk 池' }}</small></div></button></template></div></section>
+      <p class="data-note">未指定神器时不自动填节点。请在编辑副本中先选择神器，再配置节点；模组按满升级护甲的 10 能量规划。</p><div class="flow-grid middle-grid">
+        <section class="flow-panel weapon-panel"><h3>武器 <em>点击查看词条</em></h3><div class="weapon-list"><template v-for="item in weapons" :key="item.itemId"><button v-if="icon(item.item)" class="weapon-card interactive-card" type="button" @click="openDetail(item.item, { perks: item.perks, purpose: item.purpose })"><div class="weapon-icon"><img :src="icon(item.item)" :alt="name(item.item)"></div><div><span>{{ item.item.slot || '武器槽位' }} / {{ item.item.ammo || '弹药' }}</span><strong>{{ name(item.item) }}</strong><small>{{ englishName(item.item) }}</small><WeaponRecommendations :selection="item" :equipment="equipmentItems" /></div></button></template></div></section>
         <section class="flow-panel mod-panel"><h3>模组 / Mods <em>点击查看效果</em></h3><div class="mod-grid"><article v-for="slot in modsBySlot" :key="slot.key"><span>{{ slot.label }}</span><template v-for="mod in slot.mods" :key="mod.id"><button v-if="icon(mod)" class="mod-item interactive-card" type="button" @click="openDetail(mod)"><div class="tiny-icon"><img :src="icon(mod)" :alt="name(mod)"></div><small>{{ name(mod) }}</small><small>{{ englishName(mod) }}</small></button></template></article></div></section>
       </div>
 
       <div class="flow-grid bottom-grid">
-        <section class="flow-panel stats-panel"><h3>六维目标</h3><div class="smart-stats"><article v-for="stat in statTargets" :key="stat.key"><span>{{ stat.label }}</span><strong>{{ stat.value }}</strong><small>{{ stat.hint }}</small></article></div></section>
-        <section class="flow-panel armor-panel"><h3>护甲套装 / Armor Set <em>点击查看装备</em></h3><div class="armor-list"><button v-for="piece in armorPieces" :key="piece.item.hash" class="armor-card interactive-card" type="button" @click="openDetail(piece.item)"><div class="armor-icon"><img :src="icon(piece.item)" :alt="name(piece.item)"></div><small>{{ piece.label }}</small><strong>{{ name(piece.item) }}</strong><small>{{ englishName(piece.item) }}</small></button></div><p v-if="armorPieces.length">{{ armorSetById[recommendedBuild.armorSetId]?.name }} / {{ armorSetById[recommendedBuild.armorSetId]?.en }}：仅展示 Manifest 中存在官方图标的真实装备</p><p v-else class="data-missing">Manifest 中暂无该套装的可用部位数据，未生成占位装备。</p><div class="ghost-heading"><span>机灵模组 / Ghost Mods</span><small>按当前玩法自动推荐，点击查看</small></div><div class="ghost-list"><button v-for="mod in ghostMods" :key="mod.hash" class="ghost-card interactive-card" type="button" @click="openDetail(mod)"><div class="ghost-icon"><img :src="icon(mod)" :alt="name(mod)"></div><div><strong>{{ name(mod) }}</strong><small>{{ englishName(mod) }}</small><small>{{ modSummary(mod) }}</small></div></button></div></section>
+        <section class="flow-panel stats-panel"><h3>六维属性建议</h3><StatRecommendations :targets="recommendedBuild.targetStats" /><p class="data-note">{{ recommendedBuild.statNotes || '数值来自本方案的编辑目标，未指定属性不自动补值。' }}</p></section>
+        <section class="flow-panel armor-panel"><h3>护甲套装 / Armor Set <em>点击查看装备</em></h3><div class="armor-list"><button v-for="piece in armorPieces" :key="piece.item.hash" class="armor-card interactive-card" type="button" @click="openDetail(piece.item)"><div class="armor-icon"><img :src="icon(piece.item)" :alt="name(piece.item)"></div><small>{{ piece.label }}</small><strong>{{ name(piece.item) }}</strong><small>{{ englishName(piece.item) }}</small></button></div><p v-if="armorPieces.length">{{ armorSetById[recommendedBuild.armorSetId]?.name }} / {{ armorSetById[recommendedBuild.armorSetId]?.en }}：按套装 Hash 对应部位展示；核心异域替换同部位，避免重复计算套装件数</p><p v-else class="data-missing">Manifest 中暂无该套装的可用部位数据，未生成占位装备。</p><div class="ghost-heading"><span>刷装备注</span></div><p>普通护甲仅作部位模板，随机属性按目标取舍。可在编辑副本中选择机灵护甲商，查看其主副属性偏向并留下获取建议。</p></section>
       </div>
     </section>
     <div v-if="selectedDetail" class="detail-overlay" role="presentation" @click.self="closeDetail">
@@ -281,4 +270,9 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onDetailKeydown))
 @media(max-width:560px){.artifact-heading{align-items:flex-start;flex-direction:column}.artifact-summary{align-self:flex-start}.artifact-grid{grid-template-columns:repeat(3,1fr)}}
 .artifact-detail-node strong,.artifact-detail-node small{grid-column:2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.artifact-detail-node strong{font-size:.58rem}.artifact-detail-node small{color:var(--text-dim);font-size:.5rem}
 .ability-card small,.trait-chip small,.mod-item small{display:block;color:var(--text-dim);font-size:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.trait-chip{display:inline-block;max-width:100%}
+</style>
+
+<style scoped>
+.control-panel{grid-template-columns:1fr 1.6fr 1.2fr}.visual-classes{display:grid;gap:.45rem}.visual-classes button{display:flex;align-items:center;gap:.75rem;text-align:left;padding:.6rem;border:1px solid var(--line-soft);background:#171b21;color:var(--text-sub);cursor:pointer}.visual-classes button[aria-pressed=true]{color:var(--gold);border-color:var(--gold)}.visual-classes span{display:grid;gap:.25rem;font-size:.85rem}.visual-classes small{font:.6rem var(--font-en);color:var(--text-dim)}.visual-subclasses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem}.visual-subclasses button{display:grid;justify-items:center;gap:.3rem;padding:.65rem .4rem;min-width:0;border:1px solid var(--line-soft);background:#171b21;color:var(--text-main);cursor:pointer}.visual-subclasses button[aria-pressed=true]{border-color:var(--branch-color);box-shadow:inset 0 -2px 0 var(--branch-color);background:color-mix(in srgb,var(--branch-color) 10%,#171b21)}.visual-subclasses img{width:40px;height:40px;object-fit:contain}.visual-subclasses strong{font-size:.75rem}.visual-subclasses small{font-size:.6rem;color:var(--text-dim);overflow-wrap:anywhere}.visual-subclasses button>span{width:40px;height:40px;font-size:1.8rem}.trait-chip img{display:block;width:38px;height:38px;object-fit:contain;margin:0 auto .4rem}.visual-classes button:focus-visible,.visual-subclasses button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(max-width:900px){.control-panel{grid-template-columns:1fr}.visual-classes{grid-template-columns:repeat(3,minmax(0,1fr))}.visual-classes :deep(.class-emblem){width:28px;height:28px}.visual-classes button{gap:.4rem;padding:.6rem .35rem}}
 </style>

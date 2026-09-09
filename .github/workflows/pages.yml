@@ -3,23 +3,56 @@ name: Deploy Pages
 on:
   push:
     branches: [master]
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled, deleted, transferred]
   workflow_dispatch:
+  schedule:
+    - cron: '23 3 * * *'
 
 permissions:
   contents: read
+  issues: read
   pages: write
   id-token: write
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
+  labels:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create missing label definitions
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Initialize definitions only. Never change an Issue's labels or
+            // overwrite an existing label's settings.
+            for (const label of [
+              { name: 'build', color: '238636', description: '社区构筑投稿' },
+              { name: 'moderation:blocked', color: 'b60205', description: '管理员屏蔽：不在网站展示' }
+            ]) {
+              try {
+                await github.rest.issues.getLabel({ ...context.repo, name: label.name });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+                await github.rest.issues.createLabel({ ...context.repo, ...label });
+              }
+            }
   build:
+    needs: labels
+    if: ${{ !cancelled() && (needs.labels.result == 'success' || needs.labels.result == 'skipped') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -30,10 +63,20 @@ jobs:
         run: npm ci --prefix web
       - name: Generate knowledge base
         run: npm run docs:generate
+      - name: Sync community builds from this repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMUNITY_REPOSITORY: ${{ github.repository }}
+        run: node scripts/sync-community-builds.js --repository "$COMMUNITY_REPOSITORY" --revision "$(git rev-parse HEAD)" --out "$RUNNER_TEMP/community-builds"
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Build site
+        env:
+          VITE_COMMUNITY_REPOSITORY: ${{ github.repository }}
+          VITE_COMMUNITY_SNAPSHOT_URL: ./data/community-builds.json
         run: npm run build
+      - name: Include community snapshot in the site artifact
+        run: cp "$RUNNER_TEMP/community-builds/community-builds.json" web/dist/data/community-builds.json
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -41,6 +84,7 @@ jobs:
 
   deploy:
     needs: build
+    if: ${{ !cancelled() && needs.build.result == 'success' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

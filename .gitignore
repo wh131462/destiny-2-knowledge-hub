@@ -12,11 +12,14 @@ node_modules/
 dist/
 .vite/
 coverage/
+# Generated locally for community UI testing; CI bundles a fresh snapshot.
+web/public/data/community-builds.json
 .cache/
 *.tsbuildinfo
 
 # Downloaded Bungie Manifest snapshots (regenerate with npm run manifest:sync)
 data/manifest/*Definition.json
+data/manifest/*Definition.zh-chs.json
 data/manifest/aggregate-*.json
 !data/manifest/DestinyClassDefinition.json
 

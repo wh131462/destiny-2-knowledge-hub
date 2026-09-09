@@ -2,8 +2,8 @@
 defineProps({ result: { type: Object, required: true } })
 
 const names = {
-  mobility: '机动', resilience: '韧性', recovery: '恢复',
-  discipline: '纪律', intellect: '智慧', strength: '力量'
+  health: '生命值', melee: '近战', grenade: '手雷',
+  class: '职业', super: '超能', weapons: '武器'
 }
 </script>
 
@@ -12,9 +12,9 @@ const names = {
     <div v-for="(value, key) in result.values" :key="key" class="stat">
       <span>{{ names[key] }}</span>
       <strong>{{ value }}</strong>
-      <div class="track"><i :style="{ width: `${value}%` }"></i></div>
+      <div class="track"><i :style="{ width: `${Math.min(100, Math.max(0, value / 2))}%` }"></i></div>
     </div>
-    <div class="dr-note">韧性 T{{ result.tiers.resilience }}：PvE 基线减伤 {{ result.resilienceDamageResistancePercent }}%</div>
+    <div class="dr-note">Health 不提供固定 PvE 减伤；伤害抗性来自胸甲模组、增益、护盾和活动规则。</div>
   </div>
 </template>
 

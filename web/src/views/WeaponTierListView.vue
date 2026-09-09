@@ -1,4 +1,5 @@
 <script setup>
+import EntityLink from '@/components/EntityLink.vue'
 import { computed, ref } from 'vue'
 import { handCannonTierList, tierMeta } from '@/data/weaponTierList'
 import { useManifestAssets } from '@/composables/useManifestAssets'
@@ -9,6 +10,8 @@ const keyword = ref('')
 const tierFilter = ref('')
 const rpmFilter = ref('')
 const selectedWeapon = ref(null)
+const showTraits = ref(false), showAnalysis = ref(false)
+const displayColumns = computed(() => 7 + (showTraits.value ? 5 : 0) + (showAnalysis.value ? 1 : 0))
 
 const statLabels = { Impact: '伤害', Range: '射程', Stability: '稳定性', Handling: '操控性', 'Reload Speed': '填装速度', 'Aim Assistance': '辅助瞄准', Zoom: '变焦', 'Recoil Direction': '后坐方向', Magazine: '弹匣', 'Rounds Per Minute': '射速', 'Airborne Effectiveness': '空中效率' }
 const equipmentByHash = computed(() => new Map(equipmentItems.value.map(item => [String(item.hash), item])))
@@ -50,7 +53,7 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
       <div>
         <p class="tier-kicker">CRUCIBLE FIELD INDEX · 2026.09</p>
         <h1>手炮竞技天梯</h1>
-        <p>将射速、属性、框架、初始词条与实战判断放进同一张横向天梯。排名按竞技场泛用性整理，点击武器可查看 Manifest 详情。</p>
+        <p>将射速、属性、框架、初始词条与实战判断放进同一张横向天梯。排名按竞技场泛用性整理，默认展示核心信息，可展开配置与评语，点击武器查看详情。</p>
       </div>
       <div class="tier-total"><span>收录</span><strong>{{ handCannonTierList.length }}</strong><small>HAND CANNONS</small></div>
     </section>
@@ -69,25 +72,27 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
     </div>
 
     <section class="tier-board-shell" aria-labelledby="tier-board-title">
-      <header class="tier-board-head"><div><span>LIVE COMPARISON BOARD</span><h2 id="tier-board-title">武器横向对比</h2></div><p>当前显示 <b>{{ rows.length }}</b> 件 · 表格可横向滚动</p></header>
+      <header class="tier-board-head"><div><span>WEAPON COMPARISON</span><h2 id="tier-board-title">武器横向对比</h2></div><p role="status" aria-live="polite"><b>{{ rows.length }}</b> / {{ handCannonTierList.length }} 件 · 输入即筛选</p></header>
+      <div class="column-controls" role="group" aria-label="表格显示列"><span>显示内容</span><button type="button" :aria-pressed="showTraits" @click="showTraits = !showTraits">{{ showTraits ? '收起词条配置' : '展开词条配置' }}</button><button type="button" :aria-pressed="showAnalysis" @click="showAnalysis = !showAnalysis">{{ showAnalysis ? '收起实战评语' : '展开实战评语' }}</button><small>当前 {{ displayColumns }} 列 · 手机端逐条展开</small></div>
       <div v-if="status === 'loading'" class="tier-loading"><i v-for="n in 8" :key="n"></i></div>
       <div v-else-if="status === 'error'" class="empty error">Manifest 加载失败，暂时无法生成天梯详情。</div>
-      <div v-else class="tier-table-scroll">
-        <table class="tier-table">
-          <colgroup><col class="col-weapon" /><col class="col-rpm" /><col class="col-element" /><col class="col-frame" /><col class="col-source" /><col class="col-barrel" /><col class="col-magazine" /><col class="col-perk" /><col class="col-perk" /><col class="col-origin" /><col class="col-comment" /><col class="col-rank" /><col class="col-tier" /></colgroup>
+      <div v-else class="tier-table-scroll" tabindex="0" role="region" aria-label="武器对比表，可横向滚动">
+        <table class="tier-table" :class="{ expanded: showTraits, analyzed: showAnalysis }"><caption class="table-caption">手炮竞技对比，评级来自编辑判断；词条为官方初始配置。</caption>
+          <colgroup><col class="col-weapon" /><col class="col-rpm" /><col class="col-element" /><col class="col-frame" /><col class="col-source" /><template v-if="showTraits"><col class="col-barrel" /><col class="col-magazine" /><col class="col-perk" /><col class="col-perk" /><col class="col-origin" /></template><col v-if="showAnalysis" class="col-comment" /><col class="col-rank" /><col class="col-tier" /></colgroup>
           <thead>
-            <tr class="column-groups"><th>武器</th><th colspan="4">INFO · 基础信息</th><th colspan="5">TRAITS · 配置</th><th colspan="3">ANALYSIS · 分析</th></tr>
-            <tr><th class="sticky-weapon">武器 / Weapon</th><th>射速</th><th>属性</th><th>框架</th><th>来源</th><th>枪管</th><th>弹匣</th><th>特性 1</th><th>特性 2</th><th>固有 / 原始</th><th>实战评语</th><th class="sticky-rank">排名</th><th class="sticky-tier">T级</th></tr>
+            <tr class="column-groups"><th>武器</th><th colspan="4">INFO · 基础信息</th><th v-if="showTraits" colspan="5">TRAITS · 初始配置</th><th :colspan="showAnalysis ? 3 : 2">ANALYSIS · 评级</th></tr>
+            <tr><th class="sticky-weapon">武器 / Weapon</th><th>射速</th><th>属性</th><th>框架</th><th>来源</th><template v-if="showTraits"><th>枪管</th><th>弹匣</th><th>特性 1</th><th>特性 2</th><th>起源特性</th></template><th v-if="showAnalysis">实战评语</th><th class="sticky-rank">排名</th><th class="sticky-tier">T级</th></tr>
           </thead>
           <tbody>
-            <tr v-for="row in rows" :key="row.rank" :class="`row-tier-${row.tier.toLowerCase()}`">
+            <template v-for="(row, index) in rows" :key="row.rank"><tr v-if="index === 0 || rows[index - 1].tier !== row.tier" class="tier-divider"><th :colspan="displayColumns" scope="rowgroup">{{ row.tier }} · {{ tierMeta[row.tier].label }} <span>{{ rows.filter(r => r.tier === row.tier).length }} 件</span></th></tr><tr :class="`row-tier-${row.tier.toLowerCase()}`">
               <td class="sticky-weapon weapon-cell"><button type="button" :disabled="!row.item" @click="selectedWeapon = row.item"><span class="tier-weapon-icon"><img v-if="icon(row.item)" :src="icon(row.item)" :alt="`${row.nameZh} 武器图标`" loading="lazy" /><i v-else>HC</i></span><span><strong>{{ row.nameZh }}</strong><small>{{ row.name }}</small></span></button></td>
-              <td class="numeric">{{ row.rpm }}</td><td><span :class="['element-dot', row.elementClass]"></span>{{ row.element }}</td><td>{{ row.frame }}</td><td>{{ row.source }}</td><td>{{ row.barrel }}</td><td>{{ row.magazine }}</td><td>{{ row.perk1 }}</td><td>{{ row.perk2 }}</td><td>{{ row.origin }}</td><td class="comment-cell">{{ row.note }}</td><td class="sticky-rank numeric">{{ row.rank }}</td><td :class="['sticky-tier', `tier-${row.tier.toLowerCase()}`]"><strong>{{ row.tier }}</strong></td>
-            </tr>
+              <td class="numeric">{{ row.rpm }}</td><td><span :class="['element-dot', row.elementClass]"></span>{{ row.element }}</td><td>{{ row.frame }}</td><td>{{ row.source }}</td><template v-if="showTraits"><td>{{ row.barrel }}</td><td>{{ row.magazine }}</td><td>{{ row.perk1 }}</td><td>{{ row.perk2 }}</td><td>{{ row.origin }}</td></template><td v-if="showAnalysis" class="comment-cell">{{ row.note }}</td><td class="sticky-rank numeric">{{ row.rank }}</td><td :class="['sticky-tier', `tier-${row.tier.toLowerCase()}`]"><strong>{{ row.tier }}</strong></td>
+            </tr></template>
           </tbody>
         </table>
         <div v-if="!rows.length" class="empty">没有符合当前条件的手炮。</div>
       </div>
+      <div v-if="status !== 'loading' && status !== 'error'" class="tier-mobile-list"><article v-for="row in rows" :key="row.rank"><header><span :class="['mobile-grade', `tier-${row.tier.toLowerCase()}`]">{{ row.tier }}</span><div><EntityLink v-if="row.item" :item="row.item" kind="equipment" :label="row.nameZh" /><strong v-else>{{ row.nameZh }}</strong><small>{{ row.name }} · #{{ row.rank }}</small></div><span>{{ row.rpm }} RPM</span></header><p>{{ row.element }} · {{ row.frame }} · {{ row.source }}</p><details :open="showTraits || showAnalysis"><summary>配置与实战评语</summary><dl><div><dt>枪管 / 弹匣</dt><dd>{{ row.barrel }} / {{ row.magazine }}</dd></div><div><dt>特性</dt><dd>{{ row.perk1 }} / {{ row.perk2 }}</dd></div><div><dt>起源特性</dt><dd>{{ row.origin }}</dd></div></dl><p>{{ row.note }}</p></details></article><p v-if="!rows.length" class="empty">没有符合当前条件的手炮。</p></div>
       <footer class="tier-method"><span>判定维度：有效射程 · 击杀容错 · 操控手感 · 词条上限 · 获取成本</span><span>排名为编辑评估，基础数据来自当前 Bungie Manifest 快照</span></footer>
     </section>
 
@@ -96,7 +101,7 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
         <button type="button" class="detail-close" aria-label="关闭详情" @click="selectedWeapon = null">×</button>
         <header class="detail-head"><img v-if="icon(selectedWeapon)" :src="icon(selectedWeapon)" :alt="`${selectedWeapon.nameZh || selectedWeapon.name} 武器图标`" /><div><small>MANIFEST WEAPON</small><h2>{{ selectedWeapon.nameZh || selectedWeapon.name }}</h2><p>{{ selectedWeapon.name }}</p><span>Hash {{ selectedWeapon.hash }} · {{ selectedWeapon.weaponFamily }}</span></div></header>
         <div class="stat-grid"><div v-for="stat in stats(selectedWeapon)" :key="stat.key"><span>{{ stat.label }}<small>{{ stat.key }}</small></span><strong>{{ stat.value }}</strong><i><b :style="{ width: `${Math.min(100, stat.value)}%` }"></b></i></div></div>
-        <footer><router-link :to="`/manifest?q=${encodeURIComponent(selectedWeapon.name)}`">在官方目录中查看 →</router-link></footer>
+        <footer><EntityLink :item="selectedWeapon" kind="equipment" label="查看百科、来源与相关构筑" /></footer>
       </section>
     </div>
   </div>
@@ -110,4 +115,9 @@ function resetFilters() { keyword.value = ''; tierFilter.value = ''; rpmFilter.v
 .weapon-overlay{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:1.2rem;background:rgba(3,6,12,.82);backdrop-filter:blur(8px)}.weapon-dialog{position:relative;width:min(38rem,100%);max-height:calc(100dvh - 2.4rem);overflow:auto;padding:1.25rem;background:linear-gradient(155deg,#202b43,#0c1220);border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.6)}.detail-close{position:absolute;right:.7rem;top:.55rem;width:2rem;height:2rem;border:1px solid var(--line-soft);background:transparent;color:var(--text-sub);font-size:1.35rem;cursor:pointer}.detail-head{display:grid;grid-template-columns:6rem 1fr;gap:1rem;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--line-soft)}.detail-head>img{width:6rem;height:6rem;object-fit:contain;background:#111}.detail-head small{color:var(--gold-dim);font:.54rem var(--font-en);letter-spacing:.12em}.detail-head h2{margin:.25rem 0 0;font-size:1.3rem}.detail-head p{color:var(--gold-dim);font:.62rem var(--font-en)}.detail-head span{color:var(--text-dim);font-size:.55rem}.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem 1rem;margin-top:1rem}.stat-grid>div{display:grid;grid-template-columns:1fr auto;gap:.25rem}.stat-grid span{font-size:.65rem}.stat-grid span small{display:block;color:var(--text-dim);font:.48rem var(--font-en)}.stat-grid strong{font:700 .7rem var(--font-en)}.stat-grid i{grid-column:1/-1;height:3px;background:rgba(255,255,255,.08)}.stat-grid i b{display:block;height:100%;background:var(--gold)}.weapon-dialog footer{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--line-soft);font-size:.65rem}
 @media(max-width:900px){.tier-controls{grid-template-columns:minmax(14rem,1fr) repeat(2,9rem)}.tier-reset{grid-column:1/-1}.tier-legend{grid-template-columns:repeat(5,minmax(7rem,1fr));overflow-x:auto}}
 @media(max-width:620px){.tier-intro{grid-template-columns:1fr;padding:1.2rem}.tier-total{display:grid;grid-template-columns:auto 1fr auto;gap:.6rem;align-items:end;padding:.7rem 0 0;border-top:1px solid var(--line);border-left:0}.tier-total strong{font-size:1.65rem}.tier-controls{grid-template-columns:1fr 1fr}.tier-search,.tier-reset{grid-column:1/-1}.tier-board-shell{width:calc(100vw - 1rem)}.tier-board-head,.tier-method{align-items:flex-start;flex-direction:column}.tier-legend{width:calc(100vw - 2rem)}.legend-item{min-width:8.5rem}.tier-table{min-width:86rem}.tier-table .col-weapon{width:10.5rem}.tier-table td.sticky-rank{position:static}.tier-table thead .sticky-rank{right:auto;z-index:7}.weapon-cell button{grid-template-columns:2.45rem minmax(0,1fr);gap:.45rem}.tier-weapon-icon{width:2.45rem;height:2.45rem}.detail-head{grid-template-columns:4.5rem 1fr}.detail-head>img{width:4.5rem;height:4.5rem}.stat-grid{grid-template-columns:1fr}}
+</style>
+
+<style scoped>
+.column-controls{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;padding:.7rem 1rem;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);font-size:.74rem}.column-controls>span{color:var(--text-dim);margin-right:.4rem}.column-controls button{padding:.45rem .7rem;color:var(--text-sub);background:transparent;border:1px solid var(--line-soft);cursor:pointer}.column-controls button[aria-pressed=true]{color:var(--gold);border-color:var(--gold-dim);background:#e8c15a0b}.column-controls small{margin-left:auto;color:var(--text-dim)}.column-controls button:focus-visible,.tier-table-scroll:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.tier-table{min-width:44rem;font-size:.76rem}.tier-table.expanded{min-width:80rem}.tier-table.analyzed{min-width:64rem}.tier-table.expanded.analyzed{min-width:98rem}.tier-table th{font-size:.7rem}.weapon-cell strong{font-size:.82rem}.weapon-cell small{font-size:.62rem}.comment-cell{font-size:.74rem}.tier-table tbody tr:nth-child(even) td{background-color:#ffffff03}.tier-table .tier-divider th{position:static;height:auto;text-align:left;padding:.7rem 1rem;background:#1b2534;color:var(--gold-bright);font-size:.75rem;border-top:1px solid var(--line)}.tier-divider span{margin-left:1rem;font-size:.66rem;color:var(--text-dim)}.tier-table-scroll{max-height:70vh}.table-caption{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.tier-table .column-groups th{background:#172132!important;color:var(--gold-dim)!important;font-size:.6rem!important}.tier-board-head p,.tier-method{font-size:.72rem}.tier-mobile-list{display:none}.tier-table .col-weapon{width:14rem}.tier-table .col-frame{width:8rem}.tier-table .col-source{width:9rem}
+@media(max-width:620px){.tier-table-scroll{display:none}.tier-mobile-list{display:block}.tier-mobile-list>article{padding:1rem;border-bottom:1px solid var(--line-soft)}.tier-mobile-list>article:nth-child(even){background:#ffffff03}.tier-mobile-list header{display:flex;gap:.7rem;align-items:center}.mobile-grade{font:800 1.5rem var(--font-en);width:1.8rem}.tier-mobile-list header>div{flex:1;min-width:0;font-size:.9rem}.tier-mobile-list header>span:last-child{font-size:.68rem;color:var(--text-dim)}.tier-mobile-list small{display:block;font-size:.65rem;color:var(--text-dim);margin-top:.3rem}.tier-mobile-list p{font-size:.76rem;line-height:1.8;margin:.7rem 0;color:var(--text-sub)}.tier-mobile-list summary{font-size:.76rem;color:var(--gold);cursor:pointer}.tier-mobile-list dl{font-size:.74rem}.tier-mobile-list dl>div{display:grid;grid-template-columns:6rem minmax(0,1fr);gap:.5rem;margin:.7rem 0}.tier-mobile-list dd{margin:0;overflow-wrap:anywhere}.tier-mobile-list dt{color:var(--text-dim)}.column-controls small{width:100%;margin:0}.legend-item span small{font-size:.6rem}.tier-controls label>span{font-size:.72rem}.tier-controls input,.tier-controls select{font-size:.8rem}.tier-legend{grid-template-columns:repeat(5,minmax(9rem,1fr))}.legend-item{min-width:9rem}}
 </style>

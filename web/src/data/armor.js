@@ -17,7 +17,7 @@ export const armorSets = [
     classAll: true,
     bonus: '套装加成：多部位可激活额外加成（2026-06-17 更新修复其加成问题）',
     desc: '《叛逃者》时代的主题套装，与"权利与秩序"叙事关联，具备套装加成机制。',
-    stats: ['韧性倾向', '纪律倾向'],
+    stats: ['生命值倾向', '手雷倾向'],
     element: null
   },
   {
@@ -28,7 +28,7 @@ export const armorSets = [
     classAll: true,
     bonus: '适配开普勒环境的战术护甲',
     desc: '为开普勒（Kepler）任务设计的战术套装，AION 主题，侧重生存与机动。',
-    stats: ['韧性倾向', '恢复倾向'],
+    stats: ['生命值倾向', '职业倾向'],
     element: null
   },
   {
@@ -39,7 +39,7 @@ export const armorSets = [
     classAll: true,
     bonus: '复兴者科技护甲',
     desc: '与 AION 适配者同系列的进阶版，强调技能循环与元素协同。',
-    stats: ['纪律倾向', '智慧倾向'],
+    stats: ['手雷倾向', '超能倾向'],
     element: null
   },
   {
@@ -61,7 +61,7 @@ export const armorSets = [
     classAll: true,
     bonus: '赛季活动套装',
     desc: '收复季主题护甲，日式装甲风格，适合技能循环构筑。',
-    stats: ['机动倾向', '力量倾向'],
+    stats: ['武器倾向', '近战倾向'],
     element: null
   },
   {
@@ -72,7 +72,7 @@ export const armorSets = [
     classAll: true,
     bonus: '普拉希克教团主题',
     desc: '普拉希克教团（Praxic Order）主题护甲，与阿诺尔·玛哈尔剧情关联。',
-    stats: ['恢复倾向', '智慧倾向'],
+    stats: ['生命值倾向', '超能倾向'],
     element: null
   },
   {
@@ -149,13 +149,6 @@ export const exoticArmor = [
     desc: '换弹与武器操控强化，万金油术士。', element: null
   }
 ]
-
-export const setBonusGuide = `
-套装加成（Set Bonuses）是护甲3.0引入的机制：
-- 同一套装的多个部位可激活额外加成（通常 2件/4件/6件 递增）。
-- 用异域件替换套装中属性最差的一件，最大化收益。
-- 优先装备层级（Tier）高的护甲，属性总值更高。
-`
 
 export const transmogGuide = `
 幻化（Transmog）：

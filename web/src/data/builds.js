@@ -1,157 +1,7 @@
-// 推荐规则库（核心！数据源：知识库提炼的推荐搭配规则）
-// 结构：职业 × 元素 × 玩法 → 异域护甲、属性、套装、武器、理由
-
-export const builds = [
-  // ================= 泰坦 =================
-  {
-    id: 'titan-void-pve',
-    classId: 'titan', element: 'void', mode: 'pve',
-    name: '虚空哨兵：团队堡垒',
-    exoticArmor: '幽影之心 Heart of Inmost Light',
-    armorSet: '权利真相套装（或任意高韧性套装）',
-    stats: ['韧性 100', '纪律 100', '智慧 80+'],
-    weapons: ['动能：任意加急词条主武器', '能量：虚空融合步枪', '重型：线性融合步枪/火箭筒'],
-    why: '技能循环永动机，堡垒+压制为团队提供护盾与增伤，高难PVE万金油。',
-    difficulty: '入门',
-    tags: ['团本', '宗师', '辅助']
-  },
-  {
-    id: 'titan-arc-pve',
-    classId: 'titan', element: 'arc', mode: 'pve',
-    name: '电弧突袭：雷霆爆发',
-    exoticArmor: '坠落之星胸甲 Cuirass of the Falling Star',
-    armorSet: 'AION 复兴套装',
-    stats: ['韧性 100', '智慧 100', '力量 80+'],
-    weapons: ['动能：电弧冲锋枪', '能量：电弧追踪步枪', '重型：电弧剑'],
-    why: '雷霆崩裂超能力爆发伤害极高，是泰坦最强单体DPS之一，Boss战爆发点。',
-    difficulty: '入门',
-    tags: ['Boss爆发', '高伤']
-  },
-  {
-    id: 'titan-strand-pve',
-    classId: 'titan', element: 'strand', mode: 'pve',
-    name: '缚丝行者：压制冲锋',
-    exoticArmor: '幽影之心（通用）或缚丝专属',
-    armorSet: 'AION 适配者套装',
-    stats: ['韧性 100', '纪律 100', '力量 80+'],
-    weapons: ['动能：缚丝自动步枪', '能量：缚丝霰弹枪', '重型：缚丝剑'],
-    why: '缠绕（Suspend）控制+高机动突进，攻守兼备，控场与输出兼顾。',
-    difficulty: '进阶',
-    tags: ['控制', '机动']
-  },
-  {
-    id: 'titan-solar-pvp',
-    classId: 'titan', element: 'solar', mode: 'pvp',
-    name: '炽阳破日者：灼烧压制',
-    exoticArmor: '世界之心（PVP亦可）/ 无敌颅盔',
-    armorSet: '任意高韧性PVP套装',
-    stats: ['韧性 100', '恢复 100', '纪律 60+'],
-    weapons: ['动能：手枪（手炮）', '能量：脉冲步枪', '重型：火箭筒'],
-    why: '路障+灼烧手雷封锁区域，PVP控图能力强，生存与压制兼顾。',
-    difficulty: '入门',
-    tags: ['PVP', '控图']
-  },
-
-  // ================= 猎人 =================
-  {
-    id: 'hunter-solar-pve',
-    classId: 'hunter', element: 'solar', mode: 'pve',
-    name: '炽阳枪手：黄金爆发',
-    exoticArmor: '星云之眼 Star-Eater Scales 或 天鹰之眼 Celestial Nighthawk',
-    armorSet: '初次远征套装',
-    stats: ['韧性 100', '智慧 100', '机动 80+'],
-    weapons: ['动能：手枪', '能量：炽阳狙击枪', '重型：火箭筒'],
-    why: '黄金枪+超能力强化，Boss战单体爆发天花板之一。',
-    difficulty: '入门',
-    tags: ['Boss爆发', '单体']
-  },
-  {
-    id: 'hunter-void-pve',
-    classId: 'hunter', element: 'void', mode: 'pve',
-    name: '虚空夜潜者：团队隐身',
-    exoticArmor: '星云之眼 或 龙之影',
-    armorSet: '权利真相套装',
-    stats: ['韧性 100', '纪律 100', '机动 80+'],
-    weapons: ['动能：任意', '能量：虚空武器', '重型：线性融合步枪'],
-    why: '隐身+削弱标记（Weaken），高难副本团队增益核心，新手也容易上手。',
-    difficulty: '入门',
-    tags: ['团本', '辅助', '隐身']
-  },
-  {
-    id: 'hunter-strand-pve',
-    classId: 'hunter', element: 'strand', mode: 'pve',
-    name: '缚丝缠丝者：爪钩机动',
-    exoticArmor: '第六土狼 The Sixth Coyote',
-    armorSet: 'AION 复兴套装',
-    stats: ['机动 100', '韧性 100', '纪律 80+'],
-    weapons: ['动能：缚丝冲锋枪', '能量：缚丝手枪', '重型：缚丝刀'],
-    why: '双闪避+爪钩三段跳，机动性拉满，缠绕控制+快速收割。',
-    difficulty: '进阶',
-    tags: ['机动', '速刷']
-  },
-  {
-    id: 'hunter-arc-pvp',
-    classId: 'hunter', element: 'arc', mode: 'pvp',
-    name: '电弧行者：闪避猎手',
-    exoticArmor: '第六土狼 或 龙之影',
-    armorSet: '任意高机动PVP套装',
-    stats: ['机动 100', '恢复 100', '韧性 60+'],
-    weapons: ['动能：手枪（手炮）', '能量：冲锋枪/脉冲步枪', '重型：火箭筒'],
-    why: '闪避回充近战+电击连锁，PVP近战与身法压制。',
-    difficulty: '进阶',
-    tags: ['PVP', '身法']
-  },
-
-  // ================= 术士 =================
-  {
-    id: 'warlock-solar-pve',
-    classId: 'warlock', element: 'solar', mode: 'pve',
-    name: '炽阳黎明刃：团队光环',
-    exoticArmor: '星界协议 Starfire Protocol',
-    armorSet: 'AION 适配者套装',
-    stats: ['韧性 100', '纪律 100', '恢复 80+'],
-    weapons: ['动能：任意', '能量：炽阳融合步枪', '重型：火箭筒'],
-    why: '裂谷增伤+手雷充能循环，团本奶妈/辅助首选，团队持续作战发动机。',
-    difficulty: '入门',
-    tags: ['团本', '辅助', '奶妈']
-  },
-  {
-    id: 'warlock-strand-pve',
-    classId: 'warlock', element: 'strand', mode: 'pve',
-    name: '缚丝织法师：召唤大师',
-    exoticArmor: '蛇之缠绕 Ophidian Aspect 或 尼欧塔瑞之刃',
-    armorSet: 'AION 复兴套装',
-    stats: ['韧性 100', '纪律 100', '智慧 80+'],
-    weapons: ['动能：缚丝脉冲步枪', '能量：缚丝榴弹发射器', '重型：缚丝线形融合'],
-    why: '缚丝使魔持续输出，最强单目标持续伤害之一，适合Boss战。',
-    difficulty: '进阶',
-    tags: ['Boss', '持续伤害']
-  },
-  {
-    id: 'warlock-void-pve',
-    classId: 'warlock', element: 'void', mode: 'pve',
-    name: '虚空虚空行者：新星轰炸',
-    exoticArmor: '风暴之冠（电弧）/ 蛇之缠绕',
-    armorSet: '初次远征套装',
-    stats: ['韧性 100', '智慧 100', '纪律 80+'],
-    weapons: ['动能：任意', '能量：虚空武器', '重型：火箭筒/线性融合'],
-    why: '新星炸弹+波动（Volatile）爆发，AOE与单体兼顾的高伤术士。',
-    difficulty: '入门',
-    tags: ['高伤', 'AOE']
-  },
-  {
-    id: 'warlock-arc-pvp',
-    classId: 'warlock', element: 'arc', mode: 'pvp',
-    name: '电弧风暴行者：连锁压制',
-    exoticArmor: '风暴之冠 Crown of Tempests',
-    armorSet: '任意高恢复PVP套装',
-    stats: ['恢复 100', '韧性 100', '纪律 60+'],
-    weapons: ['动能：手枪', '能量：电弧武器', '重型：火箭筒'],
-    why: '击杀加速技能充能，裂谷增伤+电弧连锁，PVP压制与辅助兼备。',
-    difficulty: '进阶',
-    tags: ['PVP', '技能循环']
-  }
-]
+// Legacy recommendation examples were removed. Keep this module as a stable
+// compatibility boundary for the retired tools page; only weapon guidance and
+// future rule data may be added back after verification.
+export const builds = []
 
 // 武器推荐规则
 export const weaponRecs = [
@@ -200,8 +50,8 @@ export const weaponRecs = [
 // 套装配置推荐规则
 export const loadoutRules = {
   statPriority: {
-    pve: ['韧性100 → 纪律/智慧100 → 恢复'],
-    pvp: ['韧性100 → 恢复100 → 机动/纪律']
+    pve: ['Health 先到玩法需要的档位 → Grenade / Melee / Class 按循环分配 → Weapons / Super 按活动补足'],
+    pvp: ['Health 与 Weapons 先看对局需求 → Class / Melee 支撑中立游戏 → Grenade / Super 作为补充']
   },
   slotTips: [
     '头盔：瞄准/弹药/超能力模组',
@@ -211,9 +61,9 @@ export const loadoutRules = {
     '职业装备：技能充能/终结技模组'
   ],
   setBonusTips: [
-    '凑齐 2/4/6 件激活套装加成',
+    '套装加成的触发件数和效果以当前 Manifest 与补丁说明为准',
     '用异域件替换属性最差的部位',
-    '优先选高 Tier 护甲（属性总值更高）'
+    '优先比较 Health、Melee、Grenade、Class、Super、Weapons 的实际分布与套装效果；Tier 不能替代属性和机制适配'
   ]
 }
 

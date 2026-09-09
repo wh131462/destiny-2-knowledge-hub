@@ -2,10 +2,9 @@
 import { useI18n } from '@/i18n'
 const { t } = useI18n()
 const links = [
-  { to: '/classes', key: 'classes' }, { to: '/prismatic', key: 'prismatic' }, { to: '/weapons', key: 'weapons' },
-  { to: '/armor', key: 'armor' }, { to: '/activities', key: 'activities' }, { to: '/lore', key: 'lore' },
-  { to: '/build-lab', key: 'buildLab' }, { to: '/build-workbench', key: 'workbench' }, { to: '/manual-loadout', key: 'manualLoadout' }, { to: '/manifest', key: 'manifest' },
-  { to: '/glossary', key: 'glossary' }, { to: '/data-status', key: 'dataStatus' }
+  { to: '/builds', key: 'publicBuilds' },
+  { to: '/manual-loadout', key: 'manualLoadout' },
+  { to: '/data-status', key: 'dataStatus' }
 ]
 </script>
 

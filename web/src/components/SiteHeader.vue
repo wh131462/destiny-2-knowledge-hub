@@ -14,27 +14,17 @@ const navGroups = [
     key: 'knowledge',
     items: [
       { to: '/classes', key: 'classes' },
-      { to: '/prismatic', key: 'prismatic' },
-      { to: '/weapon-tier-list', key: 'weaponTierList' },
       { to: '/weapons', key: 'weapons' },
       { to: '/armor', key: 'armor' },
       { to: '/activities', key: 'activities' },
-      { to: '/lore', key: 'lore' },
-      { to: '/glossary', key: 'glossary' }
+      { to: '/lore', key: 'lore' }
     ]
   },
   {
     key: 'build',
     items: [
-      { to: '/smart-loadout', key: 'smartLoadout' },
+      { to: '/builds', key: 'publicBuilds' },
       { to: '/manual-loadout', key: 'manualLoadout' }
-    ]
-  },
-  {
-    key: 'data',
-    items: [
-      { to: '/manifest', key: 'manifest' },
-      { to: '/data-status', key: 'dataStatus' }
     ]
   }
 ]
@@ -146,7 +136,8 @@ onBeforeUnmount(() => {
           v-model="searchQuery"
           type="search"
           :placeholder="t('common.searchPlaceholder')"
-          :aria-label="t('common.searchPlaceholder')"
+          :aria-label="t('common.searchHint')"
+          :title="t('common.searchHint')"
           aria-controls="global-search-results"
           :aria-expanded="searchOpen"
           autocomplete="off"
@@ -168,13 +159,19 @@ onBeforeUnmount(() => {
               @mouseenter="activeSearchIndex = index"
               @click="selectSearchResult(result)"
             >
-              <span class="result-type">{{ t(`searchTypes.${result.type}`) }}</span>
-              <span class="result-copy"><strong>{{ locale === 'en' ? result.titleEn : result.title }}</strong><small>{{ result.description }}</small></span>
+              <span class="result-type" :title="t(`searchTypes.${result.type}`)">{{ t(`searchTypes.${result.type}`) }}</span>
+              <span class="result-copy">
+                <strong :title="locale === 'en' ? result.titleEn : result.title">{{ locale === 'en' ? result.titleEn : result.title }}</strong>
+                <small :title="result.description">{{ result.description }}</small>
+              </span>
               <span class="result-arrow" aria-hidden="true">→</span>
             </button>
           </template>
           <p v-else class="search-empty">{{ t('common.searchNoResults') }}</p>
-          <router-link to="/manifest" class="search-catalog-link" @click="closeSearch">{{ t('common.searchCatalog') }} <span aria-hidden="true">→</span></router-link>
+          <router-link to="/manifest" class="search-catalog-link" :title="t('common.searchCatalog')" @click="closeSearch">
+            <span class="search-catalog-copy">{{ t('common.searchCatalog') }}</span>
+            <span class="result-arrow" aria-hidden="true">→</span>
+          </router-link>
         </div>
       </div>
 
@@ -226,7 +223,8 @@ onBeforeUnmount(() => {
 .logo-text .en { margin-top: 3px; color: var(--gold-dim); font: .57rem var(--font-en); letter-spacing: .2em; }
 .global-search { position: relative; display: flex; align-items: center; flex: 0 1 270px; min-width: 170px; height: 36px; margin-left: auto; border: 1px solid var(--line-soft); border-radius: 7px; background: rgba(16, 24, 40, .72); transition: border-color .2s, box-shadow .2s, background .2s; }
 .global-search.focused { border-color: var(--gold-dim); background: rgba(16, 24, 40, .96); box-shadow: 0 0 0 3px rgba(232, 193, 90, .1); }
-.global-search input { min-width: 0; width: 100%; height: 100%; padding: 0 42px 0 34px; border: 0; outline: 0; background: transparent; color: var(--text-main); font: .78rem var(--font-cn); }
+.global-search input { min-width: 0; width: 100%; height: 100%; padding: 0 42px 0 34px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border: 0; outline: 0; background: transparent; color: var(--text-main); font: .78rem var(--font-cn); }
+.global-search input:focus:not(:placeholder-shown) { text-overflow: clip; }
 .global-search input::placeholder { color: var(--text-dim); }
 .global-search input::-webkit-search-cancel-button { display: none; }
 .search-icon { position: absolute; left: 12px; width: 12px; height: 12px; border: 1.5px solid var(--text-dim); border-radius: 50%; pointer-events: none; }
@@ -235,15 +233,17 @@ onBeforeUnmount(() => {
 .search-clear { position: absolute; right: 8px; width: 22px; height: 22px; border: 0; background: transparent; color: var(--text-dim); font-size: 1.05rem; line-height: 1; cursor: pointer; }
 .global-search:has(.search-clear) kbd { display: none; }
 .search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 120; padding: 6px; border: 1px solid var(--line-soft); border-radius: 8px; background: rgba(16, 24, 40, .99); box-shadow: 0 18px 38px rgba(0, 0, 0, .45); }
-.search-result { display: grid; grid-template-columns: 4.2rem 1fr auto; align-items: center; width: 100%; gap: 8px; padding: 9px 8px; border: 0; border-radius: 5px; background: transparent; color: var(--text-main); text-align: left; cursor: pointer; }
+.search-result { display: grid; grid-template-columns: 4.2rem minmax(0, 1fr) auto; align-items: center; width: 100%; gap: 8px; padding: 9px 8px; border: 0; border-radius: 5px; background: transparent; color: var(--text-main); text-align: left; cursor: pointer; }
 .search-result:hover, .search-result.selected { background: rgba(232, 193, 90, .1); }
-.result-type { align-self: start; padding-top: 2px; color: var(--gold-dim); font: .57rem var(--font-en); }
+.result-type { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; align-self: start; padding-top: 2px; color: var(--gold-dim); font: .57rem var(--font-en); }
 .result-copy { display: grid; min-width: 0; gap: 2px; }
 .result-copy strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .75rem; }
 .result-copy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-dim); font-size: .62rem; }
 .result-arrow { color: var(--gold-bright); font-size: .9rem; }
 .search-empty { padding: 14px 9px; color: var(--text-dim); font-size: .72rem; }
-.search-catalog-link { display: flex; justify-content: space-between; margin: 4px 2px 0; padding: 8px 7px 3px; border-top: 1px solid var(--line-soft); color: var(--gold-dim); font-size: .68rem; }
+.search-catalog-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 4px 2px 0; padding: 8px 7px 3px; border-top: 1px solid var(--line-soft); color: var(--gold-dim); font-size: .68rem; }
+.search-catalog-copy { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.search-catalog-link .result-arrow { flex-shrink: 0; }
 .nav { display: flex; align-items: stretch; align-self: stretch; gap: 2px; }
 .nav-link, .nav-group-trigger { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; margin: 12px 0; padding: 0 13px; border: 0; border-radius: 6px; color: var(--text-sub); background: transparent; font: inherit; font-size: .82rem; white-space: nowrap; cursor: pointer; transition: color .2s, background .2s; }
 .nav-link:hover, .nav-group-trigger:hover, .nav-group.active > .nav-group-trigger { color: var(--gold-bright); background: rgba(232, 193, 90, .09); }

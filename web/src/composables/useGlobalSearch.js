@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { classesV2, subclasses, gearItems, armorSets, activitiesV2, curatedBuilds } from '@/data/v2'
+import { classesV2, subclasses, gearItems, armorSets, activitiesV2, curatedBuilds, abilities, aspects, facets, fragments, mechanics, armorMods } from '@/data/v2'
 import { weaponTypes } from '@/data/weapons'
 import { exoticArmor } from '@/data/armor'
 import { enemyRaces, characters, expansions, sagas } from '@/data/world'
@@ -33,7 +33,7 @@ const subclassResults = subclasses.map(item => makeResult({
   title: item.name,
   titleEn: item.en,
   description: `${item.classId}：${item.type === 'prismatic' ? '棱镜职业' : item.element}`,
-  route: item.type === 'prismatic' ? '/prismatic' : `/classes/${item.classId}?el=${item.element}`,
+  route: `/classes/${item.classId}?el=${item.element}`,
   keywords: [item.classId, item.element, ...(item.aspectIds || [])]
 }))
 
@@ -53,7 +53,7 @@ const gearResults = gearItems.map(item => makeResult({
   title: item.name,
   titleEn: item.en,
   description: [item.frame, item.element, item.rarity === 'exotic' ? '异域' : ''].filter(Boolean).join('、'),
-  route: item.type === 'armor' || item.type === 'exoticClassItem' ? '/armor' : '/weapons',
+  route: `/encyclopedia/curated/${item.id}`,
   keywords: [item.slot, item.ammo, ...(item.aliases || []), ...(item.perkOptions || []), ...(item.mechanicIds || [])]
 }))
 
@@ -63,7 +63,7 @@ const armorResults = armorSets.map(item => makeResult({
   title: item.name,
   titleEn: item.en,
   description: `${item.source}：${item.bonus}`,
-  route: '/armor',
+  route: `/encyclopedia/curated/${item.id}`,
   keywords: item.stats
 }))
 
@@ -82,9 +82,9 @@ const activityResults = activitiesV2.map(item => makeResult({
   type: 'activities',
   title: item.name,
   titleEn: item.en,
-  description: `${item.category || ''}：${item.fireteam || ''}`,
-  route: '/activities',
-  keywords: [item.category, item.fireteam]
+  description: item.intro,
+  route: `/activities?entry=${item.id}`,
+  keywords: [item.category, item.fireteam, ...(item.aliases || []), ...(item.tags || []), ...(item.rewards || [])]
 }))
 
 const loreResults = [
@@ -114,6 +114,12 @@ const buildResults = curatedBuilds.map(item => makeResult({
   keywords: [item.classId, item.subclassId, item.difficulty, item.tags, item.mechanicIds]
 }))
 
+const entryResults = [...abilities, ...aspects, ...facets, ...fragments, ...mechanics, ...armorMods].map(item => makeResult({
+  id: `entry-${item.id}`, type: item.slot ? 'armor' : 'subclasses', title: item.name, titleEn: item.en,
+  description: item.description || item.effect || item.values?.effect || '',
+  route: `/encyclopedia/curated/${item.id}`, keywords: [item.manifestHash, item.aliases, item.mechanicIds]
+}))
+
 export const globalSearchIndex = [
   ...classResults,
   ...subclassResults,
@@ -124,7 +130,8 @@ export const globalSearchIndex = [
   ...activityResults,
   ...loreResults,
   ...glossaryResults,
-  ...buildResults
+  ...buildResults,
+  ...entryResults
 ]
 
 export function useGlobalSearch() {

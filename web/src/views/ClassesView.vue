@@ -61,7 +61,7 @@ const elementKeys = Object.keys(elements)
           <router-link
             v-for="s in c.subclasses"
             :key="s.id"
-            :to="s.type === 'prismatic' ? '/prismatic' : `/classes/${c.id}?el=${s.element}`"
+            :to="`/classes/${c.id}?el=${s.element}`"
             class="sub-card"
             :class="{ prismatic: s.type === 'prismatic' }"
           >
@@ -83,7 +83,7 @@ const elementKeys = Object.keys(elements)
     <div v-else class="empty">未找到匹配的内容，试试其他关键词或元素。</div>
 
     <div class="note gold">
-      💡 点击职业名进入详情页；五大元素对应五色徽标：
+      💡 点击职业名进入详情页；每个职业的五大元素分支与棱镜分支都在同一页中：
       <span v-for="(el, key) in elements" :key="key">
         <ElementBadge :element="key" />
       </span>

@@ -1,6 +1,5 @@
 <script setup>
 import { classes } from '@/data/classes'
-import { curatedBuilds, gearById } from '@/data/v2'
 import { useI18n, localized } from '@/i18n'
 
 const { t, locale } = useI18n()
@@ -10,17 +9,13 @@ const classCards = classes.map(c => ({
   count: c.subclasses.length
 }))
 
-const featuredBuilds = curatedBuilds.slice(0, 3)
-
 const modules = [
-  { to: '/classes', icon: '01', title: '职业百科', en: 'CLASSES', desc: '三大职业、普通子职业、技能体系' },
-  { to: '/prismatic', icon: '02', title: '棱镜职业', en: 'PRISMATIC', desc: '跨元素技能池、超越、21 个特性' },
-  { to: '/smart-loadout', icon: '03', title: '智能配装', en: 'SMART LOADOUT', desc: '天赋、技能、武器、一图流' },
-  { to: '/weapons', icon: '04', title: '武器百科', en: 'WEAPONS', desc: '武器原型、异域武器图鉴' },
-  { to: '/armor', icon: '05', title: '防具与套装', en: 'ARMOR', desc: '防具、异域护甲、模组' },
-  { to: '/activities', icon: '06', title: '活动图鉴', en: 'ACTIVITIES', desc: '突袭、地牢、高难活动' },
-  { to: '/lore', icon: '07', title: '世界观', en: 'LORE', desc: '传奇、势力、角色、敌人' },
-  { to: '/glossary', icon: '08', title: '术语表', en: 'GLOSSARY', desc: '中英对照、快速检索' }
+  { to: '/classes', icon: '01', title: '职业百科', en: 'CLASSES', desc: '三大职业、元素与棱镜子职业、技能体系' },
+  { to: '/builds', icon: '02', title: '构筑方案', en: 'PUBLIC BUILDS', desc: '浏览公开方案，查看装备、技能与操作循环' },
+  { to: '/weapons', icon: '03', title: '武器百科', en: 'WEAPONS', desc: '武器原型、异域武器图鉴' },
+  { to: '/armor', icon: '04', title: '防具与套装', en: 'ARMOR', desc: '防具、异域护甲、模组' },
+  { to: '/activities', icon: '05', title: '活动图鉴', en: 'ACTIVITIES', desc: '突袭、地牢、高难活动' },
+  { to: '/lore', icon: '06', title: '世界观', en: 'LORE', desc: '传奇、势力、角色、敌人' }
 ]
 
 </script>
@@ -40,9 +35,9 @@ const modules = [
         <p class="eyebrow">DESTINY 2 / KNOWLEDGE HUB</p>
         <h1>{{ locale === 'en' ? 'Light as a blade,' : '以光为刃，' }} <span class="gold">{{ locale === 'en' ? 'knowledge as a shield' : '以知为盾' }}</span></h1>
         <div class="hero-actions">
-        <router-link to="/smart-loadout" class="btn primary">开始智能配装</router-link><router-link to="/manual-loadout" class="btn">手动构建一图流</router-link>
-          <router-link to="/smart-loadout" class="text-action">生成一图流 ↗</router-link>
-          <router-link to="/prismatic" class="text-action">了解棱镜系统 →</router-link>
+          <router-link to="/manual-loadout" class="btn primary">创建构筑</router-link>
+          <router-link to="/builds" class="btn">浏览构筑方案</router-link>
+          <router-link to="/classes" class="text-action">查看职业与子职业 →</router-link>
         </div>
       </div>
       <!-- 星光效果 -->
@@ -58,32 +53,9 @@ const modules = [
       <div class="grid grid-4">
         <router-link v-for="m in modules" :key="m.to" :to="m.to" class="card module-card">
           <div class="mod-icon">{{ m.icon }}</div>
-          <h3>{{ locale === 'en' ? ({ classes: 'Classes', prismatic: 'Prismatic Subclass', 'smart-loadout': 'Smart Loadout', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', lore: 'Lore', glossary: 'Glossary' }[m.to.slice(1)] || m.title) : m.title }}</h3>
+          <h3>{{ locale === 'en' ? ({ classes: 'Classes', builds: 'Builds', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', lore: 'Lore', glossary: 'Glossary' }[m.to.slice(1)] || m.title) : m.title }}</h3>
           <span class="en-tag">{{ m.en }}</span>
           <p>{{ m.desc }}</p>
-        </router-link>
-      </div>
-    </section>
-
-    <!-- 热门构筑 -->
-    <section>
-      <div class="section-title">
-        <h2>{{ t('pages.home.featured') }}</h2>
-        <span class="en">FEATURED BUILDS</span>
-        <router-link to="/smart-loadout" class="more">进入智能配装 →</router-link>
-      </div>
-      <div class="grid grid-3">
-        <router-link :to="`/smart-loadout?build=${b.id}`" v-for="b in featuredBuilds" :key="b.id" class="card build-card">
-          <div class="build-head">
-            <span class="badge gold">{{ b.name }}</span>
-          </div>
-          <p class="why">{{ b.goal }}</p>
-          <div class="build-metrics">
-            <span>生存 {{ b.scoring.survivability }}</span>
-            <span>清怪 {{ b.scoring.addClear }}</span>
-            <span>输出 {{ b.scoring.bossDamage }}</span>
-          </div>
-          <div class="exotic">{{ locale === 'en' ? 'Core: ' : '核心：' }}{{ localized(gearById[b.exoticArmorId]) }}</div>
         </router-link>
       </div>
     </section>

@@ -29,12 +29,12 @@ const classAbilityByClass = {
 const viewSubclasses = (classId) => subclasses
   .filter(item => item.classId === classId)
   .map(item => {
-    const superAbility = abilityById[item.superIds?.[0]]
+    const superAbilities = (item.superIds || []).map(id => abilityById[id]).filter(Boolean)
     const aspectNames = (item.aspectIds || []).map(id => aspectById[id]?.name || id)
     return {
       ...item,
       branch: `${item.name} ${item.en}`,
-      super: superAbility ? `${superAbility.name} ${superAbility.en}` : '按当前装备选择超能力',
+      super: superAbilities.map(ability => ability.name + ' ' + ability.en).join(' / ') || '按当前装备选择超能力',
       focus: focusByElement[item.element] || '元素技能协同',
       aspects: aspectNames,
       build: item.type === 'prismatic'

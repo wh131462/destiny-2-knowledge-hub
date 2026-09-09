@@ -15,6 +15,8 @@ const sharedItemSets = ref([])
 const sharedVendorEntries = ref([])
 const sharedActivityRewards = ref([])
 const sharedCatalogItems = ref([])
+const sharedAbilities = ref([])
+const snapshot = ref({})
 let loadPromise = null
 
 async function loadManifest(path) {
@@ -23,11 +25,13 @@ async function loadManifest(path) {
   if (!response.ok) throw new Error(`Manifest request failed: ${response.status}`)
   const payload = await response.json()
   const items = Array.isArray(payload.items) ? payload.items : []
+  if (path.endsWith('manifest-equipment-rich.json')) snapshot.value = { manifestVersion: payload.manifestVersion, syncedAt: payload.syncedAt }
   const entries = items.flatMap(item => {
     const names = [item.name, item.nameZh, item.englishName].filter(Boolean)
     return names.map(name => [String(name).trim().toLowerCase(), item])
   })
-  const map = new Map(entries)
+  // Name aliases are only for display. Hash keys preserve same-name variants.
+  const map = new Map([...entries, ...items.map(item => [`hash:${item.hash || item.id}`, item])])
   assetCache.set(path, map)
   return map
 }
@@ -59,9 +63,10 @@ export function useManifestAssets() {
         sharedAssets.value = new Map([...equipment, ...abilities, ...mods])
         sharedEquipmentItems.value = [...new Set(equipment.values())]
         sharedMods.value = [...new Set(mods.values())]
+        sharedAbilities.value = [...new Set(abilities.values())]
         sharedArtifacts.value = [...new Set(artifact.values())]
         sharedCatalogItems.value = catalogItems
-        sharedAssetByHash.value = new Map([...catalogItems, ...equipment.values(), ...abilities.values(), ...mods.values()].filter(item => item?.hash).map(item => [String(item.hash), item]))
+        sharedAssetByHash.value = new Map([...catalogItems, ...equipment.values(), ...abilities.values(), ...mods.values(), ...artifact.values(), ...[...artifact.values()].flatMap(a => a.nodes || [])].filter(item => item?.hash).map(item => [String(item.hash), item]))
         curatedModLinks.value = new Map([...modLinks.values()].filter(item => item?.id).map(item => [item.id, item]))
         sharedManifestPerks.value = perks
         sharedPlugSets.value = plugSets
@@ -69,7 +74,7 @@ export function useManifestAssets() {
         sharedVendorEntries.value = vendorEntries
         sharedActivityRewards.value = activityRewards
         loadState.value = 'ready'
-      }).catch(() => { loadState.value = 'error' })
+      }).catch(() => { loadState.value = 'error'; loadPromise = null })
     }
     await loadPromise
   })
@@ -85,7 +90,7 @@ export function useManifestAssets() {
     return null
   }
 
-  const isExactManifestAsset = item => Boolean(assetFor(item)?.hash || (item?.manifestVerified && Number.isInteger(item?.manifestHash)))
+  const isExactManifestAsset = item => Boolean(sharedAssetByHash.value.has(String(item?.manifestHash || item?.hash || curatedModLinks.value.get(item?.id)?.primaryHash)))
 
   const iconFor = item => {
     const asset = assetFor(item)
@@ -94,12 +99,8 @@ export function useManifestAssets() {
   }
 
   const weaponItems = computed(() => {
-    const seen = new Set()
     return sharedEquipmentItems.value.filter(item => {
       if (item.itemType !== 3 || !item.name || item.redacted || item.blacklisted) return false
-      const key = `${item.name}|${item.weaponFamily || ''}|${item.ammoSlot || ''}|${item.tierTypeHash || ''}`
-      if (seen.has(key)) return false
-      seen.add(key)
       return true
     })
   })
@@ -110,6 +111,10 @@ export function useManifestAssets() {
     assetFor, iconFor, isExactManifestAsset, weaponItems,
     equipmentItems: computed(() => sharedEquipmentItems.value),
     manifestMods: computed(() => sharedMods.value),
+    manifestAbilities: computed(() => sharedAbilities.value),
+    subclassAssets: computed(() => sharedCatalogItems.value.filter(item => item.itemType === 16 && item.icon)),
+    fragmentAssets: computed(() => sharedAbilities.value.filter(item => item.itemType === 19 && /Fragment/.test(item.typeName || ''))),
+    snapshot: computed(() => snapshot.value),
     artifacts: computed(() => sharedArtifacts.value),
     manifestPerks: computed(() => sharedManifestPerks.value),
     plugSets: computed(() => sharedPlugSets.value),
