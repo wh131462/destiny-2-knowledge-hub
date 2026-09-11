@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { blankDraft, addPerkCombination } from '../packages/loadout-planner/index.js'
 import { createLoadoutExportModel } from '../web/src/utils/loadoutExportModel.js'
-import { renderLoadoutHtml, collectImageUrls, exportDimensions, exportFilename } from '../packages/loadout-export/index.js'
+import { renderLoadoutHtml, renderLoadoutContent, collectImageUrls, exportDimensions, exportFilename } from '../packages/loadout-export/index.js'
 import { allowedImageSource, embedLoadoutImages } from '../web/src/utils/loadoutImage.js'
 
 const icon = 'https://www.bungie.net/common/destiny2_content/icons/test.png'
@@ -77,6 +77,20 @@ test('长备注保留首尾和换行，不使用省略号截断或固定高度',
   const html = renderLoadoutHtml(model)
   assert.ok(html.includes(model.notes))
   assert.doesNotMatch(html, /line-clamp|text-overflow:ellipsis/)
+})
+
+test('网页预览加载官方图标并转义文本，离线导出仍只接受内嵌图片', () => {
+  const { model } = fixture()
+  model.title = '<img src=x onerror=alert(1)>'
+  model.weapons[0].image = 'javascript:alert(1)'
+  model.weapons[1].image = 'https://www.bungie.net.evil.test/common/destiny2_content/test.png'
+  model.weapons[2].image = 'https://www.bungie.net/common/destiny2_content/test.png" onerror="alert(1)'
+  const html = renderLoadoutContent(model, new Map(), { preview: true })
+  assert.ok(html.includes(`src="${icon}"`))
+  assert.match(html, /&lt;img src=x onerror=alert\(1\)&gt;/)
+  assert.doesNotMatch(html, /<img src=x|src="javascript:|src="https:\/\/www\.bungie\.net\.evil| onerror="/)
+  assert.doesNotMatch(html, /<iframe|<script|<!doctype|<style/)
+  assert.doesNotMatch(renderLoadoutHtml(model), /src="https:/)
 })
 
 test('图片去重内嵌；超大图明确拒绝 PNG 并保留 HTML 路径，不自动裁切', () => {

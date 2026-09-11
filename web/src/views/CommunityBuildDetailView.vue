@@ -1,46 +1,49 @@
 <script setup>
 import DestinyLoading from '@/components/DestinyLoading.vue'
 import { ui, uiMessage, useI18n, localized, formatDate } from '@/i18n'
-import { computed, ref, watch } from 'vue'
-import BuildSectionNav from '@/components/BuildSectionNav.vue'
+import { computed, ref, watch, onMounted } from 'vue'
+import LoadoutSheet from '@/components/LoadoutSheet.vue'
+import LoadoutExportButton from '@/components/LoadoutExportButton.vue'
 import { useRoute } from 'vue-router'
 import { usePublicBuilds } from '@/composables/usePublicBuilds'
 import { useManifestAssets } from '@/composables/useManifestAssets'
+import { useWeaponPerks } from '@/composables/useWeaponPerks'
 import { useLoadoutVisuals } from '@/composables/useLoadoutVisuals'
 import { abilities, aspects, facets, fragments, subclasses, classById, activityById } from '@/data/v2'
 import { createLoadoutExportModel } from '@/utils/loadoutExportModel'
 import { encodeDraft } from '../../../packages/loadout-planner/index.js'
-import { renderLoadoutHtml } from '../../../packages/loadout-export/index.js'
 
 const route = useRoute(), message = ref(''), copiedCode = ref(''), manualCopy = ref(false)
 const { snapshot, status, error, refresh, config } = usePublicBuilds()
 const { locale } = useI18n()
 const manifest = useManifestAssets()
+const perkPool = useWeaponPerks()
+onMounted(perkPool.load)
+const perkByHash = computed(() => perkPool.state.value === 'ready' && perkPool.version.value === manifest.snapshot.value.manifestVersion ? perkPool.byHash.value : new Map())
 const build = computed(() => snapshot.value?.builds.find(b => b.number === Number(route.params.issueNumber)))
 const draft = computed(() => build.value?.submission.loadout)
 watch(build, () => { copiedCode.value = ''; message.value = ''; manualCopy.value = false })
 const returnLink = computed(() => /^\/builds(?:\?|$)/.test(String(route.query.from || '')) ? String(route.query.from) : '/builds')
-const sections = computed(() => [
-  ...(model.value?.talentGroups || []).map((g, i) => ({ id: `detail-talents-${i}`, label: g.name })),
-  { id: 'detail-weapons', label: '武器词条' }, { id: 'detail-armor', label: '护甲模组' },
-  { id: 'detail-artifact', label: '神器' }, { id: 'detail-stats', label: '属性建议' },
-  ...(model.value?.notes ? [{ id: 'detail-notes', label: '作者备注' }] : [])
-])
-const hideImage = event => { event.currentTarget.hidden = true }
 const subclass = computed(() => subclasses.find(s => s.id === draft.value?.subclassId))
 const { visualIcon, visualDescription } = useLoadoutVisuals(manifest, subclass)
 const model = computed(() => draft.value ? createLoadoutExportModel(draft.value, { locale: locale.value,
   equipment: manifest.equipmentItems.value, mods: manifest.manifestMods.value, artifacts: manifest.artifacts.value,
   itemSets: manifest.itemSets.value, subclasses, abilities, aspects, facets, fragments, classes: classById,
   snapshot: manifest.snapshot.value, iconFor: visualIcon, descriptionFor: visualDescription,
-  perkByHash: new Map(manifest.manifestPerks.value.map(p => [Number(p.hash), p])), issues: build.value.warnings
+  perkByHash: perkByHash.value, issues: build.value.warnings
 }) : null)
-const exportHtml = computed(() => model.value ? renderLoadoutHtml(model.value) : '')
 const editorLink = edit => ({ path: '/manual-loadout', query: { community: build.value.number, from: returnLink.value, ...(edit ? { mode: 'edit' } : {}) } })
 async function copyCode() {
   copiedCode.value = encodeDraft(draft.value)
   try { await navigator.clipboard.writeText(copiedCode.value); manualCopy.value = false; message.value = '配装代码已复制，包含全部词条组合和备注。' }
   catch { manualCopy.value = true; message.value = '自动复制不可用，可在下方全选复制配装代码。' }
+}
+async function prepareImageExport() {
+  await perkPool.load()
+  const prepared = model.value
+  if (!prepared) return null
+  const compatible = perkPool.state.value === 'ready' && perkPool.version.value === manifest.snapshot.value.manifestVersion
+  return { ...prepared, warnings: [...prepared.warnings, ...(compatible ? [] : [ui('Perk 图标数据未就绪或版本不一致，已保留原推荐文字与 Hash，请核对。')])] }
 }
 </script>
 
@@ -52,13 +55,13 @@ async function copyCode() {
     <DestinyLoading v-if="status === 'loading' && !snapshot" :label="ui('正在读取构筑…')" />
     <template v-else-if="build">
       <header class="detail-header"><div><span class="eyebrow">{{ ui("COMMUNITY BUILD / 社区投稿 #") }}{{ build.number }}</span><h1>{{ draft.name }}</h1><p>{{ build.submission.summary }}</p><div class="byline"><span>@{{ build.author.login }}</span><span>{{ localized(classById[draft.classId]) }} {{ localized(subclass) }}</span><span>{{ ui("更新于") }} {{ formatDate(build.updatedAt) }}</span></div></div><div class="verification"><b>{{ ui("社区投稿") }}</b><span>{{ ui("通过配置检查") }}</span><small>{{ ui("不代表实机验证") }}</small></div></header>
-      <nav class="detail-actions flow-actions" :aria-label="ui(&quot;构筑操作&quot;)"><router-link class="btn primary" :to="editorLink(false)">{{ ui("以此创建副本") }}</router-link><router-link class="btn" :to="editorLink(true)">{{ ui("修改原投稿") }}</router-link><button type="button" class="btn" @click="copyCode">{{ ui("复制配装代码") }}</button><a class="btn" :href="build.issueUrl" target="_blank" rel="noopener noreferrer">{{ ui("GitHub 原文 / 下架与恢复 ↗") }}</a></nav>
+      <nav class="detail-actions flow-actions" :aria-label="ui(&quot;构筑操作&quot;)"><router-link class="btn primary" :to="editorLink(false)">{{ ui("以此创建副本") }}</router-link><router-link class="btn" :to="editorLink(true)">{{ ui("修改原投稿") }}</router-link><LoadoutExportButton :key="build.number" :disabled="manifest.status.value !== 'ready'" :prepare="prepareImageExport" /><button type="button" class="btn" @click="copyCode">{{ ui("复制配装代码") }}</button><a class="btn" :href="build.issueUrl" target="_blank" rel="noopener noreferrer">{{ ui("GitHub 原文 / 下架与恢复 ↗") }}</a></nav>
       <details class="management-help"><summary>{{ ui("投稿管理与同步说明") }}</summary><p class="help">{{ ui("作者可在 GitHub 关闭或重开 Issue；被屏蔽的投稿需由管理者解除屏蔽。更新将在同步成功后显示，关闭不使原文私密。") }}</p></details>
       <p v-if="message" class="flow-notice" role="status">{{ uiMessage(message) }}</p><details v-if="copiedCode" :open="manualCopy"><summary>{{ ui("查看配装代码") }}</summary><a-textarea :value="copiedCode" readonly :aria-label="ui(&quot;配装代码&quot;)" :rows="3" /></details>
       <div class="tags"><span v-for="id in build.submission.activityIds" :key="id">{{ activityById[id]?.name || id }}</span><span v-for="tag in build.submission.tags" :key="tag">{{ tag }}</span></div>
       <details class="management-help"><summary>{{ ui("版本与配置提示") }} <span v-if="model.warnings.length">（{{ model.warnings.length }}）</span></summary><p class="help">{{ ui("校验快照：") }}{{ snapshot.manifestVersion }} {{ ui("原稿版本：") }}{{ draft.manifestVersion || ui("未提供") }}</p><p v-for="warning in model.warnings" :key="warning" class="notice">{{ uiMessage(warning) }}</p></details>
       <p v-if="manifest.status.value !== 'ready'" class="notice">{{ manifest.status.value === 'error' ? ui("装备名称与配图加载失败，原始配置仍已保留。") : ui("正在加载装备名称与配图…") }}</p>
-      <section class="export-sheet-section"><h2>{{ ui("配装一图流") }}</h2><iframe class="export-sheet" :srcdoc="exportHtml" :title="ui('配装一图流预览')"></iframe></section>
+      <section class="export-sheet-section"><h2>{{ ui("配装一图流") }}</h2><LoadoutSheet :model="model" /></section>
       <footer class="detail-end"><div><h2>{{ ui("从这套构筑，开始你的下一次尝试") }}</h2><p>{{ ui("完整保留装备、词条和备注，在副本中自由调整。") }}</p></div><router-link class="btn primary" :to="editorLink(false)">{{ ui("以此创建副本 →") }}</router-link></footer>
     </template>
     <section v-else class="unavailable"><span class="eyebrow">BUILD UNAVAILABLE</span><h1>{{ status === 'unconfigured' ? ui("当前页面尚未启用列表同步") : ui("这份构筑暂不可用") }}</h1><p>{{ ui("投稿可能尚未同步、已经下架或需要修复。请刷新列表查看最新结果。") }}</p><router-link to="/builds" class="btn">{{ ui("返回构筑方案") }}</router-link></section>
@@ -98,5 +101,5 @@ async function copyCode() {
 @media(max-width:600px) { .detail-header { grid-template-columns: 1fr; padding: 1.5rem 0; gap: 1.25rem; }.verification { border-left: 0; padding-left: 0; }.detail-actions { display: grid; grid-template-columns: 1fr 1fr; }.detail-actions .primary { grid-column: 1/-1; }.detail-actions > a:last-child { grid-column: 1/-1; font-size: .8rem; }.detail-end { flex-direction: column; align-items: stretch; padding: 1.25rem; } }
 </style>
 <style scoped>
-.export-sheet-section{padding:1.5rem 0}.export-sheet-section h2{margin:0 0 1rem}.export-sheet{display:block;width:100%;height:min(78rem,calc(100vh - 8rem));border:1px solid var(--line-soft);background:#10151c}
+.export-sheet-section{padding:1.5rem 0}.export-sheet-section h2{margin:0 0 1rem}
 </style>

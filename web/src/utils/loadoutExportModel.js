@@ -38,11 +38,10 @@ export function createLoadoutExportModel(draft, context) {
           if (!columns.some(c => c.key === key)) columns.push({ key, label: `原插槽 ${Number(key.slice(7)) + 1}`, options: [] })
         }
         return { name: combo.name.trim() || ui('组合 {0}', [index + 1]), notes: combo.notes, columns: columns.map(column => {
-          const { chosen, manual, unknownHashes } = resolvePerkSelections(combo, column)
+          const { chosen, manual } = resolvePerkSelections(combo, column)
           return { name: generated(column.label), items: [
             ...chosen.map(p => ({ name: [perkLabel(p), ...new Set(craftingConditions(p).map(row => row.text))].join(' · '), image: p.icon ? (/^https?:/.test(p.icon) ? p.icon : `https://www.bungie.net${p.icon}`) : '' })),
-            ...manual.map(name => ({ name, image: '' })),
-            ...unknownHashes.map(hash => ({ name: ui('#{0}（待核对）', [hash]), image: '' }))
+            ...manual.map(name => ({ name, image: '' }))
           ] }
         }).filter(c => c.items.length) }
       })
