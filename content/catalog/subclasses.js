@@ -1,13 +1,11 @@
 import { abilityById } from './abilities.js'
 import { officialSubclasses } from './official-subclasses.js'
 
-const subclassNames = {
-  'titan-solar': '破日者', 'titan-arc': '突袭者', 'titan-void': '哨兵', 'titan-stasis': '巨兽', 'titan-strand': '狂战士', 'titan-prismatic': '棱镜泰坦',
-  'hunter-solar': '枪手', 'hunter-arc': '电弧行者', 'hunter-void': '夜潜者', 'hunter-stasis': '亡魂', 'hunter-strand': '丝线行者', 'hunter-prismatic': '棱镜猎人',
-  'warlock-solar': '黎明之刃', 'warlock-arc': '风暴召唤者', 'warlock-void': '虚空行者', 'warlock-stasis': '暗影术士', 'warlock-strand': '织巢者', 'warlock-prismatic': '棱镜术士'
-}
 export const subclasses = officialSubclasses.map(item => ({
-  ...item, name: subclassNames[item.id] || item.name,
+  // The normalized subclass catalog is generated from Bungie's zh-chs fields.
+  // Keep it as the sole display source so legacy editorial aliases cannot leak
+  // into selectors or build exports.
+  ...item, name: item.name,
   transcendenceGrenade: abilityById[item.transcendenceGrenadeIds[0]] || null
 }))
 export const subclassById = Object.fromEntries(subclasses.map(item => [item.id, item]))

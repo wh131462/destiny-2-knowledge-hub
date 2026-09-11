@@ -49,6 +49,17 @@ test('补齐普通职业超能、近战、星相与全部元素碎片', () => {
   assert.equal(facets.length, 21)
 })
 
+test('技能与子职业显示名始终使用 Manifest 官方中文字段', () => {
+  const hunterStasis = subclassById['hunter-stasis']
+  assert.equal(hunterStasis.name, source.subclasses.find(item => item.id === hunterStasis.id).name)
+  for (const skill of skills) {
+    const official = source.skills.find(item => item.id === skill.id)
+    assert.equal(skill.name, official?.name, skill.id)
+  }
+  assert.equal(fragments.find(item => item.id === 'whisper-of-shards').name, '破碎之吟')
+  assert.equal(fragments.find(item => item.id === 'whisper-of-shards').legacyName, '碎片低语')
+})
+
 test('职业技能及跳跃遵循实际子职业限制，包括棱镜杂技闪身与闪现', () => {
   const acrobat = abilityById['class-acrobats-dodge']
   assert.equal(classAbilityAllowed(acrobat, subclassById['hunter-prismatic']), true)

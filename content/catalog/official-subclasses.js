@@ -10,8 +10,11 @@ export function completeSkills(curated, kinds) {
   return catalog.skills.filter(item => kinds.includes(item.kind)).map(item => {
     const previous = annotations.get(item.id)
     return {
-      ...previous, ...item, name: previous?.name || item.name,
-      ...(previous?.name && previous.name !== item.name ? { officialName: item.name } : {})
+      // Names in the normalized catalog come from Bungie's zh-chs Manifest.
+      // Editorial entries may retain an older alias for migration/search, but
+      // must never override the name shown to players.
+      ...previous, ...item,
+      ...(previous?.name && previous.name !== item.name ? { legacyName: previous.name } : {})
     }
   })
 }
