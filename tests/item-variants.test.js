@@ -36,10 +36,10 @@ test('同名炎阳护腕的旧式、调谐、含锁定巧匠定义在页面投�
   const armor = load('armor').items
   assert.ok(versionLabels(armor.find(item => item.hash === 1862800747)).includes('旧式护甲插槽'))
   assert.ok(versionLabels(armor.find(item => item.hash === 950745251)).includes('调谐槽'))
-  assert.ok(versionLabels(armor.find(item => item.hash === 3787517196)).includes('巧匠槽 · 含锁定定义'))
-  assert.ok(versionLabels(armor.find(item => item.hash === 1862800747)).includes('历史定义 · 当前不再获取'))
+  assert.ok(versionLabels(armor.find(item => item.hash === 3787517196)).includes('巧匠槽 / 含锁定定义'))
+  assert.ok(versionLabels(armor.find(item => item.hash === 1862800747)).includes('历史定义 / 当前不再获取'))
   assert.ok(versionLabels(armor.find(item => item.hash === 950745251)).includes('来源已登记'))
-  assert.ok(versionLabels(armor.find(item => item.hash === 3787517196)).includes('当前系统 · 获取来源未确认'))
+  assert.ok(versionLabels(armor.find(item => item.hash === 3787517196)).includes('当前系统 / 获取来源未确认'))
 })
 
 test('命运终结者的配方与发行差异、长臂特殊版在所有装备投影保留', () => {
@@ -79,7 +79,7 @@ test('受限武器模组保留具体条件；安装与生效同一规则去重�
   assert.ok(versionLabels(byHash.get(1334978104)).includes('普通武器模组'))
   assert.equal(mods.find(item => item.hash === 644105).artifactVariant, 'discount')
   assert.equal(mods.find(item => item.hash === 110793779).artifactVariant, 'restricted')
-  assert.ok(versionLabels(mods.find(item => item.hash === 110793779)).includes('神器限定 · 需解锁'))
+  assert.ok(versionLabels(mods.find(item => item.hash === 110793779)).includes('神器限定 / 需解锁'))
 })
 
 test('分享与导出继续保留版本特征、神器条件及选定词条的锻造等级', () => {

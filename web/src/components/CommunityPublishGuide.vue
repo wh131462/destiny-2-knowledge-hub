@@ -1,6 +1,7 @@
 <script setup>
 import { ui } from '@/i18n'
 import { communityConfig } from '@/utils/communityConfig'
+import StableDisclosure from '@/components/StableDisclosure.vue'
 defineProps({ editing: Boolean, inSubmission: Boolean })
 </script>
 
@@ -11,12 +12,11 @@ defineProps({ editing: Boolean, inSubmission: Boolean })
     <a :href="communityConfig.repositoryUrl" target="_blank" rel="noopener noreferrer">{{ communityConfig.repository }} ↗</a>
     <a :href="communityConfig.issuesUrl" target="_blank" rel="noopener noreferrer">{{ ui("查看 GitHub Issues ↗") }}</a>
   </nav>
-  <details class="publish-guide">
-    <summary>
+  <div class="publish-guide"><StableDisclosure :title="editing ? ui('如何更新这份投稿？') : ui('第一次发布？查看完整指引')" :width="920" trigger-class="publish-guide-trigger">
+    <template #trigger>
       <span class="guide-mark" aria-hidden="true">?</span>
       <span class="guide-heading"><strong>{{ editing ? ui("如何更新这份投稿？") : ui("第一次发布？查看完整指引") }}</strong><small>{{ ui("准备构筑 → GitHub 提交 → 查看发布结果") }}</small></span>
-      <span class="guide-toggle" aria-hidden="true">＋</span>
-    </summary>
+    </template>
     <div class="guide-body">
       <p class="guide-intro">{{ ui("在本站完成配装，再用自己的 GitHub 账号确认提交。每份投稿对应当前项目仓库中的一条 Issue（投稿记录），不需要填写 Token。") }}</p>
       <ol class="guide-steps">
@@ -41,12 +41,11 @@ defineProps({ editing: Boolean, inSubmission: Boolean })
       </div>
       <footer><p>{{ ui("投稿和 GitHub 原文都是公开内容。关闭或屏蔽只控制本站展示，不会使原文私密。通过配置检查也不代表经过实机验证。") }}</p><router-link v-if="!inSubmission" to="/manual-loadout" class="guide-link">{{ ui("前往创建构筑 →") }}</router-link></footer>
     </div>
-  </details>
+  </StableDisclosure></div>
   </div>
 </template>
 
 <style scoped>
 .guide-container{min-width:0}.repository-links{display:flex;align-items:baseline;flex-wrap:wrap;gap:.5rem 1rem;margin-top:1rem;font-size:.75rem}.repository-links>span{color:var(--text-dim)}.repository-links a{color:var(--gold);overflow-wrap:anywhere;min-width:0}.repository-links a:hover{text-decoration:underline}.repository-links a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.publish-guide{margin:1rem 0;border:1px solid var(--line-soft);border-left:2px solid var(--gold-dim);background:var(--bg-dark);color:var(--text-sub)}
-summary{display:flex;align-items:center;gap:.8rem;padding:1rem 1.15rem;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.guide-mark{display:grid;place-items:center;width:1.6rem;height:1.6rem;flex-shrink:0;border:1px solid var(--gold-dim);border-radius:50%;color:var(--gold);font:.85rem var(--font-en)}.guide-heading{display:grid;gap:.3rem}.guide-heading strong{font-size:.85rem;font-weight:600}.guide-heading small{color:var(--text-dim);font-size:.7rem}.guide-toggle{margin-left:auto;color:var(--gold);font-size:1.2rem}details[open] .guide-toggle{transform:rotate(45deg)}details[open] summary{border-bottom:1px solid var(--line-soft)}.guide-body{padding:1.25rem}.guide-intro{font-size:.82rem;line-height:1.8;max-width:65rem}.guide-steps{list-style:none;margin:1.2rem 0;padding:0}.guide-steps>li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.8rem;padding:1rem 0;border-top:1px solid var(--line-soft)}.step-number{font:.8rem var(--font-en);color:var(--gold-dim);padding-top:.1rem}.guide-body h3{font-family:var(--font-cn);font-size:.85rem;margin:0 0 .55rem;color:var(--text-main,#eef0f5)}.guide-body p,.guide-body dd,.guide-after li{font-size:.78rem;line-height:1.85;overflow-wrap:anywhere}.guide-body p{margin:0}.guide-body .step-tip{margin-top:.5rem;color:var(--gold-dim)}.guide-after{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line-soft)}dl{margin:0}dl>div{margin-top:.75rem}dt{color:var(--gold-dim);font-size:.75rem;margin-bottom:.15rem}dd{margin:0}.guide-after ul{padding-left:1.1rem;margin:.7rem 0}.guide-after li+li{margin-top:.65rem}.guide-body footer{display:flex;align-items:center;gap:1rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--line-soft)}.guide-body footer p{font-size:.72rem;color:var(--text-dim)}.guide-link{white-space:nowrap;color:var(--gold);font-size:.78rem;margin-left:auto}@media(max-width:650px){summary{padding:.9rem}.guide-body{padding:1rem}.guide-after{grid-template-columns:1fr}.guide-body footer{align-items:flex-start;flex-direction:column}.guide-link{margin-left:0}.guide-heading small{font-size:.65rem}.guide-steps>li{grid-template-columns:1.8rem minmax(0,1fr);gap:.5rem}}
+.publish-guide{margin:1rem 0;color:var(--text-sub)}.publish-guide :deep(.publish-guide-trigger){padding:1rem 1.15rem;border-left:2px solid var(--gold-dim);background:var(--bg-dark)}.guide-mark{display:grid;place-items:center;width:1.6rem;height:1.6rem;flex-shrink:0;border:1px solid var(--gold-dim);border-radius:50%;color:var(--gold);font:.85rem var(--font-en)}.guide-heading{display:grid;gap:.3rem;min-width:0;flex:1}.guide-heading strong{font-size:.85rem;font-weight:600}.guide-heading small{color:var(--text-dim);font-size:.7rem}.guide-body{padding:.25rem}.guide-intro{font-size:.82rem;line-height:1.8;max-width:65rem}.guide-steps{list-style:none;margin:1.2rem 0;padding:0}.guide-steps>li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:.8rem;padding:1rem 0;border-top:1px solid var(--line-soft)}.step-number{font:.8rem var(--font-en);color:var(--gold-dim);padding-top:.1rem}.guide-body h3{font-family:var(--font-cn);font-size:.85rem;margin:0 0 .55rem;color:var(--text-main,#eef0f5)}.guide-body p,.guide-body dd,.guide-after li{font-size:.78rem;line-height:1.85;overflow-wrap:anywhere}.guide-body p{margin:0}.guide-body .step-tip{margin-top:.5rem;color:var(--gold-dim)}.guide-after{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line-soft)}dl{margin:0}dl>div{margin-top:.75rem}dt{color:var(--gold-dim);font-size:.75rem;margin-bottom:.15rem}dd{margin:0}.guide-after ul{padding-left:1.1rem;margin:.7rem 0}.guide-after li+li{margin-top:.65rem}.guide-body footer{display:flex;align-items:center;gap:1rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--line-soft)}.guide-body footer p{font-size:.72rem;color:var(--text-dim)}.guide-link{white-space:nowrap;color:var(--gold);font-size:.78rem;margin-left:auto}@media(max-width:650px){.publish-guide :deep(.publish-guide-trigger){padding:.9rem}.guide-body{padding:0}.guide-after{grid-template-columns:1fr}.guide-body footer{align-items:flex-start;flex-direction:column}.guide-link{margin-left:0}.guide-heading small{font-size:.65rem}.guide-steps>li{grid-template-columns:1.8rem minmax(0,1fr);gap:.5rem}}
 </style>

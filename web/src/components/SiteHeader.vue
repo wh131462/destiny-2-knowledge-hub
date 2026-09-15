@@ -17,6 +17,7 @@ const navGroups = [
       { to: '/weapons', key: 'weapons' },
       { to: '/armor', key: 'armor' },
       { to: '/activities', key: 'activities' },
+      { to: '/weekly-rotation', key: 'weeklyRotation' },
       { to: '/lore', key: 'lore' }
     ]
   },

@@ -91,6 +91,12 @@ const activityResults = activitiesV2.map(item => makeResult({
   keywords: [item.category, item.fireteam, ...(item.aliases || []), ...(item.tags || []), ...(item.rewards || [])]
 }))
 
+const rotationResult = makeResult({
+  id: 'weekly-rotation', type: 'activities', title: '本周轮换', titleEn: 'Weekly Rotation',
+  description: '查看当前周的官方活动轮换、周期和数据状态', descriptionEn: 'Browse the current official activity rotation, reset window, and data status',
+  route: '/weekly-rotation', keywords: ['rotation', 'weekly', '轮换', '每周', 'milestone']
+})
+
 const loreResults = [
   ...enemyRaces.map(item => makeResult({ id: `enemy-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: item.desc, route: '/lore', keywords: [item.type, item.units] })),
   ...characters.map(item => makeResult({ id: `character-${item.id}`, type: 'lore', title: item.name, titleEn: item.en, description: `${item.role}：${item.desc}`, descriptionEn: `${translateUi(item.role, 'en')}: ${translateUi(item.desc, 'en')}`, route: '/lore', keywords: [item.role] })),
@@ -132,6 +138,7 @@ export const globalSearchIndex = [
   ...armorResults,
   ...exoticArmorResults,
   ...activityResults,
+  rotationResult,
   ...loreResults,
   ...glossaryResults,
   ...buildResults,

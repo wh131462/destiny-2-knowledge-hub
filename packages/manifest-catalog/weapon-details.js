@@ -35,6 +35,51 @@ export function weaponIntrinsics(weapon, byHash) {
     .filter(plug => plug && !plug.placeholder && !plug.redacted && !plug.blacklisted)
 }
 
+// Current weapons bind one Anti-Champion marker to their intrinsic frame.
+// The marker often lives in perkDetails with an empty description, so scanning
+// only the visible frame description misses normal legendary weapons.
+export const championCounters = [
+  { id: 'barrier', zh: '屏障', en: 'Barrier', counterZh: '反屏障', counterEn: 'Anti-Barrier', breakerTypeHash: 485622768, icon: '/common/destiny2_content/icons/DestinyBreakerTypeDefinition_07b9ba0194e85e46b258b04783e93d5d.png' },
+  { id: 'overload', zh: '过载', en: 'Overload', counterZh: '反过载', counterEn: 'Anti-Overload', breakerTypeHash: 2611060930, icon: '/common/destiny2_content/icons/DestinyBreakerTypeDefinition_da558352b624d799cf50de14d7cb9565.png' },
+  { id: 'unstoppable', zh: '势不可挡', en: 'Unstoppable', counterZh: '反势不可挡', counterEn: 'Anti-Unstoppable', breakerTypeHash: 3178805705, icon: '/common/destiny2_content/icons/DestinyBreakerTypeDefinition_825a438c85404efd6472ff9e97fc7251.png' }
+]
+
+const championPatterns = {
+  barrier: /\[Shield-Piercing\]\s*Barrier|Barrier Champions?|屏障勇士/i,
+  overload: /\[Disruption\]\s*Overload|Overload Champions?|过载勇士/i,
+  unstoppable: /\[Stagger\]\s*Unstoppable|Unstoppable Champions?|势不可挡勇士/i
+}
+
+function intrinsicChampionText(plug) {
+  return [plug?.name, plug?.nameZh, plug?.description, plug?.descriptionZh,
+    ...(plug?.perkDetails || []).flatMap(perk => [perk.name, perk.nameZh, perk.description, perk.descriptionZh])]
+    .filter(Boolean).join(' ')
+}
+
+function directWeaponChampionCounters(weapon, byHash) {
+  const found = new Map()
+  for (const plug of weaponIntrinsics(weapon, byHash)) {
+    const text = intrinsicChampionText(plug)
+    for (const counter of championCounters) {
+      if (championPatterns[counter.id].test(text) && !found.has(counter.id)) {
+        found.set(counter.id, { ...counter, frameHash: plug.hash, frameName: plug.name, frameNameZh: plug.nameZh })
+      }
+    }
+  }
+  return championCounters.flatMap(counter => found.get(counter.id) || [])
+}
+
+export function weaponChampionCounters(weapon, byHash, versions = []) {
+  const direct = directWeaponChampionCounters(weapon, byHash)
+  if (direct.length || !weapon) return direct
+  for (const version of versions) {
+    if (version?.hash === weapon.hash || weaponVersionKey(version) !== weaponVersionKey(weapon)) continue
+    const fallback = directWeaponChampionCounters(version, byHash)
+    if (fallback.length) return fallback.map(counter => ({ ...counter, inheritedFromHash: version.hash }))
+  }
+  return []
+}
+
 export function weaponVersions(weapon, weapons) {
   if (!weapon) return []
   return weaponVersionGroups(weapons).get(weaponVersionKey(weapon)) || []
@@ -67,11 +112,11 @@ export function weaponVersionGroups(weapons) {
   return groups
 }
 
-export function matchWeaponVersion(weapon, query, versions) {
+export function matchWeaponVersion(weapon, query, versions, aliases = []) {
   const match = query.trim().match(/^(.*?)\s*#\s*(\d+)$/)
   const text = (match ? match[1] : query).trim().toLowerCase()
   if (match && versions[Number(match[2]) - 1]?.hash !== weapon.hash) return false
   return !text || [weapon.hash, weapon.name, weapon.nameZh, weapon.weaponFamily, versionSummary(weapon),
-    ...(weapon.categoryNames || []), ...(weapon.perkOptions || []), ...(weapon.perkOptionsZh || [])]
+    ...(weapon.categoryNames || []), ...(weapon.perkOptions || []), ...(weapon.perkOptionsZh || []), ...aliases]
     .filter(value => value != null).join(' ').toLowerCase().includes(text)
 }

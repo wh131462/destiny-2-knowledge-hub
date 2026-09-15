@@ -18,7 +18,7 @@ function versionLabels(item) {
     return release ? `${ui(release[1])} ${release[2]}` : ui(label)
   })
 }
-const versionSummary = item => versionLabels(item).join(' · ')
+const versionSummary = item => versionLabels(item).join(' / ')
 function variantName(item) {
   const name = localized(item) || ui('未命名')
   return `${name}${/^Enhanced\b/.test(item?.typeName || '') ? ui('（强化）') : ''}${metadata.requiresArtifact(item) ? ui(item.artifactVariant === 'discount' ? '（神器减费版）' : '（神器限定）') : ''}`

@@ -1,4 +1,4 @@
-// 武器数据（数据源：知识库 05-武器系统）
+// Curated weapon-type guidance; item definitions come from the Bungie Manifest.
 
 export const weaponTypes = [
   { id: 'auto', name: '自动步枪', en: 'Auto Rifle', slot: '动能/能量', range: '中近', desc: '中近距离持续输出，新手友好' },

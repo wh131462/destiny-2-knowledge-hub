@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
-  "auditedAt": "2026-09-09T05:58:05.091Z",
+  "auditedAt": "2026-09-15T06:35:37.883Z",
   "digests": {
     "data/catalog/manifest-items.json": "6f1acafc2220e40f0c149adca1443fbc13f96ed17662959c8ff592bef95e9945",
     "web/public/data/manifest-items.json": "6f1acafc2220e40f0c149adca1443fbc13f96ed17662959c8ff592bef95e9945",
@@ -37,7 +37,7 @@
     "web/public/data/manifest-subclasses.json": "4400bed1e694a1ce399155ac54b11a635cc75bbe0064feebd01bf4a94f7e0049",
     "data/catalog/manifest-locales-zh-chs.json": "0b9d7423d395813ef85dcc78c1103d3167321a1bc7123167e027029139223e91",
     "web/public/data/manifest-locales-zh-chs.json": "0b9d7423d395813ef85dcc78c1103d3167321a1bc7123167e027029139223e91",
-    "data/catalog/manifest-coverage.json": "7a8bbd1f27bbe6ed43011f5486121b1bdaa06bd1a0a9161d96a12fe64097014c",
-    "web/public/data/manifest-coverage.json": "7a8bbd1f27bbe6ed43011f5486121b1bdaa06bd1a0a9161d96a12fe64097014c"
+    "data/catalog/manifest-coverage.json": "765a76d9e688d003f16f8d1f7d6e3766e31e5edf689e79401c1ae9be8617492c",
+    "web/public/data/manifest-coverage.json": "765a76d9e688d003f16f8d1f7d6e3766e31e5edf689e79401c1ae9be8617492c"
   }
 }

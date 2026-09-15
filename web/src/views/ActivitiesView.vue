@@ -53,7 +53,7 @@ watch(() => route.query.entry, id => {
     <a-input v-model:value="keyword" class="search-box" size="large" allow-clear :aria-label="ui(&quot;搜索活动名称、别名或奖励&quot;)" :placeholder="ui(&quot;搜索名称、英文、旧称或代表武器…&quot;)" />
     <div v-if="tab === 'dungeons'" class="activity-filters" :aria-label="ui(&quot;地牢特点筛选&quot;)"><button type="button" :aria-pressed="!trait" @click="trait = ''">{{ ui("全部地牢") }}</button><button v-for="filter in traits" :key="filter" type="button" :aria-pressed="trait === filter" @click="trait = filter">{{ ui(filter) }}</button></div>
     <div v-if="tab === 'raids'" class="activity-filters" :aria-label="ui(&quot;突袭资料筛选&quot;)"><button type="button" :aria-pressed="raidScope === 'all'" @click="raidScope = 'all'">{{ ui("全部突袭") }}</button><button type="button" :aria-pressed="raidScope === 'later'" @click="raidScope = 'later'">{{ ui("后续与复刻突袭") }} {{ raidCounts.later }}</button><button type="button" :aria-pressed="raidScope === 'historical'" @click="raidScope = 'historical'">{{ ui("原版已退役") }} {{ raidCounts.historical }}</button></div>
-    <div class="activity-list"><ActivityGuideCard v-for="(item, index) in filteredEntries" :key="item.id" :item="item" :index="index" :expanded="openGuide === item.id" :reward-by-name="rewardByName" @toggle="openGuide = openGuide === item.id ? null : item.id" /></div>
+    <div class="activity-list"><ActivityGuideCard v-for="(item, index) in filteredEntries" :key="item.id" :item="item" :index="index" :expanded="openGuide === item.id" :reward-by-name="rewardByName" @toggle="openGuide = $event ? item.id : null" /></div>
     <div v-if="!filteredEntries.length" class="empty">{{ ui("没有匹配的活动。") }}<button type="button" class="clear-filters" @click="clearFilters">{{ ui("清除筛选") }}</button></div>
   </div>
 </template>

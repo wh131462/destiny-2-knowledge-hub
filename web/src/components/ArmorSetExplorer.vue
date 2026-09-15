@@ -1,59 +1,84 @@
 <script setup>
-import { armorName, armorDescription, versionSummary } from '@/i18n/metadata'
+import { armorName, armorDescription } from '@/i18n/metadata'
 import { useI18n, ui, localizedOptions, localized } from '@/i18n'
 import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { armorSlots, armorSetPreview } from '../../../packages/manifest-catalog/armor.js'
+import { armorSlots, armorGroups, armorSetPreview } from '../../../packages/manifest-catalog/armor.js'
 import { manifestText } from '@/utils/manifestText'
 import EntityLink from './EntityLink.vue'
 import ItemDefinitionInfo from './ItemDefinitionInfo.vue'
 
 const { locale } = useI18n()
-const props = defineProps({ catalog: { type: Object, required: true }, classId: { type: String, required: true }, query: { type: String, default: '' } })
-const emit = defineEmits(['open-armor'])
+const props = defineProps({
+  catalog: { type: Object, required: true },
+  classId: { type: String, required: true },
+  query: { type: String, default: '' },
+  mode: { type: String, default: 'sets', validator: value => ['sets', 'planner'].includes(value) }
+})
+const emit = defineEmits(['open-armor', 'open-planner'])
 const router = useRouter()
 const transferOpen = ref(false)
 const selectedHash = ref(894715166)
 const secondaryHash = ref('')
 const assignments = ref({})
-const mode = ref('5')
+const strategy = ref('4+1')
 const exoticHash = ref(undefined)
 const icon = item => item?.icon ? `https://www.bungie.net${item.icon}` : ''
 const byHash = computed(() => new Map(props.catalog.items.map(item => [item.hash, item])))
 const members = set => (set?.itemHashes || []).map(hash => byHash.value.get(hash)).filter(item => item?.classId === props.classId)
 const availableSets = computed(() => props.catalog.sets.filter(set => members(set).length).sort((a, b) => armorName(a).localeCompare(armorName(b), 'zh')))
 const filteredSets = computed(() => availableSets.value.filter(set => [set.name, set.nameZh, String(set.hash), ...set.perks.flatMap(p => [p.name, p.nameZh, p.description, p.descriptionZh])].join(' ').toLowerCase().includes(props.query.trim().toLowerCase())))
-const selected = computed(() => filteredSets.value.find(set => set.hash === selectedHash.value) || filteredSets.value[0])
+const selected = computed(() => props.mode === 'sets'
+  ? filteredSets.value.find(set => set.hash === selectedHash.value) || filteredSets.value[0]
+  : availableSets.value.find(set => set.hash === selectedHash.value) || availableSets.value[0])
 const selectedMembers = computed(() => armorSlots.map(slot => ({ ...slot, item: members(selected.value).find(item => item.armorSlot === slot.id) })))
 const alternateSets = computed(() => availableSets.value.filter(set => set.hash !== selected.value?.hash))
-const exoticChoices = computed(() => props.catalog.items.filter(item => item.classId === props.classId && item.tierTypeHash === 2759499571 && armorSlots.some(slot => slot.id === item.armorSlot)).sort((a, b) => armorName(a).localeCompare(armorName(b), 'zh') || a.hash - b.hash))
+const exoticGroups = computed(() => armorGroups(props.catalog.items.filter(item => item.classId === props.classId && item.tierTypeHash === 2759499571 && armorSlots.some(slot => slot.id === item.armorSlot))))
+const exoticChoices = computed(() => exoticGroups.value.map(group => group[0]).sort((a, b) => armorName(a).localeCompare(armorName(b), 'zh') || a.hash - b.hash))
 const selectedExotic = computed(() => exoticChoices.value.find(item => item.hash === exoticHash.value))
-const exoticOptions = computed(() => armorSlots.map(slot => ({ label: localized(slot), options: exoticChoices.value.filter(item => item.armorSlot === slot.id).map(item => ({ value: item.hash, label: `${armorName(item)} · ${versionSummary(item) || localized(slot)} · #${item.hash}`, title: `${armorName(item)} ${versionSummary(item)}` })) })).filter(group => group.options.length))
+const exoticOptions = computed(() => armorSlots.map(slot => ({
+  label: localized(slot),
+  options: exoticChoices.value.filter(item => item.armorSlot === slot.id).map(item => ({ value: item.hash, label: armorName(item), title: `${armorName(item)} ${item.name || ''}` }))
+})).filter(group => group.options.length))
 const effectiveAssignments = computed(() => ({ ...assignments.value, ...(selectedExotic.value ? { [selectedExotic.value.armorSlot]: `exotic:${selectedExotic.value.hash}` } : {}) }))
 const preview = computed(() => armorSetPreview(effectiveAssignments.value, props.catalog.sets, props.catalog.items, props.classId))
-const activeCount = computed(() => preview.value.sets.reduce((sum, set) => sum + set.perks.filter(p => p.active).length, 0))
+const activeCount = computed(() => preview.value.sets.reduce((sum, set) => sum + set.perks.filter(perk => perk.active).length, 0))
+const setOptions = computed(() => availableSets.value.map(set => ({ value: set.hash, label: armorName(set) })))
+const strategyOptions = computed(() => [
+  { value: '4+1', label: ui('4 件套 + 1 个自由位') },
+  { value: '2+2+1', label: ui('2 + 2 + 异域') },
+  { value: '5', label: ui('5 件同套') }
+])
 
-function applyPreset(value = mode.value) {
-  mode.value = value
+function applyStrategy(value = strategy.value) {
+  strategy.value = value
   if (!selected.value) { assignments.value = {}; return }
   const second = alternateSets.value.find(set => String(set.hash) === String(secondaryHash.value)) || alternateSets.value[0]
   secondaryHash.value = second ? String(second.hash) : ''
   if (value === '5') exoticHash.value = undefined
+  const exoticSlot = selectedExotic.value?.armorSlot
   let legendaryIndex = 0
-  assignments.value = Object.fromEntries(armorSlots.map(slot => {
-    const excluded = slot.id === selectedExotic.value?.armorSlot
-    const setHash = value === '2+2+1' && !excluded && legendaryIndex >= 2 ? secondaryHash.value : String(selected.value.hash)
-    if (!excluded) legendaryIndex++
+  assignments.value = Object.fromEntries(armorSlots.map((slot, index) => {
+    if (slot.id === exoticSlot) return [slot.id, '']
+    if (value === '4+1' && !selectedExotic.value && index === armorSlots.length - 1) return [slot.id, '']
+    const setHash = value === '2+2+1' && legendaryIndex >= 2 ? secondaryHash.value : String(selected.value.hash)
+    legendaryIndex++
     return [slot.id, optionsFor(slot.id).some(set => String(set.hash) === setHash) ? setHash : '']
   }))
 }
+function chooseSet(hash) { selectedHash.value = Number(hash) }
 function chooseExotic(hash) {
   exoticHash.value = hash
-  if (mode.value !== 'custom') applyPreset(hash ? (mode.value === '5' ? '4+1' : mode.value) : '5')
+  if (strategy.value === '5') strategy.value = '4+1'
+  applyStrategy(strategy.value)
 }
 function assign(slot, value) {
-  assignments.value[slot] = value
-  mode.value = 'custom'
+  assignments.value = { ...assignments.value, [slot]: value }
+  strategy.value = 'custom'
+}
+function openPlanner() {
+  if (selected.value) selectedHash.value = selected.value.hash
+  emit('open-planner')
 }
 function requestTransfer() { transferOpen.value = true }
 function confirmTransfer() {
@@ -63,79 +88,102 @@ function confirmTransfer() {
   router.push('/manual-loadout')
 }
 function optionsFor(slot) { return availableSets.value.filter(set => members(set).some(item => item.armorSlot === slot && item.tierTypeHash !== 2759499571)) }
-watch(() => props.classId, () => { exoticHash.value = undefined; applyPreset('5') }, { flush: 'sync' })
-watch(() => selected.value?.hash, () => applyPreset(selectedExotic.value ? '4+1' : '5'), { immediate: true })
+
+watch(() => props.classId, () => {
+  const next = availableSets.value[0]
+  selectedHash.value = next?.hash
+  exoticHash.value = undefined
+  strategy.value = '4+1'
+  applyStrategy()
+}, { flush: 'sync' })
+watch(() => selected.value?.hash, () => applyStrategy(strategy.value === 'custom' ? '4+1' : strategy.value), { immediate: true })
 </script>
 
 <template>
-  <div class="set-explorer">
-    <aside class="set-index" :aria-label="ui(&quot;套装目录&quot;)">
-      <div class="index-heading"><strong>{{ ui("套装目录") }}</strong><span role="status">{{ filteredSets.length }} / {{ availableSets.length }}</span></div>
-      <div class="set-list">
-        <button v-for="set in filteredSets" :key="set.hash" type="button" :aria-pressed="selected?.hash === set.hash" @click="selectedHash = set.hash">
-          <img v-if="icon(set)" :src="icon(set)" alt="" loading="lazy" />
-          <span><strong>{{ armorName(set) }}</strong><small>{{ set.name }}</small></span>
-          <span class="set-counts">{{ set.perks.map(p => p.requiredSetCount).join(' / ') }}</span>
-        </button>
-        <p v-if="!filteredSets.length" class="empty-copy">{{ ui("未找到匹配套装。试试名称或效果关键词，如「手雷」「治疗」。") }}</p>
-      </div>
-    </aside>
+  <div class="set-workflow" :class="`mode-${mode}`">
+    <template v-if="mode === 'sets'">
+      <aside class="set-index" :aria-label="ui('套装目录')">
+        <div class="index-heading"><strong>{{ ui('套装目录') }}</strong><span role="status">{{ filteredSets.length }} / {{ availableSets.length }}</span></div>
+        <div class="set-list">
+          <button v-for="set in filteredSets" :key="set.hash" type="button" :aria-pressed="selected?.hash === set.hash" @click="selectedHash = set.hash">
+            <img v-if="icon(set)" :src="icon(set)" alt="" loading="lazy" />
+            <span><strong>{{ armorName(set) }}</strong><small>{{ set.name }}</small></span>
+            <span class="set-counts">{{ set.perks.map(perk => perk.requiredSetCount).join(' / ') }}</span>
+          </button>
+          <p v-if="!filteredSets.length" class="empty-copy">{{ ui('未找到匹配套装。试试名称或效果关键词，如「手雷」「治疗」。') }}</p>
+        </div>
+      </aside>
 
-    <div v-if="selected" class="set-content">
-      <section class="set-detail">
-        <header class="set-heading"><div><span class="overline">SET INTELLIGENCE</span><h2>{{ armorName(selected) }}</h2><p>{{ selected.name }}</p></div><EntityLink :item="selected" kind="sets" :label="ui(&quot;百科详情&quot;)" /></header>
+      <section v-if="selected" class="set-detail">
+        <header class="set-heading">
+          <div><span class="overline">SET RECORD</span><h2>{{ armorName(selected) }}</h2><p>{{ selected.name }}</p></div>
+          <EntityLink :item="selected" kind="sets" :label="ui('百科详情')" />
+        </header>
         <div class="set-pieces">
-          <button v-for="slot in selectedMembers" :key="slot.id" type="button" :disabled="!slot.item" :aria-label="slot.item ? ui(&quot;查看{0}&quot;, [armorName(slot.item)]) : ui(&quot;{0}未收录&quot;, [localized(slot)])" @click="emit('open-armor', slot.item)">
+          <button v-for="slot in selectedMembers" :key="slot.id" type="button" :disabled="!slot.item" :aria-label="slot.item ? ui('查看{0}', [armorName(slot.item)]) : ui('{0}未收录', [localized(slot)])" @click="emit('open-armor', slot.item)">
             <div class="piece-image"><img v-if="icon(slot.item)" :src="icon(slot.item)" :alt="armorName(slot.item)" /><span v-else>—</span></div>
-            <span>{{ localized(slot) }}</span><small>{{ slot.item ? armorName(slot.item) : ui("未收录") }}</small>
+            <span>{{ localized(slot) }}</span><small>{{ slot.item ? armorName(slot.item) : ui('未收录') }}</small>
           </button>
         </div>
         <div class="set-bonuses">
           <article v-for="perk in selected.perks" :key="perk.sandboxPerkHash" class="bonus-row">
-            <div class="bonus-number"><strong>{{ perk.requiredSetCount }}</strong><small>{{ ui("件套") }}</small></div>
-            <div><h3>{{ armorName(perk) }}</h3><p>{{ manifestText(armorDescription(perk), locale) || ui("效果说明尚未收录。") }}</p></div>
+            <div class="bonus-number"><strong>{{ perk.requiredSetCount }}</strong><small>{{ ui('件套') }}</small></div>
+            <div><h3>{{ armorName(perk) }}</h3><p>{{ manifestText(armorDescription(perk), locale) || ui('效果说明尚未收录。') }}</p></div>
           </article>
-          <p v-if="!selected.perks.length" class="empty-copy">{{ ui("当前定义未提供套装加成。") }}</p>
+          <p v-if="!selected.perks.length" class="empty-copy">{{ ui('当前定义未提供套装加成。') }}</p>
         </div>
-        <p class="definition-note">{{ ui("按该版本的实际装备计数；同名旧版与幻化外观不会自动获得这里的套装效果。") }}</p>
+        <div class="set-action-bar"><p>{{ ui('同名旧版与幻化外观不会自动获得这里的套装效果。') }}</p><button type="button" class="primary-action" @click="openPlanner">{{ ui('用这套开始搭配') }} <span aria-hidden="true">→</span></button></div>
       </section>
+      <div v-else class="no-set"><strong>{{ ui('没有匹配的套装') }}</strong><p>{{ ui('更换职业或清空搜索后继续浏览。') }}</p></div>
+    </template>
 
-      <section class="set-planner" :aria-label="ui(&quot;套装搭配预览&quot;)">
-        <header class="planner-heading"><div><span class="overline">FIVE SLOTS. YOUR COMBINATION.</span><h2>{{ ui("试一套搭配") }}</h2><p>{{ ui("先选异域护甲，再为其余部位搭配套装，查看已激活的效果。") }}</p></div><span class="active-total" role="status">{{ activeCount }} <small>{{ ui("项已激活") }}</small></span></header>
-        <div class="exotic-picker">
-          <div class="exotic-picker-heading"><label for="planner-exotic">{{ ui("异域护甲") }}</label><strong role="status">{{ selectedExotic ? '1 / 1' : '0 / 1' }}</strong></div>
-          <a-select id="planner-exotic" :value="exoticHash" :options="localizedOptions(exoticOptions)" popup-class-name="exotic-version-options" show-search option-filter-prop="label" allow-clear :placeholder="ui(&quot;选择异域护甲与版本（可搜索）&quot;)" @change="chooseExotic" />
-          <ItemDefinitionInfo v-if="selectedExotic" :item="selectedExotic" compact />
-          <p>{{ ui("五个防具部位合计最多装备一件异域护甲。选择后自动占用对应部位，更换会替换原异域。") }}</p>
-          <button v-if="selectedExotic" type="button" class="exotic-summary" @click="emit('open-armor', selectedExotic)"><img v-if="icon(selectedExotic)" :src="icon(selectedExotic)" alt="" /><span><strong>{{ armorName(selectedExotic) }}</strong><small>{{ armorSlots.find(slot => slot.id === selectedExotic.armorSlot)?.name }} {{ ui("查看异域特性 ↗") }}</small></span></button>
-        </div>
-        <div class="preset-row"><button v-for="preset in ['4+1', '2+2+1', '5']" :key="preset" type="button" :aria-pressed="mode === preset" :disabled="preset !== '5' && !selectedExotic" @click="applyPreset(preset)">{{ preset === '4+1' ? ui("4 件套 + 异域") : preset === '2+2+1' ? ui("2 + 2 + 异域") : ui("5 件同套") }}</button></div>
-        <p v-if="!selectedExotic" class="definition-note">{{ ui("当前未装备异域；选择一件后，可使用「4 件套 + 异域」或「2 + 2 + 异域」。") }}</p>
-        <label v-if="mode === '2+2+1'" class="secondary-set" for="armor-secondary-set">{{ ui("第二套装") }}<a-select id="armor-secondary-set" :aria-label="ui(&quot;第二套装&quot;)" v-model:value="secondaryHash" @change="applyPreset('2+2+1')"><a-select-option v-for="set in alternateSets" :key="set.hash" :value="String(set.hash)">{{ armorName(set) }}</a-select-option></a-select></label>
+    <section v-else class="set-planner" :aria-label="ui('套装搭配预览')">
+      <header class="planner-heading">
+        <div><span class="overline">ARMOR ALLOCATION</span><h2>{{ ui('五个部位，一套清楚的搭配') }}</h2><p>{{ ui('先选择主套装和分配策略，再决定异域核心与每个部位。') }}</p></div>
+        <span class="active-total" role="status">{{ activeCount }} <small>{{ ui('项已激活') }}</small></span>
+      </header>
+      <div class="planner-controls">
+        <label>{{ ui('主套装') }}<a-select :value="selected?.hash" :options="setOptions" show-search option-filter-prop="label" :aria-label="ui('主套装')" @change="chooseSet" /></label>
+        <label>{{ ui('搭配策略') }}<a-select :value="strategy === 'custom' ? undefined : strategy" :options="strategyOptions" :placeholder="strategy === 'custom' ? ui('自定义分配') : undefined" :aria-label="ui('搭配策略')" @change="applyStrategy" /></label>
+        <label>{{ ui('异域护甲') }}<a-select :value="exoticHash" :options="localizedOptions(exoticOptions)" popup-class-name="exotic-version-options" show-search option-filter-prop="label" allow-clear :aria-label="ui('异域护甲')" :placeholder="ui('选择异域护甲（同名版本已合并）')" @change="chooseExotic" /></label>
+        <label v-if="strategy === '2+2+1'">{{ ui('第二套装') }}<a-select v-model:value="secondaryHash" :aria-label="ui('第二套装')" @change="applyStrategy('2+2+1')"><a-select-option v-for="set in alternateSets" :key="set.hash" :value="String(set.hash)">{{ armorName(set) }}</a-select-option></a-select></label>
+      </div>
+
+      <div v-if="selectedExotic" class="exotic-summary-row">
+        <button type="button" class="exotic-summary" @click="emit('open-armor', selectedExotic)"><img v-if="icon(selectedExotic)" :src="icon(selectedExotic)" alt="" /><span><strong>{{ armorName(selectedExotic) }}</strong><small>{{ localized(armorSlots.find(slot => slot.id === selectedExotic.armorSlot)) }} / {{ ui('查看异域特性') }}</small></span></button>
+        <ItemDefinitionInfo :item="selectedExotic" compact />
+      </div>
+
+      <div class="planner-body">
         <div class="planner-slots">
-          <label v-for="slot in preview.slots" :key="slot.id" :for="`armor-set-${slot.id}`" :class="{ 'exotic-slot': slot.exotic }"><span>{{ localized(slot) }}</span><div class="planner-image"><img v-if="slot.item?.icon" :src="icon(slot.item)" alt="" /><span v-else class="slot-placeholder">{{ slot.exotic ? '◇' : '＋' }}</span></div><span v-if="slot.exotic" class="equipped-exotic">{{ armorName(slot.item) }}<small>{{ ui("已装备异域 1 / 1") }}</small></span><a-select v-else :id="`armor-set-${slot.id}`" :value="assignments[slot.id] || ''" :aria-label="ui(&quot;{0}套装分配&quot;, [localized(slot)])" @change="assign(slot.id, $event)"><a-select-option value="">{{ ui("空部位") }}</a-select-option><a-select-option v-for="set in optionsFor(slot.id)" :key="set.hash" :value="String(set.hash)">{{ armorName(set) }}</a-select-option></a-select></label>
+          <label v-for="slot in preview.slots" :key="slot.id" :for="`armor-set-${slot.id}`" :class="{ 'exotic-slot': slot.exotic, 'free-slot': !slot.item && !slot.exotic }">
+            <span>{{ localized(slot) }}</span>
+            <div class="planner-image"><img v-if="slot.item?.icon" :src="icon(slot.item)" alt="" /><span v-else class="slot-placeholder">{{ slot.exotic ? '◇' : '+' }}</span></div>
+            <span v-if="slot.exotic" class="slot-choice exotic-choice">{{ armorName(slot.item) }}<small>{{ ui('异域 1 / 1') }}</small></span>
+            <a-select v-else :id="`armor-set-${slot.id}`" :value="assignments[slot.id] || ''" :aria-label="ui('{0}套装分配', [localized(slot)])" @change="assign(slot.id, $event)"><a-select-option value="">{{ ui('自由位') }}</a-select-option><a-select-option v-for="set in optionsFor(slot.id)" :key="set.hash" :value="String(set.hash)">{{ armorName(set) }}</a-select-option></a-select>
+          </label>
         </div>
         <div class="activation-list" aria-live="polite">
-          <div v-for="set in preview.sets" :key="set.hash" class="activation-set"><header><strong>{{ armorName(set) }}</strong><span>{{ set.count }} {{ ui("件") }}</span></header><div v-for="perk in set.perks" :key="perk.sandboxPerkHash" :class="['activation-perk', { activated: perk.active }]"><span aria-hidden="true">{{ perk.active ? '✓' : '○' }}</span><span>{{ perk.requiredSetCount }} {{ ui("件") }} {{ armorName(perk) }}</span><small>{{ perk.active ? ui("已激活") : ui("还差 {0} 件", [perk.requiredSetCount - set.count]) }}</small></div></div>
-          <p v-if="!preview.sets.length" class="empty-copy">{{ ui("选择套装后，这里会显示效果的激活进度。") }}</p>
+          <div v-for="set in preview.sets" :key="set.hash" class="activation-set">
+            <header><strong>{{ armorName(set) }}</strong><span>{{ set.count }} {{ ui('件') }}</span></header>
+            <div v-for="perk in set.perks" :key="perk.sandboxPerkHash" :class="['activation-perk', { activated: perk.active }]"><span aria-hidden="true">{{ perk.active ? '✓' : '○' }}</span><span>{{ perk.requiredSetCount }} {{ ui('件') }} {{ armorName(perk) }}</span><small>{{ perk.active ? ui('已激活') : ui('还差 {0} 件', [perk.requiredSetCount - set.count]) }}</small></div>
+          </div>
+          <p v-if="!preview.sets.length" class="empty-copy">{{ ui('选择套装后，这里会显示效果的激活进度。') }}</p>
         </div>
-        <p class="definition-note">{{ ui("异域护甲不计入传说套装件数。职业装备上的双异域特性仍属于一件护甲；具体词条组合、子职业适用条件、随机属性与模组请在完整构筑中配置。") }}</p>
-        <button type="button" class="build-link" @click="requestTransfer"><span class="build-link-label">{{ ui("打开构筑工具，自行配置完整方案") }}</span><span class="build-link-arrow" aria-hidden="true">↗</span></button>
-        <a-modal v-model:open="transferOpen" :title="ui(&quot;带入这套防具配置？&quot;)" :ok-text="ui(&quot;确定并覆盖&quot;)" :cancel-text="ui(&quot;取消&quot;)" @ok="confirmTransfer"><p>{{ ui("确认后会将当前五个部位（包含已选异域）带入构筑页面，并覆盖其中已有的防具选择与防具模组。") }}</p><p class="transfer-note">{{ ui("武器、技能、神器和其他配置会保留不变。") }}</p></a-modal>
-      </section>
-    </div>
-    <div v-else class="no-set"><strong>{{ ui("没有匹配的套装") }}</strong><p>{{ ui("更换职业或清空搜索后继续浏览。") }}</p></div>
+      </div>
+      <div class="planner-footer"><p>{{ ui('异域护甲不计入传说套装件数；自由位不会贡献套装效果。') }}</p><button type="button" class="build-link" @click="requestTransfer"><span>{{ ui('带入构筑工具') }}</span><span aria-hidden="true">↗</span></button></div>
+      <a-modal v-model:open="transferOpen" :title="ui('带入这套防具配置？')" :ok-text="ui('确定并覆盖')" :cancel-text="ui('取消')" @ok="confirmTransfer"><p>{{ ui('确认后会将当前五个部位（包含已选异域）带入构筑页面，并覆盖其中已有的防具选择与防具模组。') }}</p><p class="transfer-note">{{ ui('武器、技能、神器和其他配置会保留不变。') }}</p></a-modal>
+    </section>
   </div>
 </template>
 
 <style scoped>
-.exotic-picker{margin-top:22px;padding:16px;border:1px solid #e8c15a44;background:#e8c15a05}.exotic-picker-heading{display:flex;justify-content:space-between;margin-bottom:10px;font-size:.85rem}.exotic-picker-heading strong{color:var(--gold)}.exotic-picker>.ant-select{width:100%;min-width:0}.exotic-picker>p{font-size:.73rem;line-height:1.8;margin-top:10px}.exotic-summary{display:flex;gap:12px;align-items:center;background:transparent;border:0;padding:14px 0 0;color:var(--gold);text-align:left;cursor:pointer}.exotic-summary img{width:44px;height:44px}.exotic-summary strong{font-size:.82rem}.exotic-summary small,.equipped-exotic small{display:block;font-size:.65rem;margin-top:5px;color:#b5a67e}.equipped-exotic{overflow-wrap:anywhere;color:var(--gold)!important}.preset-row button:disabled{opacity:.45;cursor:not-allowed}
-
-.set-explorer{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:start}.set-index{border:1px solid var(--line-soft);background:#0c1422;position:sticky;top:90px}.index-heading{display:flex;justify-content:space-between;padding:18px;border-bottom:1px solid var(--line-soft);font-size:.85rem}.index-heading span{color:#a7b4c9;font-variant-numeric:tabular-nums}.set-list{max-height:740px;overflow:auto;scrollbar-width:thin;scrollbar-color:#38445b transparent}.set-list button{width:100%;display:flex;align-items:center;gap:12px;padding:13px 14px;text-align:left;background:transparent;color:var(--text-main);border:0;border-left:2px solid transparent;border-bottom:1px solid #ffffff06;cursor:pointer}.set-list button:hover{background:#ffffff05}.set-list button[aria-pressed=true]{background:#e8c15a0c;border-left-color:var(--gold)}.set-list img{width:40px;height:40px;object-fit:cover}.set-list button>span:nth-child(2){flex:1;min-width:0}.set-list strong{font-size:.82rem;font-weight:500}.set-list small{display:block;color:#8e9cb4;font-size:.65rem;margin-top:3px}.set-counts{color:#bfa465;font-size:.68rem;white-space:nowrap}.overline{color:#b8a477;font-size:.62rem;letter-spacing:.17em;font-family:var(--font-en)}.set-detail,.set-planner{background:linear-gradient(135deg,#141f30,#0c1422);border:1px solid var(--line-soft);padding:28px}.set-heading{display:flex;justify-content:space-between;gap:12px;align-items:center}.set-heading h2{font-family:var(--font-cn);font-size:1.8rem;margin:7px 0 3px}.set-heading p{font-size:.76rem;letter-spacing:.04em}.set-heading :deep(a){font-size:.73rem;white-space:nowrap}.set-pieces{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;padding:26px 0;border-bottom:1px solid var(--line-soft)}.set-pieces button{background:transparent;border:0;color:#bcc6d8;cursor:pointer;min-width:0}.piece-image{width:72px;max-width:100%;aspect-ratio:1;margin:0 auto 9px;background:#ffffff06;border:1px solid #ffffff20;padding:3px}.piece-image img{width:100%;height:100%;object-fit:cover}.set-pieces button:hover .piece-image{border-color:var(--gold)}.set-pieces span{font-size:.72rem}.set-pieces small{display:block;font-size:.62rem;color:#8c9cb3;margin-top:3px;overflow-wrap:anywhere}.bonus-row{display:grid;grid-template-columns:45px minmax(0,1fr);gap:18px;padding:24px 0;border-bottom:1px solid var(--line-soft)}.bonus-number{display:flex;flex-direction:column;align-items:center;justify-content:center;width:44px;height:59px;border:1px solid #e8c15a44;color:var(--gold);background:#e8c15a05}.bonus-number strong{font-family:var(--font-en);font-size:1.4rem;line-height:1.1}.bonus-number small{font-size:.6rem;margin-top:5px}.bonus-row h3{font-size:.95rem;color:#e9d8aa;margin:0 0 8px;font-family:var(--font-cn)}.bonus-row p{font-size:.81rem;line-height:1.9;white-space:pre-line}.definition-note{font-size:.7rem;line-height:1.85;color:#96a5bb;margin:17px 0 0}.set-planner{margin-top:22px;background:#0e1826}.planner-heading{display:flex;justify-content:space-between;gap:12px}.planner-heading h2{font-family:var(--font-cn);font-size:1.3rem;margin:7px 0}.planner-heading p{font-size:.75rem}.active-total{font-family:var(--font-en);color:var(--gold);font-size:1.7rem;white-space:nowrap;align-self:center}.active-total small{display:block;font-family:var(--font-cn);font-size:.65rem;color:#acb9cd}.preset-row{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 18px}.preset-row button{font:inherit;font-size:.75rem;padding:8px 12px;border:1px solid #ffffff20;background:transparent;color:#b4c1d4;cursor:pointer}.preset-row button[aria-pressed=true]{color:var(--gold);border-color:#e8c15a88;background:#e8c15a09}.secondary-set{display:flex;gap:12px;align-items:center;font-size:.75rem;color:#a9b6c9;margin-bottom:15px}.secondary-set .ant-select{width:220px;min-width:0;max-width:100%}.planner-slots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.planner-slots label>span{display:block;text-align:center;color:#bac5d6;font-size:.68rem;margin-bottom:8px}.planner-image{width:54px;height:54px;margin:0 auto 10px;background:#ffffff06;display:grid;place-items:center}.planner-image img{width:100%;height:100%}.slot-placeholder{font-size:1.8rem;color:#6b7d99}.exotic-slot .planner-image{border:1px solid #e8c15a66;background:#e8c15a0c}.exotic-slot .slot-placeholder{color:var(--gold)}.planner-slots>label{min-width:0}.planner-slots .ant-select{width:100%;min-width:0;font-size:.66rem}.activation-list{display:grid;gap:14px;margin-top:24px}.activation-set{border-top:1px solid var(--line-soft);padding-top:14px}.activation-set header{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:9px}.activation-set header span{color:#b2a27e}.activation-perk{display:flex;align-items:center;gap:8px;color:#9aa7bd;font-size:.73rem;padding:5px 0}.activation-perk small{margin-left:auto;white-space:nowrap;font-size:.65rem}.activated{color:#b5d7b5}.build-link{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:44px;margin-top:20px;padding:13px 15px;border:1px solid rgba(232,193,90,.38);border-radius:8px;background:rgba(232,193,90,.07);color:var(--gold-bright);font:600 .78rem var(--font-cn);line-height:1.55;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}.build-link:hover{border-color:var(--gold);background:rgba(232,193,90,.14);box-shadow:0 8px 24px rgba(0,0,0,.2);transform:translateY(-1px)}.build-link:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}.build-link-label{min-width:0;overflow-wrap:anywhere}.build-link-arrow{flex:0 0 auto;font:700 1.1rem var(--font-en);line-height:1;color:var(--gold-bright)}.empty-copy,.no-set{padding:24px;font-size:.82rem;color:#a9b6c9}.no-set{border:1px dashed var(--line-soft)}
-@media(max-width:1000px){.set-explorer{grid-template-columns:230px minmax(0,1fr);gap:16px}.set-detail,.set-planner{padding:20px}.set-pieces{gap:8px}.set-counts{display:none}}
-@media(max-width:760px){.set-explorer{grid-template-columns:1fr}.set-index{position:static}.set-list{max-height:230px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.set-list button{padding:10px}.set-list img{width:32px;height:32px}.set-pieces small{display:none}.set-heading h2{font-size:1.45rem}.set-detail,.set-planner{padding:18px}.planner-slots{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.planner-heading .overline{font-size:.5rem}.planner-image{width:44px;height:44px}.activation-perk{font-size:.68rem}.set-heading :deep(a){font-size:.65rem}}
-</style>
-
-<style scoped>
-:global(.exotic-version-options .ant-select-item-option-content){white-space:normal;line-height:1.6;overflow-wrap:anywhere}.exotic-picker :deep(.ant-select-selection-item){white-space:normal;line-height:1.6}.exotic-picker :deep(.ant-select-selector){height:auto!important;min-height:36px;padding-block:6px!important}
+.set-workflow{min-width:0}.set-workflow.mode-sets{display:grid;grid-template-columns:17.5rem minmax(0,1fr);gap:1px;align-items:start;background:var(--line-soft);border:1px solid var(--line-soft)}
+.set-index{position:sticky;top:5.6rem;min-width:0;background:var(--bg-dark)}.index-heading{display:flex;justify-content:space-between;padding:1rem;border-bottom:1px solid var(--line-soft);font-size:.76rem}.index-heading span{color:var(--text-dim);font-variant-numeric:tabular-nums}.set-list{max-height:43rem;overflow:auto;scrollbar-width:thin;scrollbar-color:#38445b transparent}.set-list button{display:flex;align-items:center;gap:.7rem;width:100%;min-width:0;padding:.7rem .8rem;border:0;border-bottom:1px solid rgba(255,255,255,.025);border-left:3px solid transparent;background:transparent;color:var(--text-main);text-align:left;cursor:pointer}.set-list button:hover{background:var(--bg-hover)}.set-list button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}.set-list button[aria-pressed=true]{border-left-color:var(--gold);background:rgba(232,193,90,.08)}.set-list img{width:2.35rem;height:2.35rem;object-fit:cover}.set-list button>span:nth-child(2){flex:1;min-width:0}.set-list strong,.set-list small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.set-list strong{font-size:.75rem}.set-list small{margin-top:.15rem;color:var(--text-dim);font-size:.56rem}.set-counts{color:var(--gold-dim);font:.6rem var(--font-en);white-space:nowrap}
+.set-detail,.set-planner{min-width:0;background:var(--bg-panel)}.set-detail{padding:1.4rem}.set-heading{display:flex;justify-content:space-between;gap:1rem;align-items:start}.overline{color:var(--gold-dim);font:.55rem var(--font-en);letter-spacing:0}.set-heading h2,.planner-heading h2{margin:.35rem 0 .12rem;font-family:var(--font-cn)}.set-heading h2{font-size:1.5rem}.set-heading p,.planner-heading p{margin:0;color:var(--text-sub);font-size:.7rem}.set-heading :deep(a){font-size:.68rem;white-space:nowrap}.set-pieces{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;margin-top:1.25rem;background:var(--line-soft)}.set-pieces button{min-width:0;padding:.8rem .35rem;border:0;background:var(--bg-dark);color:var(--text-sub);cursor:pointer}.set-pieces button:hover .piece-image{border-color:var(--gold)}.set-pieces button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}.piece-image{width:min(4.4rem,100%);aspect-ratio:1;margin:0 auto .45rem;border:1px solid var(--line-soft);background:var(--bg-deep);padding:2px}.piece-image img{width:100%;height:100%;object-fit:cover}.set-pieces span,.set-pieces small{display:block;font-size:.62rem;overflow-wrap:anywhere}.set-pieces small{margin-top:.2rem;color:var(--text-dim);font-size:.54rem}.bonus-row{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:1rem;padding:1.15rem 0;border-bottom:1px solid var(--line-soft)}.bonus-number{display:grid;place-items:center;align-content:center;height:3.7rem;border:1px solid rgba(232,193,90,.32);color:var(--gold);background:rgba(232,193,90,.04)}.bonus-number strong{font:700 1.25rem var(--font-en)}.bonus-number small{font-size:.55rem}.bonus-row h3{margin:0 0 .35rem;color:var(--gold-bright);font-size:.86rem}.bonus-row p{margin:0;color:var(--text-sub);font-size:.73rem;line-height:1.75;white-space:pre-line}.set-action-bar{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding-top:1rem}.set-action-bar p,.planner-footer p{margin:0;color:var(--text-dim);font-size:.63rem;line-height:1.6}.primary-action,.build-link{flex:none;padding:.65rem .85rem;border:1px solid var(--gold-dim);background:rgba(232,193,90,.08);color:var(--gold-bright);font:600 .7rem var(--font-cn);cursor:pointer}.primary-action:hover,.build-link:hover{border-color:var(--gold);background:rgba(232,193,90,.14)}.primary-action:focus-visible,.build-link:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+.set-planner{padding:1.4rem;border:1px solid var(--line-soft)}.planner-heading{display:flex;justify-content:space-between;gap:1rem;align-items:start}.planner-heading h2{font-size:1.25rem}.active-total{color:var(--gold-bright);font:700 1.55rem var(--font-en);text-align:right;white-space:nowrap}.active-total small{display:block;color:var(--text-dim);font:400 .56rem var(--font-cn)}.planner-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1.2rem}.planner-controls label{display:grid;gap:.35rem;min-width:0;color:var(--text-dim);font-size:.63rem}.planner-controls .ant-select{width:100%;min-width:0}.exotic-summary-row{display:flex;align-items:center;gap:1rem;margin-top:.8rem;padding:.65rem;border-left:2px solid var(--gold);background:rgba(232,193,90,.05)}.exotic-summary{display:flex;align-items:center;gap:.65rem;min-width:0;border:0;background:transparent;color:var(--gold-bright);text-align:left;cursor:pointer}.exotic-summary img{width:2.8rem;height:2.8rem}.exotic-summary strong,.exotic-summary small{display:block;overflow-wrap:anywhere}.exotic-summary small{margin-top:.2rem;color:var(--text-dim);font-size:.56rem}.planner-body{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(15rem,.75fr);gap:1.2rem;margin-top:1.2rem}.planner-slots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line-soft)}.planner-slots>label{min-width:0;padding:.75rem .5rem;background:var(--bg-dark)}.planner-slots label>span:first-child{display:block;margin-bottom:.5rem;color:var(--text-sub);font-size:.61rem;text-align:center}.planner-image{display:grid;place-items:center;width:3.4rem;height:3.4rem;margin:0 auto .55rem;background:var(--bg-deep)}.planner-image img{width:100%;height:100%;object-fit:cover}.slot-placeholder{color:var(--text-dim);font:300 1.5rem var(--font-en)}.planner-slots .ant-select{width:100%;min-width:0;font-size:.62rem}.exotic-slot{box-shadow:inset 0 2px 0 var(--gold)}.free-slot{box-shadow:inset 0 2px 0 var(--text-dim)}.slot-choice{display:block;color:var(--gold-bright);font-size:.61rem;text-align:center;overflow-wrap:anywhere}.slot-choice small{display:block;margin-top:.2rem;color:var(--gold-dim);font-size:.52rem}.activation-list{display:grid;align-content:start;gap:.8rem}.activation-set{padding:.75rem;background:var(--bg-dark)}.activation-set header{display:flex;justify-content:space-between;gap:.5rem;padding-bottom:.55rem;border-bottom:1px solid var(--line-soft);font-size:.68rem}.activation-set header span{color:var(--gold-dim)}.activation-perk{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.4rem;align-items:center;padding:.45rem 0;color:var(--text-dim);font-size:.63rem}.activation-perk small{font-size:.55rem;white-space:nowrap}.activation-perk.activated{color:#b5d7b5}.planner-footer{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line-soft)}.build-link{display:flex;gap:.8rem;align-items:center}.empty-copy,.no-set{padding:1rem;color:var(--text-dim);font-size:.7rem}.no-set{background:var(--bg-panel)}
+:global(.exotic-version-options .ant-select-item-option-content){white-space:normal;line-height:1.5;overflow-wrap:anywhere}
+@media(max-width:1000px){.set-workflow.mode-sets{grid-template-columns:14rem minmax(0,1fr)}.planner-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.planner-body{grid-template-columns:1fr}.set-pieces small{display:none}}
+@media(max-width:760px){.set-workflow.mode-sets{display:block;background:transparent;border:0}.set-index{position:static;border:1px solid var(--line-soft)}.set-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:14rem}.set-list button{padding:.6rem}.set-counts{display:none}.set-detail{margin-top:.75rem;padding:1rem;border:1px solid var(--line-soft)}.set-pieces{grid-template-columns:repeat(5,minmax(3.5rem,1fr));overflow:auto}.set-action-bar,.planner-footer{align-items:stretch;flex-direction:column}.primary-action,.build-link{width:100%;justify-content:space-between}.set-planner{padding:1rem}.planner-slots{grid-template-columns:repeat(2,minmax(0,1fr))}.planner-controls{grid-template-columns:1fr}.exotic-summary-row{align-items:flex-start;flex-direction:column}}
+@media(max-width:430px){.set-list{grid-template-columns:1fr}.set-heading{align-items:flex-start}.set-heading h2{font-size:1.2rem}.set-pieces{grid-template-columns:repeat(5,3.8rem)}.bonus-row{grid-template-columns:2.6rem minmax(0,1fr);gap:.7rem}.bonus-number{height:3.25rem}.planner-heading h2{font-size:1.05rem}.active-total{font-size:1.2rem}.planner-slots{gap:1px}.activation-perk{grid-template-columns:auto minmax(0,1fr)}.activation-perk small{grid-column:2;white-space:normal}}
 </style>

@@ -96,11 +96,11 @@ export function versionLabels(item) {
   if (!item) return []
   const v = item.versionInfo, labels = []
   if (item.definitionState === 'deprecated') labels.push('已废弃定义')
-  if (item.availabilityStatus === 'historical') labels.push('历史定义 · 当前不再获取')
-  else if (item.availabilityStatus === 'current-system-source-unconfirmed') labels.push('当前系统 · 获取来源未确认')
+  if (item.availabilityStatus === 'historical') labels.push('历史定义 / 当前不再获取')
+  else if (item.availabilityStatus === 'current-system-source-unconfirmed') labels.push('当前系统 / 获取来源未确认')
   else if (item.availabilityStatus === 'source-confirmed') labels.push('来源已登记')
   if (item.definitionState === 'placeholder' || item.placeholder) labels.push('占位定义')
-  if (requiresArtifact(item)) labels.push(item.artifactVariant === 'discount' ? '神器减费版 · 需解锁' : '神器限定 · 需解锁')
+  if (requiresArtifact(item)) labels.push(item.artifactVariant === 'discount' ? '神器减费版 / 需解锁' : '神器限定 / 需解锁')
   if (/^Enhanced\b/.test(item.typeName || '')) labels.push(/Weapon Mod/.test(item.typeName) ? '强化武器模组' : '强化词条')
   else if (item.typeName === 'Weapon Mod') labels.push('普通武器模组')
   if (!v) return labels
@@ -113,7 +113,7 @@ export function versionLabels(item) {
   if (kinds.has('legacy') && !kinds.has('energy')) labels.push('旧式护甲插槽')
   if (kinds.has('energy')) labels.push('能量模组插槽')
   if (kinds.has('tuning')) labels.push('调谐槽')
-  if (kinds.has('artifice')) labels.push(v.socketFeatures.some(f => f.kind === 'artifice' && f.lockedByDefault) ? '巧匠槽 · 含锁定定义' : '巧匠相关槽')
+  if (kinds.has('artifice')) labels.push(v.socketFeatures.some(f => f.kind === 'artifice' && f.lockedByDefault) ? '巧匠槽 / 含锁定定义' : '巧匠相关槽')
   if (kinds.has('activity')) labels.push('活动专属槽')
   for (const tag of v.releaseTags) {
     const [, release, kind] = tag.split('.')
@@ -121,7 +121,7 @@ export function versionLabels(item) {
   }
   return labels
 }
-export const versionSummary = item => versionLabels(item).join(' · ')
+export const versionSummary = item => versionLabels(item).join(' / ')
 export const variantName = item => `${item?.nameZh || item?.name || '未命名'}${/^Enhanced\b/.test(item?.typeName || '') ? '（强化）' : ''}${requiresArtifact(item) ? (item.artifactVariant === 'discount' ? '（神器减费版）' : '（神器限定）') : ''}`
 export function conditionSummary(item) {
   return [...new Set(itemConditions(item).map(rule => rule.text))].join('；')

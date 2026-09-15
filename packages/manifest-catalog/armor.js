@@ -22,6 +22,22 @@ const combineDescriptions = values => {
 export const armorName = item => item?.nameZh || item?.name || '未命名'
 export const armorDescription = item => item?.descriptionZh || item?.description || ''
 
+const armorAvailabilityPriority = {
+  'source-confirmed': 3,
+  'current-system-source-unconfirmed': 2,
+  historical: 0
+}
+
+export const armorVersionPriority = item => armorAvailabilityPriority[item?.availabilityStatus] ?? 1
+
+export function compareArmorVersions(a, b) {
+  return armorVersionPriority(b) - armorVersionPriority(a) ||
+    (b?.traits?.length || 0) - (a?.traits?.length || 0) ||
+    Number(a?.hash || 0) - Number(b?.hash || 0)
+}
+
+export const preferredArmorVersion = versions => [...(versions || [])].sort(compareArmorVersions)[0]
+
 // A small, reproducible projection of the official snapshot. Do not infer set
 // membership from names: older reissues can have the same name and no bonus.
 export function createArmorCatalog({ equipment, sets, plugs, plugSets, mods, references }) {
@@ -66,7 +82,7 @@ export function armorGroups(items) {
     if (!groups.has(key)) groups.set(key, [])
     groups.get(key).push(item)
   }
-  return [...groups.values()].map(versions => versions.sort((a, b) => b.traits.length - a.traits.length || a.hash - b.hash))
+  return [...groups.values()].map(versions => versions.sort(compareArmorVersions))
 }
 
 // Only occupied, matching class/slot definitions count. A reserved Exotic slot

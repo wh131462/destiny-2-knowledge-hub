@@ -12,7 +12,7 @@ import { fetchSnapshot } from '../packages/community-builds/client.js'
 const context = await loadValidationContext(), repository = 'wh131462/destiny-2-knowledge-hub'
 function submission() {
   const d = blankDraft(), subclass = context.subclasses.find(s => s.id === d.subclassId)
-  d.name = '电猎 · 社区测试'; d.manifestVersion = context.manifestVersion
+  d.name = '电猎 / 社区测试'; d.manifestVersion = context.manifestVersion
   d.abilities.superId = subclass.superIds[0]
   d.notes = '中文备注\n`$(echo should-not-run)` <script>alert(1)</script>'
   d.weapons[0].perkCombinations.push({ id: 'combo-2', name: '第二组', notes: '不同玩法', recommendedPerks: { trait1: ['手动建议'], 'socket-4': ['备选'] }, recommendedPerkHashes: { trait1: [123456] } })

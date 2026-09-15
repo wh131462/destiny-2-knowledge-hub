@@ -1,4 +1,4 @@
-// 防具与套装数据（数据源：知识库 06-防具与构筑）
+// Curated armor guidance; item definitions come from the Bungie Manifest.
 
 export const armorSlots = [
   { key: 'helmet', name: '头盔' },
@@ -71,7 +71,7 @@ export const armorSets = [
     source: '叛逃者（Renegades）',
     classAll: true,
     bonus: '普拉希克教团主题',
-    desc: '普拉希克教团（Praxic Order）主题护甲，与阿诺尔·玛哈尔剧情关联。',
+    desc: '普拉希克教团（Praxic Order）主题护甲，与阿诺尔 / 玛哈尔剧情关联。',
     stats: ['生命值倾向', '超能倾向'],
     element: null
   },

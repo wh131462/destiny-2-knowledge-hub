@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { armorSlots, armorGroups, armorSetPreview, createArmorCatalog } from '../packages/manifest-catalog/armor.js'
+import { armorSlots, armorGroups, armorSetPreview, armorVersionPriority, compareArmorVersions, createArmorCatalog, preferredArmorVersion } from '../packages/manifest-catalog/armor.js'
 
 const read = name => JSON.parse(readFileSync(new URL(`../data/catalog/${name}.json`, import.meta.url)))
 const catalog = read('manifest-armor')
@@ -68,6 +68,29 @@ test('same-name armor with different set memberships is never merged', () => {
   const groups = armorGroups([oldVersion, member, alternate])
   assert.equal(groups.length, 2)
   assert.equal(groups.find(group => group[0].setHashes.length).length, 2)
+})
+
+test('same-name armor prefers source-confirmed and current-system definitions over historical ones', () => {
+  const shared = { name: 'Shared armor', classId: 'titan', armorSlot: 'helmet', tierTypeHash: 2759499571, setHashes: [], traits: [] }
+  const historical = { ...shared, hash: 1, availabilityStatus: 'historical', traits: [{ hashes: [10] }, { hashes: [11] }] }
+  const current = { ...shared, hash: 2, availabilityStatus: 'current-system-source-unconfirmed', traits: [] }
+  const confirmed = { ...shared, hash: 3, availabilityStatus: 'source-confirmed', traits: [] }
+  const group = armorGroups([historical, current, confirmed])[0]
+  assert.deepEqual(group.map(item => item.hash), [3, 2, 1])
+  assert.equal(preferredArmorVersion([historical, current, confirmed]).hash, 3)
+  assert.ok(armorVersionPriority(confirmed) > armorVersionPriority(current))
+  assert.ok(armorVersionPriority(current) > armorVersionPriority(historical))
+})
+
+test('armor version ordering uses trait coverage and hash only within the same availability state', () => {
+  const shared = { availabilityStatus: 'source-confirmed' }
+  const versions = [
+    { ...shared, hash: 30, traits: [] },
+    { ...shared, hash: 20, traits: [{ hashes: [1] }] },
+    { ...shared, hash: 10, traits: [{ hashes: [2] }] }
+  ]
+  assert.deepEqual([...versions].sort(compareArmorVersions).map(item => item.hash), [10, 20, 30])
+  assert.equal(preferredArmorVersion([{ hash: 9, availabilityStatus: 'historical', traits: [] }]).hash, 9)
 })
 
 test('Exotic armor retains intrinsic descriptions and class item trait columns', () => {

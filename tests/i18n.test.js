@@ -44,7 +44,8 @@ test('activity guide display fields have complete English resources, including e
 })
 
 test('lore, glossary and tier-list editorial fields have English resources', () => {
-  for (const [group, items] of Object.entries(world)) for (const item of items) for (const key of ['type', 'desc', 'units', 'role', 'feature', 'destination', 'saga', 'key']) assertTranslated(item[key], `${group}.${item.id || item.name}.${key}`)
+  const legacyWorld = { enemyRaces: world.enemyRaces, characters: world.characters, expansions: world.expansions, sagas: world.sagas }
+  for (const [group, items] of Object.entries(legacyWorld)) for (const item of items) for (const key of ['type', 'desc', 'units', 'role', 'feature', 'destination', 'saga', 'key']) assertTranslated(item[key], `${group}.${item.id || item.name}.${key}`)
   glossary.forEach(item => assertTranslated([item.cat, item.desc], item.term))
   handCannonTierList.forEach(item => assertTranslated([item.source, item.note], item.name))
   assertTranslated(tierMeta, 'tierMeta')

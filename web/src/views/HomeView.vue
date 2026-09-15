@@ -16,6 +16,7 @@ const modules = [
   { to: '/weapons', icon: '03', title: '武器百科', en: 'WEAPONS', desc: '武器原型、异域武器图鉴' },
   { to: '/armor', icon: '04', title: '防具与套装', en: 'ARMOR', desc: '防具、异域护甲、模组' },
   { to: '/activities', icon: '05', title: '活动图鉴', en: 'ACTIVITIES', desc: '突袭、地牢、高难活动' },
+  { to: '/weekly-rotation', icon: '07', title: '本周轮换', en: 'WEEKLY ROTATION', desc: '当前周活动、修饰词与结束时间' },
   { to: '/lore', icon: '06', title: '世界观', en: 'LORE', desc: '传奇、势力、角色、敌人' }
 ]
 
@@ -55,7 +56,7 @@ const modules = [
       <div class="grid grid-4">
         <router-link v-for="m in modules" :key="m.to" :to="m.to" class="card module-card">
           <div class="mod-icon">{{ m.icon }}</div>
-          <h3>{{ locale === 'en' ? ({ classes: 'Classes', builds: 'Builds', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', lore: 'Lore', glossary: 'Glossary' }[m.to.slice(1)] || m.title) : m.title }}</h3>
+          <h3>{{ locale === 'en' ? ({ classes: 'Classes', builds: 'Builds', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', 'weekly-rotation': 'Weekly Rotation', lore: 'Lore', glossary: 'Glossary' }[m.to.slice(1)] || m.title) : m.title }}</h3>
           <span class="en-tag">{{ m.en }}</span>
           <p>{{ ui(m.desc) }}</p>
         </router-link>
@@ -79,7 +80,7 @@ const modules = [
               <span v-if="locale === 'zh'" class="en-tag">{{ c.en.toUpperCase() }}</span>
             </div>
           </div>
-          <p>{{ ui(c.role) }} · {{ ui("职业技能") }}: {{ ui(c.classAbility) }}</p>
+          <p>{{ ui(c.role) }} / {{ ui("职业技能") }}: {{ ui(c.classAbility) }}</p>
           <div class="sub-count">{{ c.count }} {{ ui("个子职业分支") }}</div>
         </router-link>
       </div>

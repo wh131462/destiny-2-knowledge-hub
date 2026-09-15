@@ -1,4 +1,4 @@
-// 术语数据（数据源：知识库 12-术语表）
+// Curated glossary entries used by the browsing and search interfaces.
 
 export const glossary = [
   { term: '守护者', en: 'Guardian', cat: '基础', desc: '被光复活的玩家角色' },

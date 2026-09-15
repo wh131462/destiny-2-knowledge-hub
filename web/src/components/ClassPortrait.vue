@@ -19,7 +19,7 @@ watch(() => props.classId, () => { failed.value = false })
     <span class="portrait-designation" aria-hidden="true">GUARDIAN / {{ classId.toUpperCase() }}</span>
     <img v-if="!failed && portraits[classId]" :src="portraits[classId]" :alt="locale === 'en' ? `${name} — official Bungie character artwork` : `${name} — Bungie 官方人物立绘`" :loading="eager ? 'eager' : 'lazy'" decoding="async" @error="failed = true" />
     <div v-else class="portrait-fallback"><ClassEmblem :class-id="classId" /><span>{{ name }}</span></div>
-    <figcaption><a href="https://www.bungie.net/7/en/Destiny/NewLight#guardians" target="_blank" rel="noreferrer">{{ locale === 'en' ? 'Artwork © Bungie · Source ↗' : '人物立绘 © Bungie · 官网来源 ↗' }}</a></figcaption>
+    <figcaption><a href="https://www.bungie.net/7/en/Destiny/NewLight#guardians" target="_blank" rel="noreferrer">{{ locale === 'en' ? 'Artwork © Bungie / Source ↗' : '人物立绘 © Bungie / 官网来源 ↗' }}</a></figcaption>
   </figure>
 </template>
 

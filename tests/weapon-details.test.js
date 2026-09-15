@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { weaponBaseStats, weaponArchivePerks, weaponIntrinsics, weaponVersions, weaponVersionGroups, matchWeaponVersion } from '../packages/manifest-catalog/weapon-details.js'
+import { weaponBaseStats, weaponArchivePerks, weaponIntrinsics, weaponChampionCounters, weaponVersions, weaponVersionGroups, matchWeaponVersion } from '../packages/manifest-catalog/weapon-details.js'
 
 const load = name => JSON.parse(readFileSync(new URL(`../data/catalog/${name}.json`, import.meta.url)))
 const weapons = load('manifest-equipment-rich').items.filter(item => item.itemType === 3)
@@ -27,6 +27,26 @@ test('固定 Perk 仅有四列，固有特性独立显示且不混入击杀记�
   assert.equal(intrinsic.length, 1)
   assert.equal(intrinsic[0].nameZh, '透体电光')
   assert.equal(intrinsic[0].descriptionZh, '可发射贯穿敌人的高伤害电弧冲击能量。')
+})
+
+test('反勇士类型读取框架 perkDetails 标记，而不是只读可见描述', () => {
+  const framePlugs = new Map([[1, { hash: 1, name: 'Rapid-Fire Frame', description: 'Deep ammo reserves.', perkDetails: [{ name: '[Disruption] Overload', description: '' }] }]])
+  const weapon = { socketPools: [{ socketCategory: 'INTRINSIC TRAITS', initialItemHash: 1 }] }
+  assert.deepEqual(weaponChampionCounters(weapon, framePlugs), [{
+    id: 'overload', zh: '过载', en: 'Overload', counterZh: '反过载', counterEn: 'Anti-Overload',
+    breakerTypeHash: 2611060930, icon: '/common/destiny2_content/icons/DestinyBreakerTypeDefinition_da558352b624d799cf50de14d7cb9565.png',
+    frameHash: 1, frameName: 'Rapid-Fire Frame', frameNameZh: undefined
+  }])
+})
+
+test('当前有框架定义的武器均绑定且仅绑定一种勇士类型', () => {
+  const resolved = weapons.filter(weapon => weaponIntrinsics(weapon, plugs).length)
+  assert.ok(resolved.length > 2200)
+  assert.ok(resolved.every(weapon => weaponChampionCounters(weapon, plugs, weaponVersions(weapon, weapons)).length === 1))
+  const delirium = weapons.find(weapon => weapon.hash === 3001598094)
+  assert.deepEqual(weaponChampionCounters(delirium, plugs).map(counter => [counter.id, counter.frameName]), [['overload', 'Rapid-Fire Frame']])
+  const legacyAcrius = weapons.find(weapon => weapon.hash === 1744115122)
+  assert.deepEqual(weaponChampionCounters(legacyAcrius, plugs, weaponVersions(legacyAcrius, weapons)).map(counter => [counter.id, counter.inheritedFromHash]), [['overload', 3580904580]])
 })
 
 test('同名旧实体保持独立素体和空池，不借用收藏品版本的词条', () => {
@@ -72,6 +92,7 @@ test('版本号查询使用完整分组的稳定编号，支持中文、英文�
   assert.deepEqual(query('备用口粮#99'), [])
   assert.deepEqual(query('备用口粮#0'), [])
   assert.equal(query('备用口粮').length, 3)
+  assert.equal(versions.filter(item => matchWeaponVersion(item, '手炮', versions, ['手炮'])).length, 3)
   assert.deepEqual(weaponVersionGroups([...versions].reverse()), weaponVersionGroups(versions))
 })
 

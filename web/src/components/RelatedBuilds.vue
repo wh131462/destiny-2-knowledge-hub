@@ -11,7 +11,7 @@ const matches = computed(() => relatedBuilds(props.item, publicBuilds.value, edi
 <template>
   <section class="related-builds" :aria-label="ui(&quot;使用此条目的公开构筑&quot;)">
     <header><h2>{{ ui("相关构筑") }}</h2><span>{{ matches.length }} {{ ui("套") }}</span></header>
-    <RouterLink v-for="build in matches" :key="build.id" :to="`/builds/${build.id}`"><strong>{{ build.name }} →</strong><p>{{ build.goal }}</p></RouterLink>
+    <RouterLink v-for="build in matches" :key="build.id" :to="build.detailPath"><strong>{{ build.name }} →</strong><p>{{ build.goal }}</p></RouterLink>
     <p v-if="!matches.length">{{ ui("暂时没有引用此条目的公开构筑。") }}</p>
     <RouterLink to="/builds">{{ ui("浏览公开构筑 →") }}</RouterLink>
   </section>

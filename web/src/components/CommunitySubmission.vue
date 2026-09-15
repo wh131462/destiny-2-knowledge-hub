@@ -2,6 +2,7 @@
 import { ui, localizedOptions, uiMessage } from '@/i18n'
 import { computed, ref, watch } from 'vue'
 import CommunityPublishGuide from '@/components/CommunityPublishGuide.vue'
+import StableDisclosure from '@/components/StableDisclosure.vue'
 import { activitiesV2 } from '@/data/v2'
 import { communityConfig } from '@/utils/communityConfig'
 import { createSubmission, submissionBody, validateSubmission, newIssueUrl, issueUrl } from '../../../packages/community-builds/index.js'
@@ -53,7 +54,7 @@ async function copy() {
       <p v-for="warning in prepared.warnings" :key="warning" class="notice">{{ uiMessage(warning) }}</p>
       <div class="actions"><button type="button" class="btn primary" :disabled="!prepared.body" @click="copy">{{ copied ? ui("✓ 已复制投稿内容") : ui("1 复制投稿内容") }}</button><a v-if="href && prepared.body" class="btn" :href="href" target="_blank" rel="noopener noreferrer">2 {{ origin ? ui("前往原 Issue 修改") : ui("前往 GitHub 投稿") }} ↗</a></div>
       <p v-if="copyMessage" role="status">{{ uiMessage(copyMessage) }}</p>
-      <details v-if="prepared.body" :open="manualCopy" class="submission-preview"><summary>{{ ui("查看投稿内容 / 手动复制") }}</summary><textarea :value="prepared.body" readonly rows="6" :aria-label="ui(&quot;投稿内容&quot;)" spellcheck="false" /></details>
+      <StableDisclosure v-if="prepared.body" :open="manualCopy" :title="ui('查看投稿内容 / 手动复制')" :width="760" trigger-class="submission-preview-trigger" @update:open="manualCopy = $event"><textarea :value="prepared.body" readonly rows="14" :aria-label="ui(&quot;投稿内容&quot;)" spellcheck="false" /></StableDisclosure>
       <CommunityPublishGuide :editing="Boolean(origin)" in-submission />
       <p class="footnote">{{ ui("跳转不会自动提交。投稿为公开内容；关闭 Issue 可从本站下架，重新开启可恢复。被管理者屏蔽的投稿需先解除屏蔽；下架不会隐藏 GitHub 原文。更新将在同步成功后显示。") }}</p>
     </div>
@@ -67,6 +68,6 @@ async function copy() {
 
 <style scoped>
 .publish-progress { display: flex; list-style: none; gap: .75rem; padding: .8rem 0; margin: 0; border-block: 1px solid var(--line-soft); }.publish-progress li { flex: 1; font-size: .75rem; color: var(--text-sub); }.publish-progress b { color: var(--gold); margin-right: .4rem; font: .65rem var(--font-en); }
-.submission label small { margin-left: .4rem; color: var(--gold); font-size: .7rem; }.field-hint { font-size: .75rem; margin-top: -.5rem; color: var(--text-sub); }.submission .ant-select { min-width: 0; width: 100%; }.submission-preview summary { padding: .65rem 0; color: var(--text-sub); cursor: pointer; font-size: .78rem; }.actions .btn { border-radius: var(--radius-sm); min-height: 44px; }.actions .btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
+.submission label small { margin-left: .4rem; color: var(--gold); font-size: .7rem; }.field-hint { font-size: .75rem; margin-top: -.5rem; color: var(--text-sub); }.submission .ant-select { min-width: 0; width: 100%; }.submission :deep(.submission-preview-trigger) { color: var(--text-sub); font-size: .78rem; }.actions .btn { border-radius: var(--radius-sm); min-height: 44px; }.actions .btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
 @media(max-width:420px) { .publish-progress { gap: .4rem; }.publish-progress li { font-size: .68rem; }.publish-progress b { display: block; margin-bottom: .25rem; }.actions { flex-direction: column; } }
 </style>

@@ -4,6 +4,7 @@ import { ui, uiMessage, useI18n, localized, formatDate } from '@/i18n'
 import { computed, ref, watch, onMounted } from 'vue'
 import LoadoutSheet from '@/components/LoadoutSheet.vue'
 import LoadoutExportButton from '@/components/LoadoutExportButton.vue'
+import StableDisclosure from '@/components/StableDisclosure.vue'
 import { useRoute } from 'vue-router'
 import { usePublicBuilds } from '@/composables/usePublicBuilds'
 import { useManifestAssets } from '@/composables/useManifestAssets'
@@ -56,10 +57,10 @@ async function prepareImageExport() {
     <template v-else-if="build">
       <header class="detail-header"><div><span class="eyebrow">{{ ui("COMMUNITY BUILD / 社区投稿 #") }}{{ build.number }}</span><h1>{{ draft.name }}</h1><p>{{ build.submission.summary }}</p><div class="byline"><span>@{{ build.author.login }}</span><span>{{ localized(classById[draft.classId]) }} {{ localized(subclass) }}</span><span>{{ ui("更新于") }} {{ formatDate(build.updatedAt) }}</span></div></div><div class="verification"><b>{{ ui("社区投稿") }}</b><span>{{ ui("通过配置检查") }}</span><small>{{ ui("不代表实机验证") }}</small></div></header>
       <nav class="detail-actions flow-actions" :aria-label="ui(&quot;构筑操作&quot;)"><router-link class="btn primary" :to="editorLink(false)">{{ ui("以此创建副本") }}</router-link><router-link class="btn" :to="editorLink(true)">{{ ui("修改原投稿") }}</router-link><LoadoutExportButton :key="build.number" :disabled="manifest.status.value !== 'ready'" :prepare="prepareImageExport" /><button type="button" class="btn" @click="copyCode">{{ ui("复制配装代码") }}</button><a class="btn" :href="build.issueUrl" target="_blank" rel="noopener noreferrer">{{ ui("GitHub 原文 / 下架与恢复 ↗") }}</a></nav>
-      <details class="management-help"><summary>{{ ui("投稿管理与同步说明") }}</summary><p class="help">{{ ui("作者可在 GitHub 关闭或重开 Issue；被屏蔽的投稿需由管理者解除屏蔽。更新将在同步成功后显示，关闭不使原文私密。") }}</p></details>
-      <p v-if="message" class="flow-notice" role="status">{{ uiMessage(message) }}</p><details v-if="copiedCode" :open="manualCopy"><summary>{{ ui("查看配装代码") }}</summary><a-textarea :value="copiedCode" readonly :aria-label="ui(&quot;配装代码&quot;)" :rows="3" /></details>
+      <div class="management-help"><StableDisclosure :title="ui('投稿管理与同步说明')" :width="600"><p class="help">{{ ui("作者可在 GitHub 关闭或重开 Issue；被屏蔽的投稿需由管理者解除屏蔽。更新将在同步成功后显示，关闭不使原文私密。") }}</p></StableDisclosure></div>
+      <p v-if="message" class="flow-notice" role="status">{{ uiMessage(message) }}</p><StableDisclosure v-if="copiedCode" :open="manualCopy" :title="ui('查看配装代码')" :width="720" @update:open="manualCopy = $event"><a-textarea :value="copiedCode" readonly :aria-label="ui(&quot;配装代码&quot;)" :rows="7" /></StableDisclosure>
       <div class="tags"><span v-for="id in build.submission.activityIds" :key="id">{{ activityById[id]?.name || id }}</span><span v-for="tag in build.submission.tags" :key="tag">{{ tag }}</span></div>
-      <details class="management-help"><summary>{{ ui("版本与配置提示") }} <span v-if="model.warnings.length">（{{ model.warnings.length }}）</span></summary><p class="help">{{ ui("校验快照：") }}{{ snapshot.manifestVersion }} {{ ui("原稿版本：") }}{{ draft.manifestVersion || ui("未提供") }}</p><p v-for="warning in model.warnings" :key="warning" class="notice">{{ uiMessage(warning) }}</p></details>
+      <div class="management-help"><StableDisclosure :title="ui('版本与配置提示')" :width="720"><template #trigger><span>{{ ui("版本与配置提示") }}</span><small v-if="model.warnings.length">{{ model.warnings.length }}</small></template><p class="help">{{ ui("校验快照：") }}{{ snapshot.manifestVersion }} {{ ui("原稿版本：") }}{{ draft.manifestVersion || ui("未提供") }}</p><p v-for="warning in model.warnings" :key="warning" class="notice">{{ uiMessage(warning) }}</p></StableDisclosure></div>
       <p v-if="manifest.status.value !== 'ready'" class="notice">{{ manifest.status.value === 'error' ? ui("装备名称与配图加载失败，原始配置仍已保留。") : ui("正在加载装备名称与配图…") }}</p>
       <section class="export-sheet-section"><h2>{{ ui("配装一图流") }}</h2><LoadoutSheet :model="model" /></section>
       <footer class="detail-end"><div><h2>{{ ui("从这套构筑，开始你的下一次尝试") }}</h2><p>{{ ui("完整保留装备、词条和备注，在副本中自由调整。") }}</p></div><router-link class="btn primary" :to="editorLink(false)">{{ ui("以此创建副本 →") }}</router-link></footer>
@@ -79,7 +80,7 @@ async function prepareImageExport() {
 .verification { align-self: center; border-left: 1px solid var(--line); padding-left: 1.5rem; font-size: .8rem; }
 .detail-actions { margin-bottom: 1rem; }
 .management-help { margin: .75rem 0; color: var(--text-sub); font-size: .75rem; }
-.management-help summary { cursor: pointer; padding: .35rem 0; }
+.management-help :deep(.stable-disclosure-trigger) { min-height: 2.5rem; }
 .management-help .help { padding: .5rem 1rem; border-left: 1px solid var(--line); }
 .section { padding: 2rem 0; }
 .section h2 { display: flex; align-items: center; gap: .7rem; font-size: 1.2rem; }
