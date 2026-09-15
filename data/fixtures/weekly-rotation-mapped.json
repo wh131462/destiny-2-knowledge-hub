@@ -1,0 +1,19 @@
+{
+  "Response": {
+    "nightfall": {
+      "milestoneHash": 1001,
+      "displayProperties": { "name": "Nightfall", "description": "Weekly Nightfall", "icon": "/img/nightfall.png" },
+      "startDate": "2026-09-09T17:00:00Z",
+      "endDate": "2026-09-16T17:00:00Z",
+      "activities": [{ "activityHash": 129979, "difficulty": "Legend", "champions": ["Barrier", "Overload"], "modifiers": ["Surge: Solar"] }],
+      "rewards": [{ "name": "Nightfall weapon" }]
+    },
+    "raid": {
+      "milestoneHash": 1002,
+      "displayProperties": { "name": "Raid Rotation" },
+      "startDate": "2026-09-09T17:00:00Z",
+      "endDate": "2026-09-16T17:00:00Z",
+      "activities": [{ "activityHash": 999999, "difficulty": "Normal" }]
+    }
+  }
+}

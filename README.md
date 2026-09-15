@@ -76,8 +76,8 @@ destiny-2-knowledge-hub/
 │   ├── knowledge-links/     # 百科实体与关联链接
 │   ├── recommendation-engine/
 │   └── acquisition-engine/
-├── docs/                    # 知识文档、生成的构筑手册与部署说明
-├── scripts/                 # Manifest 同步、校验、审计与文档生成
+├── docs/                    # 部署说明与审计记录
+├── scripts/                 # Manifest 同步、校验与审计
 ├── tests/                   # Node.js 测试：规则、目录、配装、导出与社区
 ├── web/
 │   ├── public/data/         # 网站使用的静态目录与状态报告
@@ -96,7 +96,7 @@ destiny-2-knowledge-hub/
 npm run check
 ```
 
-该命令依次执行内容校验、构筑词条审计、技能覆盖审计、目录审计、全部测试、知识库文档生成和前端构建。文档生成会更新自动生成的手册；目录审计在具备原始组件时会更新报告和审计证据。
+该命令依次执行内容校验、构筑词条审计、技能覆盖审计、目录审计、全部测试和前端构建。目录审计在具备原始组件时会更新报告和审计证据。
 
 | 命令 | 用途 |
 | --- | --- |
@@ -106,7 +106,6 @@ npm run check
 | `npm run audit:catalog` | 对账目录数量、Hash、关联、版本与前端发布副本；缺少原始大组件时验证已审计输出的指纹 |
 | `npm test` | 运行 `tests/*.test.js` 中的全部测试 |
 | `npm run coverage` | 输出官方目录覆盖报告与已知缺口，不是代码测试覆盖率 |
-| `npm run docs:generate` | 从编辑构筑与规则引擎生成构筑手册 |
 | `npm run build` | 构建前端到 `web/dist/` |
 
 ## 数据与内容维护
@@ -115,8 +114,8 @@ npm run check
 
 - `data/catalog/` 保存标准化官方定义，`content/` 保存编辑条目、机制解读和获取指引。编辑条目数量不能代替官方目录覆盖率。
 - `web/src/data/v2.js` 是编辑内容与规则引擎的前端导出入口；大型官方目录通过 `web/public/data/` 加载。生成目录及其发布副本应保持一致。
-- [构筑手册](docs/knowledge-base/15-已验证构筑手册.md) 由脚本生成，不应直接编辑，也不会自动汇入 Issue 社区快照。知识库 01–13 章是待逐步核验的历史编辑稿。
-- 内容来源与验证约定见 [数据来源与构筑验证规范](docs/knowledge-base/16-数据来源与构筑验证规范.md)。修改内容或规则后运行 `npm run check`，发布前核对来源与实机证据。
+- Manifest 负责官方实体定义；`content/` 及 `web/src/data/` 中的机制解读、攻略、世界观摘要与术语仍是编辑内容，不应表述为官方结论。
+- 修改内容或规则后运行 `npm run check`；发布前核对来源、适用版本与实机证据，缺少可靠数据时明确标记覆盖边界。
 
 ### 更新 Manifest
 
@@ -151,6 +150,45 @@ npm run manifest:sync -- --all-components
 ```
 
 原始大组件不纳入 Git。干净检出时，`audit:catalog` 校验已审计输出的 SHA-256 指纹，不代表重新核对了原始数据；修改目录数据后应完整同步并重新审计。
+
+### 本周轮换同步
+
+Pages 部署会在构建前通过 Bungie Milestones API 生成 `weekly-rotation.json`，浏览器只读取同源静态快照。线上部署使用名为 `BUNGIE_API_KEY` 的 GitHub Actions Secret。
+
+本地同步支持从仓库根目录的 `.env.local` 或 `.env` 读取 Key（Node.js 22）：
+
+```bash
+cp .env.example .env.local
+```
+
+在 `.env.local` 中填写：
+
+```dotenv
+BUNGIE_API_KEY=你的_Bungie_API_Key
+```
+
+然后在仓库根目录启动本地站点：
+
+```bash
+npm run dev
+```
+
+启动时会先自动同步最新轮换，再启动 Vite。打开 `http://localhost:9999/#/weekly-rotation` 即可查看结果。在 `web/` 目录运行 `npm run dev` 也会自动同步。缺少 Key 时跳过同步；接口失败时保留已有快照并提示原因，两种情况均可继续启动站点。修改 Key 后重启开发服务即可生效。
+
+读取优先级为系统环境变量 > `.env.local` > `.env`；高优先级显式配置为空时视为缺少 Key，不会回退。配置文件路径始终相对于仓库根目录。Key 仅由同步脚本读取，无需 `VITE_` 前缀，也无需写入 `web/.env.local`；不会注入前端或输出到同步日志。`.env` 和 `.env.local` 已被 Git 忽略，示例文件可以提交。运行期间可执行 `npm run rotation:sync` 后刷新页面来更新数据；`build` 不自动同步。
+
+没有 Key 时，可用示例响应进行离线调试：
+
+```bash
+npm run rotation:sync:fixture
+npm run rotation:sync -- --fixture=data/fixtures/weekly-rotation-mapped.json --out=/tmp/weekly-rotation.json
+```
+
+接口超时、限流、缺少 Secret 或响应校验失败时，脚本不会发布空数据；已有快照会标记为过期并继续供站点读取。Milestones 未返回的类别会在页面标记缺失，静态 Manifest 也不能推导实时掉落概率或账号专属进度。
+
+同步会同时读取中英文 `DestinyActivityModifierDefinition` 和 `DestinyMilestoneDefinition`，解析挑战、修饰词和里程碑名称；小型定义缓存保存在 `.cache/weekly-rotation/`，按官方组件路径更新。定义下载失败时使用本地缓存，未解析的条目显示说明暂缺，页面不展示原始编号。突袭、地牢、异域任务优先按官方活动类型分类，其次使用已关联攻略的类别。页面列出的是公共里程碑返回的活动，不将所有条目视为精选轮换，也不据此承诺无限刷取或掉落加成。
+
+奖励展示会按活动 Hash 精确关联本地 `manifest-activity-rewards.json` 和同版本的物品目录，解析官方奖励类型与说明；标准和大师记录分别匹配。卡片直接展示全部挑战、修饰词标签和奖励装备；长说明通过悬停、键盘聚焦或手机点按提示查看，不设展开区域，也不展示来源和原始编号。具体装备举例来自已关联攻略，使用官方中文名和图标，保留任务奖励等获取提示。同名装备的多个版本链接到目录查询，不把催化或外观记录作为武器。静态奖励类型、攻略装备参考与实时接口返回的奖励分开展示，均不据此推断本周保底或可无限刷取。
 
 ### 技能、神器与插槽规则
 

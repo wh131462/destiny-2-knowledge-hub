@@ -1,0 +1,2609 @@
+{
+  "schema": "d2hub-weekly-rotation-v1",
+  "generatedAt": "2026-09-14T11:30:55.069Z",
+  "status": "partial",
+  "week": {
+    "start": "2026-09-08T17:00:00.000Z",
+    "end": "2026-09-15T17:00:00.000Z"
+  },
+  "source": {
+    "provider": "bungie-milestones",
+    "fetchedAt": "2026-09-14T11:30:55.069Z",
+    "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+    "definitionVersions": {
+      "modifiers:en": "244213.26.06.29.2000-1-bnet.65864",
+      "modifiers:zh-chs": "244213.26.06.29.2000-1-bnet.65864",
+      "milestones:en": "244213.26.06.29.2000-1-bnet.65864",
+      "milestones:zh-chs": "244213.26.06.29.2000-1-bnet.65864"
+    },
+    "endpoint": "https://www.bungie.net/Platform/Destiny2/Milestones/",
+    "rewardsManifestVersion": "244213.26.06.29.2000-1-bnet.65864",
+    "schema": "d2hub-weekly-rotation-v1"
+  },
+  "activities": [
+    {
+      "id": "292102995:1374392663",
+      "milestoneHash": 292102995,
+      "activityHash": 1374392663,
+      "name": "King's Fall: Standard",
+      "nameZh": "国王的陨落: 标准",
+      "description": "Long live the King…",
+      "descriptionZh": "国王万岁…",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        3577304467,
+        2159250954,
+        2890753840,
+        2936050162,
+        4152669757,
+        3282103678
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 3577304467,
+          "name": "The Grass Is Always Greener",
+          "nameZh": "邻家的草分外青",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2159250954,
+          "name": "Devious Thievery",
+          "nameZh": "奸狡大盗",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2890753840,
+          "name": "Gaze Amaze",
+          "nameZh": "惊奇凝视",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2936050162,
+          "name": "Under Construction",
+          "nameZh": "建造中",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4152669757,
+          "name": "Hands Off",
+          "nameZh": "请勿上手",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3282103678,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Touch of Malice",
+            "nameZh": "恶意触碰",
+            "icon": "/common/destiny2_content/icons/106a8a40a6e55b5ec5088a26d1ed979d.jpg",
+            "itemHashes": [
+              1802135586
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Zaouli's Bane",
+            "nameZh": "扎乌利的克星",
+            "icon": "/common/destiny2_content/icons/d11aa112b88dc2cbf48706fdad606710.jpg",
+            "itemHashes": [
+              431721920,
+              3066945855,
+              3647341740
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Doom of Chelchis",
+            "nameZh": "切尔奇斯的末日",
+            "icon": "/common/destiny2_content/icons/d439b1b560e696b8214362b12364da6d.jpg",
+            "itemHashes": [
+              1937552980
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "恶意触碰为 Destiny 2 尾王异域奖励；不要把初代任务获取方式套到复刻版。",
+        "reference": {
+          "title": "King's Fall Destinypedia",
+          "url": "https://www.destinypedia.com/King's_Fall",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=King%27s_Fall&oldid=371866"
+        }
+      },
+      "guideId": "raid-kings-fall",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "540415767:107319834",
+      "milestoneHash": 540415767,
+      "activityHash": 107319834,
+      "name": "Crota's End: Standard",
+      "nameZh": "克洛塔的末日: 标准",
+      "description": "He waits in the dark below.",
+      "descriptionZh": "他在深渊之暗中等待。",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        3230561446,
+        3119632620,
+        3636591526,
+        2768385440,
+        732074628,
+        3523029182
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 3230561446,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "You will face combatants with Arc and Solar shields.\n\nActivity modifiers may add more shield types.",
+          "descriptionZh": "你将面对拥有电弧和烈日护盾的战斗人员。\n\n活动修改器可添加更多护盾类型。",
+          "icon": "/common/destiny2_content/icons/50f19e0cf1b9864d47a9f0538440b916.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3119632620,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "Arc and Solar Shields",
+          "descriptionZh": "电弧和烈日护盾",
+          "icon": "/common/destiny2_content/icons/50f19e0cf1b9864d47a9f0538440b916.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3636591526,
+          "name": "Conservation of Energy",
+          "nameZh": "能量守恒",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/5e9b55c6e24cc842479aeddf80068fd0.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2768385440,
+          "name": "Precarious Balance",
+          "nameZh": "动荡平衡",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/5e9b55c6e24cc842479aeddf80068fd0.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 732074628,
+          "name": "Equal Vessels",
+          "nameZh": "均等器皿",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/5e9b55c6e24cc842479aeddf80068fd0.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3523029182,
+          "name": "All for One",
+          "nameZh": "人人为我",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/5e9b55c6e24cc842479aeddf80068fd0.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Necrochasm",
+            "nameZh": "坏疽",
+            "icon": "/common/destiny2_content/icons/52e8bb636771f4731da3f73f06fcad04.jpg",
+            "itemHashes": [
+              1034055198
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Song of Ir Yût",
+            "nameZh": "伊尔·约特之歌",
+            "icon": "/common/destiny2_content/icons/a6b444748bd7c8fc2e5cc1b33678cc7d.jpg",
+            "itemHashes": [
+              2828278545
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Fang of Ir Yût",
+            "nameZh": "伊尔·约特的尖牙",
+            "icon": "/common/destiny2_content/icons/094c55dee2ab8993e85bf60d8fa3ee62.jpg",
+            "itemHashes": [
+              1432682459
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "坏疽通过相关任务与超灵精华推进获取；并非普通尾王随机直接掉落的统一规则。",
+        "reference": {
+          "title": "Crota's End Destinypedia",
+          "url": "https://www.destinypedia.com/Crota's_End",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Crota%27s_End&oldid=393710"
+        }
+      },
+      "guideId": "raid-crota-end",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "541780856:910380154",
+      "milestoneHash": 541780856,
+      "activityHash": 910380154,
+      "name": "Deep Stone Crypt",
+      "nameZh": "深岩墓室",
+      "description": "The chains of legacy must be broken.",
+      "descriptionZh": "传承的锁链必须被打破。",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": null,
+      "modifiers": [
+        1783825372,
+        4023623132,
+        3361897360,
+        201968501,
+        191124900,
+        3901838854
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 4023623132,
+          "name": "Red Rover",
+          "nameZh": "红色漫游者",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3361897360,
+          "name": "Copies of Copies",
+          "nameZh": "复制的复制",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 201968501,
+          "name": "Of All Trades",
+          "nameZh": "各行各业",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 191124900,
+          "name": "The Core Four",
+          "nameZh": "四号核心",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3901838854,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Eyes of Tomorrow",
+            "nameZh": "明日之眼",
+            "icon": "/common/destiny2_content/icons/9caeff89015f02ad52e6fefe95398b01.jpg",
+            "itemHashes": [
+              2399110176
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Heritage",
+            "nameZh": "遗产",
+            "icon": "/common/destiny2_content/icons/07619f9f7115a2295c080f08179deb98.jpg",
+            "itemHashes": [
+              4248569242
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Succession",
+            "nameZh": "继承",
+            "icon": "/common/destiny2_content/icons/f2f045829a1442b2c5cc6632168cd856.jpg",
+            "itemHashes": [
+              570866107,
+              2731922624,
+              2990047042,
+              3612338554
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Commemoration",
+            "nameZh": "纪念",
+            "icon": "/common/destiny2_content/icons/9820c9c3714bdd7f6fb7c2b83143041b.jpg",
+            "itemHashes": [
+              4230965989
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "明日之眼为尾王异域奖励；传说武器有可塑形的更新版本，查询 perk 池时需选对版本。",
+        "reference": {
+          "title": "Deep Stone Crypt Destinypedia",
+          "url": "https://www.destinypedia.com/Deep_Stone_Crypt_(raid)",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Deep_Stone_Crypt_(raid)&oldid=400070"
+        }
+      },
+      "guideId": "raid-deep-stone-crypt",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "1888320892:3881495763",
+      "milestoneHash": 1888320892,
+      "activityHash": 3881495763,
+      "name": "Vault of Glass: Standard",
+      "nameZh": "玻璃拱顶: 标准",
+      "description": "Beneath Venus, evil stirs…",
+      "descriptionZh": "金星之下，暗流涌动…",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        3135466059,
+        274420331,
+        2814846409,
+        3212721586,
+        1572570117,
+        4075903438
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 3135466059,
+          "name": "Wait For It…",
+          "nameZh": "等待时机…",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/75155c6d06a82303493cca1f29b622b2.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 274420331,
+          "name": "The Only Oracle For You",
+          "nameZh": "你唯一的神谕",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/75155c6d06a82303493cca1f29b622b2.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2814846409,
+          "name": "Out of Its Way",
+          "nameZh": "不要挡道",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/75155c6d06a82303493cca1f29b622b2.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3212721586,
+          "name": "Strangers in Time",
+          "nameZh": "时空陌客",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/75155c6d06a82303493cca1f29b622b2.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1572570117,
+          "name": "Ensemble's Refrain",
+          "nameZh": "合奏叠句",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/75155c6d06a82303493cca1f29b622b2.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4075903438,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Vex Mythoclast",
+            "nameZh": "Vex揭秘者",
+            "icon": "/common/destiny2_content/icons/111a10b59029fc6a9ca5e821267e6f6c.jpg",
+            "itemHashes": [
+              4289226715
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Fatebringer",
+            "nameZh": "命运终结者",
+            "icon": "/common/destiny2_content/icons/7741689cbc1102aa9fc742b33a106f19.jpg",
+            "itemHashes": [
+              2171478765,
+              4184168210
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Found Verdict",
+            "nameZh": "裁决定论",
+            "icon": "/common/destiny2_content/icons/1037e708755c7086c1ac467364ca4340.jpg",
+            "itemHashes": [
+              694500607,
+              3197270240
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "Vex 异域武器来自尾王奖励；Timelost 等版本有独立获取条件，不能把普通版掉落表直接套用。",
+        "reference": {
+          "title": "Vault of Glass Destinypedia",
+          "url": "https://www.destinypedia.com/Vault_of_Glass_(raid)",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Vault_of_Glass_(raid)&oldid=406357"
+        }
+      },
+      "guideId": "raid-vault-of-glass",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "2136320298:1441982566",
+      "milestoneHash": 2136320298,
+      "activityHash": 1441982566,
+      "name": "Vow of the Disciple: Standard",
+      "nameZh": "门徒誓约: 标准",
+      "description": "The disciple beckons…",
+      "descriptionZh": "门徒发出召唤…",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        2672226122,
+        3425521520,
+        2255984700,
+        2098788044,
+        1834872958
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 2672226122,
+          "name": "Swift Destruction",
+          "nameZh": "迅捷毁灭",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3425521520,
+          "name": "Base Information",
+          "nameZh": "基本信息",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2255984700,
+          "name": "Defenses Down",
+          "nameZh": "防守下降",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2098788044,
+          "name": "Looping Catalyst",
+          "nameZh": "循环催化剂",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1834872958,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Collective Obligation",
+            "nameZh": "集体义务",
+            "icon": "/common/destiny2_content/icons/238ab90ba2f858ebb8a5a1797a13fdd4.jpg",
+            "itemHashes": [
+              3505113722
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Forbearance",
+            "nameZh": "自制",
+            "icon": "/common/destiny2_content/icons/38b89e4fd05f348f448eaca1320a807c.jpg",
+            "itemHashes": [
+              568611921,
+              613334176,
+              2480074702,
+              3736001860
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Cataclysmic",
+            "nameZh": "灾变",
+            "icon": "/common/destiny2_content/icons/a180748fde0e20e450b841663c388833.jpg",
+            "itemHashes": [
+              999767358
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Deliverance",
+            "nameZh": "解脱",
+            "icon": "/common/destiny2_content/icons/b32b09e7a3e0cf827ca1bea39dc71d05.jpg",
+            "itemHashes": [
+              768621510
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "集体义务为尾王异域奖励；普通与 Adept 武器属于不同版本，图样和获取条件应分别查看。",
+        "reference": {
+          "title": "Vow of the Disciple Destinypedia",
+          "url": "https://www.destinypedia.com/Vow_of_the_Disciple",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Vow_of_the_Disciple&oldid=380952"
+        }
+      },
+      "guideId": "raid-vow-of-the-disciple",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "2136320298:3889634515",
+      "milestoneHash": 2136320298,
+      "activityHash": 3889634515,
+      "name": "Vow of the Disciple: Master",
+      "nameZh": "门徒誓约: 大师",
+      "description": "The disciple beckons…",
+      "descriptionZh": "门徒发出召唤…",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Master",
+      "modifiers": [
+        1834872958,
+        2672226122,
+        3425521520,
+        2255984700,
+        2098788044,
+        1783825372,
+        1651706850,
+        2288210988,
+        4087563963,
+        3307318061,
+        40182179,
+        2626834038,
+        3196075844,
+        3809788899
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1834872958,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2672226122,
+          "name": "Swift Destruction",
+          "nameZh": "迅捷毁灭",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3425521520,
+          "name": "Base Information",
+          "nameZh": "基本信息",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2255984700,
+          "name": "Defenses Down",
+          "nameZh": "防守下降",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2098788044,
+          "name": "Looping Catalyst",
+          "nameZh": "循环催化剂",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/2d2330c849610269af5c58934840b329.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 1651706850,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "You will face combatants with Arc, Solar, and Void shields.",
+          "descriptionZh": "你将面对拥有电弧、烈日及虚空护盾的战斗人员。",
+          "icon": "/common/destiny2_content/icons/73cb7124116c4fca5c873cfd06e7de1a.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2288210988,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "Arc, Solar, and Void Shields",
+          "descriptionZh": "电弧、烈日及虚空护盾",
+          "icon": "/common/destiny2_content/icons/73cb7124116c4fca5c873cfd06e7de1a.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4087563963,
+          "name": "Master Modifiers",
+          "nameZh": "大师难度修改器",
+          "description": "Extra Champions\nExtra Shields",
+          "descriptionZh": "额外勇士\n额外护盾",
+          "icon": "/common/destiny2_content/icons/e6507058cbddfc8b72dde057674e792a.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3307318061,
+          "name": "Champion Foes",
+          "nameZh": "勇士敌人",
+          "description": "You will face Overload and Unstoppable Champions.\n\nVisit the Character or Mod Customization screen to view your active anti-Champion perks.",
+          "descriptionZh": "你将面对过载和势不可挡勇士。\n\n前往角色或模组自定义界面查看你已激活的反勇士特性。",
+          "icon": "/common/destiny2_content/icons/168464ee469b5ba09149e84cb39d334e.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 40182179,
+          "name": "Champion Foes",
+          "nameZh": "勇士敌人",
+          "description": "You will face Overload and Unstoppable Champions.",
+          "descriptionZh": "你将面对过载和势不可挡勇士。",
+          "icon": "/common/destiny2_content/icons/168464ee469b5ba09149e84cb39d334e.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2626834038,
+          "name": "Overcharged Fusion Rifle",
+          "nameZh": "过充融合步枪",
+          "description": "(value shown in game) bonus to Fusion Rifle damage.",
+          "descriptionZh": "融合步枪伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/b1db6bd79264f6ed90647eec71146a63.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3196075844,
+          "name": "Void Surge",
+          "nameZh": "虚空激涌",
+          "description": "(value shown in game) bonus to outgoing Void damage.",
+          "descriptionZh": "造成的虚空伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/382ae8c952160e4272ffb0b852f55142.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3809788899,
+          "name": "Stasis Surge",
+          "nameZh": "冰影激涌",
+          "description": "(value shown in game) bonus to outgoing Stasis damage.",
+          "descriptionZh": "造成的冰影伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/d542fb1a1171b0270cd83b5aa79f3e0d.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Weekly Reward",
+            "nameZh": "周常奖励",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3649567221,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Collective Obligation",
+            "nameZh": "集体义务",
+            "icon": "/common/destiny2_content/icons/238ab90ba2f858ebb8a5a1797a13fdd4.jpg",
+            "itemHashes": [
+              3505113722
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Forbearance",
+            "nameZh": "自制",
+            "icon": "/common/destiny2_content/icons/38b89e4fd05f348f448eaca1320a807c.jpg",
+            "itemHashes": [
+              568611921,
+              613334176,
+              2480074702,
+              3736001860
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Cataclysmic",
+            "nameZh": "灾变",
+            "icon": "/common/destiny2_content/icons/a180748fde0e20e450b841663c388833.jpg",
+            "itemHashes": [
+              999767358
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Deliverance",
+            "nameZh": "解脱",
+            "icon": "/common/destiny2_content/icons/b32b09e7a3e0cf827ca1bea39dc71d05.jpg",
+            "itemHashes": [
+              768621510
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "集体义务为尾王异域奖励；普通与 Adept 武器属于不同版本，图样和获取条件应分别查看。",
+        "reference": {
+          "title": "Vow of the Disciple Destinypedia",
+          "url": "https://www.destinypedia.com/Vow_of_the_Disciple",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Vow_of_the_Disciple&oldid=380952"
+        }
+      },
+      "guideId": "raid-vow-of-the-disciple",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "2712317338:1042180643",
+      "milestoneHash": 2712317338,
+      "activityHash": 1042180643,
+      "name": "Garden of Salvation",
+      "nameZh": "救赎花园",
+      "description": "\"The Garden calls out to you.\"",
+      "descriptionZh": "“花园在召唤着你。”",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": null,
+      "modifiers": [
+        1783825372,
+        584466411,
+        787678752,
+        2626004713,
+        4073197101
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 584466411,
+          "name": "Leftovers",
+          "nameZh": "剩余物",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你……",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 787678752,
+          "name": "A Link to the Chain",
+          "nameZh": "枷锁的一环",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你……",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2626004713,
+          "name": "To the Top",
+          "nameZh": "登顶",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你……",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4073197101,
+          "name": "Zero to One Hundred",
+          "nameZh": "从零到一百",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你……",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Divinity",
+            "nameZh": "神圣裁决",
+            "icon": "/common/destiny2_content/icons/c6aa03536fd68b5fca5ad6b83ea0cf1e.jpg",
+            "itemHashes": [
+              4103414242
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Zealot's Reward",
+            "nameZh": "狂徒的奖励",
+            "icon": "/common/destiny2_content/icons/befe333b98c55b5c8dce6ba073ae1e92.jpg",
+            "itemHashes": [
+              2209003210,
+              2720651699
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Accrued Redemption",
+            "nameZh": "累积救赎",
+            "icon": "/common/destiny2_content/icons/adbd4c3544c36a8c94e976bbb806095d.jpg",
+            "itemHashes": [
+              3621336854,
+              4095896073
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "神圣裁决需要异域任务与突袭内连线解谜，不是尾王随机掉落。传说奖励存在更新版本。",
+        "reference": {
+          "title": "Garden of Salvation Destinypedia",
+          "url": "https://www.destinypedia.com/Garden_of_Salvation",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Garden_of_Salvation&oldid=371863"
+        }
+      },
+      "guideId": "raid-garden-of-salvation",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "3022338715:1044919065",
+      "milestoneHash": 3022338715,
+      "activityHash": 1044919065,
+      "name": "The Desert Perpetual: Standard",
+      "nameZh": "永恒沙漠: 标准",
+      "description": "Step across the threshold of the infinite.",
+      "descriptionZh": "跨越无尽的界限。",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        3825969510,
+        1783825372
+      ],
+      "modifierDetails": [
+        {
+          "hash": 3825969510,
+          "name": "Exotic Drop Rate Boosts Gained",
+          "nameZh": "已获得异域装备掉落率加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Weekly Reward",
+            "nameZh": "周常奖励",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3649567221,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Whirling Ovation",
+            "nameZh": "回旋喝彩",
+            "icon": "/common/destiny2_content/icons/b91ed8db52e1a3c52e0f9bd69b290b9f.jpg",
+            "itemHashes": [
+              1202007252
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Opaque Hourglass",
+            "nameZh": "隐晦沙漏",
+            "icon": "/common/destiny2_content/icons/493661e8d5c3a58cd9afbc33a88bc02b.jpg",
+            "itemHashes": [
+              1553681400
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Lance Ephemeral",
+            "nameZh": "转瞬长矛",
+            "icon": "/common/destiny2_content/icons/5170b2f63a5513ccca64e08283e55581.jpg",
+            "itemHashes": [
+              688593230
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "此处列出普通版的特色奖励；史诗版另有专属武器，不能把两版奖励池合并。",
+        "reference": {
+          "title": "The Desert Perpetual Destinypedia",
+          "url": "https://www.destinypedia.com/The_Desert_Perpetual",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=The_Desert_Perpetual&oldid=401923"
+        }
+      },
+      "guideId": "raid-desert-perpetual",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "3181387331:2122313384",
+      "milestoneHash": 3181387331,
+      "activityHash": 2122313384,
+      "name": "Last Wish: Standard",
+      "nameZh": "最后一愿: 标准",
+      "description": "\"The opportunity of a lifetime.\"",
+      "descriptionZh": "“一生一次的机会。”",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        2834033523,
+        217815700,
+        3632655552,
+        1741733430,
+        1498263100,
+        1874523520
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 2834033523,
+          "name": "Summoning Ritual",
+          "nameZh": "召唤仪式",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 217815700,
+          "name": "Which Witch",
+          "nameZh": "哪位女巫",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3632655552,
+          "name": "Forever Fight",
+          "nameZh": "永恒战斗",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1741733430,
+          "name": "Keep Out",
+          "nameZh": "请勿入内",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1498263100,
+          "name": "Strength of Memory",
+          "nameZh": "记忆的力量",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/135816ebe386fca59bd2e65769f821e9.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1874523520,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "One Thousand Voices",
+            "nameZh": "千语",
+            "icon": "/common/destiny2_content/icons/51c53df606cca474dce3cadbf7d5ce28.jpg",
+            "itemHashes": [
+              2069224589
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Apex Predator",
+            "nameZh": "巅峰捕食者",
+            "icon": "/common/destiny2_content/icons/0819f6c7aa9ab0f5b082eee2a24bfb0d.jpg",
+            "itemHashes": [
+              1851777734,
+              2545083870
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "The Supremacy",
+            "nameZh": "霸权",
+            "icon": "/common/destiny2_content/icons/57e762b0f41575efde3deaa79496f628.jpg",
+            "itemHashes": [
+              686951703,
+              2884596447
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "千语来自结尾奖励宝箱，开箱需要相应钥匙；不是击败魅痕即必得。传说武器的可塑形版本与旧版需区分。",
+        "reference": {
+          "title": "Last Wish Destinypedia",
+          "url": "https://www.destinypedia.com/Last_Wish",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Last_Wish&oldid=383849"
+        }
+      },
+      "guideId": "raid-last-wish",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "3281608164:9",
+      "milestoneHash": 3281608164,
+      "activityHash": null,
+      "name": "Purification",
+      "nameZh": "净化",
+      "description": "Complete a Cyst.",
+      "descriptionZh": "完成一次囊肿。",
+      "icon": "/common/destiny2_content/icons/4943a19db9d75131c7b1d13165f48c19.png",
+      "category": "other",
+      "startDate": null,
+      "endDate": null,
+      "difficulty": null,
+      "modifiers": [],
+      "modifierDetails": [],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [],
+        "examples": [],
+        "note": "",
+        "reference": null
+      },
+      "guideId": null,
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": false,
+        "mappedToGuide": false,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "3699252268:2381413764",
+      "milestoneHash": 3699252268,
+      "activityHash": 2381413764,
+      "name": "Root of Nightmares: Standard",
+      "nameZh": "梦魇根源: 标准",
+      "description": "A sinister threat has taken root.",
+      "descriptionZh": "一个邪恶的威胁扎根于此。",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        766975360,
+        138641527,
+        2070303007,
+        1616571513,
+        1172122584
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 766975360,
+          "name": "Illuminated Torment Challenge",
+          "nameZh": "光明折磨挑战",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/86291d01b1b39aa815adbeff3295aa43.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 138641527,
+          "name": "Crossfire Challenge",
+          "nameZh": "火线混战挑战",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/86291d01b1b39aa815adbeff3295aa43.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2070303007,
+          "name": "Cosmic Equilibrium Challenge",
+          "nameZh": "宇宙平衡挑战",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/86291d01b1b39aa815adbeff3295aa43.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1616571513,
+          "name": "All Hands Challenge",
+          "nameZh": "五膀六臂挑战",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/86291d01b1b39aa815adbeff3295aa43.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1172122584,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": 1,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Conditional Finality",
+            "nameZh": "条件终局",
+            "icon": "/common/destiny2_content/icons/c9b4d65adcdfcadde871e5961ce912fb.jpg",
+            "itemHashes": [
+              3371017761
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Rufus's Fury",
+            "nameZh": "鲁弗斯的狂怒",
+            "icon": "/common/destiny2_content/icons/4b2875c89f540ce52d48dba19dac477e.jpg",
+            "itemHashes": [
+              484515708
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Acasia's Dejection",
+            "nameZh": "阿卡西娅的沮丧",
+            "icon": "/common/destiny2_content/icons/255be304412b4f0f3d880cb7e46ca256.jpg",
+            "itemHashes": [
+              1471212226
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "条件终局为尾王异域奖励；Adept 与普通传说武器分开记录。",
+        "reference": {
+          "title": "Root of Nightmares Destinypedia",
+          "url": "https://www.destinypedia.com/Root_of_Nightmares",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Root_of_Nightmares&oldid=404525"
+        }
+      },
+      "guideId": "raid-root-of-nightmares",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "4196566271:1541433876",
+      "milestoneHash": 4196566271,
+      "activityHash": 1541433876,
+      "name": "Salvation's Edge: Standard",
+      "nameZh": "救赎的边缘: 标准",
+      "description": "Free the Light.",
+      "descriptionZh": "解放光能。",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Standard",
+      "modifiers": [
+        1783825372,
+        3958417570,
+        1377274412,
+        3621023005,
+        1204802854,
+        1553052482,
+        2821522136,
+        1315424373,
+        3076996298
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 3958417570,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "You will face combatants with Solar and Void shields.\n\nActivity modifiers may add more shield types.",
+          "descriptionZh": "你将面对拥有烈日和虚空护盾的战斗人员。\n\n活动修改器可添加更多护盾类型。",
+          "icon": "/common/destiny2_content/icons/2904065e47d928496d45e61f08c0a957.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1377274412,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "Solar and Void Shields",
+          "descriptionZh": "烈日和虚空护盾",
+          "icon": "/common/destiny2_content/icons/2904065e47d928496d45e61f08c0a957.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3621023005,
+          "name": "Scenic Route Challenge",
+          "nameZh": "观光路线挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1204802854,
+          "name": "At Capacity Challenge",
+          "nameZh": "满载负荷挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1553052482,
+          "name": "Balanced Diet Challenge",
+          "nameZh": "均衡饮食挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2821522136,
+          "name": "Varied Geometry Challenge",
+          "nameZh": "多变几何挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1315424373,
+          "name": "Coordinated Efforts Challenge",
+          "nameZh": "协调努力挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3076996298,
+          "name": "Exotic Drop Rate Boosts Gained",
+          "nameZh": "已获得异域装备掉落率加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/9bf243d7013ff7c9cdbb74d5dec97a5b.png",
+            "description": "An engram with a Tier 3 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件3阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930384,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon (Chance)",
+            "nameZh": "深视武器（几率）",
+            "icon": "/common/destiny2_content/icons/63ad1164a467b154c02781493a702734.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 3204503020,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Euphony",
+            "nameZh": "悦耳之声",
+            "icon": "/common/destiny2_content/icons/fe16110003f0cc75145eed012458a667.jpg",
+            "itemHashes": [
+              3284383335
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Imminence",
+            "nameZh": "迫近",
+            "icon": "/common/destiny2_content/icons/0a636f8e1f115bcb825e7ab60ef6c302.jpg",
+            "itemHashes": [
+              1258168956
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Non-Denouement",
+            "nameZh": "终焉未至",
+            "icon": "/common/destiny2_content/icons/e56caaf523a140ff834905da55d3b046.jpg",
+            "itemHashes": [
+              1770490683
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "悦耳之声为尾王异域奖励；传说武器的图样和 Adept 条件分别查看。",
+        "reference": {
+          "title": "Salvation's Edge Destinypedia",
+          "url": "https://www.destinypedia.com/Salvation's_Edge",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Salvation%27s_Edge&oldid=401267"
+        }
+      },
+      "guideId": "raid-salvations-edge",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "4196566271:4129614942",
+      "milestoneHash": 4196566271,
+      "activityHash": 4129614942,
+      "name": "Salvation's Edge: Master",
+      "nameZh": "救赎的边缘: 大师",
+      "description": "Free the Light.",
+      "descriptionZh": "解放光能。",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": "Master",
+      "modifiers": [
+        1783825372,
+        3958417570,
+        1377274412,
+        3621023005,
+        1204802854,
+        1553052482,
+        2821522136,
+        1315424373,
+        3076996298,
+        4087563963,
+        2006149364,
+        4038464106,
+        2626834038,
+        3196075844,
+        3809788899
+      ],
+      "modifierDetails": [
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 3958417570,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "You will face combatants with Solar and Void shields.\n\nActivity modifiers may add more shield types.",
+          "descriptionZh": "你将面对拥有烈日和虚空护盾的战斗人员。\n\n活动修改器可添加更多护盾类型。",
+          "icon": "/common/destiny2_content/icons/2904065e47d928496d45e61f08c0a957.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1377274412,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "Solar and Void Shields",
+          "descriptionZh": "烈日和虚空护盾",
+          "icon": "/common/destiny2_content/icons/2904065e47d928496d45e61f08c0a957.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3621023005,
+          "name": "Scenic Route Challenge",
+          "nameZh": "观光路线挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1204802854,
+          "name": "At Capacity Challenge",
+          "nameZh": "满载负荷挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1553052482,
+          "name": "Balanced Diet Challenge",
+          "nameZh": "均衡饮食挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2821522136,
+          "name": "Varied Geometry Challenge",
+          "nameZh": "多变几何挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1315424373,
+          "name": "Coordinated Efforts Challenge",
+          "nameZh": "协调努力挑战",
+          "description": "\"Salvation's Edge\" raid challenge modes.",
+          "descriptionZh": "“救赎的边缘”突袭挑战模式。",
+          "icon": "/common/destiny2_content/icons/10eb0f19b91d49c7b3e983cf8e32094f.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3076996298,
+          "name": "Exotic Drop Rate Boosts Gained",
+          "nameZh": "已获得异域装备掉落率加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4087563963,
+          "name": "Master Modifiers",
+          "nameZh": "大师难度修改器",
+          "description": "Extra Champions\nExtra Shields",
+          "descriptionZh": "额外勇士\n额外护盾",
+          "icon": "/common/destiny2_content/icons/e6507058cbddfc8b72dde057674e792a.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2006149364,
+          "name": "Champion Foes",
+          "nameZh": "勇士敌人",
+          "description": "You will face [Shield-Piercing] Barrier, Overload, and Unstoppable Champions.\n\nVisit the Character or Mod Customization screen to view your active anti-Champion perks.",
+          "descriptionZh": "你将面对屏障、过载及势不可挡勇士。\n\n前往角色或模组自定义界面查看你已激活的反勇士特性。",
+          "icon": "/common/destiny2_content/icons/70c843c68353be08b99389e2e910cb02.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4038464106,
+          "name": "Champion Foes",
+          "nameZh": "勇士敌人",
+          "description": "You will face [Shield-Piercing] Barrier, Overload, and Unstoppable Champions.",
+          "descriptionZh": "你将面对屏障、过载及势不可挡勇士。",
+          "icon": "/common/destiny2_content/icons/70c843c68353be08b99389e2e910cb02.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2626834038,
+          "name": "Overcharged Fusion Rifle",
+          "nameZh": "过充融合步枪",
+          "description": "(value shown in game) bonus to Fusion Rifle damage.",
+          "descriptionZh": "融合步枪伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/b1db6bd79264f6ed90647eec71146a63.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3196075844,
+          "name": "Void Surge",
+          "nameZh": "虚空激涌",
+          "description": "(value shown in game) bonus to outgoing Void damage.",
+          "descriptionZh": "造成的虚空伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/382ae8c952160e4272ffb0b852f55142.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3809788899,
+          "name": "Stasis Surge",
+          "nameZh": "冰影激涌",
+          "description": "(value shown in game) bonus to outgoing Stasis damage.",
+          "descriptionZh": "造成的冰影伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/d542fb1a1171b0270cd83b5aa79f3e0d.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Euphony",
+            "nameZh": "悦耳之声",
+            "icon": "/common/destiny2_content/icons/fe16110003f0cc75145eed012458a667.jpg",
+            "itemHashes": [
+              3284383335
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Imminence",
+            "nameZh": "迫近",
+            "icon": "/common/destiny2_content/icons/0a636f8e1f115bcb825e7ab60ef6c302.jpg",
+            "itemHashes": [
+              1258168956
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Non-Denouement",
+            "nameZh": "终焉未至",
+            "icon": "/common/destiny2_content/icons/e56caaf523a140ff834905da55d3b046.jpg",
+            "itemHashes": [
+              1770490683
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "悦耳之声为尾王异域奖励；传说武器的图样和 Adept 条件分别查看。",
+        "reference": {
+          "title": "Salvation's Edge Destinypedia",
+          "url": "https://www.destinypedia.com/Salvation's_Edge",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=Salvation%27s_Edge&oldid=401267"
+        }
+      },
+      "guideId": "raid-salvations-edge",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
+      "id": "4253138191:13",
+      "milestoneHash": 4253138191,
+      "activityHash": null,
+      "name": "Weekly Clan Engrams",
+      "nameZh": "周常公会记忆水晶",
+      "description": "Help your clan earn rewards by completing activities as a group.",
+      "descriptionZh": "以群组完成活动来帮助公会获得奖励。",
+      "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_640c1c6f00fe2d7bb0cd6030c294d655.png",
+      "category": "other",
+      "startDate": "2026-09-08T17:00:00.000Z",
+      "endDate": "2026-09-15T17:00:00.000Z",
+      "difficulty": null,
+      "modifiers": [],
+      "modifierDetails": [],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [],
+        "examples": [],
+        "note": "",
+        "reference": null
+      },
+      "guideId": null,
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": false,
+        "mappedToGuide": false,
+        "mappedToMilestone": true
+      }
+    }
+  ],
+  "missingCategories": [
+    "pve",
+    "pvp",
+    "dungeon",
+    "exotic-mission",
+    "vendor",
+    "event"
+  ],
+  "counts": {
+    "pve": 0,
+    "pvp": 0,
+    "raid": 12,
+    "dungeon": 0,
+    "exotic-mission": 0,
+    "vendor": 0,
+    "event": 0,
+    "other": 2
+  }
+}

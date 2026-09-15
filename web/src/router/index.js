@@ -12,6 +12,7 @@ const routes = [
   { path: '/weapons', name: 'weapons', component: () => import('@/views/WeaponsView.vue') },
   { path: '/armor', name: 'armor', component: () => import('@/views/ArmorView.vue') },
   { path: '/activities', name: 'activities', component: () => import('@/views/ActivitiesView.vue') },
+  { path: '/weekly-rotation', name: 'weekly-rotation', component: () => import('@/views/WeeklyRotationView.vue') },
   { path: '/lore', name: 'lore', component: () => import('@/views/LoreView.vue') },
   { path: '/glossary', name: 'glossary', component: () => import('@/views/GlossaryView.vue') },
   { path: '/data-status', name: 'data-status', component: () => import('@/views/DataStatusView.vue') },

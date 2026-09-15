@@ -9,7 +9,6 @@
     "preview": "npm --prefix web run preview",
     "test": "node --test tests/*.test.js",
     "validate": "node scripts/validate-content.js",
-    "docs:generate": "node scripts/generate-knowledge-base.js",
     "manifest:sync": "node scripts/sync-manifest.js",
     "manifest:sync:components": "node scripts/sync-manifest.js --components=DestinyArtifactDefinition,DestinyClassDefinition,DestinyDamageTypeDefinition,DestinyStatDefinition,DestinyActivityTypeDefinition,DestinyInventoryItemDefinition,DestinySandboxPerkDefinition,DestinyItemCategoryDefinition,DestinyEquipmentSlotDefinition,DestinyPlugSetDefinition,DestinySocketCategoryDefinition,DestinySocketTypeDefinition,DestinyActivityDefinition,DestinyVendorDefinition,DestinyEquipableItemSetDefinition,DestinyRewardItemListDefinition,DestinySackRewardItemListDefinition,DestinyRewardMappingDefinition,DestinyUnlockDefinition,DestinyUnlockValueDefinition",
     "manifest:sync:zh": "node scripts/sync-manifest.js --locale=zh-chs --components=DestinyInventoryItemDefinition,DestinyActivityDefinition,DestinySandboxPerkDefinition,DestinyVendorDefinition,DestinyArtifactDefinition,DestinyEquipableItemSetDefinition,DestinyClassDefinition,DestinyDamageTypeDefinition,DestinyStatDefinition,DestinyActivityTypeDefinition,DestinyItemCategoryDefinition,DestinyEquipmentSlotDefinition,DestinySocketCategoryDefinition,DestinySocketTypeDefinition && node scripts/extract-manifest-locales.js",
@@ -17,10 +16,12 @@
     "manifest:normalize": "node scripts/normalize-manifest.js && node scripts/normalize-manifest-components.js",
     "manifest:normalize-components": "node scripts/normalize-manifest-components.js",
     "manifest:link": "node scripts/link-content-to-manifest.js",
+    "rotation:sync": "node scripts/sync-weekly-rotation.js",
+    "rotation:sync:fixture": "node scripts/sync-weekly-rotation.js --fixture=data/fixtures/weekly-rotation-mapped.json",
     "audit:builds": "node scripts/audit-curated-builds.js",
     "audit:skills": "node scripts/audit-subclass-coverage.js",
     "audit:catalog": "node scripts/audit-manifest-catalog.js",
     "coverage": "node scripts/coverage-report.js",
-    "check": "npm run validate && npm run audit:builds && npm run audit:skills && npm run audit:catalog && npm test && npm run docs:generate && npm run build"
+    "check": "npm run validate && npm run audit:builds && npm run audit:skills && npm run audit:catalog && npm test && npm run build"
   }
 }

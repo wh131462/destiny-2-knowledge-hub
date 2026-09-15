@@ -47,6 +47,8 @@ jobs:
     needs: labels
     if: ${{ !cancelled() && (needs.labels.result == 'success' || needs.labels.result == 'skipped') }}
     runs-on: ubuntu-latest
+    env:
+      BUNGIE_API_KEY: ${{ secrets.BUNGIE_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,8 +63,13 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - name: Install web dependencies
         run: npm ci --prefix web
-      - name: Generate knowledge base
-        run: npm run docs:generate
+      - name: Sync weekly rotation
+        if: ${{ env.BUNGIE_API_KEY != '' }}
+        continue-on-error: true
+        run: npm run rotation:sync
+      - name: Report weekly rotation fallback
+        if: ${{ env.BUNGIE_API_KEY == '' }}
+        run: echo "BUNGIE_API_KEY is not configured; using the checked-in weekly rotation fallback."
       - name: Sync community builds from this repository
         env:
           GH_TOKEN: ${{ github.token }}
