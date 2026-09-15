@@ -15,9 +15,36 @@ export function createLoadoutExportModel(draft, context) {
   const byHash = (items, hash) => hash ? items.find(i => Number(i.hash) === Number(hash)) : null
   const byId = (items, id) => items.find(i => i.id === id)
   const name = (item, fallback) => localized(item) || generated(fallback)
-  const card = (item, fallback, caption = '', description = false) => ({ name: item ? variantName(item) : generated(fallback), image: item ? iconFor(item) : '', caption: [generated(caption), versionSummary(item)].filter(Boolean).join(' · '), description: description && item ? manifestText(descriptionFor(item), locale) : '' })
+  const alternateName = item => locale === 'en'
+    ? item?.nameZh || (item?.en && item?.name !== item.en ? item.name : '') || ''
+    : item?.nameEn || item?.en || (item?.nameZh && item?.name !== item.nameZh ? item.name : '') || ''
+  const detailFor = (item, kind, caption, image) => {
+    if (!item) return null
+    const id = typeof item.id === 'string' && item.id ? item.id : ''
+    const hash = item.hash ?? item.manifestHash ?? item.itemHash ?? ''
+    if (!id && hash === '') return null
+    return {
+      key: `${kind}:${id || hash}`,
+      kind,
+      id,
+      hash,
+      name: variantName(item),
+      alternateName: alternateName(item),
+      image,
+      caption,
+      typeName: item.typeName || item.itemTypeDisplayName || item.category || '',
+      description: manifestText(descriptionFor(item) || manifestDescription(item), locale)
+    }
+  }
+  const card = (item, fallback, caption = '', description = false, kind = 'items') => {
+    const image = item ? iconFor(item) : ''
+    const previewCaption = generated(caption)
+    const cardCaption = [previewCaption, versionSummary(item)].filter(Boolean).join(' / ')
+    const detail = detailFor(item, kind, cardCaption, image)
+    return { name: item ? variantName(item) : generated(fallback), image, caption: cardCaption, previewCaption, description: description ? detail?.description || '' : '', detail }
+  }
   const subclass = byId(subclasses, draft.subclassId)
-  const skill = (items, id, caption, describe = false) => card(byId(items, id), id ? `未匹配：${id}` : '未指定', caption, describe)
+  const skill = (items, id, caption, describe = false) => card(byId(items, id), id ? `未匹配：${id}` : '未指定', caption, describe, 'curated')
   const talentGroups = [
     { name: '技能', items: [['superId', '超能'], ['classAbilityId', '职业技能'], ['movementId', '跳跃'], ['meleeId', '近战'], ['grenadeId', '手雷']].map(([key, label]) => skill(abilities, draft.abilities[key], label)) },
     { name: '星相', items: draft.abilities.aspectIds.map(id => skill(aspects, id, '', true)) },
@@ -29,7 +56,7 @@ export function createLoadoutExportModel(draft, context) {
     const weapon = byHash(equipment, row.manifestHash)
     const baseColumns = weaponPerkColumns(perkByHash.size ? weapon : null, perkByHash)
     return {
-      ...card(weapon, row.manifestHash ? `未匹配武器 #${row.manifestHash}` : '未指定武器', ['动能栏位', '能量栏位', '威能栏位'][i]),
+      ...card(weapon, row.manifestHash ? `未匹配武器 #${row.manifestHash}` : '未指定武器', ['动能栏位', '能量栏位', '威能栏位'][i], false, 'equipment'),
       hash: row.manifestHash,
       notes: row.notes,
       combinations: row.perkCombinations.map((combo, index) => {
@@ -40,7 +67,10 @@ export function createLoadoutExportModel(draft, context) {
         return { name: combo.name.trim() || ui('组合 {0}', [index + 1]), notes: combo.notes, columns: columns.map(column => {
           const { chosen, manual } = resolvePerkSelections(combo, column)
           return { name: generated(column.label), items: [
-            ...chosen.map(p => ({ name: [perkLabel(p), ...new Set(craftingConditions(p).map(row => row.text))].join(' · '), image: p.icon ? (/^https?:/.test(p.icon) ? p.icon : `https://www.bungie.net${p.icon}`) : '' })),
+            ...chosen.map(p => {
+              const image = p.icon ? (/^https?:/.test(p.icon) ? p.icon : `https://www.bungie.net${p.icon}`) : ''
+              return { name: [perkLabel(p), ...new Set(craftingConditions(p).map(row => row.text))].join(' / '), image, detail: detailFor(p, 'plugs', generated(column.label), image) }
+            }),
             ...manual.map(name => ({ name, image: '' }))
           ] }
         }).filter(c => c.items.length) }
@@ -52,10 +82,10 @@ export function createLoadoutExportModel(draft, context) {
   const artifactNodes = [...assignments, ...draft.artifactNodeHashes.filter(hash => !assignments.some(a => a.nodeHash === hash)).map(nodeHash => ({ nodeHash }))]
   const allNodes = artifact?.nodes || artifact?.tiers?.flatMap(t => t.items) || []
   const armor = Object.entries(armorLabels).map(([slot, label]) => ({
-    ...card(byHash(equipment, draft.armor[slot]?.manifestHash), draft.armor[slot]?.manifestHash ? `未匹配 #${draft.armor[slot].manifestHash}` : '护甲未指定', label),
+    ...card(byHash(equipment, draft.armor[slot]?.manifestHash), draft.armor[slot]?.manifestHash ? `未匹配 #${draft.armor[slot].manifestHash}` : '护甲未指定', label, false, 'equipment'),
     mods: draft.mods[slot].map(row => {
       const mod = byHash(mods, row.manifestHash)
-      return card(mod, `未匹配模组 #${row.manifestHash}`, ui('插槽 {0}{1}', [row.socketIndex + 1, mod?.energyCost != null ? ui(' {0} 能量', [mod.energyCost]) : '']))
+      return card(mod, `未匹配模组 #${row.manifestHash}`, ui('插槽 {0}{1}', [row.socketIndex + 1, mod?.energyCost != null ? ui(' {0} 能量', [mod.energyCost]) : '']), false, 'mods')
     })
   }))
   const sets = itemSets.flatMap(set => {
@@ -64,13 +94,13 @@ export function createLoadoutExportModel(draft, context) {
   })
   return {
     locale, title: draft.name || ui('我的配装一图流'), className: localized(classes[draft.classId]) || draft.classId,
-    subclass: card(subclass, draft.subclassId), version: snapshot.manifestVersion || ui('未提供'), syncedAt: snapshot.syncedAt?.slice(0, 10) || ui('未提供'),
+    subclass: card(subclass, draft.subclassId, '', false, 'curated'), version: snapshot.manifestVersion || ui('未提供'), syncedAt: snapshot.syncedAt?.slice(0, 10) || ui('未提供'),
     sourceVersion: draft.manifestVersion,
     stats: Object.entries(statLabels).map(([key, name]) => ({ name: ui(name), value: generated(formatTarget(draft.statRecommendations[key])) })),
     talentGroups, weapons, armor, sets,
-    artifact: card(artifact, draft.artifactHash ? `未匹配神器 #${draft.artifactHash}` : '未指定神器'),
-    artifactNodes: artifactNodes.map(row => card(byHash(allNodes, row.nodeHash), `未匹配节点 #${row.nodeHash}`, row.socketIndex == null ? '原节点 待核对插槽' : `插槽 ${row.socketIndex + 1}`)),
-    ghost: draft.ghostArmorerHash ? card(byHash(mods, draft.ghostArmorerHash), `未匹配护甲商 #${draft.ghostArmorerHash}`, '机灵护甲商', true) : null,
+    artifact: card(artifact, draft.artifactHash ? `未匹配神器 #${draft.artifactHash}` : '未指定神器', '', false, 'artifacts'),
+    artifactNodes: artifactNodes.map(row => card(byHash(allNodes, row.nodeHash), `未匹配节点 #${row.nodeHash}`, row.socketIndex == null ? '原节点 待核对插槽' : `插槽 ${row.socketIndex + 1}`, false, 'plugs')),
+    ghost: draft.ghostArmorerHash ? card(byHash(mods, draft.ghostArmorerHash), `未匹配护甲商 #${draft.ghostArmorerHash}`, '机灵护甲商', true, 'mods') : null,
     statNotes: draft.statNotes, farmingNotes: draft.farmingNotes, armorNotes: draft.armorNotes, notes: draft.notes,
     warnings: [...new Set([...issues, ...Object.values(draft.mods).flat().flatMap(row => { const mod = byHash(mods, row.manifestHash); return conditionSummary(mod) ? [`${name(mod, '模组')}使用条件（账号状态未核对）：${conditionSummary(mod)}`] : [] }), ...(draft.manifestVersion && draft.manifestVersion !== snapshot.manifestVersion ? ['原配装版本与当前快照不同，请核对推荐。'] : [])])].map(generated)
   }

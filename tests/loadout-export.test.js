@@ -93,6 +93,51 @@ test('网页预览加载官方图标并转义文本，离线导出仍只接受�
   assert.doesNotMatch(renderLoadoutHtml(model), /src="https:/)
 })
 
+test('网页构筑预览只为有来源身份的条目提供详情入口', () => {
+  const { model } = fixture()
+  assert.equal(model.talentGroups[0].items[0].detail.kind, 'curated')
+  assert.equal(model.talentGroups[0].items[0].detail.id, 'test-super')
+  assert.equal(model.talentGroups[0].items[0].detail.description, '效果说明')
+  assert.equal(model.artifact.detail.kind, 'artifacts')
+  assert.equal(model.artifactNodes[0].detail.kind, 'plugs')
+  assert.equal(model.armor[0].mods[0].detail.kind, 'mods')
+  assert.equal(model.talentGroups.find(group => group.items.some(item => item.name.includes('unmatched-facet'))).items[0].detail, null)
+
+  const preview = renderLoadoutContent(model, new Map(), { preview: true })
+  assert.match(preview, /data-detail-key="curated:test-super" role="button" tabindex="0"/)
+  assert.match(preview, /data-detail-key="artifacts:123" role="button" tabindex="0"/)
+  assert.match(preview, /data-detail-key="plugs:456" role="button" tabindex="0"/)
+  assert.match(preview, /data-detail-key="mods:42" role="button" tabindex="0"/)
+  assert.doesNotMatch(renderLoadoutHtml(model), /data-detail-key=|role="button"|tabindex="0"/)
+})
+
+test('网页构筑与独立导出保持精简，详情模型仍保留核对信息', () => {
+  const { model } = fixture()
+  model.weapons[0].caption = '动能栏位 / 来源已登记 / 普通外观版 / 未登记锻造配方 / 赛季发行 v510'
+  model.weapons[0].previewCaption = '动能栏位'
+  model.weapons[0].hash = 3593598010
+  model.weapons[0].detail = { key: 'equipment:3593598010', kind: 'equipment', hash: 3593598010, caption: model.weapons[0].caption }
+
+  const preview = renderLoadoutContent(model, new Map(), { preview: true })
+  assert.match(preview, />动能栏位</)
+  assert.doesNotMatch(preview, /来源已登记|普通外观版|未登记锻造配方|赛季发行 v510|#3593598010/)
+  assert.equal(model.weapons[0].detail.caption, model.weapons[0].caption)
+
+  const exported = renderLoadoutHtml(model)
+  assert.match(exported, />动能栏位</)
+  assert.doesNotMatch(exported, /来源已登记|普通外观版|未登记锻造配方|赛季发行 v510|#3593598010/)
+})
+
+test('详情入口转义身份与可访问名称', () => {
+  const { model } = fixture()
+  model.talentGroups[0].items[0].detail.key = 'curated:&quot; onmouseover="bad'
+  model.talentGroups[0].items[0].name = '<技能>'
+  const preview = renderLoadoutContent(model, new Map(), { preview: true })
+  assert.match(preview, /data-detail-key="curated:&amp;quot; onmouseover=&quot;bad"/)
+  assert.match(preview, /aria-label="查看 &lt;技能&gt; 详情"/)
+  assert.doesNotMatch(preview, / onmouseover="bad/)
+})
+
 test('图片去重内嵌；超大图明确拒绝 PNG 并保留 HTML 路径，不自动裁切', () => {
   const { model } = fixture()
   assert.deepEqual(collectImageUrls(model), [icon])
