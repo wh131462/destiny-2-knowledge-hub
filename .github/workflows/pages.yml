@@ -7,7 +7,9 @@ on:
     types: [opened, edited, closed, reopened, labeled, unlabeled, deleted, transferred]
   workflow_dispatch:
   schedule:
-    - cron: '23 3 * * *'
+    # Hourly recovery; retry more frequently around daily/weekly resets (17:00 UTC).
+    - cron: '7 * * * *'
+    - cron: '17,27,37,47,57 17-19 * * *'
 
 permissions:
   contents: read
@@ -63,13 +65,24 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - name: Install web dependencies
         run: npm ci --prefix web
+      - name: Restore last usable weekly rotation
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/weekly-rotation-published/weekly-rotation.json
+          key: weekly-rotation-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: weekly-rotation-v1-
       - name: Sync weekly rotation
-        if: ${{ env.BUNGIE_API_KEY != '' }}
-        continue-on-error: true
-        run: npm run rotation:sync
+        run: npm run rotation:sync -- --optional --out=.cache/weekly-rotation-published/weekly-rotation.json --fallback=web/public/data/weekly-rotation.json
+      - name: Preserve weekly rotation for subsequent deployments
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/weekly-rotation-published/weekly-rotation.json
+          key: weekly-rotation-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Include last usable weekly rotation
+        run: cp .cache/weekly-rotation-published/weekly-rotation.json web/public/data/weekly-rotation.json
       - name: Report weekly rotation fallback
         if: ${{ env.BUNGIE_API_KEY == '' }}
-        run: echo "BUNGIE_API_KEY is not configured; using the checked-in weekly rotation fallback."
+        run: echo "BUNGIE_API_KEY is not configured; retaining the latest available weekly rotation snapshot."
       - name: Sync community builds from this repository
         env:
           GH_TOKEN: ${{ github.token }}

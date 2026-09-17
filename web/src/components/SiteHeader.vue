@@ -17,7 +17,6 @@ const navGroups = [
       { to: '/weapons', key: 'weapons' },
       { to: '/armor', key: 'armor' },
       { to: '/activities', key: 'activities' },
-      { to: '/weekly-rotation', key: 'weeklyRotation' },
       { to: '/lore', key: 'lore' }
     ]
   },
@@ -190,6 +189,7 @@ onBeforeUnmount(() => {
 
       <nav id="primary-navigation" class="nav" :class="{ 'is-open': mobileOpen }" :aria-label="t('common.home')">
         <router-link to="/" class="nav-link home-link" :class="{ active: isActive('/') }">{{ t('nav.home') }}</router-link>
+        <router-link to="/weekly-rotation" class="nav-link" :class="{ active: isActive('/weekly-rotation') }">{{ t('nav.weeklyRotation') }}</router-link>
         <div v-for="group in navGroups" :key="group.key" class="nav-group" :class="{ active: isGroupActive(group), expanded: openGroup === group.key }">
           <button type="button" class="nav-group-trigger" :aria-expanded="openGroup === group.key" @click.stop="toggleGroup(group.key)">
             {{ t(`nav.${group.key}`) }}<span class="chevron" aria-hidden="true"></span>
@@ -273,7 +273,7 @@ onBeforeUnmount(() => {
   .global-search kbd { display: none; }
   .nav { position: absolute; top: 100%; left: 0; right: 0; display: none; height: auto; padding: 8px 14px 14px; margin: 0; border-bottom: 1px solid var(--line-soft); background: rgba(6, 10, 20, .98); box-shadow: 0 16px 30px rgba(0, 0, 0, .32); }
   .nav.is-open { display: block; }
-  .home-link, .nav-group-trigger { width: 100%; justify-content: space-between; min-height: 42px; margin: 2px 0; padding: 0 12px; }
+  .nav-link, .nav-group-trigger { width: 100%; justify-content: space-between; min-height: 42px; margin: 2px 0; padding: 0 12px; }
   .nav-group { display: block; }
   .nav-dropdown { position: static; display: none; min-width: 0; padding: 0 0 5px 14px; border: 0; border-radius: 0; background: transparent; box-shadow: none; opacity: 1; visibility: visible; transform: none; }
   .nav-group.expanded .nav-dropdown { display: block; }

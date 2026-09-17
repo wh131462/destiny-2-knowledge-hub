@@ -119,11 +119,61 @@ export function categoryLabel(category) {
 export function remainingTime(endDate, currentTime = new Date()) {
   if (!endDate) return null
   const distance = new Date(endDate).valueOf() - new Date(currentTime).valueOf()
-  if (!Number.isFinite(distance) || distance <= 0) return { expired: true, totalMs: distance }
+  if (!Number.isFinite(distance)) return null
+  if (distance <= 0) return { expired: true, totalMs: distance }
   const days = Math.floor(distance / 86_400_000)
   const hours = Math.floor((distance % 86_400_000) / 3_600_000)
   const minutes = Math.floor((distance % 3_600_000) / 60_000)
   return { expired: false, days, hours, minutes, totalMs: distance }
+}
+
+// Destiny resets every Tuesday at 17:00 UTC, independent of browser timezone/DST.
+export function weeklyResetWindow(currentTime = new Date()) {
+  const now = new Date(currentTime)
+  if (!Number.isFinite(now.valueOf())) return null
+  const start = new Date(now)
+  start.setUTCHours(17, 0, 0, 0)
+  start.setUTCDate(start.getUTCDate() - (start.getUTCDay() + 5) % 7)
+  if (start > now) start.setUTCDate(start.getUTCDate() - 7)
+  return { start: start.toISOString(), end: new Date(start.valueOf() + 7 * 86_400_000).toISOString() }
+}
+
+export function rotationTimeLabel({ startDate, endDate } = {}, currentTime = new Date(), locale = 'zh') {
+  const tr = (zh, en) => locale === 'en' ? en : zh
+  const start = startDate ? remainingTime(startDate, currentTime) : null
+  const end = remainingTime(endDate, currentTime)
+  if ((startDate && !start) || !end || (startDate && new Date(startDate) >= new Date(endDate))) return tr('周期未提供', 'No reset window')
+  if (start && !start.expired) return tr('尚未开始', 'Not started')
+  if (end.expired) return tr('本期已结束', 'Period ended')
+  if (end.totalMs < 60_000) return tr('即将重置', 'Resetting soon')
+  const duration = end.days ? tr(`${end.days}天 ${end.hours}小时`, `${end.days}d ${end.hours}h`) : tr(`${end.hours}小时 ${end.minutes}分`, `${end.hours}h ${end.minutes}m`)
+  return tr(`剩余 ${duration}`, `${duration} left`)
+}
+
+export function nextRotationBoundary(snapshot, currentTime = new Date()) {
+  const now = new Date(currentTime).valueOf()
+  const boundaries = [snapshot?.week?.end, weeklyResetWindow(currentTime)?.end,
+    ...(snapshot?.activities || []).flatMap(item => [item.startDate, item.endDate])]
+    .map(value => Date.parse(value)).filter(value => Number.isFinite(value) && value > now)
+  return boundaries.length ? Math.min(...boundaries) : Infinity
+}
+
+export function rotationRecordStatus(item, snapshotState, currentTime = new Date()) {
+  if (remainingTime(item?.endDate, currentTime)?.expired) return 'stale'
+  return snapshotState
+}
+
+// Never replace useful records with an empty response, an older deployment, or
+// an expired upstream response just because it was fetched more recently.
+export function selectRotationSnapshot(previous, incoming, currentTime = new Date()) {
+  if (!previous?.activities?.length) return incoming
+  if (!incoming?.activities?.length) return previous
+  if (Date.parse(incoming.generatedAt) < Date.parse(previous.generatedAt)) return previous
+  // A failed refresh may mark otherwise valid retained data as stale. Compare
+  // actual periods here so that its newer content is not rolled back in CI.
+  if (!isSnapshotStale({ ...previous, status: 'partial' }, currentTime)
+    && isSnapshotStale({ ...incoming, status: 'partial' }, currentTime)) return previous
+  return incoming
 }
 
 export function rotationQuery(query = {}) {
@@ -140,15 +190,53 @@ export function filterRotationRecords(items = [], { category = 'all', difficulty
   return items.filter(item =>
     (category === 'all' || item.category === category) &&
     (difficulty === 'all' || item.difficulty === difficulty) &&
-    (status === 'all' || snapshotState === status)
+    (status === 'all' || (item.dataStatus || snapshotState) === status)
   )
+}
+
+export function groupRotationRecords(items = [], currentTime = new Date()) {
+  const now = new Date(currentTime).valueOf()
+  const phases = { active: 0, upcoming: 1, unknown: 2, stale: 3 }
+  const phaseFor = item => {
+    const end = Date.parse(item.endDate)
+    const start = Date.parse(item.startDate)
+    if (['stale', 'unavailable'].includes(item.dataStatus) || end <= now) return 'stale'
+    if (!Number.isFinite(end) || (item.startDate && (!Number.isFinite(start) || start >= end))) return 'unknown'
+    return start > now ? 'upcoming' : 'active'
+  }
+  const hasName = value => Boolean(text(value?.name) || text(value?.nameZh))
+  const hasRewards = item => asArray(item.rewards).some(value => text(value) && !/^\d+$/.test(value))
+    || asArray(item.rewardDetails?.official).some(hasName) || asArray(item.rewardDetails?.examples).some(hasName)
+  const hasChallenges = item => asArray(item.modifierDetails).some(value => !value?.hidden && value?.kind === 'challenge' && hasName(value))
+  const ranked = items.map(item => {
+    const phase = phaseFor(item)
+    const end = Date.parse(item.endDate)
+    // Information coverage is a navigation aid, never a claim about drop value.
+    return { item, phase, rank: [phases[phase], phase === 'active' && end - now <= 86_400_000 ? 0 : 1,
+      hasRewards(item) ? 0 : 1, hasChallenges(item) ? 0 : 1, item.guideId || item.guide ? 0 : 1] }
+  }).sort((a, b) => {
+    for (let index = 0; index < a.rank.length; index++) {
+      const difference = a.rank[index] - b.rank[index]
+      if (difference) return difference
+    }
+    const aEnd = Date.parse(a.item.endDate), bEnd = Date.parse(b.item.endDate)
+    if (Number.isFinite(aEnd) && Number.isFinite(bEnd) && aEnd !== bEnd) return aEnd - bEnd
+    // Keep equal-priority records stable across refreshes and API ordering changes.
+    return String(a.item.id).localeCompare(String(b.item.id), 'en', { numeric: true })
+  })
+  const groups = new Map()
+  for (const { item, phase } of ranked) {
+    const key = `${phase}:${item.category}`
+    if (!groups.has(key)) groups.set(key, { key, category: item.category, phase, items: [] })
+    groups.get(key).items.push(item)
+  }
+  return [...groups.values()]
 }
 
 export function normalizeMilestones(payload, { manifestActivities = [], editorialActivities = [], definitions = {}, rewardCatalog = {}, manifestVersion = null, generatedAt = new Date().toISOString() } = {}) {
   const resolveRewards = createRewardResolver(rewardCatalog)
   const entries = milestoneEntries(payload)
   const records = []
-  const windows = []
   for (const milestone of entries) {
     const activities = asArray(milestone.activities)
     const activityRows = activities.length ? activities : [null]
@@ -157,8 +245,6 @@ export function normalizeMilestones(payload, { manifestActivities = [], editoria
     const milestoneZh = definitions.milestones?.['zh-chs']?.[milestoneHash]
     const startDate = iso(milestone.startDate || milestone.startTime || milestone.start)
     const endDate = iso(milestone.endDate || milestone.endTime || milestone.end)
-    if (startDate) windows.push(startDate)
-    if (endDate) windows.push(endDate)
     for (const activityRow of activityRows) {
       const activityHash = number(activityRow?.activityHash ?? activityRow?.hash ?? milestone.activityHash)
       const activity = findActivity(activityHash, manifestActivities)
@@ -196,15 +282,13 @@ export function normalizeMilestones(payload, { manifestActivities = [], editoria
     }
   }
   const unique = [...new Map(records.map(item => [item.id, item])).values()]
-  const startDate = windows.length ? new Date(Math.min(...windows.map(value => new Date(value).valueOf()))).toISOString() : null
-  const endDate = windows.length ? new Date(Math.max(...windows.map(value => new Date(value).valueOf()))).toISOString() : null
   const missingCategories = ROTATION_CATEGORIES.filter(category => !unique.some(item => item.category === category))
   const status = entries.length && unique.length ? (missingCategories.length ? 'partial' : 'fresh') : 'unavailable'
   return {
     schema: WEEKLY_ROTATION_SCHEMA,
     generatedAt: iso(generatedAt) || new Date().toISOString(),
     status,
-    week: { start: startDate, end: endDate },
+    week: weeklyResetWindow(iso(generatedAt) || new Date()),
     source: { provider: 'bungie-milestones', fetchedAt: iso(generatedAt) || new Date().toISOString(), manifestVersion: text(manifestVersion) || null, definitionVersions: definitions.versions || {} },
     activities: unique,
     missingCategories,
@@ -246,22 +330,30 @@ export function validateRotationSnapshot(snapshot) {
   if (activities.length && !iso(week.end)) errors.push('week.end')
   if (week.start && week.end && new Date(week.start) >= new Date(week.end)) errors.push('week.window')
   for (const [index, activity] of activities.entries()) {
+    if (!activity || typeof activity !== 'object' || Array.isArray(activity)) { errors.push(`activities[${index}]`); continue }
     if (!text(activity.id) || !text(activity.name)) errors.push(`activities[${index}] identity`)
     if (!ROTATION_CATEGORIES.includes(activity.category)) errors.push(`activities[${index}] category`)
     if (activity.startDate && !iso(activity.startDate)) errors.push(`activities[${index}] startDate`)
     if (activity.endDate && !iso(activity.endDate)) errors.push(`activities[${index}] endDate`)
+    if (activity.startDate && activity.endDate && new Date(activity.startDate) >= new Date(activity.endDate)) errors.push(`activities[${index}] window`)
   }
   return { valid: errors.length === 0, errors }
 }
 
 export function isSnapshotStale(snapshot, now = new Date()) {
   if (!snapshot || snapshot.status === 'unavailable') return true
-  const end = snapshot.week?.end ? new Date(snapshot.week.end) : null
-  return Boolean(end && !Number.isNaN(end.valueOf()) && end <= now) || snapshot.status === 'stale'
+  const time = new Date(now).valueOf()
+  const generated = Date.parse(snapshot.generatedAt)
+  const currentWeek = weeklyResetWindow(now)
+  const dated = (snapshot.activities || []).filter(item => item.endDate)
+  return !currentWeek || !Number.isFinite(generated) || generated < Date.parse(currentWeek.start)
+    || remainingTime(snapshot.week?.end, now)?.expired === true
+    || (dated.length > 0 && dated.every(item => remainingTime(item.endDate, now)?.expired))
+    || generated > time + 300_000 || snapshot.status === 'stale'
 }
 
 export function snapshotStatus(snapshot, now = new Date()) {
-  if (!snapshot || snapshot.status === 'unavailable') return 'unavailable'
+  if (!snapshot?.activities?.length || snapshot.status === 'unavailable') return 'unavailable'
   if (isSnapshotStale(snapshot, now)) return 'stale'
   return snapshot.status
 }

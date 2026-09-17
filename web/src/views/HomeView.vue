@@ -11,13 +11,13 @@ const classCards = classes.map(c => ({
 }))
 
 const modules = [
-  { to: '/classes', icon: '01', title: '职业百科', en: 'CLASSES', desc: '三大职业、元素与棱镜子职业、技能体系' },
+  { to: '/weekly-rotation', icon: '01', title: '本周轮换', en: 'WEEKLY ROTATION', desc: '本周活动、奖励参考与重置时间', descEn: 'Weekly activities, reward references and reset times' },
   { to: '/builds', icon: '02', title: '构筑方案', en: 'PUBLIC BUILDS', desc: '浏览公开方案，查看装备、技能与操作循环' },
-  { to: '/weapons', icon: '03', title: '武器百科', en: 'WEAPONS', desc: '武器原型、异域武器图鉴' },
-  { to: '/armor', icon: '04', title: '防具与套装', en: 'ARMOR', desc: '防具、异域护甲、模组' },
-  { to: '/activities', icon: '05', title: '活动图鉴', en: 'ACTIVITIES', desc: '突袭、地牢、高难活动' },
-  { to: '/weekly-rotation', icon: '07', title: '本周轮换', en: 'WEEKLY ROTATION', desc: '当前周活动、修饰词与结束时间' },
-  { to: '/lore', icon: '06', title: '世界观', en: 'LORE', desc: '传奇、势力、角色、敌人' }
+  { to: '/activities', icon: '03', title: '活动图鉴', en: 'ACTIVITIES', desc: '突袭、地牢、高难活动' },
+  { to: '/weapons', icon: '04', title: '武器百科', en: 'WEAPONS', desc: '武器原型、异域武器图鉴' },
+  { to: '/armor', icon: '05', title: '防具与套装', en: 'ARMOR', desc: '防具、异域护甲、模组' },
+  { to: '/classes', icon: '06', title: '职业百科', en: 'CLASSES', desc: '三大职业、元素与棱镜子职业、技能体系' },
+  { to: '/lore', icon: '07', title: '世界观', en: 'LORE', desc: '传奇、势力、角色、敌人' }
 ]
 
 </script>
@@ -37,9 +37,9 @@ const modules = [
         <p class="eyebrow">DESTINY 2 / KNOWLEDGE HUB</p>
         <h1>{{ locale === 'en' ? 'Light as a blade,' : ui("以光为刃，") }} <span class="gold">{{ locale === 'en' ? 'knowledge as a shield' : ui("以知为盾") }}</span></h1>
         <div class="hero-actions">
-          <router-link to="/manual-loadout" class="btn primary">{{ ui("创建构筑") }}</router-link>
+          <router-link to="/weekly-rotation" class="btn primary">{{ locale === 'en' ? 'View this week’s rotation' : '查看本周轮换' }}</router-link>
+          <router-link to="/manual-loadout" class="btn">{{ ui("创建构筑") }}</router-link>
           <router-link to="/builds" class="btn">{{ ui("浏览构筑方案") }}</router-link>
-          <router-link to="/classes" class="text-action">{{ ui("查看职业与子职业 →") }}</router-link>
           <a class="text-action official-link" href="https://www.bungie.net/7/en/Destiny" target="_blank" rel="noopener noreferrer">{{ locale === 'en' ? 'Bungie official site ↗' : 'Bungie 官网 ↗' }}</a>
         </div>
       </div>
@@ -58,7 +58,7 @@ const modules = [
           <div class="mod-icon">{{ m.icon }}</div>
           <h3>{{ locale === 'en' ? ({ classes: 'Classes', builds: 'Builds', weapons: 'Weapons', armor: 'Armor & Sets', activities: 'Activities', 'weekly-rotation': 'Weekly Rotation', lore: 'Lore', glossary: 'Glossary' }[m.to.slice(1)] || m.title) : m.title }}</h3>
           <span class="en-tag">{{ m.en }}</span>
-          <p>{{ ui(m.desc) }}</p>
+          <p>{{ locale === 'en' && m.descEn ? m.descEn : ui(m.desc) }}</p>
         </router-link>
       </div>
     </section>

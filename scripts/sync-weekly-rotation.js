@@ -1,7 +1,7 @@
-import { access, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { normalizeMilestones, validateMilestonesPayload, validateRotationSnapshot, WEEKLY_ROTATION_SCHEMA } from '../packages/weekly-rotation/index.js'
+import { normalizeMilestones, selectRotationSnapshot, snapshotStatus, validateMilestonesPayload, validateRotationSnapshot, WEEKLY_ROTATION_SCHEMA } from '../packages/weekly-rotation/index.js'
 import { activitiesV2 } from '../content/catalog/activities.js'
 import { readBungieApiKey } from './lib/bungie-api-key.js'
 import { loadRotationDefinitions } from './lib/rotation-definitions.js'
@@ -16,6 +16,7 @@ const fixturePath = args.get('fixture') ? String(args.get('fixture')) : ''
 const endpoint = 'https://www.bungie.net/Platform/Destiny2/Milestones/'
 const timeoutMs = 30_000
 const retries = 2
+let previous = null
 
 const readJson = async path => JSON.parse(await readFile(path, 'utf8'))
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
@@ -64,8 +65,13 @@ async function publish(snapshot) {
 }
 
 async function main() {
-  let previous = null
-  try { previous = await readJson(output) } catch { /* first sync */ }
+  // A persisted CI snapshot can be newer than the checked-in fallback.
+  for (const path of [args.get('fallback'), output].filter(Boolean)) {
+    try {
+      const candidate = await readJson(String(path))
+      if (validateRotationSnapshot(candidate).valid) previous = selectRotationSnapshot(previous, candidate)
+    } catch { /* first sync or invalid fallback */ }
+  }
   let payload
   let fetchedAt = new Date().toISOString()
   if (fixturePath) {
@@ -74,6 +80,7 @@ async function main() {
   } else {
     const apiKey = await readBungieApiKey()
     if (!apiKey && args.has('optional')) {
+      if (previous && args.has('fallback')) await publish(previous)
       console.log('[本周轮换] 未配置 BUNGIE_API_KEY，使用已有快照；在仓库根目录 .env.local 中填写 Key 后重新运行 npm run dev 即可自动同步。')
       return
     }
@@ -105,6 +112,8 @@ async function main() {
   const snapshot = normalizeMilestones(payload, { manifestActivities, editorialActivities: activitiesV2, definitions, rewardCatalog, manifestVersion, generatedAt: fetchedAt })
   snapshot.source = { ...snapshot.source, endpoint, fetchedAt, rewardsManifestVersion: rewardCatalog.manifestVersion || null, schema: WEEKLY_ROTATION_SCHEMA }
   if (snapshot.status === 'unavailable' && previous?.activities?.length) throw new Error('Bungie API 返回空或无法识别的轮换，拒绝覆盖现有快照')
+  if (!fixturePath && snapshotStatus(snapshot, new Date()) === 'stale') throw new Error('Bungie API 尚未返回本期有效轮换，保留上次数据并等待下次同步')
+  if (selectRotationSnapshot(previous, snapshot) !== snapshot) throw new Error('新响应未包含更新的有效轮换，拒绝覆盖现有快照')
   await publish(snapshot)
   console.log(JSON.stringify({ ok: true, output, status: snapshot.status, activities: snapshot.activities.length, generatedAt: snapshot.generatedAt }))
 }
@@ -112,8 +121,6 @@ async function main() {
 try {
   await main()
 } catch (error) {
-  let previous = null
-  try { previous = await readJson(output) } catch { /* no previous snapshot */ }
   const stale = addStaleStatus(previous, error)
   if (stale) {
     try { await publish(stale) } catch { /* preserve the original file if even stale marking fails */ }

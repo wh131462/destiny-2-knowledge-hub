@@ -1,14 +1,14 @@
 {
   "schema": "d2hub-weekly-rotation-v1",
-  "generatedAt": "2026-09-14T11:30:55.069Z",
+  "generatedAt": "2026-09-17T11:11:16.331Z",
   "status": "partial",
   "week": {
-    "start": "2026-09-08T17:00:00.000Z",
-    "end": "2026-09-15T17:00:00.000Z"
+    "start": "2026-09-15T17:00:00.000Z",
+    "end": "2026-09-22T17:00:00.000Z"
   },
   "source": {
     "provider": "bungie-milestones",
-    "fetchedAt": "2026-09-14T11:30:55.069Z",
+    "fetchedAt": "2026-09-17T11:11:16.331Z",
     "manifestVersion": "244213.26.06.29.2000-1-bnet.65864",
     "definitionVersions": {
       "modifiers:en": "244213.26.06.29.2000-1-bnet.65864",
@@ -31,8 +31,8 @@
       "descriptionZh": "国王万岁…",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -226,6 +226,303 @@
       }
     },
     {
+      "id": "292102995:3257594522",
+      "milestoneHash": 292102995,
+      "activityHash": 3257594522,
+      "name": "King's Fall: Master",
+      "nameZh": "国王的陨落: 大师",
+      "description": "Long live the King…",
+      "descriptionZh": "国王万岁…",
+      "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
+      "category": "raid",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
+      "difficulty": "Master",
+      "modifiers": [
+        3282103678,
+        1783825372,
+        3577304467,
+        2159250954,
+        2890753840,
+        2936050162,
+        4152669757,
+        3230561446,
+        3119632620,
+        4087563963,
+        2006149364,
+        4038464106,
+        1282934989,
+        2691200658,
+        3810297122
+      ],
+      "modifierDetails": [
+        {
+          "hash": 3282103678,
+          "name": "Boosts Gained",
+          "nameZh": "已获得加成",
+          "description": "Initial Exotic drop rate boosts: (value shown in game)",
+          "descriptionZh": "异域装备的初始掉落率加成：（数值以游戏内为准）",
+          "icon": "/common/destiny2_content/icons/e8b3345969eca43c46bfc13c0964f267.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1783825372,
+          "name": "",
+          "nameZh": "",
+          "description": "",
+          "descriptionZh": "",
+          "icon": "",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": true,
+          "resolved": false
+        },
+        {
+          "hash": 3577304467,
+          "name": "The Grass Is Always Greener",
+          "nameZh": "邻家的草分外青",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2159250954,
+          "name": "Devious Thievery",
+          "nameZh": "奸狡大盗",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2890753840,
+          "name": "Gaze Amaze",
+          "nameZh": "惊奇凝视",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2936050162,
+          "name": "Under Construction",
+          "nameZh": "建造中",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4152669757,
+          "name": "Hands Off",
+          "nameZh": "请勿上手",
+          "description": "A challenge awaits…",
+          "descriptionZh": "一项挑战等待着你…",
+          "icon": "/common/destiny2_content/icons/0e11e2552752554039b129908859487a.png",
+          "displayInActivitySelection": true,
+          "kind": "challenge",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3230561446,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "You will face combatants with Arc and Solar shields.\n\nActivity modifiers may add more shield types.",
+          "descriptionZh": "你将面对拥有电弧和烈日护盾的战斗人员。\n\n活动修改器可添加更多护盾类型。",
+          "icon": "/common/destiny2_content/icons/50f19e0cf1b9864d47a9f0538440b916.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3119632620,
+          "name": "Shielded Foes",
+          "nameZh": "护盾敌人",
+          "description": "Arc and Solar Shields",
+          "descriptionZh": "电弧和烈日护盾",
+          "icon": "/common/destiny2_content/icons/50f19e0cf1b9864d47a9f0538440b916.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4087563963,
+          "name": "Master Modifiers",
+          "nameZh": "大师难度修改器",
+          "description": "Extra Champions\nExtra Shields",
+          "descriptionZh": "额外勇士\n额外护盾",
+          "icon": "/common/destiny2_content/icons/e6507058cbddfc8b72dde057674e792a.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2006149364,
+          "name": "Champion Foes",
+          "nameZh": "勇士敌人",
+          "description": "You will face [Shield-Piercing] Barrier, Overload, and Unstoppable Champions.\n\nVisit the Character or Mod Customization screen to view your active anti-Champion perks.",
+          "descriptionZh": "你将面对屏障、过载及势不可挡勇士。\n\n前往角色或模组自定义界面查看你已激活的反勇士特性。",
+          "icon": "/common/destiny2_content/icons/70c843c68353be08b99389e2e910cb02.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 4038464106,
+          "name": "Champion Foes",
+          "nameZh": "勇士敌人",
+          "description": "You will face [Shield-Piercing] Barrier, Overload, and Unstoppable Champions.",
+          "descriptionZh": "你将面对屏障、过载及势不可挡勇士。",
+          "icon": "/common/destiny2_content/icons/70c843c68353be08b99389e2e910cb02.png",
+          "displayInActivitySelection": false,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 1282934989,
+          "name": "Overcharged Sniper Rifle",
+          "nameZh": "过充狙击步枪",
+          "description": "(value shown in game) bonus to Sniper Rifle damage.",
+          "descriptionZh": "狙击步枪伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/42ee3b4d0e96fb29e45a17402d764cac.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 2691200658,
+          "name": "Arc Surge",
+          "nameZh": "电弧激涌",
+          "description": "(value shown in game) bonus to outgoing Arc damage.",
+          "descriptionZh": "造成的电弧伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/226a64add0dbb3919e3f34ae778fd9b8.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        },
+        {
+          "hash": 3810297122,
+          "name": "Strand Surge",
+          "nameZh": "缚丝激涌",
+          "description": "(value shown in game) bonus to outgoing Strand damage.",
+          "descriptionZh": "造成的缚丝伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/e8ab8ba72b54125d2750e943ba6c824d.png",
+          "displayInActivitySelection": true,
+          "kind": "modifier",
+          "hidden": false,
+          "resolved": true
+        }
+      ],
+      "champions": [],
+      "rewards": [],
+      "rewardDetails": {
+        "official": [
+          {
+            "name": "Raid Gear",
+            "nameZh": "突袭装备",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3808930390,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Weekly Reward",
+            "nameZh": "周常奖励",
+            "icon": "/common/destiny2_content/icons/5dd4d8b54b527d07b06c632eb004d01c.png",
+            "description": "An engram with a Tier 5 weapon or armor gear item.",
+            "descriptionZh": "一块包含一件5阶武器或护甲装备物品的记忆水晶。",
+            "itemHash": 3649567221,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          },
+          {
+            "name": "Deepsight Weapon",
+            "nameZh": "深视武器",
+            "icon": "/common/destiny2_content/icons/6c48130b8beb51854867b53fe108aa6d.jpg",
+            "description": "",
+            "descriptionZh": "",
+            "itemHash": 2782701438,
+            "quantity": null,
+            "conditional": false,
+            "source": "activity-definition"
+          }
+        ],
+        "examples": [
+          {
+            "name": "Touch of Malice",
+            "nameZh": "恶意触碰",
+            "icon": "/common/destiny2_content/icons/106a8a40a6e55b5ec5088a26d1ed979d.jpg",
+            "itemHashes": [
+              1802135586
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Zaouli's Bane",
+            "nameZh": "扎乌利的克星",
+            "icon": "/common/destiny2_content/icons/d11aa112b88dc2cbf48706fdad606710.jpg",
+            "itemHashes": [
+              431721920,
+              3066945855,
+              3647341740
+            ],
+            "source": "editorial-guide"
+          },
+          {
+            "name": "Doom of Chelchis",
+            "nameZh": "切尔奇斯的末日",
+            "icon": "/common/destiny2_content/icons/d439b1b560e696b8214362b12364da6d.jpg",
+            "itemHashes": [
+              1937552980
+            ],
+            "source": "editorial-guide"
+          }
+        ],
+        "note": "恶意触碰为 Destiny 2 尾王异域奖励；不要把初代任务获取方式套到复刻版。",
+        "reference": {
+          "title": "King's Fall Destinypedia",
+          "url": "https://www.destinypedia.com/King's_Fall",
+          "checkedAt": "2026-09-08",
+          "revisionUrl": "https://www.destinypedia.com/index.php?title=King%27s_Fall&oldid=371866"
+        }
+      },
+      "guideId": "raid-kings-fall",
+      "source": {
+        "provider": "bungie-milestones",
+        "mappedToManifest": true,
+        "mappedToGuide": true,
+        "mappedToMilestone": true
+      }
+    },
+    {
       "id": "540415767:107319834",
       "milestoneHash": 540415767,
       "activityHash": 107319834,
@@ -235,8 +532,8 @@
       "descriptionZh": "他在深渊之暗中等待。",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -437,8 +734,8 @@
       "descriptionZh": "传承的锁链必须被打破。",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": null,
       "modifiers": [
         1783825372,
@@ -638,8 +935,8 @@
       "descriptionZh": "金星之下，暗流涌动…",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -842,8 +1139,8 @@
       "descriptionZh": "门徒发出召唤…",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -1043,8 +1340,8 @@
       "descriptionZh": "门徒发出召唤…",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Master",
       "modifiers": [
         1834872958,
@@ -1059,8 +1356,8 @@
         3307318061,
         40182179,
         2626834038,
-        3196075844,
-        3809788899
+        2691200658,
+        3810297122
       ],
       "modifierDetails": [
         {
@@ -1208,24 +1505,24 @@
           "resolved": true
         },
         {
-          "hash": 3196075844,
-          "name": "Void Surge",
-          "nameZh": "虚空激涌",
-          "description": "(value shown in game) bonus to outgoing Void damage.",
-          "descriptionZh": "造成的虚空伤害提升（数值以游戏内为准）。",
-          "icon": "/common/destiny2_content/icons/382ae8c952160e4272ffb0b852f55142.png",
+          "hash": 2691200658,
+          "name": "Arc Surge",
+          "nameZh": "电弧激涌",
+          "description": "(value shown in game) bonus to outgoing Arc damage.",
+          "descriptionZh": "造成的电弧伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/226a64add0dbb3919e3f34ae778fd9b8.png",
           "displayInActivitySelection": true,
           "kind": "modifier",
           "hidden": false,
           "resolved": true
         },
         {
-          "hash": 3809788899,
-          "name": "Stasis Surge",
-          "nameZh": "冰影激涌",
-          "description": "(value shown in game) bonus to outgoing Stasis damage.",
-          "descriptionZh": "造成的冰影伤害提升（数值以游戏内为准）。",
-          "icon": "/common/destiny2_content/icons/d542fb1a1171b0270cd83b5aa79f3e0d.png",
+          "hash": 3810297122,
+          "name": "Strand Surge",
+          "nameZh": "缚丝激涌",
+          "description": "(value shown in game) bonus to outgoing Strand damage.",
+          "descriptionZh": "造成的缚丝伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/e8ab8ba72b54125d2750e943ba6c824d.png",
           "displayInActivitySelection": true,
           "kind": "modifier",
           "hidden": false,
@@ -1337,8 +1634,8 @@
       "descriptionZh": "“花园在召唤着你。”",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": null,
       "modifiers": [
         1783825372,
@@ -1515,8 +1812,8 @@
       "descriptionZh": "跨越无尽的界限。",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         3825969510,
@@ -1630,8 +1927,8 @@
       "descriptionZh": "“一生一次的机会。”",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -1825,7 +2122,7 @@
       }
     },
     {
-      "id": "3281608164:9",
+      "id": "3281608164:10",
       "milestoneHash": 3281608164,
       "activityHash": null,
       "name": "Purification",
@@ -1865,8 +2162,8 @@
       "descriptionZh": "一个邪恶的威胁扎根于此。",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -2054,8 +2351,8 @@
       "descriptionZh": "解放光能。",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Standard",
       "modifiers": [
         1783825372,
@@ -2282,8 +2579,8 @@
       "descriptionZh": "解放光能。",
       "icon": "/common/destiny2_content/icons/bd7a1fc995f87be96698263bc16698e7.png",
       "category": "raid",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": "Master",
       "modifiers": [
         1783825372,
@@ -2299,8 +2596,8 @@
         2006149364,
         4038464106,
         2626834038,
-        3196075844,
-        3809788899
+        2691200658,
+        3810297122
       ],
       "modifierDetails": [
         {
@@ -2460,24 +2757,24 @@
           "resolved": true
         },
         {
-          "hash": 3196075844,
-          "name": "Void Surge",
-          "nameZh": "虚空激涌",
-          "description": "(value shown in game) bonus to outgoing Void damage.",
-          "descriptionZh": "造成的虚空伤害提升（数值以游戏内为准）。",
-          "icon": "/common/destiny2_content/icons/382ae8c952160e4272ffb0b852f55142.png",
+          "hash": 2691200658,
+          "name": "Arc Surge",
+          "nameZh": "电弧激涌",
+          "description": "(value shown in game) bonus to outgoing Arc damage.",
+          "descriptionZh": "造成的电弧伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/226a64add0dbb3919e3f34ae778fd9b8.png",
           "displayInActivitySelection": true,
           "kind": "modifier",
           "hidden": false,
           "resolved": true
         },
         {
-          "hash": 3809788899,
-          "name": "Stasis Surge",
-          "nameZh": "冰影激涌",
-          "description": "(value shown in game) bonus to outgoing Stasis damage.",
-          "descriptionZh": "造成的冰影伤害提升（数值以游戏内为准）。",
-          "icon": "/common/destiny2_content/icons/d542fb1a1171b0270cd83b5aa79f3e0d.png",
+          "hash": 3810297122,
+          "name": "Strand Surge",
+          "nameZh": "缚丝激涌",
+          "description": "(value shown in game) bonus to outgoing Strand damage.",
+          "descriptionZh": "造成的缚丝伤害提升（数值以游戏内为准）。",
+          "icon": "/common/destiny2_content/icons/e8ab8ba72b54125d2750e943ba6c824d.png",
           "displayInActivitySelection": true,
           "kind": "modifier",
           "hidden": false,
@@ -2557,7 +2854,7 @@
       }
     },
     {
-      "id": "4253138191:13",
+      "id": "4253138191:14",
       "milestoneHash": 4253138191,
       "activityHash": null,
       "name": "Weekly Clan Engrams",
@@ -2566,8 +2863,8 @@
       "descriptionZh": "以群组完成活动来帮助公会获得奖励。",
       "icon": "/common/destiny2_content/icons/DestinyMilestoneDefinition_640c1c6f00fe2d7bb0cd6030c294d655.png",
       "category": "other",
-      "startDate": "2026-09-08T17:00:00.000Z",
-      "endDate": "2026-09-15T17:00:00.000Z",
+      "startDate": "2026-09-15T17:00:00.000Z",
+      "endDate": "2026-09-22T17:00:00.000Z",
       "difficulty": null,
       "modifiers": [],
       "modifierDetails": [],
@@ -2599,7 +2896,7 @@
   "counts": {
     "pve": 0,
     "pvp": 0,
-    "raid": 12,
+    "raid": 13,
     "dungeon": 0,
     "exotic-mission": 0,
     "vendor": 0,
